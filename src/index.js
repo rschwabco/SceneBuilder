@@ -11,7 +11,7 @@ import { colors } from "./styles";
 
 const client = new ApolloClient({
   link: new HttpLink({
-    uri: `https://w5xlvm3vzz.lp.gql.zone/graphql`
+    uri: `https://api.graph.cool/simple/v1/cjjuib45n0cgn0198de0tkjfn`
   }),
   cache: new InMemoryCache()
   // for SSR, use:
