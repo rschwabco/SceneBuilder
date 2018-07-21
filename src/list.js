@@ -12,11 +12,10 @@ import numeral from "numeral";
 
 import { fontSize, colors } from "./styles";
 
-const ExchangeRateQuery = gql`
-  query rates($currency: String!) {
-    rates(currency: $currency) {
-      currency
-      rate
+const ExchangeRateQuery = gql`  
+  query{
+    allScenes{
+      name
     }
   }
 `;
@@ -29,28 +28,9 @@ export default ({ currency: currentCurrency, onCurrencyChange }) => (
 
       return (
         <View style={styles.container}>
-          {data.rates
-            .filter(
-              ({ currency }) =>
-                currency !== currentCurrency &&
-                ["USD", "BTC", "LTC", "EUR", "JPY", "ETH"].includes(currency)
-            )
-            .map(({ currency, rate }, idx, rateArr) => (
-              <TouchableOpacity
-                accessibilityRole="button"
-                onPress={() => onCurrencyChange(currency)}
-                style={[
-                  styles.currencyWrapper,
-                  idx === rateArr.length - 1 && { borderBottomWidth: 0 }
-                ]}
-                key={currency}
-              >
-                <Text style={styles.currency}>{currency}</Text>
-                <Text style={styles.currency}>
-                  {rate > 1 ? numeral(rate).format("0,0.00") : rate}
-                </Text>
-              </TouchableOpacity>
-            ))}
+          {data.allScenes.map(s => {
+            return <div>{s.name}</div>;
+          })}
         </View>
       );
     }}
