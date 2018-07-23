@@ -6,12 +6,13 @@ import { HttpLink } from "apollo-link-http";
 import { InMemoryCache } from "apollo-cache-inmemory";
 import { ApolloProvider } from "react-apollo";
 
-import SceneBuilder from "./view";
+import SceneBuilder from "./explorer/Builder";
+
 import { colors } from "./styles";
 
 const client = new ApolloClient({
   link: new HttpLink({
-    uri: `https://w5xlvm3vzz.lp.gql.zone/graphql`
+    uri: `https://api.graph.cool/simple/v1/cjjuib45n0cgn0198de0tkjfn`
   }),
   cache: new InMemoryCache()
   // for SSR, use:
@@ -20,9 +21,7 @@ const client = new ApolloClient({
 
 const App = () => (
   <ApolloProvider client={client}>
-    <View id="root" style={styles.container}>
-      <SceneBuilder />
-    </View>
+    <SceneBuilder />
   </ApolloProvider>
 );
 

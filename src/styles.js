@@ -8,5 +8,5 @@ export const colors = {
 export const fontSize = {
   large: "6em",
   medium: "4em",
-  small: "2em"
+  small: "0.2em"
 };
