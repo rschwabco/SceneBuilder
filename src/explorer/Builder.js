@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { View, Text, StyleSheet } from "react-native-web";
-import ExchangeRateList from "./list";
+
 import { colors, fontSize } from "./../styles";
 import Environment from "./Environment";
 import { Entity } from "aframe-react";
