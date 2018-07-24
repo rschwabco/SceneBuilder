@@ -36,7 +36,10 @@ class Enviornment extends Component {
     return (
       <Scene vr-mode-ui keyboard-shortcuts leap="vr: false">
         <a-assets>
-          <a-image id="sky" src="holodeck.png" />
+          <a-image
+            id="sky"
+            src="https://uploads.codesandbox.io/uploads/user/cf641f2b-3840-4f83-bf5e-dee7737a7432/EB1V-holodeck.png"
+          />
         </a-assets>
         <Entity>
           {this.props.children}
