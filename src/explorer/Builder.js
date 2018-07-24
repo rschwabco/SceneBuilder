@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { View, Text, StyleSheet } from "react-native-web";
 import ExchangeRateList from "./list";
-import { colors, fontSize } from "./styles";
-
+import { colors, fontSize } from "./../styles";
+import Environment from "./Environment";
+import { Entity } from "aframe-react";
 export default class SceneBuilder extends Component {
   state = {
     currency: "USD"
@@ -12,10 +13,24 @@ export default class SceneBuilder extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.heading}>Scenes</Text>
-        <Text style={styles.body}>Yay</Text>
-      </View>
+      <Environment>
+        <Entity
+          scale="1 1 1"
+          geometry="primitive: sphere; radius: 0.2"
+          position="0 0 -20"
+          segments-height="128"
+          segments-width="128"
+        >
+          <a-animation
+            attribute="scale"
+            direction="alternate-reverse"
+            dur="5000"
+            from="1 1 1"
+            to="4 4 4"
+            repeat="indefinite"
+          />
+        </Entity>
+      </Environment>
     );
   }
 }
