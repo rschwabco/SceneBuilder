@@ -4,28 +4,25 @@ import { colors, fontSize } from "./../styles";
 import Environment from "../Environment";
 import { Entity } from "aframe-react";
 export default class SceneBuilder extends Component {
-  state = {
-    currency: "USD"
-  };
-
-  onCurrencyChange = currency => this.setState(() => ({ currency }));
-
   render() {
     return (
       <Environment>
         <Entity
-          scale="1 1 1"
-          geometry="primitive: sphere; radius: 0.2"
-          position="0 0 -20"
-          segments-height="128"
-          segments-width="128"
+          events={{
+            click: () => {
+              console.log("click");
+            }
+          }}
+          obj-model="obj: #vessel-obj; mtl: #vessel-mtl"
+          mtl="#vessel-mtl"
+          rotation="0 0 0"
+          scale="3 3 3"
+          position="120 20 -130"
         >
           <a-animation
-            attribute="scale"
-            direction="alternate-reverse"
-            dur="5000"
-            from="1 1 1"
-            to="4 4 4"
+            attribute="rotation"
+            dur="20000"
+            to={`360 0 360`}
             repeat="indefinite"
           />
         </Entity>
