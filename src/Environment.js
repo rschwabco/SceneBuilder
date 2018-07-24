@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import * as AFRAME from "aframe";
 import { Entity, Scene } from "aframe-react";
 
 class Enviornment extends Component {

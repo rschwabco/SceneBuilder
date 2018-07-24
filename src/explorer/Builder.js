@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { View, Text, StyleSheet } from "react-native-web";
 import { colors, fontSize } from "./../styles";
-import Environment from "./Environment";
+import Environment from "../Environment";
 import { Entity } from "aframe-react";
 export default class SceneBuilder extends Component {
   state = {
