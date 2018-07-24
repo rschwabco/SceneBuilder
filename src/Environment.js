@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import * as AFRAME from "aframe";
+import * as aframe from "aframe";
 import * as fff from "aframe-text-geometry-component";
+import * as kkk from "aframe-event-set-component";
+import registerClickDrag from "aframe-click-drag-component";
 import { Entity, Scene } from "aframe-react";
-
+registerClickDrag(aframe);
 class Enviornment extends Component {
   constructor(props) {
     super(props);
@@ -82,51 +84,36 @@ class Enviornment extends Component {
         <Entity>
           {this.props.children}
 
-          <a-entity position="0 2.2 4">
-            <a-entity camera look-controls wasd-controls>
-              <a-entity
-                position="0 0 -3"
-                geometry="primitive: ring; radiusInner: 0.2; radiusOuter: 0.3;"
-                material="color: cyan; shader: flat"
-                cursor="maxDistance: 30; fuse: true"
-              >
-                <a-animation
-                  begin="click"
-                  easing="ease-in"
-                  attribute="scale"
-                  fill="forwards"
-                  from="0.2 0.2 0.2"
-                  to="1 1 1"
-                  dur="150"
-                />
-                <a-animation
-                  begin="fusing"
-                  easing="ease-in"
-                  attribute="scale"
-                  fill="backwards"
-                  from="1 1 1"
-                  to="0.2 0.2 0.2"
-                  dur="1500"
-                />
-              </a-entity>
-            </a-entity>
+          <a-entity position="0 0 3.8">
+            <a-camera
+              look-controls-enabled="true"
+              keyboard-controls="fpsMode: true"
+              mouse-cursor
+            >
+              <a-cursor fuse="true" color="yellow" />
+            </a-camera>
           </a-entity>
 
           <a-entity position="-3.5 1 0">
-            <a-entity mixin="cube red">
-              <a-animation
-                begin="click"
-                attribute="position"
-                from="0 0 0"
-                to="0 0 -10"
-                dur="2000"
-                fill="both"
-              />
-            </a-entity>
+            <a-entity
+              mixin="cube red"
+              event-set
+              event-set__down="_event: mousedown; material.wireframe: true"
+              event-set__up="_event: mouseup; material.wireframe: false"
+              event-set__leave="_event: mouseleave; material.wireframe: false"
+            />
+            <a-animation
+              begin="click"
+              attribute="rotation"
+              to="0 360 0"
+              easing="linear"
+              dur="2000"
+              fill="backwards"
+            />
           </a-entity>
 
           <a-entity position="0 1 0">
-            <a-entity mixin="cube green">
+            <a-entity click-drag mixin="cube green">
               <a-animation
                 begin="click"
                 attribute="rotation"
@@ -155,8 +142,7 @@ class Enviornment extends Component {
 
           <a-entity
             position="0 3 0"
-            class="
-                                    "
+            class="                                    "
             mixin="cube yellow"
             rotation="0 45 0"
             scale=".5 .5 .5"

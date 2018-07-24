@@ -59,8 +59,7 @@ export default class SceneViewer extends Component {
                   position={`-0.9 ${0.2 + key} -3`}
                   events={{
                     click: () => {
-                      alert("!");
-                      this.setState({ selecteScene: scene });
+                      console.log("heyllo");
                     }
                   }}
                 >
