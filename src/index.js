@@ -5,14 +5,34 @@ import { ApolloClient } from "apollo-client";
 import { HttpLink } from "apollo-link-http";
 import { InMemoryCache } from "apollo-cache-inmemory";
 import { ApolloProvider } from "react-apollo";
+import {
+  makeRemoteExecutableSchema,
+  mergeSchemas,
+  introspectSchema
+} from "graphql-tools";
 
 import SceneBuilder from "./explorer/Builder";
+import SceneViewer from "./explorer/Viewer";
 
 import { colors } from "./styles";
 
-const client = new ApolloClient({
+const SceneBuilderEndpoint =
+  "https://api.graph.cool/simple/v1/cjjuib45n0cgn0198de0tkjfn/graphql";
+const StarFleetEndpoint =
+  "https://api.graph.cool/simple/v1/cjjyyt1wg0hqt0118y59fp8rt/graphql";
+
+const sceneBuilderClient = new ApolloClient({
   link: new HttpLink({
-    uri: `https://api.graph.cool/simple/v1/cjjuib45n0cgn0198de0tkjfn`
+    uri: SceneBuilderEndpoint
+  }),
+  cache: new InMemoryCache()
+  // for SSR, use:
+  // cache: new Cache().restore(window.__APOLLO_STATE__ || {})
+});
+
+const starfleetClient = new ApolloClient({
+  link: new HttpLink({
+    uri: StarFleetEndpoint
   }),
   cache: new InMemoryCache()
   // for SSR, use:
@@ -20,8 +40,8 @@ const client = new ApolloClient({
 });
 
 const App = () => (
-  <ApolloProvider client={client}>
-    <SceneBuilder />
+  <ApolloProvider client={sceneBuilderClient}>
+    <SceneViewer />
   </ApolloProvider>
 );
 
