@@ -6,7 +6,8 @@ import { HttpLink } from "apollo-link-http";
 import { InMemoryCache } from "apollo-cache-inmemory";
 import { ApolloProvider } from "react-apollo";
 
-import SceneBuilder from "./view";
+import SceneBuilder from "./explorer/Builder";
+
 import { colors } from "./styles";
 
 const client = new ApolloClient({
@@ -20,9 +21,7 @@ const client = new ApolloClient({
 
 const App = () => (
   <ApolloProvider client={client}>
-    <View id="root" style={styles.container}>
-      <SceneBuilder />
-    </View>
+    <SceneBuilder />
   </ApolloProvider>
 );
 
