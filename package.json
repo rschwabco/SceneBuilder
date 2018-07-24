@@ -7,7 +7,9 @@
   "main": "index.js",
   "dependencies": {
     "aframe": "0.7.1",
+    "aframe-click-drag-component": "latest",
     "aframe-event-set-component": "4.1.2",
+    "aframe-mouse-cursor-component": "0.5.2",
     "aframe-react": "4.4.0",
     "aframe-template-component": "3.2.1",
     "aframe-text-component": "0.4.2",
