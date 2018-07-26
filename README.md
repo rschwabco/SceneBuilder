@@ -1,4 +1,5 @@
-#Scene Builder
+Scene Builder
+=============
 
 An A-Frame scene builder with a GraphQL service backend. 
 
