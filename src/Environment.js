@@ -52,14 +52,6 @@ class Enviornment extends Component {
                         id="vessel-mtl"
                         src="https://raw.githubusercontent.com/roieki/SceneBuilder/master/public/enterprise/enterprise1701d.mtl"
                     />
-                    <a-asset-item
-                        id="container-mtl"
-                        src="https://raw.githubusercontent.com/llanginger/SceneBuilder/adding-container/public/container/Cargo_container_02.mtl"
-                    />
-                    <a-asset-item
-                        id="container-obj"
-                        src="https://raw.githubusercontent.com/llanginger/SceneBuilder/adding-container/public/container/Cargo_container_02.obj"
-                    />
 
                     <a-asset-item
                         id="dawningFont"
@@ -90,7 +82,7 @@ class Enviornment extends Component {
                 </a-assets>
 
                 <Entity>
-                    {/* {this.props.children} */}
+                    {this.props.children}
 
                     <a-entity position="0 0 3.8">
                         <a-camera
@@ -102,9 +94,7 @@ class Enviornment extends Component {
                         </a-camera>
                     </a-entity>
 
-                    <a-entity position="0 1 0" obj-model="obj: #container-obj; mtl: #container-mtl" />
-
-                    {/* <a-entity position="-3.5 1 0">
+                    <a-entity position="-3.5 1 0">
                         <a-entity
                             mixin="cube red"
                             event-set
@@ -120,43 +110,43 @@ class Enviornment extends Component {
                             dur="2000"
                             fill="backwards"
                         />
-                    </a-entity> */}
+                    </a-entity>
 
-                    {/* <a-entity position="0 1 0">
-            <a-entity click-drag mixin="cube green">
-              <a-animation
-                begin="click"
-                attribute="rotation"
-                to="0 360 0"
-                easing="linear"
-                dur="2000"
-                fill="backwards"
-              />
-            </a-entity>
-          </a-entity>
+                    <a-entity position="0 1 0">
+                        <a-entity click-drag mixin="cube green">
+                            <a-animation
+                                begin="click"
+                                attribute="rotation"
+                                to="0 360 0"
+                                easing="linear"
+                                dur="2000"
+                                fill="backwards"
+                            />
+                        </a-entity>
+                    </a-entity>
 
-          <a-entity position="3.5 1 0" rotation="0 45 0">
-            <a-entity mixin="cube blue">
-              <a-animation
-                begin="click"
-                fill="forwards"
-                repeat="1"
-                direction="alternate"
-                attribute="position"
-                from="0 0 0"
-                to="15 0 0"
-                dur="2000"
-              />
-            </a-entity>
-          </a-entity>
+                    <a-entity position="3.5 1 0" rotation="0 45 0">
+                        <a-entity mixin="cube blue">
+                            <a-animation
+                                begin="click"
+                                fill="forwards"
+                                repeat="1"
+                                direction="alternate"
+                                attribute="position"
+                                from="0 0 0"
+                                to="15 0 0"
+                                dur="2000"
+                            />
+                        </a-entity>
+                    </a-entity>
 
-          <a-entity
-            position="0 3 0"
-            class="                                    "
-            mixin="cube yellow"
-            rotation="0 45 0"
-            scale=".5 .5 .5"
-          /> */}
+                    <a-entity
+                        position="0 3 0"
+                        class="                                    "
+                        mixin="cube yellow"
+                        rotation="0 45 0"
+                        scale=".5 .5 .5"
+                    />
 
                     <a-sky src="#sky" rotation="0 -270 0" />
                 </Entity>
