@@ -52,6 +52,14 @@ class Enviornment extends Component {
                         id="vessel-mtl"
                         src="https://raw.githubusercontent.com/roieki/SceneBuilder/master/public/enterprise/enterprise1701d.mtl"
                     />
+                    <a-asset-item
+                        id="container-mtl"
+                        src="https://raw.githubusercontent.com/llanginger/SceneBuilder/adding-container/public/container/Cargo_container_02.mtl"
+                    />
+                    <a-asset-item
+                        id="container-obj"
+                        src="https://raw.githubusercontent.com/llanginger/SceneBuilder/adding-container/public/container/Cargo_container_02.obj"
+                    />
 
                     <a-asset-item
                         id="dawningFont"
@@ -82,7 +90,7 @@ class Enviornment extends Component {
                 </a-assets>
 
                 <Entity>
-                    {this.props.children}
+                    {/* {this.props.children} */}
 
                     <a-entity position="0 0 3.8">
                         <a-camera
@@ -93,6 +101,8 @@ class Enviornment extends Component {
                             <a-cursor fuse="true" color="yellow" />
                         </a-camera>
                     </a-entity>
+
+                    <a-entity position="0 1 0" obj-model="obj: #container-obj; mtl: #container-mtl" />
 
                     {/* <a-entity position="-3.5 1 0">
                         <a-entity
