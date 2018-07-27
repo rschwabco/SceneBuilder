@@ -6,6 +6,7 @@ import * as kkk from "aframe-event-set-component";
 import registerClickDrag from "aframe-click-drag-component";
 import { ContainerScene, CubeScene } from "./explorer/Scene"
 import assets from "./aFrameAssets/aFrameAssets"
+import Camera from "./explorer/Camera"
 import { Entity, Scene } from "aframe-react";
 registerClickDrag(aframe);
 class Enviornment extends Component {
@@ -45,16 +46,8 @@ class Enviornment extends Component {
 
                 <Entity>
                     {this.props.children}
+                    <Camera />
 
-                    <a-entity position="0 0 3.8">
-                        <a-camera
-                            look-controls-enabled="true"
-                            keyboard-controls="fpsMode: true"
-                            mouse-cursor
-                        >
-                            <a-cursor fuse="true" color="yellow" />
-                        </a-camera>
-                    </a-entity>
                     {/* <ContainerScene /> */}
                     <CubeScene />
 
