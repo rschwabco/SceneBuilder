@@ -54,11 +54,11 @@ class Enviornment extends Component {
                     />
                     <a-asset-item
                         id="container-mtl"
-                        src="../public/container/Cargo_container_02.mtl"
+                        src="https://raw.githubusercontent.com/llanginger/SceneBuilder/uploading-container/public/container/Cargo_container_02.mtl"
                     />
                     <a-asset-item
                         id="container-obj"
-                        src="../public/container/Cargo_container_02.obj"
+                        src="https://raw.githubusercontent.com/llanginger/SceneBuilder/uploading-container/public/container/Cargo_container_02.obj"
                     />
 
                     <a-asset-item
@@ -102,7 +102,16 @@ class Enviornment extends Component {
                         </a-camera>
                     </a-entity>
 
-                    <a-entity key="1" position="-10 1 0" obj-model="obj: #container-obj; mtl: #container-mtl" />
+                    <a-entity click-drag key="1" position="-10 1 0" scale=".2 .2 .2" obj-model="obj: #container-obj;">
+                        {/* <a-animation
+                            begin="click"
+                            attribute="rotation"
+                            to="0 360 0"
+                            easing="linear"
+                            dur="2000"
+                            fill="backwards"
+                        /> */}
+                    </a-entity>
 
 
                     {/* <a-entity position="-3.5 1 0">
