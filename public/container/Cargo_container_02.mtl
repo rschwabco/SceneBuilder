@@ -1,13 +1,3 @@
-# 
-# 
-newmtl Cargo02
-Ns 96.078431
-Ka 0.000000 0.000000 0.000000
-Kd 0.640000 0.640000 0.640000
-Ks 0.000000 0.000000 0.000000
-Ni 1.550000
-d 1.000000
-illum 1
-map_Kd Cargo02_D.tga
-
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:87eca5c8322828d254415c67d858069f5020a68045c8eb375c5a980b8c658747
+size 191
