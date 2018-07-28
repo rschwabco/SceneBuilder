@@ -3,7 +3,7 @@
 import React, { Component } from "react";
 import { colors, fontSize } from "./../styles";
 // import Environment from "../Environment";
-import { ContainerScene } from "./Scene"
+import { ContainerScene, PropellerScene, PalletScene, OilDrumScene } from "./Scene"
 import { Entity } from "aframe-react";
 import gql from "graphql-tag";
 import { Query } from "react-apollo";
@@ -99,9 +99,9 @@ export default class SceneViewer extends Component {
 
     render() {
         return (
-            <ContainerScene>
-                {this.renderQuery()}
-            </ContainerScene>
+            <OilDrumScene>
+                {/* {this.renderQuery()} */}
+            </OilDrumScene>
         );
     }
 }

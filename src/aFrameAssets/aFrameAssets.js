@@ -4,20 +4,30 @@ import React, { Component } from "react";
 import * as aframe from "aframe";
 
 // TODO: At the moment simply takes an array of [name, path]. Will need to be more comprehensive
-const assets = (additionalAssets) => {
-    
-    const createItemAssets = () => {
-        return additionalAssets.map((asset, i) => {
+const registerAssets = (objObjects, mtlObjects) => {
+
+    const createObjAssets = () => {
+        return objObjects.map((asset, i) => {
             return (
                 <a-asset-item
-                    id={asset.name}
-                    src={asset.path}
+                    id={`${asset.name}-obj`}
+                    src={asset.objPath}
+                />
+            )
+        })
+    }
+    const createMtlAssets = () => {
+        return objObjects.map((asset, i) => {
+            return (
+                <a-asset-item
+                    id={`${asset.name}-mtl`}
+                    src={asset.mtlPath}
                 />
             )
         })
     }
     return (<a-assets>
-        {createItemAssets()}
+        {createObjAssets()}
         <a-image
             id="sky"
             src="https://uploads.codesandbox.io/uploads/user/cf641f2b-3840-4f83-bf5e-dee7737a7432/EB1V-holodeck.png"
@@ -64,4 +74,4 @@ const assets = (additionalAssets) => {
 
 
 
-export default assets
+export default registerAssets
