@@ -1,7 +1,9 @@
+//  TODO: Most of this is redundant
+
 import React, { Component } from "react";
 import { colors, fontSize } from "./../styles";
-import Environment from "../Environment";
-import ContainerScene from "./Scene/ContainerScene"
+// import Environment from "../Environment";
+import { ContainerScene } from "./Scene"
 import { Entity } from "aframe-react";
 import gql from "graphql-tag";
 import { Query } from "react-apollo";
@@ -46,53 +48,60 @@ export default class SceneViewer extends Component {
     }
     async getVessels() { }
 
-    render() {
+    renderQuery = () => {
         return (
-            <Environment>
-                {/* <Query query={ScenesQuery}>
-                    {({ loading, error, data }) => {
-                        if (loading) return <ActivityIndicator color={colors.teal} />;
-                        if (error) return <Text>{`Error: ${error}`}</Text>;
+            <Query query={ScenesQuery}>
+                {({ loading, error, data }) => {
+                    console.log("Query data: ", data)
+                    if (loading) return <ActivityIndicator color={colors.teal} />;
+                    if (error) return <Text>{`Error: ${error}`}</Text>;
 
-                        let scenes = data.allScenes.map((scene, key) => {
-                            return (
-                                <a-plane
-                                    position={`-0.9 ${0.2 + key} -3`}
-                                    events={{
-                                        click: () => {
-                                            console.log("heyllo");
-                                        }
-                                    }}
-                                >
-                                    <a-entity
-                                        mixin="boldFont"
-                                        text-geometry={`value: ${scene.name}`}
-                                        bevelSize="11"
-                                        bevelThickness="130"
-                                    />
-                                </a-plane>
-                            );
-                        });
-
-                        let selectedScene = !this.state.selectedScene ? (
-                            <div />
-                        ) : (
+                    let scenes = data.allScenes.map((scene, key) => {
+                        return (
+                            <a-plane
+                                position={`-0.9 ${0.2 + key} -3`}
+                                events={{
+                                    click: () => {
+                                        console.log("heyllo");
+                                    }
+                                }}
+                            >
                                 <a-entity
                                     mixin="boldFont"
-                                    text-geometry={`value: ${this.state.selectedScene.name}`}
+                                    text-geometry={`value: ${scene.name}`}
+                                    bevelSize="11"
+                                    bevelThickness="130"
                                 />
-                            );
-
-                        return (
-                            <Entity>
-                                <Entity position={`-0.9 0.2 -5`} />
-                                <a-entity text="text: Dog?" />
-                                {scenes}
-                            </Entity>
+                            </a-plane>
                         );
-                    }}
-                </Query> */}
-            </Environment>
+                    });
+
+                    let selectedScene = !this.state.selectedScene ? (
+                        <div />
+                    ) : (
+                            <a-entity
+                                mixin="boldFont"
+                                text-geometry={`value: ${this.state.selectedScene.name}`}
+                            />
+                        );
+
+                    return (
+                        <Entity>
+                            <Entity position={`-0.9 0.2 -5`} />
+                            <a-entity text="text: Dog?" />
+                            {scenes}
+                        </Entity>
+                    );
+                }}
+            </Query>
+        )
+    }
+
+    render() {
+        return (
+            <ContainerScene>
+                {this.renderQuery()}
+            </ContainerScene>
         );
     }
 }
