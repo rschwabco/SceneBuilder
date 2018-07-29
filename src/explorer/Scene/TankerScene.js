@@ -55,7 +55,7 @@ class ContainerScene extends Component {
             if (i === 0) {
 
                 return (
-                    <a-entity click-drag key={i} position={`${0} ${0} ${0}`} scale={`${scale} ${scale} ${scale} `} rotation="0 225 0" obj-model={`obj: #${name}-obj;`} >
+                    <a-entity click-drag key={i} position={`${0} ${0} ${0}`} scale={`${scale} ${scale} ${scale} `} rotation="0 225 0" obj-model={`obj: #${name}-obj; mtl: #${name}-mtl;`} >
 
                     </a-entity>
                 )
@@ -79,7 +79,7 @@ class ContainerScene extends Component {
                         <Scene vr-mode-ui keyboard-shortcuts leap="vr: false">
 
                             {/* Map over all (in this case just one) assets listed in GQL query and register said assets with a-frame */}
-                            {assets(data.obj)}
+                            {assets(data.obj, data.mtl)}
 
                             <Entity>
                                 <Camera />

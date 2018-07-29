@@ -45,6 +45,7 @@ class ContainerScene extends Component {
     makeEntities = (data) => {
 
         const { obj, allPositions } = data
+        const {name, scale} = obj[0]
 
         // Needs more work, but essentially;
         // Map over allPositions and return an entity with the corresponding position and element
@@ -54,8 +55,8 @@ class ContainerScene extends Component {
             if (i === 0) {
 
                 return (
-                    <a-entity click-drag key={i} position={`${0} ${0} ${0}`} scale=".002 .002 .002"  rotation="0 0 0" obj-model={`obj: #${obj[0].name}-obj;`} >
-                        <a-animation
+                    <a-entity click-drag key={i} position={`${0} ${0} ${0}`} scale={`${scale} ${scale} ${scale} `}  rotation="0 0 0" obj-model={`obj: #${name}-obj; mtl: #${name}-mtl`} >
+                        {/* <a-animation
                             begin="100"
                             attribute="rotation"
                             to="0 360 0"
@@ -63,7 +64,7 @@ class ContainerScene extends Component {
                             dur="4000"
                             fill="backwards"
                             repeat="indefinite"
-                        />
+                        /> */}
                         </a-entity>
                 )
             }
@@ -86,7 +87,7 @@ class ContainerScene extends Component {
                         <Scene vr-mode-ui keyboard-shortcuts leap="vr: false">
 
                             {/* Map over all (in this case just one) assets listed in GQL query and register said assets with a-frame */}
-                            {assets(data.obj)}
+                            {assets(data.obj, data.mtl)}
 
                             <Entity>
                                 <Camera />

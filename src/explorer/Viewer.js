@@ -3,7 +3,7 @@
 import React, { Component } from "react";
 import { colors, fontSize } from "./../styles";
 // import Environment from "../Environment";
-import { ContainerScene, PropellerScene, PalletScene, OilDrumScene, TankerShipScene } from "./Scene"
+import { ContainerScene, PropellerScene, PalletScene, OilDrumScene, TankerShipScene, SmallShipsScene, MaerskContainerScene } from "./Scene"
 import { Entity } from "aframe-react";
 import gql from "graphql-tag";
 import { Query } from "react-apollo";
