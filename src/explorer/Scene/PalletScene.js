@@ -21,7 +21,7 @@ import {
 
 
 // Get array of positions and array of "Container" objects.
-const ContainerQuery = getAssets("Container")
+const ContainerQuery = getAssets("Pallet")
 
 
 class ContainerScene extends Component {
@@ -45,23 +45,20 @@ class ContainerScene extends Component {
     makeEntities = (data) => {
 
         const { obj, allPositions } = data
-        
+
         // Needs more work, but essentially;
         // Map over allPositions and return an entity with the corresponding position and element
+        // Figure out how to rotate on different axis
 
         return allPositions.map((position, i) => {
-            return (
-                <a-entity click-drag key={i} position={`${position.x} ${position.y} ${position.z}`} scale=".2 .2 .2" obj-model={`obj: #${obj[0].name}-obj;`} >
-                    <a-animation
-                                    begin="click"
-                                    attribute="rotation"
-                                    to="0 360 0"
-                                    easing="linear"
-                                    dur="2000"
-                                    fill="backwards"
-                                />
-                </a-entity>
-            )
+            if (i === 0) {
+
+                return (
+                    <a-entity click-drag key={i} position={`${0} ${0} ${0}`} scale=".02 .02 .02"  rotation="0 0 0" obj-model={`obj: #${obj[0].name}-obj;`} >
+                        </a-entity>
+                )
+            }
+            return 
         })
     }
 
@@ -72,7 +69,7 @@ class ContainerScene extends Component {
                 {({ loading, error, data }) => {
 
                     console.log("Data: ", data)
-                    
+
                     if (loading) return <ActivityIndicator color={"#fff"} />;
                     if (error) return <Text>{`Error: ${error}`}</Text>;
 

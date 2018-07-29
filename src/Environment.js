@@ -1,3 +1,5 @@
+// TODO: Most of this has been extracted - remove
+
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import * as aframe from "aframe";
@@ -42,14 +44,14 @@ class Enviornment extends Component {
         return (
             <Scene vr-mode-ui keyboard-shortcuts leap="vr: false">
 
-                {assets()}
+                {assets([{ name: "container-obj", path: "https://raw.githubusercontent.com/llanginger/SceneBuilder/uploading-container/public/container/Cargo_container_02.obj" }])}
 
                 <Entity>
                     {this.props.children}
                     <Camera />
 
-                    {/* <ContainerScene /> */}
-                    <CubeScene />
+                    <ContainerScene />
+                    {/* <CubeScene /> */}
 
                     <a-sky src="#sky" rotation="0 -270 0" />
                 </Entity>
@@ -61,3 +63,4 @@ class Enviornment extends Component {
 Enviornment.propTypes = {};
 
 export default Enviornment;
+ContainerScene
