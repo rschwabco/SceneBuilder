@@ -54,7 +54,7 @@ class ContainerScene extends Component {
             if (i === 0) {
 
                 return (
-                    <a-entity click-drag key={i} position={`${0} ${0} ${0}`} scale=".002 .002 .002"  rotation="0 0 0" obj-model={`obj: #${obj[0].name};`} >
+                    <a-entity click-drag key={i} position={`${0} ${0} ${0}`} scale=".002 .002 .002"  rotation="0 0 0" obj-model={`obj: #${obj[0].name}-obj;`} >
                         <a-animation
                             begin="100"
                             attribute="rotation"
