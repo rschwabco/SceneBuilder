@@ -17,6 +17,8 @@ import {
     TouchableOpacity
 } from "react-native-web";
 
+registerClickDrag(aframe)
+
 
 class SceneViewer extends Component {
     constructor(props) {
