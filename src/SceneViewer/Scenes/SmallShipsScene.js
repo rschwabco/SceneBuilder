@@ -5,10 +5,10 @@ import * as fff from "aframe-text-geometry-component";
 import * as kkk from "aframe-event-set-component";
 import { Entity, Scene } from "aframe-react";
 import Camera from "../Camera"
-import assets from "../../aFrameAssets/aFrameAssets"
+import assets from "../../assets/registerAssets"
 
 import gql from "graphql-tag";
-import { getAssets } from "../../GraphQL"
+import { getAssetsQuery } from "../../GraphQL"
 import { Query } from "react-apollo";
 
 import {
@@ -21,7 +21,7 @@ import {
 
 
 // Get array of positions and array of "Container" objects.
-const SmallShipsQuery = getAssets("SmallShip")
+const SmallShipsQuery = getAssetsQuery("SmallShip")
 
 
 class SmallShipsScene extends Component {

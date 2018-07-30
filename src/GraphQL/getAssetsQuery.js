@@ -1,6 +1,6 @@
 import gql from "graphql-tag";
 
-const getAssets = (assetName) => {
+const getAssetsQuery = (assetName) => {
     return gql`
 query {
     allPositions {
@@ -21,4 +21,4 @@ query {
 }
 `}
 
-export default getAssets
+export default getAssetsQuery

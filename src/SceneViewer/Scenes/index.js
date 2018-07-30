@@ -1,3 +1,5 @@
+// Everything here other than SceneViewer is going to be redundant once we have correct positional information stored in GQL
+
 export { default as ContainerScene } from "./ContainerScene"
 export { default as CubeScene } from "./CubeScene"
 export { default as PropellerScene } from "./PropellerScene"

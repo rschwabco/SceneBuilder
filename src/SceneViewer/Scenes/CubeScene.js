@@ -4,7 +4,7 @@ import * as aframe from "aframe";
 import * as fff from "aframe-text-geometry-component";
 import * as kkk from "aframe-event-set-component";
 import { Entity, Scene } from "aframe-react";
-import { getAssets } from "../../GraphQL"
+import { getAssetsQuery } from "../../GraphQL"
 class ContainerScene extends Component {
     constructor(props) {
         super(props);
