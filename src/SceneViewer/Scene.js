@@ -7,8 +7,6 @@ import { Entity, Scene } from "aframe-react";
 import Camera from "./Camera"
 import assets from "../assets/registerAssets"
 import { getAssetsQuery } from "../GraphQL/index"
-import registerClickDrag from "aframe-click-drag-component";
-
 
 import { Query } from "react-apollo";
 import {
