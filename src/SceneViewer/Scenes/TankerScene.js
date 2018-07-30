@@ -5,10 +5,10 @@ import * as fff from "aframe-text-geometry-component";
 import * as kkk from "aframe-event-set-component";
 import { Entity, Scene } from "aframe-react";
 import Camera from "../Camera"
-import assets from "../../aFrameAssets/aFrameAssets"
+import assets from "../../assets/registerAssets"
 
 import gql from "graphql-tag";
-import { getAssets } from "../../GraphQL"
+import { getAssetsQuery } from "../../GraphQL"
 import { Query } from "react-apollo";
 
 import {
@@ -21,7 +21,7 @@ import {
 
 
 // Get array of positions and array of "Container" objects.
-const ContainerQuery = getAssets("Propeller")
+const ContainerQuery = getAssetsQuery("TankerShip")
 
 
 class ContainerScene extends Component {
@@ -45,6 +45,7 @@ class ContainerScene extends Component {
     makeEntities = (data) => {
 
         const { obj, allPositions } = data
+        const { name, scale } = obj[0]
 
         // Needs more work, but essentially;
         // Map over allPositions and return an entity with the corresponding position and element
@@ -54,20 +55,12 @@ class ContainerScene extends Component {
             if (i === 0) {
 
                 return (
-                    <a-entity click-drag key={i} position={`${0} ${0} ${0}`} scale=".002 .002 .002"  rotation="0 0 0" obj-model={`obj: #${obj[0].name}-obj;`} >
-                        <a-animation
-                            begin="100"
-                            attribute="rotation"
-                            to="0 360 0"
-                            easing="linear"
-                            dur="4000"
-                            fill="backwards"
-                            repeat="indefinite"
-                        />
-                        </a-entity>
+                    <a-entity click-drag key={i} position={`${0} ${0} ${0}`} scale={`${scale} ${scale} ${scale} `} rotation="0 225 0" obj-model={`obj: #${name}-obj; mtl: #${name}-mtl;`} >
+
+                    </a-entity>
                 )
             }
-            return 
+            return
         })
     }
 
@@ -86,7 +79,7 @@ class ContainerScene extends Component {
                         <Scene vr-mode-ui keyboard-shortcuts leap="vr: false">
 
                             {/* Map over all (in this case just one) assets listed in GQL query and register said assets with a-frame */}
-                            {assets(data.obj)}
+                            {assets(data.obj, data.mtl)}
 
                             <Entity>
                                 <Camera />

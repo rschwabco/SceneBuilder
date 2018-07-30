@@ -1,9 +1,8 @@
-//  TODO: Most of this is redundant
+// Copied from Viewer. Probably unnecessary
 
 import React, { Component } from "react";
-import { colors, fontSize } from "./../styles";
-// import Environment from "../Environment";
-import { ContainerScene, PropellerScene, PalletScene, OilDrumScene, TankerShipScene } from "./Scene"
+import { colors, fontSize } from "../styles/styles";
+import { ContainerScene, PropellerScene, PalletScene, OilDrumScene, TankerShipScene, SmallShipsScene, MaerskContainerScene } from "./Scenes"
 import { Entity } from "aframe-react";
 import gql from "graphql-tag";
 import { Query } from "react-apollo";
@@ -16,27 +15,6 @@ import {
     TouchableOpacity
 } from "react-native-web";
 
-const ScenesQuery = gql`
-  query {
-    allScenes(filter: {name_contains:"StarFleet"}){    
-      id
-      name
-      semanticLayoutNodes{
-        id
-        scale{
-          x
-          y
-          z
-        }
-        position{
-          x
-          y
-          z
-        }      
-      }    
-    }
-  }
-`;
 
 export default class SceneViewer extends Component {
     constructor() {
@@ -46,9 +24,9 @@ export default class SceneViewer extends Component {
             selectedScene: false
         };
     }
-    async getVessels() { }
 
-    renderQuery = () => {
+
+    render() {
         return (
             <Query query={ScenesQuery}>
                 {({ loading, error, data }) => {
@@ -95,14 +73,6 @@ export default class SceneViewer extends Component {
                 }}
             </Query>
         )
-    }
-
-    render() {
-        return (
-            <TankerShipScene>
-                {/* {this.renderQuery()} */}
-            </TankerShipScene>
-        );
     }
 }
 

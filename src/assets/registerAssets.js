@@ -17,7 +17,7 @@ const registerAssets = (objObjects, mtlObjects) => {
         })
     }
     const createMtlAssets = () => {
-        return objObjects.map((asset, i) => {
+        return mtlObjects.map((asset, i) => {
             return (
                 <a-asset-item
                     id={`${asset.name}-mtl`}
@@ -28,6 +28,7 @@ const registerAssets = (objObjects, mtlObjects) => {
     }
     return (<a-assets>
         {createObjAssets()}
+        {createMtlAssets()}
         <a-image
             id="sky"
             src="https://uploads.codesandbox.io/uploads/user/cf641f2b-3840-4f83-bf5e-dee7737a7432/EB1V-holodeck.png"

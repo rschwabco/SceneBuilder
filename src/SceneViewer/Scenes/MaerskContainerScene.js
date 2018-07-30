@@ -5,10 +5,10 @@ import * as fff from "aframe-text-geometry-component";
 import * as kkk from "aframe-event-set-component";
 import { Entity, Scene } from "aframe-react";
 import Camera from "../Camera"
-import assets from "../../aFrameAssets/aFrameAssets"
+import assets from "../../assets/registerAssets"
 
 import gql from "graphql-tag";
-import { getAssets } from "../../GraphQL"
+import { getAssetsQuery } from "../../GraphQL"
 import { Query } from "react-apollo";
 
 import {
@@ -21,10 +21,10 @@ import {
 
 
 // Get array of positions and array of "Container" objects.
-const ContainerQuery = getAssets("TankerShip")
+const MaerskContainerQuery = getAssetsQuery("Container-Maersk")
 
 
-class ContainerScene extends Component {
+class MaerskContainerScene extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -55,7 +55,7 @@ class ContainerScene extends Component {
             if (i === 0) {
 
                 return (
-                    <a-entity click-drag key={i} position={`${0} ${0} ${0}`} scale={`${scale} ${scale} ${scale} `} rotation="0 225 0" obj-model={`obj: #${name}-obj;`} >
+                    <a-entity click-drag key={i} position={`${0} ${0} ${0}`} scale={`${scale} ${scale} ${scale} `} rotation="0 225 0" obj-model={`obj: #${name}-obj; mtl: #${name}-mtl;`} >
 
                     </a-entity>
                 )
@@ -67,7 +67,7 @@ class ContainerScene extends Component {
     render() {
         let { pitch, roll, yaw, x, y, z } = this.state;
         return (
-            <Query query={ContainerQuery}>
+            <Query query={MaerskContainerQuery}>
                 {({ loading, error, data }) => {
 
                     console.log("Data: ", data)
@@ -79,7 +79,7 @@ class ContainerScene extends Component {
                         <Scene vr-mode-ui keyboard-shortcuts leap="vr: false">
 
                             {/* Map over all (in this case just one) assets listed in GQL query and register said assets with a-frame */}
-                            {assets(data.obj)}
+                            {assets(data.obj, data.mtl)}
 
                             <Entity>
                                 <Camera />
@@ -95,8 +95,8 @@ class ContainerScene extends Component {
     }
 }
 
-ContainerScene.propTypes = {};
+MaerskContainerScene.propTypes = {};
 
-export default ContainerScene;
+export default MaerskContainerScene;
 
 
