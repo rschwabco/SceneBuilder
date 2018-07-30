@@ -5,10 +5,10 @@ import * as fff from "aframe-text-geometry-component";
 import * as kkk from "aframe-event-set-component";
 import { Entity, Scene } from "aframe-react";
 import Camera from "../Camera"
-import assets from "../../aFrameAssets/aFrameAssets"
+import registerAssets from "../../assets/registerAssets"
+import { getAssetsQuery } from "../../GraphQL"
 
-import gql from "graphql-tag";
-import { getAssets } from "../../GraphQL"
+
 import { Query } from "react-apollo";
 
 import {
@@ -20,8 +20,8 @@ import {
 } from "react-native-web";
 
 
-// Get array of positions and array of "Container" objects.
-const ContainerQuery = getAssets("Propeller")
+const ContainerQuery = getAssetsQuery("OilDrum")
+console.log("ContainerQuery: ", ContainerQuery)
 
 
 class ContainerScene extends Component {
@@ -45,30 +45,29 @@ class ContainerScene extends Component {
     makeEntities = (data) => {
 
         const { obj, allPositions } = data
-        const {name, scale} = obj[0]
+        const { name, scale } = obj[0]
 
         // Needs more work, but essentially;
         // Map over allPositions and return an entity with the corresponding position and element
-        // Figure out how to rotate on different axis
 
+        // TODO: Make this scalable instead of hard coding every 3rd line
         return allPositions.map((position, i) => {
-            if (i === 0) {
-
+            if (i < 3) {
                 return (
-                    <a-entity click-drag key={i} position={`${0} ${0} ${0}`} scale={`${scale} ${scale} ${scale} `}  rotation="0 0 0" obj-model={`obj: #${name}-obj; mtl: #${name}-mtl`} >
-                        {/* <a-animation
-                            begin="100"
-                            attribute="rotation"
-                            to="0 360 0"
-                            easing="linear"
-                            dur="4000"
-                            fill="backwards"
-                            repeat="indefinite"
-                        /> */}
-                        </a-entity>
+                    <a-entity click-drag key={i} position={`${i * 0.7} ${0} ${0}`} scale={`${scale} ${scale} ${scale} `} rotation="0 0 0" obj-model={`obj: #${name}-obj; mtl: #${name}-mtl;`} >
+                    </a-entity>
+                )
+            } else if (i < 6) {
+                return (
+                    <a-entity click-drag key={i} position={`${(i - 3) * 0.7} ${0} ${0.7}`} scale={`${scale} ${scale} ${scale} `} rotation="0 0 0" obj-model={`obj: #${name}-obj; mtl: #${name}-mtl;`} >
+                    </a-entity>
+                )
+            } else {
+                return (
+                    <a-entity click-drag key={i} position={`${(i - 6) * 0.7} ${0} ${1.4}`} scale={`${scale} ${scale} ${scale} `} rotation="0 0 0" obj-model={`obj: #${name}-obj; mtl: #${name}-mtl;`} >
+                    </a-entity>
                 )
             }
-            return 
         })
     }
 
@@ -86,8 +85,8 @@ class ContainerScene extends Component {
                     return (
                         <Scene vr-mode-ui keyboard-shortcuts leap="vr: false">
 
-                            {/* Map over all (in this case just one) assets listed in GQL query and register said assets with a-frame */}
-                            {assets(data.obj, data.mtl)}
+
+                            {registerAssets(data.obj, data.mtl)}
 
                             <Entity>
                                 <Camera />

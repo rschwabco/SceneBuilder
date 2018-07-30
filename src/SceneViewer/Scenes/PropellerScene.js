@@ -5,10 +5,10 @@ import * as fff from "aframe-text-geometry-component";
 import * as kkk from "aframe-event-set-component";
 import { Entity, Scene } from "aframe-react";
 import Camera from "../Camera"
-import assets from "../../aFrameAssets/aFrameAssets"
-import { getAssets } from "../../GraphQL"
+import assets from "../../assets/registerAssets"
 
 import gql from "graphql-tag";
+import { getAssetsQuery } from "../../GraphQL"
 import { Query } from "react-apollo";
 
 import {
@@ -21,7 +21,7 @@ import {
 
 
 // Get array of positions and array of "Container" objects.
-const ContainerQuery = getAssets("Container")
+const ContainerQuery = getAssetsQuery("Propeller")
 
 
 class ContainerScene extends Component {
@@ -45,23 +45,30 @@ class ContainerScene extends Component {
     makeEntities = (data) => {
 
         const { obj, allPositions } = data
-        
+        const { name, scale } = obj[0]
+
         // Needs more work, but essentially;
         // Map over allPositions and return an entity with the corresponding position and element
+        // Figure out how to rotate on different axis
 
         return allPositions.map((position, i) => {
-            return (
-                <a-entity click-drag key={i} position={`${position.x} ${position.y} ${position.z}`} scale=".2 .2 .2" obj-model={`obj: #${obj[0].name}-obj;`} >
-                    <a-animation
-                                    begin="click"
-                                    attribute="rotation"
-                                    to="0 360 0"
-                                    easing="linear"
-                                    dur="2000"
-                                    fill="backwards"
-                                />
-                </a-entity>
-            )
+            if (i === 0) {
+
+                return (
+                    <a-entity click-drag key={i} position={`${0} ${0} ${0}`} scale={`${scale} ${scale} ${scale} `} rotation="0 0 0" obj-model={`obj: #${name}-obj; mtl: #${name}-mtl`} >
+                        {/* <a-animation
+                            begin="100"
+                            attribute="rotation"
+                            to="0 360 0"
+                            easing="linear"
+                            dur="4000"
+                            fill="backwards"
+                            repeat="indefinite"
+                        /> */}
+                    </a-entity>
+                )
+            }
+            return
         })
     }
 
@@ -72,7 +79,7 @@ class ContainerScene extends Component {
                 {({ loading, error, data }) => {
 
                     console.log("Data: ", data)
-                    
+
                     if (loading) return <ActivityIndicator color={"#fff"} />;
                     if (error) return <Text>{`Error: ${error}`}</Text>;
 
@@ -80,7 +87,7 @@ class ContainerScene extends Component {
                         <Scene vr-mode-ui keyboard-shortcuts leap="vr: false">
 
                             {/* Map over all (in this case just one) assets listed in GQL query and register said assets with a-frame */}
-                            {assets(data.obj)}
+                            {assets(data.obj, data.mtl)}
 
                             <Entity>
                                 <Camera />

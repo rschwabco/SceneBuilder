@@ -5,10 +5,10 @@ import * as fff from "aframe-text-geometry-component";
 import * as kkk from "aframe-event-set-component";
 import { Entity, Scene } from "aframe-react";
 import Camera from "../Camera"
-import assets from "../../aFrameAssets/aFrameAssets"
-import { getAssets } from "../../GraphQL"
+import assets from "../../assets/registerAssets"
 
 import gql from "graphql-tag";
+import { getAssetsQuery } from "../../GraphQL"
 import { Query } from "react-apollo";
 
 import {
@@ -21,10 +21,10 @@ import {
 
 
 // Get array of positions and array of "Container" objects.
-const ContainerQuery = getAssets("Pallet")
+const MaerskContainerQuery = getAssetsQuery("Container-Maersk")
 
 
-class ContainerScene extends Component {
+class MaerskContainerScene extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -45,7 +45,7 @@ class ContainerScene extends Component {
     makeEntities = (data) => {
 
         const { obj, allPositions } = data
-        const { name, scale} = obj[0]
+        const { name, scale } = obj[0]
 
         // Needs more work, but essentially;
         // Map over allPositions and return an entity with the corresponding position and element
@@ -55,18 +55,19 @@ class ContainerScene extends Component {
             if (i === 0) {
 
                 return (
-                    <a-entity click-drag key={i} position={`${0} ${0} ${0}`} scale={`${scale} ${scale} ${scale}`}  rotation="0 0 0" obj-model={`obj: #${name}-obj; mtl: #${name}-mtl`} >
-                        </a-entity>
+                    <a-entity click-drag key={i} position={`${0} ${0} ${0}`} scale={`${scale} ${scale} ${scale} `} rotation="0 225 0" obj-model={`obj: #${name}-obj; mtl: #${name}-mtl;`} >
+
+                    </a-entity>
                 )
             }
-            return 
+            return
         })
     }
 
     render() {
         let { pitch, roll, yaw, x, y, z } = this.state;
         return (
-            <Query query={ContainerQuery}>
+            <Query query={MaerskContainerQuery}>
                 {({ loading, error, data }) => {
 
                     console.log("Data: ", data)
@@ -94,8 +95,8 @@ class ContainerScene extends Component {
     }
 }
 
-ContainerScene.propTypes = {};
+MaerskContainerScene.propTypes = {};
 
-export default ContainerScene;
+export default MaerskContainerScene;
 
 

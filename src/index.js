@@ -11,10 +11,10 @@ import {
   introspectSchema
 } from "graphql-tools";
 
-import SceneBuilder from "./explorer/Builder";
-import SceneViewer from "./explorer/Viewer";
+import SceneBuilder from "./SceneViewer/Builder";
+import SceneViewer from "./SceneViewer/Viewer";
 
-import { colors } from "./styles";
+import { colors } from "./styles/styles";
 
 const SceneBuilderEndpoint =
   "https://api.graph.cool/simple/v1/cjjuib45n0cgn0198de0tkjfn/graphql";

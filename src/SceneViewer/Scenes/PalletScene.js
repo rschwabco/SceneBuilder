@@ -5,10 +5,10 @@ import * as fff from "aframe-text-geometry-component";
 import * as kkk from "aframe-event-set-component";
 import { Entity, Scene } from "aframe-react";
 import Camera from "../Camera"
-import assets from "../../aFrameAssets/aFrameAssets"
+import assets from "../../assets/registerAssets"
+import { getAssetsQuery } from "../../GraphQL"
 
 import gql from "graphql-tag";
-import { getAssets } from "../../GraphQL"
 import { Query } from "react-apollo";
 
 import {
@@ -21,7 +21,7 @@ import {
 
 
 // Get array of positions and array of "Container" objects.
-const ContainerQuery = getAssets("TankerShip")
+const ContainerQuery = getAssetsQuery("Pallet")
 
 
 class ContainerScene extends Component {
@@ -55,8 +55,7 @@ class ContainerScene extends Component {
             if (i === 0) {
 
                 return (
-                    <a-entity click-drag key={i} position={`${0} ${0} ${0}`} scale={`${scale} ${scale} ${scale} `} rotation="0 225 0" obj-model={`obj: #${name}-obj; mtl: #${name}-mtl;`} >
-
+                    <a-entity click-drag key={i} position={`${0} ${0} ${0}`} scale={`${scale} ${scale} ${scale}`} rotation="0 0 0" obj-model={`obj: #${name}-obj; mtl: #${name}-mtl`} >
                     </a-entity>
                 )
             }

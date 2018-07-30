@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="3ec986be-6356-40e3-b0a5-9f24aab162fa" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/src/SceneViewer/Builder.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/SceneViewer/Scene.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/SceneViewer/Viewer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Environment.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GraphQL/getAssets.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/GraphQL/getAssetsQuery.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GraphQL/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/GraphQL/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/aFrameAssets/aFrameAssets.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/registerAssets.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/explorer/Aggregation/Cluster.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/SceneViewer/Aggregation/Cluster.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/explorer/Aggregation/List.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/SceneViewer/Aggregation/List.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/explorer/Builder.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/explorer/Camera.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/SceneViewer/Camera.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/explorer/DataOverlay/DataStream.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/SceneViewer/DataOverlay/DataStream.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/explorer/DataOverlay/Surface.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/SceneViewer/DataOverlay/Surface.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/explorer/DataOverlay/Table.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/SceneViewer/DataOverlay/Table.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/explorer/Scene/ContainerScene.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/SceneViewer/Scenes/ContainerScene.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/explorer/Scene/CubeScene.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/SceneViewer/Scenes/CubeScene.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/explorer/Scene/MaerskContainerScene.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/SceneViewer/Scenes/MaerskContainerScene.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/explorer/Scene/OilDrumScene.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/SceneViewer/Scenes/OilDrumScene.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/explorer/Scene/PalletScene.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/SceneViewer/Scenes/PalletScene.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/explorer/Scene/PropellerScene.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/SceneViewer/Scenes/PropellerScene.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/explorer/Scene/Scene.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/explorer/Scene/SmallShipsScene.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/SceneViewer/Scenes/SmallShipsScene.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/explorer/Scene/TankerScene.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/SceneViewer/Scenes/TankerScene.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/explorer/Scene/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/SceneViewer/Scenes/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/explorer/Viewer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/styles.js" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/.tmp/" />
+    <ignored path="$PROJECT_DIR$/temp/" />
+    <ignored path="$PROJECT_DIR$/tmp/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="TextComponent.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/SceneViewer/TextComponent.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="195">
+              <caret line="26" selection-start-line="26" selection-end-line="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Builder.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/SceneViewer/Builder.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/GraphQL/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="24" selection-start-column="24" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/SceneViewer/Scenes/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="9" column="49" selection-start-line="9" selection-start-column="49" selection-end-line="9" selection-end-column="49" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Viewer.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/SceneViewer/Viewer.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="19" column="10" lean-forward="true" selection-start-line="19" selection-start-column="10" selection-end-line="19" selection-end-column="10" />
+              <folding>
+                <element signature="e#37#78#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Scene.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/SceneViewer/Scene.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/SceneViewer/Scene/index.js" />
+        <option value="$PROJECT_DIR$/src/SceneViewer/Viewer.js" />
+        <option value="$PROJECT_DIR$/src/index.js" />
+        <option value="$PROJECT_DIR$/src/GraphQL/index.js" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER">
+    <package-json value="$PROJECT_DIR$/package.json" />
+  </component>
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodeModulesDirectoryManager">
+    <handled-path value="$PROJECT_DIR$/node_modules" />
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="933" />
+    <option name="y" value="219" />
+    <option name="width" value="1369" />
+    <option name="height" value="1056" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="SceneBuilder" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SceneBuilder" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SceneBuilder" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SceneBuilder" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SceneBuilder" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SceneBuilder" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SceneBuilder" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SceneBuilder" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="GraphQL" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SceneBuilder" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SceneBuilder" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="SceneViewer" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.prettier" value="true" />
+    <property name="node.js.path.for.package.prettier" value="project" />
+    <property name="node.js.selected.package.prettier" value="" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/styles" />
+      <recent name="$PROJECT_DIR$/src/SceneViewer" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3ec986be-6356-40e3-b0a5-9f24aab162fa" name="Default" comment="" />
+      <created>1532975464926</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1532975464926</updated>
+      <workItem from="1532975466766" duration="539000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="539000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="933" y="219" width="1369" height="1056" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24981739" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info id="npm" side_tool="true" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/SceneViewer/TextComponent.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="26" selection-start-line="26" selection-end-line="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SceneViewer/Builder.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SceneViewer/Scenes/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="49" selection-start-line="9" selection-start-column="49" selection-end-line="9" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SceneViewer/Scene.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GraphQL/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="24" selection-start-column="24" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SceneViewer/Viewer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="10" lean-forward="true" selection-start-line="19" selection-start-column="10" selection-end-line="19" selection-end-column="10" />
+          <folding>
+            <element signature="e#37#78#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

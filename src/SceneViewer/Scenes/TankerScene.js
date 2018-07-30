@@ -5,10 +5,10 @@ import * as fff from "aframe-text-geometry-component";
 import * as kkk from "aframe-event-set-component";
 import { Entity, Scene } from "aframe-react";
 import Camera from "../Camera"
-import assets from "../../aFrameAssets/aFrameAssets"
+import assets from "../../assets/registerAssets"
 
 import gql from "graphql-tag";
-import { getAssets } from "../../GraphQL"
+import { getAssetsQuery } from "../../GraphQL"
 import { Query } from "react-apollo";
 
 import {
@@ -21,10 +21,10 @@ import {
 
 
 // Get array of positions and array of "Container" objects.
-const MaerskContainerQuery = getAssets("Container-Maersk")
+const ContainerQuery = getAssetsQuery("TankerShip")
 
 
-class MaerskContainerScene extends Component {
+class ContainerScene extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -67,7 +67,7 @@ class MaerskContainerScene extends Component {
     render() {
         let { pitch, roll, yaw, x, y, z } = this.state;
         return (
-            <Query query={MaerskContainerQuery}>
+            <Query query={ContainerQuery}>
                 {({ loading, error, data }) => {
 
                     console.log("Data: ", data)
@@ -95,8 +95,8 @@ class MaerskContainerScene extends Component {
     }
 }
 
-MaerskContainerScene.propTypes = {};
+ContainerScene.propTypes = {};
 
-export default MaerskContainerScene;
+export default ContainerScene;
 
 
