@@ -7,7 +7,7 @@ import { Entity, Scene } from "aframe-react";
 import Camera from "./Camera"
 import assets from "../assets/registerAssets"
 import { getAssetsQuery } from "../GraphQL/index"
-
+import registerClickDrag from "aframe-click-drag-component";
 import { Query } from "react-apollo";
 import {
     View,
@@ -17,13 +17,19 @@ import {
     TouchableOpacity
 } from "react-native-web";
 
+
+
 registerClickDrag(aframe)
 
 
 class SceneViewer extends Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            pressedSky: false,
+            updatedBy: "",
+            rotateCamera: false
+        };
 
 
     }
@@ -57,6 +63,42 @@ class SceneViewer extends Component {
         })
     }
 
+    updateState = (updatedBy) => {
+        this.setState({ rotateCamera: !this.state.rotateCamera })
+    }
+
+    componentWillMount() {
+        const state = this.state
+        const that = this
+        aframe.registerComponent('cursor-listener', {
+            init: function () {
+                console.log("Registered cursor-listener")
+                this.el.addEventListener('click', function (evt) {
+                    console.log('I was clicked by: ', evt.target);
+                    that.updateState()
+                    setTimeout(() => that.updateState(), 100)
+                });
+            }
+        });
+
+    }
+
+    componentDidMount() {
+
+        // setTimeout(
+        //     () => {
+
+        //         var sceneEl = document.querySelector("a-scene");
+        //         console.log("Clickable element: ", sceneEl.querySelector("a-box"))
+        //     }, 1000
+        // )
+
+    }
+
+    handleClick = () => {
+        console.log('Clicked!');
+    }
+
     render() {
         return (
             <Query query={getAssetsQuery(this.props.gqlQuery)}>
@@ -68,17 +110,30 @@ class SceneViewer extends Component {
                     if (error) return <Text>{`Error: ${error}`}</Text>;
 
                     return (
-                        <Scene vr-mode-ui keyboard-shortcuts leap="vr: false">
+                        <a-scene vr-mode-ui keyboard-shortcuts leap="vr: false">
 
                             {assets(data.obj, data.mtl)}
 
-                            <Entity>
-                                <Camera />
+                            <a-entity >
                                 {this.props.children}
-                                {this.makeEntities(data)}
+                                {/* {this.makeEntities(data)} */}
+
                                 <a-sky src="#sky" rotation="0 -270 0" />
-                            </Entity>
-                        </Scene>
+                            </a-entity>
+                            <a-box
+                                id="clicker"
+                                classname="clickable"
+                                cursor-listener
+                                position="0 0 -3" rotation="0 45 0" color="#4CC3D9"
+                            ></a-box>
+                            <a-box
+                                id="clicker"
+                                classname="clickable"
+                                cursor-listener
+                                position="0 0 6" rotation="0 45 0" color="palevioletred"
+                            ></a-box>
+                            <Camera rotate={this.state.rotateCamera} />
+                        </a-scene>
                     )
                 }}
             </Query>

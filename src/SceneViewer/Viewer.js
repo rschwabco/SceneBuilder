@@ -1,7 +1,8 @@
-//  TODO: Most of this is redundant
 
 import React, { Component } from "react";
 import SceneViewer from "./Scene"
+import { CubeScene } from "./Scenes"
+import Camera from "./Camera"
 
 export default class Viewer extends Component {
     constructor() {

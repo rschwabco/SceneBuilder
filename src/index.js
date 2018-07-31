@@ -1,6 +1,6 @@
 import React from "react";
 import { AppRegistry, View, StyleSheet } from "react-native-web";
-
+import * as aframe from "aframe";
 import { ApolloClient } from "apollo-client";
 import { HttpLink } from "apollo-link-http";
 import { InMemoryCache } from "apollo-cache-inmemory";
@@ -16,6 +16,8 @@ import SceneViewer from "./SceneViewer/Viewer";
 
 
 import { colors } from "./styles/styles";
+
+
 
 const SceneBuilderEndpoint =
     "https://api.graph.cool/simple/v1/cjjuib45n0cgn0198de0tkjfn/graphql";

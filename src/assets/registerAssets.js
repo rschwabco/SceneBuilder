@@ -27,9 +27,9 @@ const registerAssets = (objObjects, mtlObjects) => {
         })
     }
     return (<a-assets>
-        {createObjAssets()}
-        {createMtlAssets()}
-        <a-image
+        {objObjects ? createObjAssets() : null}
+        {mtlObjects ? createMtlAssets() : null}
+        < a-image
             id="sky"
             src="https://uploads.codesandbox.io/uploads/user/cf641f2b-3840-4f83-bf5e-dee7737a7432/EB1V-holodeck.png"
         />
