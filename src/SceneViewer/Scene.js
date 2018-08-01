@@ -101,16 +101,12 @@ class SceneViewer extends Component {
                     if (error) return <Text>{`Error: ${error}`}</Text>;
 
                     return (
-                        <a-scene vr-mode-ui keyboard-shortcuts leap="vr: false">
-
-                            {assets(data.obj, data.mtl)}
-
-                            {this.props.children}
+                        <a-entity>
+                            {/* {assets(data.obj, data.mtl)} */}
 
                             <a-entity rotation="0 0 0" >
                                 {this.makeEntities(data)}
                             </a-entity>
-                            <a-sky src="#sky" rotation="0 -270 0" />
                             {/* <a-box
                                 id="clicker"
                                 classname="clickable"
@@ -124,7 +120,7 @@ class SceneViewer extends Component {
                                 position="0 0 6" rotation="0 45 0" color="palevioletred"
                             ></a-box> */}
                             {/* <Camera rotate={this.state.rotateCamera} /> */}
-                        </a-scene>
+                        </a-entity>
                     )
                 }}
             </Query>

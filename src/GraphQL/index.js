@@ -1,1 +1,1 @@
-export { default as getAssetsQuery } from "./getAssetsQuery"
+export { default as getAssetsQuery, getAllAssetsQuery } from "./getAssetsQuery"
