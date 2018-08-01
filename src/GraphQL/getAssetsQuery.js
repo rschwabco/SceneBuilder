@@ -21,4 +21,16 @@ query {
 }
 `}
 
+export const getAllAssetsQuery = () => {
+    return gql`
+    query {
+        allPhysicalAssets {
+            name
+            objPath
+            mtlPath
+        }
+      }
+    `
+}
+
 export default getAssetsQuery

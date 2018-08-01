@@ -12,7 +12,7 @@ import {
 } from "graphql-tools";
 
 import SceneBuilder from "./SceneViewer/Builder";
-import SceneViewer from "./SceneViewer/Viewer";
+import Viewer from "./SceneViewer/Viewer";
 
 
 import { colors } from "./styles/styles";
@@ -20,7 +20,7 @@ import { colors } from "./styles/styles";
 
 
 const SceneBuilderEndpoint =
-    "https://api.graph.cool/simple/v1/cjjuib45n0cgn0198de0tkjfn/graphql";
+    "https://api.graph.cool/simple/v1/cjkbbrnee429w01816tw9rhzd";
 const StarFleetEndpoint =
     "https://api.graph.cool/simple/v1/cjjyyt1wg0hqt0118y59fp8rt/graphql";
 
@@ -44,7 +44,7 @@ const starfleetClient = new ApolloClient({
 
 const App = () => (
     <ApolloProvider client={sceneBuilderClient}>
-        <SceneViewer />
+        <Viewer />
     </ApolloProvider>
 );
 

@@ -42,62 +42,31 @@ class SceneViewer extends Component {
         const { name, scale } = obj[0]
 
         return allPositions.map((position, i) => {
-            return (
-                <a-entity
-                    click-drag
-                    key={i}
-                    position={`${position.x} ${position.y} ${position.z}`}
-                    scale={`${scale} ${scale} ${scale} `}
-                    obj-model={`obj: #${name}-obj; mtl: #${name}-mtl;`}
-                >
-                    {/* <a-animation
-                                    begin="click"
-                                    attribute="rotation"
-                                    to="0 360 0"
-                                    easing="linear"
-                                    dur="2000"
-                                    fill="backwards"
-                                /> */}
-                </a-entity>
-            )
+            if (i === 0) {
+
+                return (
+                    <a-entity
+                        click-drag
+                        key={i}
+                        cursor-listener
+                        position={`${position.x} ${position.y} ${position.z}`}
+                        scale={`${scale} ${scale} ${scale} `}
+                        obj-model={`obj: #${name}-obj; mtl: #${name}-mtl;`}
+                    >
+                        {/* <a-animation
+                                        begin="click"
+                                        attribute="rotation"
+                                        to="0 360 0"
+                                        easing="linear"
+                                        dur="2000"
+                                        fill="backwards"
+                                    /> */}
+                    </a-entity>
+                )
+            }
         })
     }
 
-    updateState = (updatedBy) => {
-        this.setState({ rotateCamera: !this.state.rotateCamera })
-    }
-
-    componentWillMount() {
-        const state = this.state
-        const that = this
-        aframe.registerComponent('cursor-listener', {
-            init: function () {
-                console.log("Registered cursor-listener")
-                this.el.addEventListener('click', function (evt) {
-                    console.log('I was clicked by: ', evt.target);
-                    that.updateState()
-                    setTimeout(() => that.updateState(), 100)
-                });
-            }
-        });
-
-    }
-
-    componentDidMount() {
-
-        // setTimeout(
-        //     () => {
-
-        //         var sceneEl = document.querySelector("a-scene");
-        //         console.log("Clickable element: ", sceneEl.querySelector("a-box"))
-        //     }, 1000
-        // )
-
-    }
-
-    handleClick = () => {
-        console.log('Clicked!');
-    }
 
     render() {
         return (
@@ -110,17 +79,13 @@ class SceneViewer extends Component {
                     if (error) return <Text>{`Error: ${error}`}</Text>;
 
                     return (
-                        <a-scene vr-mode-ui keyboard-shortcuts leap="vr: false">
+                        <a-entity position={`0 0 ${this.props.rotateScene}`}>
+                            {/* {assets(data.obj, data.mtl)} */}
 
-                            {assets(data.obj, data.mtl)}
-
-                            <a-entity >
-                                {this.props.children}
-                                {/* {this.makeEntities(data)} */}
-
-                                <a-sky src="#sky" rotation="0 -270 0" />
+                            <a-entity rotation="0 0 0" >
+                                {this.makeEntities(data)}
                             </a-entity>
-                            <a-box
+                            {/* <a-box
                                 id="clicker"
                                 classname="clickable"
                                 cursor-listener
@@ -131,9 +96,9 @@ class SceneViewer extends Component {
                                 classname="clickable"
                                 cursor-listener
                                 position="0 0 6" rotation="0 45 0" color="palevioletred"
-                            ></a-box>
-                            <Camera rotate={this.state.rotateCamera} />
-                        </a-scene>
+                            ></a-box> */}
+                            {/* <Camera rotate={this.state.rotateCamera} /> */}
+                        </a-entity>
                     )
                 }}
             </Query>
