@@ -17,6 +17,8 @@ import {
     TouchableOpacity
 } from "react-native-web";
 
+import { HtmlShader } from "../DataOverlay/HtmlShader"
+
 export default class Viewer extends Component {
     constructor() {
         super();
@@ -81,13 +83,14 @@ export default class Viewer extends Component {
 
                         <a-scene vr-mode-ui keyboard-shortcuts leap="vr: false">
                             {registerAllAssets(data.allPhysicalAssets)}
-                            <SceneViewer
+                            {/* <SceneViewer
                                 rotateScene={this.state.rotateScene}
                                 gqlQuery={currentScene}
                                 onAssetClick={this._nextScene}
                             >
                                 {this.props.children}
-                            </SceneViewer>
+                            </SceneViewer> */}
+                            <HtmlShader />
                             <Camera
                                 rotate={this.state.rotateCamera}
                             />

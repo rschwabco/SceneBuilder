@@ -96,6 +96,10 @@ aframe-event-set-component@4.1.2:
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/aframe-event-set-component/-/aframe-event-set-component-4.1.2.tgz#86bdadd26e20eea3e78b3fb257a0d278b4ab76b7"
 
+aframe-html-shader@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/aframe-html-shader/-/aframe-html-shader-0.2.0.tgz#fb4c76c6978287a3ee687dcb9d3dd84df46c4599"
+
 aframe-mouse-cursor-component@0.5.2:
   version "0.5.2"
   resolved "https://registry.yarnpkg.com/aframe-mouse-cursor-component/-/aframe-mouse-cursor-component-0.5.2.tgz#6ce6926a3718691fba3be7561d853de33ba5cce4"
@@ -2182,7 +2186,7 @@ debug@^3.1.0:
   dependencies:
     ms "2.0.0"
 
-"debug@github:ngokevin/debug#noTimestamp":
+debug@ngokevin/debug#noTimestamp:
   version "2.2.0"
   resolved "https://codeload.github.com/ngokevin/debug/tar.gz/ef5f8e66d49ce8bc64c6f282c15f8b7164409e3a"
 
@@ -2356,7 +2360,7 @@ doctrine@^2.0.0:
   dependencies:
     esutils "^2.0.2"
 
-"document-register-element@github:dmarcos/document-register-element#8ccc532b7":
+document-register-element@dmarcos/document-register-element#8ccc532b7:
   version "0.5.4"
   resolved "https://codeload.github.com/dmarcos/document-register-element/tar.gz/8ccc532b7f3744be954574caf3072a5fd260ca90"
 
