@@ -9,15 +9,26 @@ export default class Viewer extends Component {
         super();
 
         this.state = {
-            selectedScene: false
+            currentScene: "TankerShip",
         };
+    }
+
+    _nextScene = (nextScene) => {
+        this.setState({ currentScene: nextScene })
     }
 
     // Sceneviewer gqlQuery prop changes scene contents
     render() {
+        const { currentScene } = this.state
         return (
-            <SceneViewer gqlQuery="OilDrum">
+            <SceneViewer
+                gqlQuery={currentScene}
+                onAssetClick={this._nextScene}
+            >
                 {this.props.children}
+                <Camera
+                // rotate={this.state.rotateCamera}
+                />
             </SceneViewer>
         );
     }

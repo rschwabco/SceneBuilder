@@ -46,6 +46,7 @@ class SceneViewer extends Component {
                 <a-entity
                     click-drag
                     key={i}
+                    cursor-listener
                     position={`${position.x} ${position.y} ${position.z}`}
                     scale={`${scale} ${scale} ${scale} `}
                     obj-model={`obj: #${name}-obj; mtl: #${name}-mtl;`}
@@ -73,27 +74,17 @@ class SceneViewer extends Component {
         aframe.registerComponent('cursor-listener', {
             init: function () {
                 console.log("Registered cursor-listener")
-                this.el.addEventListener('click', function (evt) {
-                    console.log('I was clicked by: ', evt.target);
-                    that.updateState()
-                    setTimeout(() => that.updateState(), 100)
+                this.el.addEventListener('click', (event) => {
+                    console.log('I was clicked by: ', event.target);
+                    // that.updateState()
+                    // setTimeout(() => that.updateState(), 100)
+                    that.props.onAssetClick("OilDrum")
                 });
             }
         });
 
     }
 
-    componentDidMount() {
-
-        // setTimeout(
-        //     () => {
-
-        //         var sceneEl = document.querySelector("a-scene");
-        //         console.log("Clickable element: ", sceneEl.querySelector("a-box"))
-        //     }, 1000
-        // )
-
-    }
 
     handleClick = () => {
         console.log('Clicked!');
@@ -114,13 +105,13 @@ class SceneViewer extends Component {
 
                             {assets(data.obj, data.mtl)}
 
-                            <a-entity >
-                                {this.props.children}
-                                {/* {this.makeEntities(data)} */}
+                            {this.props.children}
 
-                                <a-sky src="#sky" rotation="0 -270 0" />
+                            <a-entity rotation="0 0 0" >
+                                {this.makeEntities(data)}
                             </a-entity>
-                            <a-box
+                            <a-sky src="#sky" rotation="0 -270 0" />
+                            {/* <a-box
                                 id="clicker"
                                 classname="clickable"
                                 cursor-listener
@@ -131,8 +122,8 @@ class SceneViewer extends Component {
                                 classname="clickable"
                                 cursor-listener
                                 position="0 0 6" rotation="0 45 0" color="palevioletred"
-                            ></a-box>
-                            <Camera rotate={this.state.rotateCamera} />
+                            ></a-box> */}
+                            {/* <Camera rotate={this.state.rotateCamera} /> */}
                         </a-scene>
                     )
                 }}
