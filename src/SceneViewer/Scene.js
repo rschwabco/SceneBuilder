@@ -42,53 +42,31 @@ class SceneViewer extends Component {
         const { name, scale } = obj[0]
 
         return allPositions.map((position, i) => {
-            return (
-                <a-entity
-                    click-drag
-                    key={i}
-                    cursor-listener
-                    position={`${position.x} ${position.y} ${position.z}`}
-                    scale={`${scale} ${scale} ${scale} `}
-                    obj-model={`obj: #${name}-obj; mtl: #${name}-mtl;`}
-                >
-                    {/* <a-animation
-                                    begin="click"
-                                    attribute="rotation"
-                                    to="0 360 0"
-                                    easing="linear"
-                                    dur="2000"
-                                    fill="backwards"
-                                /> */}
-                </a-entity>
-            )
+            if (i === 0) {
+
+                return (
+                    <a-entity
+                        click-drag
+                        key={i}
+                        cursor-listener
+                        position={`${position.x} ${position.y} ${position.z}`}
+                        scale={`${scale} ${scale} ${scale} `}
+                        obj-model={`obj: #${name}-obj; mtl: #${name}-mtl;`}
+                    >
+                        {/* <a-animation
+                                        begin="click"
+                                        attribute="rotation"
+                                        to="0 360 0"
+                                        easing="linear"
+                                        dur="2000"
+                                        fill="backwards"
+                                    /> */}
+                    </a-entity>
+                )
+            }
         })
     }
 
-    updateState = (updatedBy) => {
-        this.setState({ rotateCamera: !this.state.rotateCamera })
-    }
-
-    componentWillMount() {
-        const state = this.state
-        const that = this
-        aframe.registerComponent('cursor-listener', {
-            init: function () {
-                console.log("Registered cursor-listener")
-                this.el.addEventListener('click', (event) => {
-                    console.log('I was clicked by: ', event.target);
-                    // that.updateState()
-                    // setTimeout(() => that.updateState(), 100)
-                    that.props.onAssetClick("OilDrum")
-                });
-            }
-        });
-
-    }
-
-
-    handleClick = () => {
-        console.log('Clicked!');
-    }
 
     render() {
         return (
@@ -101,7 +79,7 @@ class SceneViewer extends Component {
                     if (error) return <Text>{`Error: ${error}`}</Text>;
 
                     return (
-                        <a-entity>
+                        <a-entity position={`0 0 ${this.props.rotateScene}`}>
                             {/* {assets(data.obj, data.mtl)} */}
 
                             <a-entity rotation="0 0 0" >

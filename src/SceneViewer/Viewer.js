@@ -23,11 +23,45 @@ export default class Viewer extends Component {
 
         this.state = {
             currentScene: "TankerShip",
+            rotateScene: 0,
+            rotateCamera: false
         };
     }
 
     _nextScene = (nextScene) => {
-        this.setState({ currentScene: nextScene })
+
+        this.setState({
+            currentScene: this.state.currentScene === "OilDrum" ? "TankerShip" : "OilDrum",
+            rotateCamera: !this.state.rotateCamera,
+            rotateScene: this.state.rotateScene === 0 ? 6 : 0
+        })
+    }
+
+
+    _updateState = (updatedBy) => {
+        this.setState({ rotateCamera: !this.state.rotateCamera })
+    }
+
+    componentWillMount() {
+        const state = this.state
+        const that = this
+        aframe.registerComponent('cursor-listener', {
+            init: function () {
+                console.log("Registered cursor-listener")
+                this.el.addEventListener('click', (event) => {
+                    console.log('I was clicked by: ', event.target);
+                    that._updateState()
+                    setTimeout(() => that._nextScene(), 600)
+                    // that.setState({ currentScene: "OilDrum" })
+                });
+            }
+        });
+
+    }
+
+
+    _handleClick = () => {
+        console.log('Clicked!');
     }
 
     // Sceneviewer gqlQuery prop changes scene contents
@@ -48,13 +82,14 @@ export default class Viewer extends Component {
                         <a-scene vr-mode-ui keyboard-shortcuts leap="vr: false">
                             {registerAllAssets(data.allPhysicalAssets)}
                             <SceneViewer
+                                rotateScene={this.state.rotateScene}
                                 gqlQuery={currentScene}
                                 onAssetClick={this._nextScene}
                             >
                                 {this.props.children}
                             </SceneViewer>
                             <Camera
-                            // rotate={this.state.rotateCamera}
+                                rotate={this.state.rotateCamera}
                             />
                             <a-sky src="#sky" rotation="0 -270 0" />
                         </a-scene>
