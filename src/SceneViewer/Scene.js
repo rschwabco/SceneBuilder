@@ -8,6 +8,7 @@ import Camera from "./Camera"
 import assets from "../assets/registerAssets"
 import { getAssetsQuery } from "../GraphQL/index"
 import registerClickDrag from "aframe-click-drag-component";
+import { TankerShipScene } from "./Scenes"
 import { Query } from "react-apollo";
 import {
     View,
@@ -46,21 +47,26 @@ class SceneViewer extends Component {
 
                 return (
                     <a-entity
+                        model-opacity="0.5"
                         click-drag
                         key={i}
-                        cursor-listener
+                        // cursor-listener
                         position={`${position.x} ${position.y} ${position.z}`}
                         scale={`${scale} ${scale} ${scale} `}
                         obj-model={`obj: #${name}-obj; mtl: #${name}-mtl;`}
                     >
-                        {/* <a-animation
-                                        begin="click"
-                                        attribute="rotation"
-                                        to="0 360 0"
-                                        easing="linear"
-                                        dur="2000"
-                                        fill="backwards"
-                                    /> */}
+                        {this.props.assetOpacity === 0.5 && <a-animation
+                            attribute="model-opacity"
+                            dur="1000"
+                            from="1"
+                            to="0.5"
+                            repeat="0"></a-animation>}
+                        {this.props.assetOpacity === 1 && <a-animation
+                            attribute="model-opacity"
+                            dur="1000"
+                            from="0.5"
+                            to="1"
+                            repeat="0"></a-animation>}
                     </a-entity>
                 )
             }
@@ -74,30 +80,17 @@ class SceneViewer extends Component {
                 {({ loading, error, data }) => {
 
                     console.log("Data from Scene: ", data)
+                    console.log("gqlQuery: ", this.props.gqlQuery)
 
                     if (loading) return <ActivityIndicator color={"#fff"} />;
                     if (error) return <Text>{`Error: ${error}`}</Text>;
 
                     return (
                         <a-entity position={`0 0 ${this.props.rotateScene}`}>
-                            {/* {assets(data.obj, data.mtl)} */}
-
                             <a-entity rotation="0 0 0" >
-                                {this.makeEntities(data)}
+                                {this.props.gqlQuery === "TankerShip" && <TankerShipScene onAssetClick={this.props.onAssetClick} />}
+                                {this.props.gqlQuery !== "TankerShip" && this.makeEntities(data)}
                             </a-entity>
-                            {/* <a-box
-                                id="clicker"
-                                classname="clickable"
-                                cursor-listener
-                                position="0 0 -3" rotation="0 45 0" color="#4CC3D9"
-                            ></a-box>
-                            <a-box
-                                id="clicker"
-                                classname="clickable"
-                                cursor-listener
-                                position="0 0 6" rotation="0 45 0" color="palevioletred"
-                            ></a-box> */}
-                            {/* <Camera rotate={this.state.rotateCamera} /> */}
                         </a-entity>
                     )
                 }}

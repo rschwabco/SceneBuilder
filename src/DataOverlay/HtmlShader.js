@@ -2,103 +2,44 @@ import 'aframe'
 import 'aframe-html-shader'
 import React from "react"
 
-export const HtmlShader = () => {
+export const HtmlShader = (props) => {
+    console.log("Html Shader Props: ", props)
+    const { overlayText, position = { x: 0, y: 0, z: 0 } } = props
+    const { x, y, z } = position
+    const makeTextItems = () => {
+        let textArray = []
+        for (let text of overlayText) {
+            textArray.push(
+                <p style={{ border: "1px #FFF" }}>
+                    {text}
+                </p>
+            )
+            if (textArray.length < (overlayText.length * 2) - 1) {
+                textArray.push(<hr />)
+            }
+        }
+        return textArray
+    }
     return (
-        <a-entity>
-            <a-entity geometry="primitive: box" material="shader: html; target: #boxHTML" position="0 0 -5"></a-entity>
-            <a-plane material="shader: html; target: #planeHTML; ratio: height; transparent: true; side: double" position="0 2 -6"></a-plane>
-
+        <a-entity position={`${x} ${y} ${z}`}>
+            <a-plane material={`shader: html; target: #planeHTML-${props.id}; ratio: height; transparent: true; side: double`} position="0 1 0" scale="2 2 2"></a-plane>
             <div
+                id={`planeHTML-${props.id}`}
                 style={{
-
-                    width: "100%",
-                    height: "100%",
-                    position: "fixed",
-                    left: 0,
-                    top: 0,
-                    zIndex: -1,
-                    overflow: "hidden"
+                    background: "#FFF",
+                    border: "5px solid palevioletred",
+                    width: 400,
+                    fontSize: 54,
+                    color: "#222",
+                    fontWeight: 600,
+                    overflow: "scroll",
+                    textAlign: "center"
                 }}
             >
-                <div
-                    id="boxHTML"
-                    style={{
-                        backgroundImage: "url(require(https://raw.githubusercontent.com/mayognaise/aframe-html-shader/master/examples/basic/cheesecake.png))",
-                        color: "white",
-                        width: 500,
-                        height: 500,
-                        fontSize: 64,
-                        fontFamily: "monospace",
-                        textAlign: "center"
-                    }}
-                >
-                    <p
-                        style={{
-                            background: "rgb(30, 30, 30)",
-                            position: "absolute",
-                            top: 25,
-                            width: 500
-                        }}
-                    >CHEESECAKE FOR YOU</p>
-                </div>
+                {makeTextItems()}
             </div>
-            <div
-                style={{
-                    width: "100%",
-                    height: "100%",
-                    position: "fixed",
-                    left: 0,
-                    top: 0,
-                    zIndex: -1,
-                    overflow: "hidden"
-                }}
-            >
-                <div
-                    id="planeHTML"
-                    style={{
-                        background: "linear-gradient(red, yellow, green)",
-                        width: 500,
-                        height: 200,
-                        fontSize: 64,
-                        paddingTop: 15,
-                        color: "#222",
-                        fontWeight: 600,
-                        display: "flex",
-                        alignItems: "center",
-                        textAlign: "center",
-                        borderRadius: 200
-                    }}
-                >
-                    <p
-                        style={{ border: "1px #FFF" }}
-                    >ARE YOU HUNGRY?</p>
-                </div>
-            </div>
-            <div
-                style={{
-                    width: "100%",
-                    height: "100%",
-                    position: "fixed",
-                    left: 0,
-                    top: 0,
-                    zIndex: -1,
-                    overflow: "hidden"
-                }}>
-                <div
-                    id="skyHTML"
-                    style={{
-                        background: "linear-gradient(to top, #222, #EEE)",
-                        width: 500,
-                        height: 800,
-                        fontSize: 100,
-                        color: "#111"
-                    }}
-                >
-                    <p>WELCOME</p>
-                    <p>HA HA HA</p>
-                    <p>DON'T LOOK DOWN</p>
-                </div>
-            </div>
-        </a-entity>
+
+            <a-entity line={`start: 0, 0, 0; end: ${-x / 2} ${-y / 2} ${-z / 2}; color: red`}></a-entity>
+        </a-entity >
     )
 }

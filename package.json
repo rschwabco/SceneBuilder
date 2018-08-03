@@ -11,6 +11,7 @@
     "aframe-event-set-component": "4.1.2",
     "aframe-html-shader": "^0.2.0",
     "aframe-mouse-cursor-component": "0.5.2",
+    "aframe-outline": "^1.1.1",
     "aframe-react": "4.4.0",
     "aframe-template-component": "3.2.1",
     "aframe-text-component": "0.4.2",
