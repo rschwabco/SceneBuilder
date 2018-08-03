@@ -104,6 +104,10 @@ aframe-mouse-cursor-component@0.5.2:
   version "0.5.2"
   resolved "https://registry.yarnpkg.com/aframe-mouse-cursor-component/-/aframe-mouse-cursor-component-0.5.2.tgz#6ce6926a3718691fba3be7561d853de33ba5cce4"
 
+aframe-outline@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/aframe-outline/-/aframe-outline-1.1.1.tgz#e9b5accbcf53f359600ec30ee333b63b7fa5c0aa"
+
 aframe-react@4.4.0:
   version "4.4.0"
   resolved "https://registry.yarnpkg.com/aframe-react/-/aframe-react-4.4.0.tgz#f8af660bc4f64746d7cddb065ad9cc5e88f358b9"
