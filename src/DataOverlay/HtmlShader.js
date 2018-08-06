@@ -10,12 +10,12 @@ export const HtmlShader = (props) => {
         let textArray = []
         for (let text of overlayText) {
             textArray.push(
-                <p style={{ border: "1px #FFF" }}>
+                <p style={{ border: "1px #FFF", color: "#FFF" }}>
                     {text}
                 </p>
             )
             if (textArray.length < (overlayText.length * 2) - 1) {
-                textArray.push(<hr />)
+                textArray.push(<div style={{ color: "#303F9F", backgroundColor: "#303F9F", height: 2, width: "100%"}} />)
             }
         }
         return textArray
@@ -26,9 +26,10 @@ export const HtmlShader = (props) => {
             <div
                 id={`planeHTML-${props.id}`}
                 style={{
-                    background: "#FFF",
-                    border: "5px solid palevioletred",
-                    width: 400,
+                    background: "#3F51B5",
+                    border: "3px solid #303F9F",
+                    borderRadius: 5,
+                    width: 500,
                     fontSize: 54,
                     color: "#222",
                     fontWeight: 600,

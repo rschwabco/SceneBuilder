@@ -49,8 +49,9 @@ class SceneViewer extends Component {
                     <a-entity
                         model-opacity="0.5"
                         click-drag
+                        model-opacity
                         key={i}
-                        // cursor-listener
+                        click-to-navigate
                         position={`${position.x} ${position.y} ${position.z}`}
                         scale={`${scale} ${scale} ${scale} `}
                         obj-model={`obj: #${name}-obj; mtl: #${name}-mtl;`}
