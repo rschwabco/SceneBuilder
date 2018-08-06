@@ -19,6 +19,8 @@ import {
     TouchableOpacity
 } from "react-native-web";
 
+import { clickLogInfo, clickToNavigate, hoverInfo, keypressShowInfo, modelOpacity } from "../AFrameFunctions"
+
 import { HtmlShader } from "../DataOverlay/HtmlShader"
 
 export default class Viewer extends Component {
@@ -34,8 +36,9 @@ export default class Viewer extends Component {
         };
     }
 
+    // TODO: Needs work
     _nextScene = (nextScene) => {
-
+        console.log("Next scene")
         this.setState({
             currentScene: this.state.currentScene === "OilDrum" ? "TankerShip" : "OilDrum",
             rotateCamera: !this.state.rotateCamera,
@@ -43,93 +46,34 @@ export default class Viewer extends Component {
         })
     }
 
-
+    // TODO: Needs work
     _updateState = (updatedBy) => {
         this.setState({ rotateCamera: !this.state.rotateCamera })
+        setTimeout(() => this._nextScene(), 600)
+    }
+
+    _toggleInfoModal = () => {
+        this.setState({ showInfoModal: !this.state.showInfoModal })
+    }
+
+    _updateObjectOpacity = (assetOpacity) => {
+        this.setState({ assetOpacity }, () => console.log("New state: ", this.state))
     }
 
     componentWillMount() {
-        // Here is where we are creating and registering our custom components
-        const state = this.state
-        const that = this
-        aframe.registerComponent('cursor-listener', {
-            init: function () {
-                console.log("Registered cursor-listener")
-                this.el.addEventListener('click', (event) => {
-                    console.log('I was clicked by: ', event.target);
-                    that._updateState()
-                    setTimeout(() => that._nextScene(), 600)
-                    // that.setState({ currentScene: "OilDrum" })
-                });
-            }
-        });
+        // * Register all requisite custom aframe functions, imported from src/AFrameFunctions
 
-        aframe.registerComponent("hover-info", {
-            init: function () {
-                console.log("Hover info registered")
-                this.el.addEventListener("mouseenter", (event) => {
-                    console.log("Mouse entered: ", event.target);
-                    // that.setState({ showInfoModal: true })
-                })
-                this.el.addEventListener("mouseleave", (event) => {
-                    // that.setState({ showInfoModal: false })
-                })
-            }
-        })
+        clickToNavigate(this._updateState)
 
-        aframe.registerComponent("log-info", {
-            init: function () {
-                this.el.addEventListener("click", (event) => {
-                    console.log("Clicked Asset Postion: ", this.el.getAttribute('position'))
-                })
-            }
-        })
+        hoverInfo(info => console.log(info))
 
-        aframe.registerComponent('model-opacity', {
-            schema: { default: 1.0 },
-            init: function () {
-                console.log("model-opacity registered")
-                this.el.addEventListener('model-loaded', this.update.bind(this));
-                this.el.addEventListener('mouseenter', this.update.bind(this))
+        clickLogInfo(info => console.log("Info from viewer: ", info))
 
-                this.el.addEventListener('mouseleave', this.fadeIn.bind(this))
-            },
-            fadeOut: function (event) {
-                console.log("Mouse entered")
-                console.log('I was entered by: ', event.target); // Probably use something like this to do per-asset animation
-                // that.setState({ assetOpacity: 0.5 }, () => console.log("New state: ", that.state))
-            },
-            fadeIn: function () {
-                console.log("Mouse left")
-                // that.setState({ assetOpacity: 1 }, () => console.log("New state: ", that.state))
-            },
-            update: function (event) {
-                console.log("Model opacity model loaded: ", event)
-                var mesh = this.el.getObject3D('mesh');
-                var data = this.data;
-                console.log("Model opacity mesh: ", mesh)
-                if (!mesh) { return; }
-                mesh.traverse(function (node) {
-                    if (node.isMesh) {
-                        node.material.opacity = data;
-                        node.material.transparent = data < 1.0;
-                        node.material.needsUpdate = true;
-                    }
-                });
-            }
-        });
+        keypressShowInfo(["Space", "Tab"], this._toggleInfoModal)
 
-        aframe.registerComponent("capture-tab", {
-            init: function () {
-                console.log("capture-tab registered")
-                window.addEventListener("keydown", this.toggleOverlay.bind(this))
-            },
-            toggleOverlay: (event) => {
-                if (event.code === "Space" || event.code === "Tab") {
-                    that.setState({ showInfoModal: !that.state.showInfoModal })
-                }
-            }
-        })
+        modelOpacity(this._updateObjectOpacity)
+
+
 
     }
 
@@ -147,7 +91,7 @@ export default class Viewer extends Component {
 
                     return (
 
-                        <a-scene capture-tab cursor="rayOrigin:mouse" vr-mode-ui keyboard-shortcuts leap="vr: false">
+                        <a-scene keypress-show-info cursor="rayOrigin:mouse" vr-mode-ui keyboard-shortcuts leap="vr: false">
                             {registerAllAssets(data.allPhysicalAssets)}
                             {/* <SceneViewer
                                 rotateScene={this.state.rotateScene}
@@ -157,26 +101,7 @@ export default class Viewer extends Component {
                             >
                                 {this.props.children}
                             </SceneViewer> */}
-                            <TankerShipScene showInfoModal={this.state.showInfoModal} />
-                            {/* <a-entity
-                                outline="thickness: .005; color: #4CC3D9"
-                                model-opacity="1"
-                                click-drag
-                                obj-model={`obj: #OilDrum-obj; mtl: #OilDrum-mtl`}
-                            >
-                                {this.state.assetOpacity === 0.5 && <a-animation
-                                    attribute="model-opacity"
-                                    dur="1000"
-                                    from="1"
-                                    to="0.5"
-                                    repeat="0"></a-animation>}
-                                {this.state.assetOpacity === 1 && <a-animation
-                                    attribute="model-opacity"
-                                    dur="1000"
-                                    from="0.5"
-                                    to="1"
-                                    repeat="0"></a-animation>}
-                            </a-entity> */}
+                            <TankerShipScene hover-info showInfoModal={this.state.showInfoModal} />
                             <Camera
                                 rotate={this.state.rotateCamera}
                             />
