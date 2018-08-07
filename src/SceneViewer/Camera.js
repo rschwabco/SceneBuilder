@@ -8,7 +8,9 @@ class Camera extends React.Component {
 
         this.state = {
             rotate: false,
-            rotationDuration: 500,
+            cameraTo: "0 0 0",
+            updateCamera: false,
+            rotationDuration: 1500,
             rotation: {
                 x: 0,
                 y: 0,
@@ -23,6 +25,15 @@ class Camera extends React.Component {
             this.setState({ rotate: true })
             setTimeout(() => this.setState({ rotate: false, rotation: { y: this.state.rotation.y + 180 } }), 600)
         }
+        if (nextProps.updateCamera && !this.state.updateCamera) {
+            console.log("Should rotate")
+            this.setState({
+                updateCamera: true, cameraTo: this.props.cameraTo, rotation: {
+                    ...this.props.rotationTo
+                }
+            })
+            setTimeout(() => this.setState({ updateCamera: false }), 1600)
+        }
     }
 
 
@@ -32,14 +43,15 @@ class Camera extends React.Component {
         console.log("Camera props: ", this.props)
         return (
             <a-entity
-                camera
-                // rotation={`${x} ${y} ${z}`}
-                position="0 0 3.8"
+                // rotation={`${x} ${y} ${z}`} // Problematic with cameraToHere
+                position="0 0 0"
+                look-controls-enabled="true"
+            // keyboard-controls="fpsMode: true"
             >
                 <a-camera
-                    look-controls-enabled="true"
-                    keyboard-controls="fpsMode: true"
+                    position="0 0 0"
                     mouse-cursor
+                    id="camera"
                 >
                     <a-cursor fuse="false" color="yellow" />
                 </a-camera>
@@ -50,7 +62,16 @@ class Camera extends React.Component {
                     to={`0 ${y + 180} 0`}
 
                 />}
+                {this.state.updateCamera && <a-animation
+                    attribute="position"
+                    dur={`${this.state.rotationDuration}`}
+                    fill="forwards"
+                    to={`${this.props.cameraTo}`}
+
+                />}
+
             </a-entity>
+
         )
     }
 }

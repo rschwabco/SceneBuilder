@@ -180,9 +180,9 @@ class ContainerScene extends Component {
                         </a-box>
 
                         {this._makeContainerRow({ rowNumber: 0, wireframe: containerWireframe, showInfoModal })}
-                        {this._makeContainerRow({ rowNumber: 1, color: "#FFF", wireframe: containerWireframe, showInfoModal })}
-                        {this._makeContainerRow({ rowNumber: 2, color: "#FFF", wireframe: containerWireframe, showInfoModal })}
-                        {this._makeContainerRow({ rowNumber: 3, color: "#FFF", wireframe: containerWireframe, showInfoModal })}
+                        {this._makeContainerRow({ rowNumber: 1, wireframe: containerWireframe, showInfoModal })}
+                        {this._makeContainerRow({ rowNumber: 2, wireframe: containerWireframe, showInfoModal })}
+                        {this._makeContainerRow({ rowNumber: 3, wireframe: containerWireframe, showInfoModal })}
                         <a-box
                             wireframe={wireframe}
                             color="#FFF"
@@ -300,7 +300,19 @@ class ContainerScene extends Component {
 
                     return (
                         <a-entity>
+                            <a-box
+                                camera-to-here
+                                color="yellow"
+                                position="2 0 -15"
+                            >
+                            </a-box>
                             {this._makeShips(this.state.ships)}
+                            <a-box
+                                id="lookAtMe"
+                                color="palevioletred"
+                                position="-2 0 1"
+                            >
+                            </a-box>
                         </a-entity>
                     )
                 }}
