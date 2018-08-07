@@ -1,7 +1,10 @@
 
 import React, { Component } from "react";
 import "aframe"
+import 'aframe-physics-system'
 import "aframe-outline"
+import "aframe-extras"
+import "aframe-look-at-component"
 import SceneViewer from "./Scene"
 import { TankerShipScene } from "./Scenes"
 import Camera from "./Camera"
@@ -19,7 +22,14 @@ import {
     TouchableOpacity
 } from "react-native-web";
 
-import { clickLogInfo, clickToNavigate, hoverInfo, keypressShowInfo, modelOpacity } from "../AFrameFunctions"
+import {
+    clickLogInfo,
+    clickToNavigate,
+    hoverInfo,
+    keypressShowInfo,
+    modelOpacity,
+    cameraToHere
+} from "../AFrameFunctions"
 
 import { HtmlShader } from "../DataOverlay/HtmlShader"
 
@@ -31,8 +41,11 @@ export default class Viewer extends Component {
             currentScene: "OilDrum",
             rotateScene: 0,
             rotateCamera: false,
+            rotationTo: "0 0 0",
             assetOpacity: 1,
-            showInfoModal: false
+            showInfoModal: false,
+            cameraTo: "0 0 3.8",
+            updateCamera: false
         };
     }
 
@@ -60,6 +73,13 @@ export default class Viewer extends Component {
         this.setState({ assetOpacity }, () => console.log("New state: ", this.state))
     }
 
+    _moveCamera = (options) => {
+        const { cameraTo, rotationTo } = options
+        console.log("Move camera options: ", options)
+        this.setState({ updateCamera: true, cameraTo, rotationTo })
+        setTimeout(() => this.setState({ updateCamera: false }), 200)
+    }
+
     componentWillMount() {
         // * Register all requisite custom aframe functions, imported from src/AFrameFunctions
 
@@ -73,13 +93,13 @@ export default class Viewer extends Component {
 
         modelOpacity(this._updateObjectOpacity)
 
-
+        cameraToHere(this._moveCamera)
 
     }
 
 
     render() {
-        const { currentScene } = this.state
+        const { currentScene, rotateCamera, updateCamera, cameraTo, rotationTo } = this.state
         return (
             <Query query={getAllAssetsQuery()}>
                 {({ loading, error, data }) => {
@@ -91,8 +111,25 @@ export default class Viewer extends Component {
 
                     return (
 
-                        <a-scene keypress-show-info cursor="rayOrigin:mouse" vr-mode-ui keyboard-shortcuts leap="vr: false">
+                        <a-scene
+                            // cursor="rayOrigin:mouse"
+                            // keypress-show-info
+                            vr-mode-ui
+                            // keyboard-shortcuts
+                            leap="vr: false"
+                        >
                             {registerAllAssets(data.allPhysicalAssets)}
+                            <Camera
+                                updateCamera={updateCamera}
+                                cameraTo={cameraTo}
+                                rotate={rotateCamera}
+                                rotationTo={rotationTo}
+                            />
+                            {/* <a-entity position="1 0 1">
+                                <a-cylinder id="target" checkpoint radius="1" height="1" position="0 0 -5.2" color="#39BB82"></a-cylinder>
+                                <a-cylinder checkpoint radius="1" height="1" position="3 0 0" color="#93648D"></a-cylinder>
+                                <a-cylinder checkpoint radius="1" height="1" position="-3 0 0" color="#01A1F1"></a-cylinder>
+                            </a-entity> */}
                             {/* <SceneViewer
                                 rotateScene={this.state.rotateScene}
                                 gqlQuery={currentScene}
@@ -101,12 +138,42 @@ export default class Viewer extends Component {
                             >
                                 {this.props.children}
                             </SceneViewer> */}
-                            <TankerShipScene hover-info showInfoModal={this.state.showInfoModal} />
-                            <Camera
-                                rotate={this.state.rotateCamera}
-                            />
+                            <TankerShipScene showInfoModal={this.state.showInfoModal} />
+
+
                             <a-sky src="#sky" rotation="0 -270 0" />
                         </a-scene>
+
+                        // <a-scene>
+                        //     <a-entity id="look-cam" camera="userHeight: 1.6" look-at="#target" look-controls wasd-controls></a-entity>
+                        //     <a-entity id="container" position="0 0 -4">
+                        //         <a-sphere id="target" color="#404040" radius="0.5">
+                        //             <a-animation attribute="position" from="-8 6 -8" to="8 -3 -2" dur="1500"
+                        //                 repeat="indefinite" fill="forwards" direction="alternate"></a-animation>
+                        //         </a-sphere>
+
+                        //         <a-entity position="5 3 0" rotation="0 70 0">
+                        //             <a-box width="1" depth="1" height="1" color="#01A1F1" look-at="#target" position="-2 0 -4"></a-box>
+                        //         </a-entity>
+                        //         <a-box width="1" depth="1" height="1" color="#4CC3D9" look-at="#target"
+                        //             position="-4 0 -2"></a-box>
+                        //         <a-cylinder radius="0.6" height="2" color="#7BC8A4" look-at="#target"
+                        //             position="0 0 -2"></a-cylinder>
+                        //         <a-box width="0.5" depth="1" height="2" color="#F16745" look-at="#target"
+                        //             position="4 0 -2"></a-box>
+                        //         <a-cylinder radius="0.2" height="2" color="#7BC8A4" look-at="#target"
+                        //             position="-4 0 1"></a-cylinder>
+                        //         <a-box width="2" depth="1" height="0.25" color="#93648D" look-at="#target"
+                        //             position="0 0 1"></a-box>
+                        //         <a-box width="1" depth="2" height="0.5" color="#999" look-at="#target"
+                        //             position="4 0 1"></a-box>
+
+                        //         <a-box width="2" depth="2" height="2" color="#FFC65D" look-at="#look-cam"
+                        //             position="-6 2.5 -2"></a-box>
+                        //     </a-entity>
+
+                        //     <a-sky color="#ECECEC"></a-sky>
+                        // </a-scene>
 
                     )
                 }}
