@@ -39,10 +39,10 @@ class SceneViewer extends Component {
     // TODO: This will need to also be able to take multiple different assets, or perhaps this should be called -PER- asset? That sounds better as I type it
     makeEntities = (data) => {
 
-        const { obj, allPositions } = data
+        const { obj, positions } = data
         const { name, scale } = obj[0]
 
-        return allPositions.map((position, i) => {
+        return positions.map((position, i) => {
             if (i === 0) {
 
                 return (
@@ -80,8 +80,8 @@ class SceneViewer extends Component {
             <Query query={getAssetsQuery(this.props.gqlQuery)}>
                 {({ loading, error, data }) => {
 
-                    console.log("Data from Scene: ", data)
                     console.log("gqlQuery: ", this.props.gqlQuery)
+                    console.log("Data from Scene: ", data)
 
                     if (loading) return <ActivityIndicator color={"#fff"} />;
                     if (error) return <Text>{`Error: ${error}`}</Text>;

@@ -20,7 +20,7 @@ import { colors } from "./styles/styles";
 
 
 const SceneBuilderEndpoint =
-    "https://api.graph.cool/simple/v1/cjkiru7s93y5g01386j601u6q";
+    "https://us1.prisma.sh/roie-schwaber-cohen-c0f7d8/scenebuilder/dev";
 const StarFleetEndpoint =
     "https://api.graph.cool/simple/v1/cjjyyt1wg0hqt0118y59fp8rt/graphql";
 
