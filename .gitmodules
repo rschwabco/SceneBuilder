@@ -1,0 +1,3 @@
+[submodule "SceneBuilder-Server"]
+	path = SceneBuilder-Server
+	url = git@github.com:roieki/SceneBuilder-Server.git

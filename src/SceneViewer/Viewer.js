@@ -68,6 +68,9 @@ const scenes = [
     },
     {
         sceneName: "Propeller"
+    },
+    {
+        sceneName: "Graph"
     }
 ]
 
