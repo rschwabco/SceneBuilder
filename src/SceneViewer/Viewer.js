@@ -192,7 +192,7 @@ export default class Viewer extends Component {
                             // keyboard-shortcuts
                             // leap="vr: false"
                             >
-                                {registerAllAssets(data.allPhysicalAssets)}
+                                {registerAllAssets(data.physicalAssets)}
                                 <Camera
                                     updateCamera={updateCamera}
                                     cameraTo={cameraTo}
