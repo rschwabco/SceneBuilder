@@ -50,7 +50,8 @@ class Camera extends React.Component {
             >
                 <a-camera
                     position="0 0 0"
-                    mouse-cursor
+                    // mouse-cursor
+                    // cursor="rayOrigin:mouse" // Performance killer?
                     id="camera"
                 >
                     <a-cursor fuse="false" color="yellow" />

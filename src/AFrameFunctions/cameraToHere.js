@@ -2,6 +2,10 @@ import * as aframe from "aframe";
 
 export const cameraToHere = (callback) => {
     aframe.registerComponent("camera-to-here", {
+        schema: {
+            cameraTo: { default: "0 0 -15", type: "string" },
+            lookAt: { default: "#lookAtMe", type: "string" }
+        },
         init: function () {
             console.log("camera-to-here registered")
 
@@ -10,7 +14,7 @@ export const cameraToHere = (callback) => {
 
             this.rotation = { ...this.cameraEl.getAttribute("rotation") }
 
-            this.callbackOptions = { cameraTo: "0 0 -15", rotationTo: { x: 0, y: 0, z: 0 } }
+            this.callbackOptions = { cameraTo: this.data.cameraTo, rotationTo: { x: 0, y: 0, z: 0 } }
 
             this.el.addEventListener("click", (event) => {
 
@@ -20,13 +24,15 @@ export const cameraToHere = (callback) => {
 
                 callback({ ...this.callbackOptions })
 
-                this.cameraEl.setAttribute("look-at", "#lookAtMe")
+                this.cameraEl.setAttribute("look-at", this.data.lookAt)
                 setTimeout(() => {
                     console.log("Camera looking at: ", this.cameraEl.getAttribute("look-at"))
-                    console.log("Camera rotation: ", this.cameraEl.getAttribute("rotation"))
-                    callback({ ...this.callbackOptions, rotationTo: this.cameraEl.getAttribute("rotation") }) // This is not working as expected
+                    console.log("Camera rotation before removing: ", this.cameraEl.getAttribute("rotation"))
+                    this.rotation = this.cameraEl.getAttribute("rotation")
+
                     this.cameraEl.removeAttribute("look-at")
-                    this.cameraEl.setAttribute("rotation", "10 100 25") // For some reason this is not working
+                    callback({ ...this.callbackOptions, rotationTo: this.rotation }) // This is not working as expected
+                    // this.cameraEl.setAttribute("rotation", "0 0 0") // For some reason this is not working
                     console.log("Camera rotation after removing look-at: ", this.cameraEl.getAttribute("rotation"))
                 }, 1850)
             })

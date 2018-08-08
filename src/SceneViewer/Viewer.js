@@ -1,9 +1,9 @@
 
 import React, { Component } from "react";
 import "aframe"
-import 'aframe-physics-system'
+// import 'aframe-physics-system'
+// import "aframe-extras"
 import "aframe-outline"
-import "aframe-extras"
 import "aframe-look-at-component"
 import SceneViewer from "./Scene"
 import { TankerShipScene } from "./Scenes"
@@ -31,14 +31,53 @@ import {
     cameraToHere
 } from "../AFrameFunctions"
 
+import {
+    Alignment,
+    Button,
+    Classes,
+    H5,
+    Navbar,
+    NavbarDivider,
+    NavbarGroup,
+    NavbarHeading,
+    Switch,
+} from "@blueprintjs/core";
+
+import AutoComplete from "react-autocomplete"
+
 import { HtmlShader } from "../DataOverlay/HtmlShader"
+
+const scenes = [
+    {
+        sceneName: "FuelTankCaged"
+    },
+    {
+        sceneName: "OilDrum"
+    },
+    {
+        sceneName: "Pallet"
+    },
+    {
+        sceneName: "Container"
+    },
+    {
+        sceneName: "Enterprise"
+    },
+    {
+        sceneName: "TankerShip"
+    },
+    {
+        sceneName: "Propeller"
+    }
+]
 
 export default class Viewer extends Component {
     constructor() {
         super();
 
         this.state = {
-            currentScene: "OilDrum",
+            inputValue: "",
+            currentScene: "TankerShip",
             rotateScene: 0,
             rotateCamera: false,
             rotationTo: "0 0 0",
@@ -77,7 +116,7 @@ export default class Viewer extends Component {
         const { cameraTo, rotationTo } = options
         console.log("Move camera options: ", options)
         this.setState({ updateCamera: true, cameraTo, rotationTo })
-        setTimeout(() => this.setState({ updateCamera: false }), 200)
+        setTimeout(() => this.setState({ updateCamera: false }), 20)
     }
 
     componentWillMount() {
@@ -97,9 +136,22 @@ export default class Viewer extends Component {
 
     }
 
+    _matchSceneName = (scene, value) => {
+        console.log("Scene: ", scene)
+        console.log("Value: ", value)
+        return (
+            scene.sceneName.toLowerCase().indexOf(value.toLowerCase()) !== -1
+        )
+    }
+
+    _selectNewScene = (newScene) => {
+        this.setState({ inputValue: newScene, currentScene: newScene })
+    }
+
 
     render() {
         const { currentScene, rotateCamera, updateCamera, cameraTo, rotationTo } = this.state
+        console.log("State: ", this.state)
         return (
             <Query query={getAllAssetsQuery()}>
                 {({ loading, error, data }) => {
@@ -110,71 +162,54 @@ export default class Viewer extends Component {
 
 
                     return (
-
-                        <a-scene
-                            // cursor="rayOrigin:mouse"
-                            // keypress-show-info
-                            vr-mode-ui
+                        <div style={{ height: "100vh", width: "100%" }}>
+                            <Navbar className="bp3-dark">
+                                <NavbarGroup align={Alignment.LEFT}>
+                                    <NavbarHeading>Scenes</NavbarHeading>
+                                    <NavbarDivider />
+                                    <AutoComplete
+                                        value={this.state.inputValue}
+                                        getItemValue={item => item.sceneName}
+                                        items={scenes}
+                                        onChange={(event, inputValue) => this.setState({ inputValue })}
+                                        onSelect={inputValue => this._selectNewScene(inputValue)}
+                                        // shouldItemRender={this._matchSceneName}
+                                        renderItem={(item, isHighlighted) =>
+                                            <div style={{ background: isHighlighted ? 'lightgray' : 'white', color: "black" }}>
+                                                {item.sceneName}
+                                            </div>
+                                        }
+                                    />
+                                </NavbarGroup>
+                            </Navbar>
+                            <a-scene
+                                cursor="rayOrigin:mouse"
+                                keypress-show-info
+                                vr-mode-ui
                             // keyboard-shortcuts
-                            leap="vr: false"
-                        >
-                            {registerAllAssets(data.allPhysicalAssets)}
-                            <Camera
-                                updateCamera={updateCamera}
-                                cameraTo={cameraTo}
-                                rotate={rotateCamera}
-                                rotationTo={rotationTo}
-                            />
-                            {/* <a-entity position="1 0 1">
-                                <a-cylinder id="target" checkpoint radius="1" height="1" position="0 0 -5.2" color="#39BB82"></a-cylinder>
-                                <a-cylinder checkpoint radius="1" height="1" position="3 0 0" color="#93648D"></a-cylinder>
-                                <a-cylinder checkpoint radius="1" height="1" position="-3 0 0" color="#01A1F1"></a-cylinder>
-                            </a-entity> */}
-                            {/* <SceneViewer
-                                rotateScene={this.state.rotateScene}
-                                gqlQuery={currentScene}
-                                onAssetClick={this._nextScene}
-                                assetOpacity={this.state.assetOpacity}
+                            // leap="vr: false"
                             >
-                                {this.props.children}
-                            </SceneViewer> */}
-                            <TankerShipScene showInfoModal={this.state.showInfoModal} />
+                                {registerAllAssets(data.allPhysicalAssets)}
+                                <Camera
+                                    updateCamera={updateCamera}
+                                    cameraTo={cameraTo}
+                                    rotate={rotateCamera}
+                                    rotationTo={rotationTo}
+                                />
+                                <SceneViewer
+                                    rotateScene={this.state.rotateScene}
+                                    gqlQuery={currentScene}
+                                    onAssetClick={this._nextScene}
+                                    assetOpacity={this.state.assetOpacity}
+                                    showInfoModal={this.state.showInfoModal}
+                                >
+                                    {this.props.children}
+                                </SceneViewer>
 
 
-                            <a-sky src="#sky" rotation="0 -270 0" />
-                        </a-scene>
-
-                        // <a-scene>
-                        //     <a-entity id="look-cam" camera="userHeight: 1.6" look-at="#target" look-controls wasd-controls></a-entity>
-                        //     <a-entity id="container" position="0 0 -4">
-                        //         <a-sphere id="target" color="#404040" radius="0.5">
-                        //             <a-animation attribute="position" from="-8 6 -8" to="8 -3 -2" dur="1500"
-                        //                 repeat="indefinite" fill="forwards" direction="alternate"></a-animation>
-                        //         </a-sphere>
-
-                        //         <a-entity position="5 3 0" rotation="0 70 0">
-                        //             <a-box width="1" depth="1" height="1" color="#01A1F1" look-at="#target" position="-2 0 -4"></a-box>
-                        //         </a-entity>
-                        //         <a-box width="1" depth="1" height="1" color="#4CC3D9" look-at="#target"
-                        //             position="-4 0 -2"></a-box>
-                        //         <a-cylinder radius="0.6" height="2" color="#7BC8A4" look-at="#target"
-                        //             position="0 0 -2"></a-cylinder>
-                        //         <a-box width="0.5" depth="1" height="2" color="#F16745" look-at="#target"
-                        //             position="4 0 -2"></a-box>
-                        //         <a-cylinder radius="0.2" height="2" color="#7BC8A4" look-at="#target"
-                        //             position="-4 0 1"></a-cylinder>
-                        //         <a-box width="2" depth="1" height="0.25" color="#93648D" look-at="#target"
-                        //             position="0 0 1"></a-box>
-                        //         <a-box width="1" depth="2" height="0.5" color="#999" look-at="#target"
-                        //             position="4 0 1"></a-box>
-
-                        //         <a-box width="2" depth="2" height="2" color="#FFC65D" look-at="#look-cam"
-                        //             position="-6 2.5 -2"></a-box>
-                        //     </a-entity>
-
-                        //     <a-sky color="#ECECEC"></a-sky>
-                        // </a-scene>
-
+                                <a-sky src="#sky" rotation="0 -270 0" />
+                            </a-scene>
+                        </div>
                     )
                 }}
             </Query>
