@@ -7,7 +7,7 @@ import PropTypes from 'prop-types'
 import ForceGraph3D from '3d-force-graph'
 import { default as fgc } from 'aframe-forcegraph-component'
 
-// import * as data from '../../data/demoData.json'
+import * as data from '../../data/demoData.json'
 // import gql from 'graphql-tag'
 // import { Query } from 'react-apollo'
 
@@ -26,7 +26,13 @@ class GraphScene extends Component {
   }
 
   render() {
-    return <a-entity forcegraph="json-url: demoData.json" />
+    return (
+      <a-entity
+        forcegraph={`nodes: ${JSON.stringify(
+          data.nodes
+        )}; links: ${JSON.stringify(data.links)}`}
+      />
+    )
   }
 }
 
