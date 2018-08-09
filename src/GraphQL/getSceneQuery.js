@@ -7,10 +7,19 @@ export const getSceneQuery = (sceneName = "CargoShip-Scene") => {
             physicalModel{
               physicalAsset{
                 name
-                scale
               }
             }
             position {
+              x
+              y
+              z
+            }
+            scale{
+              x
+              y
+              z
+            }
+            rotation{
               x
               y
               z

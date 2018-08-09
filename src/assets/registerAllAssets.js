@@ -82,6 +82,8 @@ const registerAllAssets = (assets) => {
             src="https://rawgit.com/mrdoob/three.js/dev/examples/fonts/optimer_bold.typeface.json"
         />
 
+        <a-image id="groundTexture" src="https://cdn.aframe.io/a-painter/images/floor.jpg" />
+
         <a-mixin id="cube" geometry="primitive: box" />
         <a-mixin id="cube-hovered" material="color: magenta" />
         <a-mixin id="cube-selected" material="color: cyan" />
