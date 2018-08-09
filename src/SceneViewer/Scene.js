@@ -35,24 +35,21 @@ class SceneViewer extends Component {
   makeEntities = data => {
     const { obj, allPositions } = data
     const { name, scale } = obj[0]
-        const { obj, positions } = data
-        const { name, scale } = obj[0]
 
-        return positions.map((position, i) => {
-            if (i === 0) {
-
-                return (
-                    <a-entity
-                        model-opacity="1"
-                        click-drag
-                        // model-opacity
-                        key={i}
-                        // click-to-navigate
-                        position={`${position.x} ${position.y} ${-6}`}
-                        scale={`${scale} ${scale} ${scale} `}
-                        obj-model={`obj: #${name}-obj; mtl: #${name}-mtl;`}
-                    >
-                        {/* {this.props.assetOpacity === 0.5 && <a-animation
+    return allPositions.map((position, i) => {
+      if (i === 0) {
+        return (
+          <a-entity
+            model-opacity="1"
+            click-drag
+            // model-opacity
+            key={i}
+            // click-to-navigate
+            position={`${position.x} ${position.y} ${-6}`}
+            scale={`${scale} ${scale} ${scale} `}
+            obj-model={`obj: #${name}-obj; mtl: #${name}-mtl;`}
+          >
+            {/* {this.props.assetOpacity === 0.5 && <a-animation
                             attribute="model-opacity"
                             dur="1000"
                             from="1"
@@ -64,42 +61,39 @@ class SceneViewer extends Component {
                             from="0.5"
                             to="1"
                             repeat="0"></a-animation>} */}
-                    </a-entity>
-                )
-            }
-        })
-    }
-
-
-    render() {
-        return (
-            <Query query={getAssetsQuery(this.props.gqlQuery)}>
-                {({ loading, error, data }) => {
-
-                    console.log("gqlQuery: ", this.props.gqlQuery)
-                    console.log("Data from Scene: ", data)
-
-                    if (loading) return <ActivityIndicator color={"#fff"} />;
-                    if (error) return <Text>{`Error: ${error}`}</Text>;
-
-                    return (
-                        <a-entity position={`0 0 ${this.props.rotateScene}`}>
-                            <a-entity rotation="0 0 0" >
-                                {this.props.gqlQuery === "TankerShip" &&
-                                    <TankerShipScene
-                                        onAssetClick={this.props.onAssetClick}
-                                        showInfoModal={this.props.showInfoModal}
-                                    />
-                                }
-                                {this.props.gqlQuery !== "TankerShip" && this.makeEntities(data)}
-                            </a-entity>
-                        </a-entity>
-                    )
-                }}
-            </Query>
+          </a-entity>
         )
       }
     })
+  }
+
+  render() {
+    return (
+      <Query query={getAssetsQuery(this.props.gqlQuery)}>
+        {({ loading, error, data }) => {
+          console.log('gqlQuery: ', this.props.gqlQuery)
+          console.log('Data from Scene: ', data)
+
+          if (loading) return <ActivityIndicator color={'#fff'} />
+          if (error) return <Text>{`Error: ${error}`}</Text>
+
+          return (
+            <a-entity position={`0 0 ${this.props.rotateScene}`}>
+              <a-entity rotation="0 0 0">
+                {this.props.gqlQuery === 'TankerShip' && (
+                  <TankerShipScene
+                    onAssetClick={this.props.onAssetClick}
+                    showInfoModal={this.props.showInfoModal}
+                  />
+                )}
+                {this.props.gqlQuery !== 'TankerShip' &&
+                  this.makeEntities(data)}
+              </a-entity>
+            </a-entity>
+          )
+        }}
+      </Query>
+    )
   }
 
   render() {
@@ -115,16 +109,14 @@ class SceneViewer extends Component {
           return (
             <a-entity position={`0 0 ${this.props.rotateScene}`}>
               <a-entity rotation="0 0 0">
-                {/* {this.props.gqlQuery === 'TankerShip' && (
+                {this.props.gqlQuery === 'TankerShip' && (
                   <TankerShipScene
                     onAssetClick={this.props.onAssetClick}
                     showInfoModal={this.props.showInfoModal}
                   />
                 )}
                 {this.props.gqlQuery !== 'TankerShip' &&
-                  this.makeEntities(data)} */}
-
-                <GraphScene />
+                  this.makeEntities(data)}
               </a-entity>
             </a-entity>
           )
