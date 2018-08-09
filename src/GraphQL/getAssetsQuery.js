@@ -11,12 +11,10 @@ const getAssetsQuery = (assetName) => {
       obj: physicalAssets(where:{name_contains:"${assetName}"}){
         name
         objPath
-        scale
       }
       mtl: physicalAssets(where:{name_contains:"${assetName}"}){
         name
         mtlPath
-        scale
     }
     }
 `}

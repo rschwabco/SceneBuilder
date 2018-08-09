@@ -31,48 +31,10 @@ import {
     cameraToHere
 } from "../AFrameFunctions"
 
-import {
-    Alignment,
-    Button,
-    Classes,
-    H5,
-    Navbar,
-    NavbarDivider,
-    NavbarGroup,
-    NavbarHeading,
-    Switch,
-} from "@blueprintjs/core";
-
-import AutoComplete from "react-autocomplete"
+import { NavBar } from "../Components"
 
 import { HtmlShader } from "../DataOverlay/HtmlShader"
 
-const scenes = [
-    {
-        sceneName: "FuelTankCaged"
-    },
-    {
-        sceneName: "OilDrum"
-    },
-    {
-        sceneName: "Pallet"
-    },
-    {
-        sceneName: "Container"
-    },
-    {
-        sceneName: "Enterprise"
-    },
-    {
-        sceneName: "TankerShip"
-    },
-    {
-        sceneName: "Propeller"
-    },
-    {
-        sceneName: "Graph"
-    }
-]
 
 export default class Viewer extends Component {
     constructor() {
@@ -91,6 +53,23 @@ export default class Viewer extends Component {
         };
     }
 
+    componentWillMount() {
+        // * Register all requisite custom aframe functions, imported from src/AFrameFunctions
+
+        clickToNavigate(this._rotateCamera)
+
+        hoverInfo(info => console.log(info))
+
+        clickLogInfo(info => console.log("Info from viewer: ", info))
+
+        keypressShowInfo(["Space", "Tab"], this._toggleInfoModal)
+
+        modelOpacity(this._updateObjectOpacity)
+
+        cameraToHere(this._moveCamera)
+
+    }
+
     // TODO: Needs work
     _nextScene = (nextScene) => {
         console.log("Next scene")
@@ -102,7 +81,7 @@ export default class Viewer extends Component {
     }
 
     // TODO: Needs work
-    _updateState = (updatedBy) => {
+    _rotateCamera = (updatedBy) => {
         this.setState({ rotateCamera: !this.state.rotateCamera })
         setTimeout(() => this._nextScene(), 600)
     }
@@ -122,30 +101,7 @@ export default class Viewer extends Component {
         setTimeout(() => this.setState({ updateCamera: false }), 20)
     }
 
-    componentWillMount() {
-        // * Register all requisite custom aframe functions, imported from src/AFrameFunctions
 
-        clickToNavigate(this._updateState)
-
-        hoverInfo(info => console.log(info))
-
-        clickLogInfo(info => console.log("Info from viewer: ", info))
-
-        keypressShowInfo(["Space", "Tab"], this._toggleInfoModal)
-
-        modelOpacity(this._updateObjectOpacity)
-
-        cameraToHere(this._moveCamera)
-
-    }
-
-    _matchSceneName = (scene, value) => {
-        console.log("Scene: ", scene)
-        console.log("Value: ", value)
-        return (
-            scene.sceneName.toLowerCase().indexOf(value.toLowerCase()) !== -1
-        )
-    }
 
     _selectNewScene = (newScene) => {
         this.setState({ inputValue: newScene, currentScene: newScene })
@@ -166,25 +122,9 @@ export default class Viewer extends Component {
 
                     return (
                         <div style={{ height: "100vh", width: "100%" }}>
-                            <Navbar className="bp3-dark">
-                                <NavbarGroup align={Alignment.LEFT}>
-                                    <NavbarHeading>Scenes</NavbarHeading>
-                                    <NavbarDivider />
-                                    <AutoComplete
-                                        value={this.state.inputValue}
-                                        getItemValue={item => item.sceneName}
-                                        items={scenes}
-                                        onChange={(event, inputValue) => this.setState({ inputValue })}
-                                        onSelect={inputValue => this._selectNewScene(inputValue)}
-                                        // shouldItemRender={this._matchSceneName}
-                                        renderItem={(item, isHighlighted) =>
-                                            <div style={{ background: isHighlighted ? 'lightgray' : 'white', color: "black" }}>
-                                                {item.sceneName}
-                                            </div>
-                                        }
-                                    />
-                                </NavbarGroup>
-                            </Navbar>
+                            <NavBar
+                                onSelect={this._selectNewScene}
+                            />
                             <a-scene
                                 cursor="rayOrigin:mouse"
                                 keypress-show-info

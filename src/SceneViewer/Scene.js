@@ -11,45 +11,47 @@ import registerClickDrag from 'aframe-click-drag-component'
 import { TankerShipScene, GraphScene } from './Scenes'
 import { Query } from 'react-apollo'
 import {
-  View,
-  ActivityIndicator,
-  StyleSheet,
-  Text,
-  TouchableOpacity
+    View,
+    ActivityIndicator,
+    StyleSheet,
+    Text,
+    TouchableOpacity
 } from 'react-native-web'
 
 registerClickDrag(aframe)
 
 class SceneViewer extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      pressedSky: false,
-      updatedBy: '',
-      rotateCamera: false
+    constructor(props) {
+        super(props)
+        this.state = {
+            pressedSky: false,
+            updatedBy: '',
+            rotateCamera: false
+        }
     }
-  }
 
-  // TODO: This will need to be able to add different animations / behaviors.
-  // TODO: This will need to also be able to take multiple different assets, or perhaps this should be called -PER- asset? That sounds better as I type it
-  makeEntities = data => {
-    const { obj, allPositions } = data
-    const { name, scale } = obj[0]
+    // TODO: This will need to be able to add different animations / behaviors.
+    // TODO: This will need to also be able to take multiple different assets, or perhaps this should be called -PER- asset? That sounds better as I type it
+    makeEntities = data => {
+        const { obj, positions } = data
+        const { name } = obj[0]
 
-    return allPositions.map((position, i) => {
-      if (i === 0) {
-        return (
-          <a-entity
-            model-opacity="1"
-            click-drag
-            // model-opacity
-            key={i}
-            // click-to-navigate
-            position={`${position.x} ${position.y} ${-6}`}
-            scale={`${scale} ${scale} ${scale} `}
-            obj-model={`obj: #${name}-obj; mtl: #${name}-mtl;`}
-          >
-            {/* {this.props.assetOpacity === 0.5 && <a-animation
+        console.log("Data from scene.js: ", data)
+
+        return positions.map((position, i) => {
+            if (i === 0) {
+                return (
+                    <a-entity
+                        model-opacity="1"
+                        click-drag
+                        // model-opacity
+                        key={i}
+                        // click-to-navigate
+                        position={`${position.x} ${position.y} ${-6}`}
+                        scale={`${1} ${1} ${1} `}
+                        obj-model={`obj: #${name}-obj; mtl: #${name}-mtl;`}
+                    >
+                        {/* {this.props.assetOpacity === 0.5 && <a-animation
                             attribute="model-opacity"
                             dur="1000"
                             from="1"
@@ -61,69 +63,40 @@ class SceneViewer extends Component {
                             from="0.5"
                             to="1"
                             repeat="0"></a-animation>} */}
-          </a-entity>
+                    </a-entity>
+                )
+            }
+        })
+    }
+
+    render() {
+        return (
+            <Query query={getAssetsQuery(this.props.gqlQuery)}>
+                {({ loading, error, data }) => {
+                    console.log('gqlQuery: ', this.props.gqlQuery)
+                    console.log('Data from Scene: ', data)
+
+                    if (loading) return <ActivityIndicator color={'#fff'} />
+                    if (error) return <Text>{`Error: ${error}`}</Text>
+
+                    return (
+                        <a-entity position={`0 0 ${this.props.rotateScene}`}>
+                            <a-entity rotation="0 0 0">
+                                {this.props.gqlQuery === 'TankerShip' && (
+                                    <TankerShipScene
+                                        onAssetClick={this.props.onAssetClick}
+                                        showInfoModal={this.props.showInfoModal}
+                                    />
+                                )}
+                                {this.props.gqlQuery !== 'TankerShip' &&
+                                    this.makeEntities(data)}
+                            </a-entity>
+                        </a-entity>
+                    )
+                }}
+            </Query>
         )
-      }
-    })
-  }
-
-  render() {
-    return (
-      <Query query={getAssetsQuery(this.props.gqlQuery)}>
-        {({ loading, error, data }) => {
-          console.log('gqlQuery: ', this.props.gqlQuery)
-          console.log('Data from Scene: ', data)
-
-          if (loading) return <ActivityIndicator color={'#fff'} />
-          if (error) return <Text>{`Error: ${error}`}</Text>
-
-          return (
-            <a-entity position={`0 0 ${this.props.rotateScene}`}>
-              <a-entity rotation="0 0 0">
-                {this.props.gqlQuery === 'TankerShip' && (
-                  <TankerShipScene
-                    onAssetClick={this.props.onAssetClick}
-                    showInfoModal={this.props.showInfoModal}
-                  />
-                )}
-                {this.props.gqlQuery !== 'TankerShip' &&
-                  this.makeEntities(data)}
-              </a-entity>
-            </a-entity>
-          )
-        }}
-      </Query>
-    )
-  }
-
-  render() {
-    return (
-      <Query query={getAssetsQuery(this.props.gqlQuery)}>
-        {({ loading, error, data }) => {
-          console.log('Data from Scene: ', data)
-          console.log('gqlQuery: ', this.props.gqlQuery)
-
-          if (loading) return <ActivityIndicator color={'#fff'} />
-          if (error) return <Text>{`Error: ${error}`}</Text>
-
-          return (
-            <a-entity position={`0 0 ${this.props.rotateScene}`}>
-              <a-entity rotation="0 0 0">
-                {this.props.gqlQuery === 'TankerShip' && (
-                  <TankerShipScene
-                    onAssetClick={this.props.onAssetClick}
-                    showInfoModal={this.props.showInfoModal}
-                  />
-                )}
-                {this.props.gqlQuery !== 'TankerShip' &&
-                  this.makeEntities(data)}
-              </a-entity>
-            </a-entity>
-          )
-        }}
-      </Query>
-    )
-  }
+    }
 }
 
 export default SceneViewer

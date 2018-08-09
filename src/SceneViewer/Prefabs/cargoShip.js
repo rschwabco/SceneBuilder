@@ -10,15 +10,16 @@ export const makeCargoShips = (options, showInfoModal, childData) => {
 
     const makeChildEntities = () => {
         return childData.map((asset, i) => {
-            const { name, scale, position } = asset
+            const { name, scale, position, rotation } = asset
+            console.log("Make child entities asset: ", asset)
             return (
                 <a-entity
                     // Fuel Tank
                     // click-to-navigate
                     key={i}
                     position={`${position.x} ${position.y} ${position.z}`}
-                    rotation={`${0} ${0} ${0}`}
-                    scale={`${scale} ${scale} ${scale} `}
+                    rotation={`${rotation.x} ${rotation.y} ${rotation.z}`}
+                    scale={`${scale.x} ${scale.y} ${scale.z}`}
                     material="color: #4CAF50"
                     outline="thickness: .0005; color: #FFF"
                     obj-model={`obj: #${name}-obj;`}

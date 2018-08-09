@@ -133,10 +133,12 @@ class ContainerScene extends Component {
                     if (error) return <Text>{`Error: ${error}`}</Text>;
 
                     const formattedData = data.scenes[0].assets.map(asset => {
+                        const { scale, rotation, position } = asset
                         return {
                             name: asset.physicalModel.physicalAsset.name,
-                            scale: asset.physicalModel.physicalAsset.scale,
-                            position: asset.position
+                            scale,
+                            position,
+                            rotation
                         }
                     })
                     console.log("TankerScene data: ", formattedData)
