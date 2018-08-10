@@ -1,6 +1,6 @@
 import * as aframe from "aframe";
 
-export const cameraToHere = (callback) => {
+export const cameraToHere = (callback, timeout) => {
     aframe.registerComponent("camera-to-here", {
         schema: {
             cameraTo: { default: "0 0 -15", type: "string" },
@@ -26,8 +26,10 @@ export const cameraToHere = (callback) => {
 
                 this.cameraEl.setAttribute("look-at", this.data.lookAt)
                 setTimeout(() => {
+
                     console.log("Camera looking at: ", this.cameraEl.getAttribute("look-at"))
                     console.log("Camera rotation before removing: ", this.cameraEl.getAttribute("rotation"))
+
                     this.rotation = this.cameraEl.getAttribute("rotation")
 
                     this.cameraEl.removeAttribute("look-at")
@@ -35,7 +37,7 @@ export const cameraToHere = (callback) => {
                     callback({ ...this.callbackOptions, rotationTo: this.rotation })
 
                     console.log("Camera rotation after removing look-at: ", this.cameraEl.getAttribute("rotation"))
-                }, 1850)
+                }, timeout)
             })
         },
 

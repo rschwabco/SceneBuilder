@@ -33,6 +33,7 @@ export const makeCargoShips = (options, showInfoModal, childData) => {
 
             return (
                 <a-entity
+                    id="shipContainer"
                     position={`${i * 3} 0 -6`}
                     click-log-info
                 >

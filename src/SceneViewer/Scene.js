@@ -70,6 +70,9 @@ class SceneViewer extends Component {
     }
 
     render() {
+
+        const { x, y, z } = this.props.scenePosition
+        console.log("Scene position: ", this.props.scenePosition)
         return (
             <Query query={getAssetsQuery(this.props.gqlQuery)}>
                 {({ loading, error, data }) => {
@@ -80,7 +83,7 @@ class SceneViewer extends Component {
                     if (error) return <Text>{`Error: ${error}`}</Text>
 
                     return (
-                        <a-entity position={`0 0 ${this.props.rotateScene}`}>
+                        <a-entity position={`${x} ${y} ${z}`}>
                             <a-entity rotation="0 0 0">
                                 {this.props.gqlQuery === 'TankerShip' && (
                                     <TankerShipScene

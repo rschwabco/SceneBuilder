@@ -12,7 +12,7 @@ import gql from "graphql-tag";
 import { getAssetsQuery, getSceneQuery } from "../../GraphQL"
 import { Query } from "react-apollo";
 import { sample } from "underscore"
-import { makeCargoShips } from "../Prefabs"
+import { makeCargoShips, checkpoints } from "../Prefabs"
 import {
     View,
     ActivityIndicator,
@@ -20,6 +20,7 @@ import {
     Text,
     TouchableOpacity
 } from "react-native-web";
+
 
 
 // Get array of positions and array of "Container" objects.
@@ -145,7 +146,7 @@ class ContainerScene extends Component {
 
                     return (
                         <a-entity>
-                            {/* {this._renderAccessories()} */}
+                            {checkpoints({ lookAt: "shipContainer" })}
                             {this._makeShips(this.state.ships, formattedData)}
                         </a-entity>
                     )

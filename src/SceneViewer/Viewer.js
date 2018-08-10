@@ -35,6 +35,11 @@ import { NavBar } from "../Components"
 
 import { HtmlShader } from "../DataOverlay/HtmlShader"
 
+const defaultXYZ = {
+    x: 0,
+    y: 0,
+    z: 0
+}
 
 export default class Viewer extends Component {
     constructor() {
@@ -42,14 +47,15 @@ export default class Viewer extends Component {
 
         this.state = {
             inputValue: "",
+            cameraAnimationDuration: 1500,
             currentScene: "TankerShip",
-            rotateScene: 0,
+            scenePosition: { ...defaultXYZ },
             rotateCamera: false,
             rotationTo: "0 0 0",
             assetOpacity: 1,
             showInfoModal: false,
             cameraTo: "0 0 3.8",
-            updateCamera: false
+            moveCamera: false
         };
     }
 
@@ -66,7 +72,7 @@ export default class Viewer extends Component {
 
         modelOpacity(this._updateObjectOpacity)
 
-        cameraToHere(this._moveCamera)
+        cameraToHere(this._moveCamera, this.state.cameraAnimationDuration)
 
     }
 
@@ -76,7 +82,7 @@ export default class Viewer extends Component {
         this.setState({
             currentScene: this.state.currentScene === "OilDrum" ? "TankerShip" : "OilDrum",
             rotateCamera: !this.state.rotateCamera,
-            rotateScene: this.state.rotateScene === 0 ? 6 : 0
+            scenePosition: this.state.scenePosition == defaultXYZ ? { ...defaultXYZ, z: 6 } : defaultXYZ
         })
     }
 
@@ -97,8 +103,8 @@ export default class Viewer extends Component {
     _moveCamera = (options) => {
         const { cameraTo, rotationTo } = options
         console.log("Move camera options: ", options)
-        this.setState({ updateCamera: true, cameraTo, rotationTo })
-        setTimeout(() => this.setState({ updateCamera: false }), 20)
+        this.setState({ moveCamera: true, cameraTo, rotationTo })
+        setTimeout(() => this.setState({ moveCamera: false }), 20)
     }
 
 
@@ -109,7 +115,7 @@ export default class Viewer extends Component {
 
 
     render() {
-        const { currentScene, rotateCamera, updateCamera, cameraTo, rotationTo } = this.state
+        const { currentScene, rotateCamera, moveCamera, cameraTo, rotationTo, cameraAnimationDuration } = this.state
         console.log("State: ", this.state)
         return (
             <Query query={getAllAssetsQuery()}>
@@ -121,11 +127,12 @@ export default class Viewer extends Component {
 
 
                     return (
-                        <div style={{ height: "100vh", width: "100%" }}>
+                        <div id="sceneRoot" style={{ height: "100vh", width: "100%" }}>
                             <NavBar
                                 onSelect={this._selectNewScene}
                             />
                             <a-scene
+
                                 cursor="rayOrigin:mouse"
                                 keypress-show-info
                                 vr-mode-ui
@@ -134,13 +141,23 @@ export default class Viewer extends Component {
                             >
                                 {registerAllAssets(data.physicalAssets)}
                                 <Camera
-                                    updateCamera={updateCamera}
+                                    moveCamera={moveCamera}
                                     cameraTo={cameraTo}
                                     rotate={rotateCamera}
                                     rotationTo={rotationTo}
+                                    cameraAnimationDuration={cameraAnimationDuration}
                                 />
                                 <SceneViewer
-                                    rotateScene={this.state.rotateScene}
+                                    scenePosition={this.state.scenePosition}
+                                    gqlQuery={currentScene}
+                                    onAssetClick={this._nextScene}
+                                    assetOpacity={this.state.assetOpacity}
+                                    showInfoModal={this.state.showInfoModal}
+                                >
+                                    {this.props.children}
+                                </SceneViewer>
+                                <SceneViewer
+                                    scenePosition={{ x: 5, y: 5, z: 5 }}
                                     gqlQuery={currentScene}
                                     onAssetClick={this._nextScene}
                                     assetOpacity={this.state.assetOpacity}
