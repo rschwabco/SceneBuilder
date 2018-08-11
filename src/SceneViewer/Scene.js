@@ -75,7 +75,7 @@ class SceneViewer extends Component {
             }
         })
 
-        return makeCargoShips({ options, showInfoModal, formattedData })
+        return makeCargoShips({ options, showInfoModal, childData: formattedData })
     }
 
     _makePartScene = (options, data) => {
