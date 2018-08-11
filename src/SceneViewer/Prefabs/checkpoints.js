@@ -1,13 +1,36 @@
 import React from "react"
 
 export const checkpoints = (props) => {
+    console.log("Checkpoint props: ", props)
 
-    const { lookAt, offset } = props
-
-    const { x, y, z } = offset
+    // const makeCheckpoints = () => lookAt.map((point, i) => {
+    //     return (
+    //         <a-box
+    //             id={`${point}-checkpoint-${i}`}
+    //             camera-to-here={`cameraTo: ${6 + x} ${3.5 + y} ${-20 + z}; lookAt: #${props.lookAt}`}
+    //             color={`${i === 0 ? "teal" : "palevioletred"}`}
+    //             position={`${i === 0 ? "5" : "-5"} 0 -15`}
+    //         >
+    //         </a-box>
+    //     )
+    // })
+    const makeCheckpoints = () => props.map((point, i) => {
+        const { lookAt, offset } = point
+        const { x, y, z } = offset
+        return (
+            <a-box
+                // id={`${point}-checkpoint-${i}`}
+                camera-to-here={`cameraTo: ${6 + x} ${3.5 + y} ${-20 + z}; lookAt: #${lookAt}`}
+                color={`${i === 0 ? "teal" : "palevioletred"}`}
+                position={`${i === 0 ? "5" : "-5"} 0 -15`}
+            >
+            </a-box>
+        )
+    })
     return (
         <a-entity>
-            <a-box
+            {makeCheckpoints()}
+            {/* <a-box
                 id="checkpoint-1"
                 camera-to-here={`cameraTo: ${6 + x} ${3.5 + y} ${-20 + z}; lookAt: #${props.lookAt}`}
                 color="yellow"
@@ -35,7 +58,7 @@ export const checkpoints = (props) => {
                 color="orangered"
                 position="5 0 4"
             >
-            </a-box>
+            </a-box> */}
         </a-entity>
     )
 }

@@ -151,6 +151,70 @@ class SceneViewer extends Component {
         })
     }
 
+    _tempGetLookAtIds = () => {
+        switch (this.props.gqlQuery) {
+            case "CargoShip-Scene":
+                return ["cjkpj52yhnfx20b775yyoltxd", "cjkpj5lo8nfy10b77jd05o3ag"]
+            case "CargoShip-Part_Propeller":
+                return ["cjkn3ca5kgm8a0b77fr3a28q5"]
+            case "CargoShip-Part_FuelTank":
+                return ["cjkn3ca5kgm8a0b77fr3a28q5"]
+            default: return ["cjkpj52yhnfx20b775yyoltxd", "cjkpj5lo8nfy10b77jd05o3ag"]
+
+        }
+    }
+
+
+    _tempGetCheckpints = () => {
+        switch (this.props.gqlQuery) {
+            case "CargoShip-Scene":
+                return [
+                    {
+                        lookAt: "cjkpj52yhnfx20b775yyoltxd",
+                        offset: { x: 25, y: 25, z: 25 }
+                    },
+                    {
+                        lookAt: "cjkpj5lo8nfy10b77jd05o3ag",
+                        offset: { x: -35, y: 45, z: 25 }
+                    }
+                ]
+            case "CargoShip-Part_Propeller":
+                return [
+                    {
+                        lookAt: "cjkn3ca5kgm8a0b77fr3a28q5",
+                        offset: {
+                            x: 0,
+                            y: 0,
+                            z: 0
+                        }
+                    },
+
+                ]
+            case "CargoShip-Part_FuelTank":
+                return [
+                    {
+                        lookAt: "cjkn3ca5kgm8a0b77fr3a28q5",
+                        offset: {
+                            x: 0,
+                            y: 0,
+                            z: 0
+                        }
+                    },
+
+                ]
+            default: return [
+                {
+                    lookAt: "cjkpj52yhnfx20b775yyoltxd",
+                    offset: { x: 25, y: 25, z: 25 }
+                },
+                {
+                    lookAt: "cjkpj5lo8nfy10b77jd05o3ag",
+                    offset: { x: -35, y: 45, z: 25 }
+                }
+            ]
+
+        }
+    }
     render() {
         const { gqlQuery } = this.props
         const { x, y, z } = this.props.scenePosition
@@ -169,7 +233,7 @@ class SceneViewer extends Component {
                             rotation="0 0 0"
                             position={`${x} ${y} ${z}`}
                         >
-                            {checkpoints({ lookAt: sceneId, offset: this.props.scenePosition })}
+                            {checkpoints(this._tempGetCheckpints())}
                             {this.props.gqlQuery === "CargoShip-Scene" && (
                                 <a-entity
                                     id={sceneId}
