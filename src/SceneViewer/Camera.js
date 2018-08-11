@@ -25,12 +25,12 @@ class Camera extends React.Component {
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.rotate && !this.state.rotate) {
-            console.log("Should rotate")
+            // console.log("Should rotate")
             this.setState({ rotate: true })
             setTimeout(() => this.setState({ rotate: false, rotation: { y: this.state.rotation.y + 180 } }), 600)
         }
         if (nextProps.moveCamera && !this.state.moveCamera) {
-            console.log("Should rotate")
+            // console.log("Should rotate")
             this.setState({
                 moveCamera: true, cameraTo: this.props.cameraTo, rotation: {
                     ...this.props.rotationTo
@@ -53,7 +53,7 @@ class Camera extends React.Component {
 
 
         const { x, y, z } = this.state.rotation
-        console.log("Camera props: ", this.props)
+        // console.log("Camera props: ", this.props)
         return (
             <a-entity
                 // rotation={`${x} ${y} ${z}`} // Problematic with cameraToHere

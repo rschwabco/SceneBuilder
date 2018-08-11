@@ -102,7 +102,7 @@ export default class Viewer extends Component {
 
     _moveCamera = (options) => {
         const { cameraTo, rotationTo } = options
-        console.log("Move camera options: ", options)
+        // console.log("Move camera options: ", options)
         this.setState({ moveCamera: true, cameraTo, rotationTo })
         setTimeout(() => this.setState({ moveCamera: false }), 20)
     }
@@ -116,7 +116,7 @@ export default class Viewer extends Component {
 
     render() {
         const { currentScene, rotateCamera, moveCamera, cameraTo, rotationTo, cameraAnimationDuration } = this.state
-        console.log("State: ", this.state)
+        // console.log("State: ", this.state)
         return (
             <Query query={getAllAssetsQuery()}>
                 {({ loading, error, data }) => {
@@ -149,7 +149,7 @@ export default class Viewer extends Component {
                                 />
                                 <SceneViewer
                                     scenePosition={this.state.scenePosition}
-                                    gqlQuery={currentScene}
+                                    gqlQuery={"CargoShip-Scene"}
                                     onAssetClick={this._nextScene}
                                     assetOpacity={this.state.assetOpacity}
                                     showInfoModal={this.state.showInfoModal}
@@ -157,8 +157,17 @@ export default class Viewer extends Component {
                                     {this.props.children}
                                 </SceneViewer>
                                 <SceneViewer
-                                    scenePosition={{ x: 5, y: 5, z: 5 }}
-                                    gqlQuery={currentScene}
+                                    scenePosition={{ x: 25, y: 25, z: 25 }}
+                                    gqlQuery={"CargoShip-Part_Propeller"}
+                                    onAssetClick={this._nextScene}
+                                    assetOpacity={this.state.assetOpacity}
+                                    showInfoModal={this.state.showInfoModal}
+                                >
+                                    {this.props.children}
+                                </SceneViewer>
+                                <SceneViewer
+                                    scenePosition={{ x: -35, y: 45, z: 25 }}
+                                    gqlQuery={"CargoShip-Part_FuelTank"}
                                     onAssetClick={this._nextScene}
                                     assetOpacity={this.state.assetOpacity}
                                     showInfoModal={this.state.showInfoModal}

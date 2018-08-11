@@ -3,6 +3,7 @@ import gql from "graphql-tag";
 export const getSceneQuery = (sceneName = "CargoShip-Scene") => {
     return gql`query {
         scenes(where: {name_contains: "${sceneName}"}) {
+          id
           assets: semanticLayoutNodes {
             physicalModel{
               physicalAsset{

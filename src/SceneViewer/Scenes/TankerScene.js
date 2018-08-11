@@ -61,69 +61,14 @@ class ContainerScene extends Component {
 
 
     _makeShips = (options, childData) => {
-        const { showInfoModal } = this.props
-        return makeCargoShips(options, showInfoModal, childData)
-    }
-
-    _renderAccessories = () => {
-        return (
-            <a-entity>
-                <a-box
-                    id="youCouldLookAtMe"
-                    camera-to-here="cameraTo: 0 3.5 -20; lookAt: #lookAtMyPropeller"
-                    color="yellow"
-                    position="2 0 -15"
-                >
-                </a-box>
-                <a-box
-                    id="checkIt"
-                    camera-to-here="cameraTo: 0 -9.5 -20; lookAt: #lookAtMyFuelTank"
-                    color="teal"
-                    position="-2 0 -15"
-                >
-                </a-box>
-                <a-entity
-                    id="lookAtMyPropeller"
-                    camera-to-here="cameraTo: 0 0 0; lookAt: #lookAtMyPropeller"
-                    scale={`${.001} ${.001} ${.001} `}
-                    rotation={`${0} ${270} ${0}`}
-                    obj-model={`obj: #Propeller-obj;`}
-                    material="color: orangered"
-                    position="0 3 -22"
-                >
-                </a-entity>
-                <a-entity
-                    id="lookAtMyFuelTank"
-                    camera-to-here="cameraTo: 0 0 0; lookAt: #lookAtMyFuelTank"
-                    scale={`${.1} ${.1} ${.1} `}
-                    rotation={`${0} ${45} ${0}`}
-                    material="color: #4CAF50"
-                    obj-model={`obj: #FuelTankCaged-obj;`}
-                    position="0 -10 -22"
-                >
-                </a-entity>
-
-                <a-box
-                    id="lookAtMe"
-                    color="palevioletred"
-                    position="-2 0 1"
-                    camera-to-here="cameraTo: 0 -3 10; lookAt: #youCouldLookAtMe"
-                >
-                </a-box>
-                <a-box
-                    camera-to-here="cameraTo: 0 3 20; lookAt: #lookAtMe"
-                    id="orLookAtMe"
-                    color="orangered"
-                    position="6 2 1"
-                >
-                </a-box>
-            </a-entity>
-        )
+        const { showInfoModal, sceneId } = this.props
+        return makeCargoShips({ options, showInfoModal, childData, sceneId })
     }
 
 
     render() {
         let { pitch, roll, yaw, x, y, z } = this.state;
+        const { sceneId } = this.props
 
 
         return (
@@ -142,11 +87,9 @@ class ContainerScene extends Component {
                             rotation
                         }
                     })
-                    console.log("TankerScene data: ", formattedData)
 
                     return (
                         <a-entity>
-                            {checkpoints({ lookAt: "shipContainer" })}
                             {this._makeShips(this.state.ships, formattedData)}
                         </a-entity>
                     )
