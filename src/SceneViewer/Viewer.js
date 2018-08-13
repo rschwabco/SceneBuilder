@@ -5,6 +5,7 @@ import "aframe"
 // import "aframe-extras"
 import "aframe-outline"
 import "aframe-look-at-component"
+import "aframe-environment-component"
 import SceneViewer from "./Scene"
 import { TankerShipScene } from "./Scenes"
 import Camera from "./Camera"
@@ -49,7 +50,7 @@ export default class Viewer extends Component {
             inputValue: "",
             cameraAnimationDuration: 1500,
             currentScene: "TankerShip",
-            scenePosition: { ...defaultXYZ },
+            scenePosition: { ...defaultXYZ, y: -1 },
             rotateCamera: false,
             rotationTo: "0 0 0",
             assetOpacity: 1,
@@ -113,6 +114,26 @@ export default class Viewer extends Component {
         this.setState({ inputValue: newScene, currentScene: newScene })
     }
 
+    _makeScenes = (scenes) => {
+        const initPosition = { x: 0, y: -1, z: 0 }
+        const isOdd = (num) => num % 2 === 1
+        const isThreeOrFour = num => num % 3 === 0 || num % 4 === 0
+        const offset = 45
+        return scenes.map((scene, i) => {
+            const position = { x: isOdd(i) ? offset : -offset, y: i * offset, z: isThreeOrFour(i) ? offset : -offset }
+            return (
+                <SceneViewer
+                    scenePosition={i === 0 ? initPosition : position}
+                    gqlQuery={scene}
+                    onAssetClick={this._nextScene}
+                    assetOpacity={this.state.assetOpacity}
+                    showInfoModal={this.state.showInfoModal}
+                >
+                    {this.props.children}
+                </SceneViewer>
+            )
+        })
+    }
 
     render() {
         const { currentScene, rotateCamera, moveCamera, cameraTo, rotationTo, cameraAnimationDuration } = this.state
@@ -124,7 +145,7 @@ export default class Viewer extends Component {
 
                     if (loading) return <ActivityIndicator color={"#fff"} />;
                     if (error) return <Text>{`Error: ${error}`}</Text>;
-
+                    ["CargoShip-Scene", "CargoShip-Part_Propeller", "CargoShip-Part_FuelTank"]
 
                     return (
                         <div id="sceneRoot" style={{ height: "100vh", width: "100%" }}>
@@ -139,6 +160,7 @@ export default class Viewer extends Component {
                             // keyboard-shortcuts
                             // leap="vr: false"
                             >
+                                <a-entity position="0 -5 0" environment="preset: checkerboard; skyType: atmosphere; ground: hills; dressingScale: .1;dressingAmount: 2; dressingColor: #7C4DFF; lightPosition: 1 2 2;"></a-entity>
                                 {registerAllAssets(data.physicalAssets)}
                                 <Camera
                                     moveCamera={moveCamera}
@@ -147,8 +169,9 @@ export default class Viewer extends Component {
                                     rotationTo={rotationTo}
                                     cameraAnimationDuration={cameraAnimationDuration}
                                 />
-                                <SceneViewer
-                                    scenePosition={this.state.scenePosition}
+                                {this._makeScenes(["CargoShip-Scene", "CargoShip-Part_Propeller", "CargoShip-Part_FuelTank", "CargoShip-Part_Propeller", "CargoShip-Part_FuelTank", "CargoShip-Part_Propeller", "CargoShip-Part_FuelTank", "CargoShip-Part_Propeller", "CargoShip-Part_FuelTank"])}
+                                {/* <SceneViewer
+                                    scenePosition={{ x: 0, y: -1, z: 0 }}
                                     gqlQuery={"CargoShip-Scene"}
                                     onAssetClick={this._nextScene}
                                     assetOpacity={this.state.assetOpacity}
@@ -173,10 +196,9 @@ export default class Viewer extends Component {
                                     showInfoModal={this.state.showInfoModal}
                                 >
                                     {this.props.children}
-                                </SceneViewer>
+                                </SceneViewer> */}
 
-
-                                <a-sky src="#sky" rotation="0 -270 0" />
+                                {/* <a-sky src="#sky" rotation="0 -270 0" /> */}
                             </a-scene>
                         </div>
                     )
