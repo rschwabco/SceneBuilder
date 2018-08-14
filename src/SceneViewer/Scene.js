@@ -151,19 +151,6 @@ class SceneViewer extends Component {
         })
     }
 
-    _tempGetLookAtIds = () => {
-        switch (this.props.gqlQuery) {
-            case "CargoShip-Scene":
-                return ["cjkpj52yhnfx20b775yyoltxd", "cjkpj5lo8nfy10b77jd05o3ag"]
-            case "CargoShip-Part_Propeller":
-                return ["cjkn3ca5kgm8a0b77fr3a28q5"]
-            case "CargoShip-Part_FuelTank":
-                return ["cjkn3ca5kgm8a0b77fr3a28q5"]
-            default: return ["cjkpj52yhnfx20b775yyoltxd", "cjkpj5lo8nfy10b77jd05o3ag"]
-
-        }
-    }
-
 
     _tempGetCheckpints = () => {
         switch (this.props.gqlQuery) {
@@ -232,22 +219,13 @@ class SceneViewer extends Component {
                         <a-entity
                             rotation="0 0 0"
                             position={`${x} ${y} ${z}`}
+                            id={sceneId}
                         >
                             {checkpoints(this._tempGetCheckpints())}
-                            {this.props.gqlQuery === "CargoShip-Scene" && (
-                                <a-entity
-                                    id={sceneId}
-                                >
-                                    {this._makeShips(this.state.ships, data)}
-                                </a-entity>
-                            )}
-                            {this.props.gqlQuery !== "CargoShip-Scene" && (
-                                <a-entity
-                                    id={sceneId}
-                                >
-                                    {this._makePartScene(this.state.propeller, data)}
-                                </a-entity>
-                            )}
+                            {this.props.gqlQuery === "CargoShip-Scene" ?
+                                this._makeShips(this.state.ships, data) :
+                                this._makePartScene(this.state.propeller, data)
+                            }
                         </a-entity>
                     )
                 }}

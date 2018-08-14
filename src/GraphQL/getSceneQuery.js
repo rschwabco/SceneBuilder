@@ -1,12 +1,39 @@
 import gql from "graphql-tag";
 
-export const getSceneQuery = (sceneName = "CargoShip-Scene") => {
+export const getSceneQuery = (sceneId = "cjkn3ca5kgm8a0b77fr3a28q5") => {
     return gql`query {
-        scenes(where: {name_contains: "${sceneName}"}) {
+        scene (where:{id: "${sceneId}"} ) {
           id
-          assets: semanticLayoutNodes {
-            physicalModel{
-              physicalAsset{
+          children {
+            id
+            containerNode {
+                position{
+                  x
+                  y
+                  z
+                }
+              }
+          }
+          parent {
+            id
+            containerNode {
+                position{
+                  x
+                  y
+                  z
+                }
+              }
+          }
+          containerNode {
+            position {
+              x
+              y
+              z
+            }
+          }
+          semanticLayoutNodes {
+            physicalModel {
+              physicalAsset {
                 name
               }
             }
@@ -15,12 +42,12 @@ export const getSceneQuery = (sceneName = "CargoShip-Scene") => {
               y
               z
             }
-            scale{
+            rotation {
               x
               y
               z
             }
-            rotation{
+            scale {
               x
               y
               z
@@ -28,4 +55,33 @@ export const getSceneQuery = (sceneName = "CargoShip-Scene") => {
           }
         }
       }`
+}
+
+export const getContainerSceneQuery = (sceneName = "CargoShip-aggregation") => {
+    return gql`
+    query {
+        scenes(where: {name_contains: "${sceneName}"}) {
+          id
+          containerNode{
+            position {
+              x
+              y
+              z
+            }
+          }
+          children {
+            id
+            children {
+              id
+              children {
+                id
+                children {
+                  id
+                }
+              }
+            }
+          }		
+        }
+      }
+    `
 }

@@ -5,14 +5,16 @@ import "aframe"
 // import "aframe-extras"
 import "aframe-outline"
 import "aframe-look-at-component"
+import "aframe-environment-component"
 import SceneViewer from "./Scene"
+import NewSceneViewer from "./NewScene"
 import { TankerShipScene } from "./Scenes"
 import Camera from "./Camera"
 import * as aframe from "aframe";
 import { Query } from "react-apollo";
 import assets from "../assets/registerAssets"
 import registerAllAssets from "../assets/registerAllAssets"
-import { getAssetsQuery, getAllAssetsQuery } from "../GraphQL/index"
+import { getAssetsQuery, getAllAssetsQuery, getContainerSceneQuery } from "../GraphQL/index"
 import registerClickDrag from "aframe-click-drag-component";
 import {
     View,
@@ -49,7 +51,7 @@ export default class Viewer extends Component {
             inputValue: "",
             cameraAnimationDuration: 1500,
             currentScene: "TankerShip",
-            scenePosition: { ...defaultXYZ },
+            scenePosition: { ...defaultXYZ, y: -1 },
             rotateCamera: false,
             rotationTo: "0 0 0",
             assetOpacity: 1,
@@ -107,13 +109,33 @@ export default class Viewer extends Component {
         setTimeout(() => this.setState({ moveCamera: false }), 20)
     }
 
-
-
     _selectNewScene = (newScene) => {
         this.setState({ inputValue: newScene, currentScene: newScene })
     }
 
+    _flattenChildrenIds = (arr) => {
+        let children = []
+        const addIdToArray = (id, targetArray) => {
+            targetArray.push(id)
+        }
 
+        const extractIds = (arr) => {
+            let finding = true
+            while (finding === true) {
+                for (let val of arr) {
+                    addIdToArray(val.id, children)
+                    if (val.children) { extractIds(val.children) }
+                }
+                return finding = false
+            }
+        }
+
+        extractIds(arr)
+        return children
+    }
+
+
+    // TODO: REORG SCENES SO THAT TOP LEVEL SCENE HAS NO NODES, MOVE TOP LEVEL NODES TO A NEW FIRST CHILD
     render() {
         const { currentScene, rotateCamera, moveCamera, cameraTo, rotationTo, cameraAnimationDuration } = this.state
         // console.log("State: ", this.state)
@@ -124,7 +146,6 @@ export default class Viewer extends Component {
 
                     if (loading) return <ActivityIndicator color={"#fff"} />;
                     if (error) return <Text>{`Error: ${error}`}</Text>;
-
 
                     return (
                         <div id="sceneRoot" style={{ height: "100vh", width: "100%" }}>
@@ -139,6 +160,7 @@ export default class Viewer extends Component {
                             // keyboard-shortcuts
                             // leap="vr: false"
                             >
+                                <a-entity position="0 -5 0" environment="preset: checkerboard; skyType: atmosphere; ground: hills; dressingScale: .1;dressingAmount: 2; dressingColor: #7C4DFF; lightPosition: 1 2 2;"></a-entity>
                                 {registerAllAssets(data.physicalAssets)}
                                 <Camera
                                     moveCamera={moveCamera}
@@ -147,36 +169,29 @@ export default class Viewer extends Component {
                                     rotationTo={rotationTo}
                                     cameraAnimationDuration={cameraAnimationDuration}
                                 />
-                                <SceneViewer
-                                    scenePosition={this.state.scenePosition}
-                                    gqlQuery={"CargoShip-Scene"}
-                                    onAssetClick={this._nextScene}
-                                    assetOpacity={this.state.assetOpacity}
-                                    showInfoModal={this.state.showInfoModal}
-                                >
-                                    {this.props.children}
-                                </SceneViewer>
-                                <SceneViewer
-                                    scenePosition={{ x: 25, y: 25, z: 25 }}
-                                    gqlQuery={"CargoShip-Part_Propeller"}
-                                    onAssetClick={this._nextScene}
-                                    assetOpacity={this.state.assetOpacity}
-                                    showInfoModal={this.state.showInfoModal}
-                                >
-                                    {this.props.children}
-                                </SceneViewer>
-                                <SceneViewer
-                                    scenePosition={{ x: -35, y: 45, z: 25 }}
-                                    gqlQuery={"CargoShip-Part_FuelTank"}
-                                    onAssetClick={this._nextScene}
-                                    assetOpacity={this.state.assetOpacity}
-                                    showInfoModal={this.state.showInfoModal}
-                                >
-                                    {this.props.children}
-                                </SceneViewer>
+                                <Query query={getContainerSceneQuery("CargoShip-aggregation")} >
+                                    {({ loading, error, data }) => {
+                                        if (loading) return <ActivityIndicator color={"#fff"} />;
+                                        if (error) return <Text>{`Error: ${error}`}</Text>;
+                                        console.log("Deep scene query data: ", data.scenes[0])
 
+                                        const { containerNode, id } = data.scenes[0]
+                                        const { position } = containerNode
+                                        return (
+                                            <a-entity
+                                                id={id}
+                                                position={`${position.x} ${position.y} ${position.z}`}
+                                            >
+                                                <NewSceneViewer
+                                                    showInfoModal={this.state.showInfoModal}
+                                                    queries={this._flattenChildrenIds(data.scenes[0].children)}
+                                                // queries={data.scenes[0].children}
+                                                />
+                                            </a-entity>
+                                        )
+                                    }}
+                                </Query>
 
-                                <a-sky src="#sky" rotation="0 -270 0" />
                             </a-scene>
                         </div>
                     )

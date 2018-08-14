@@ -1,26 +1,16 @@
 import React from "react"
 
-export const checkpoints = (props) => {
-    console.log("Checkpoint props: ", props)
+export const checkpoints = (props, node) => {
+    console.log(`Checkpoint props from ${node}: `, props)
 
-    // const makeCheckpoints = () => lookAt.map((point, i) => {
-    //     return (
-    //         <a-box
-    //             id={`${point}-checkpoint-${i}`}
-    //             camera-to-here={`cameraTo: ${6 + x} ${3.5 + y} ${-20 + z}; lookAt: #${props.lookAt}`}
-    //             color={`${i === 0 ? "teal" : "palevioletred"}`}
-    //             position={`${i === 0 ? "5" : "-5"} 0 -15`}
-    //         >
-    //         </a-box>
-    //     )
-    // })
     const makeCheckpoints = () => props.map((point, i) => {
-        const { lookAt, offset } = point
-        const { x, y, z } = offset
+        const { id, containerNode } = point
+        const { position } = containerNode
+        const { x, y, z } = position
         return (
             <a-box
-                // id={`${point}-checkpoint-${i}`}
-                camera-to-here={`cameraTo: ${6 + x} ${3.5 + y} ${-20 + z}; lookAt: #${lookAt}`}
+                id={`${point}-checkpoint-${i}`}
+                camera-to-here={`cameraTo: ${6 + x} ${3.5 + y} ${-20 + z}; lookAt: #${id}`}
                 color={`${i === 0 ? "teal" : "palevioletred"}`}
                 position={`${i === 0 ? "5" : "-5"} 0 -15`}
             >
@@ -30,35 +20,6 @@ export const checkpoints = (props) => {
     return (
         <a-entity>
             {makeCheckpoints()}
-            {/* <a-box
-                id="checkpoint-1"
-                camera-to-here={`cameraTo: ${6 + x} ${3.5 + y} ${-20 + z}; lookAt: #${props.lookAt}`}
-                color="yellow"
-                position="5 0 -15"
-            >
-            </a-box>
-
-            <a-box
-                id="checkpoint-3"
-                color="palevioletred"
-                position="-5 0 -15"
-                camera-to-here={`cameraTo: ${-6 + x} ${3.5 + y} ${-20 + z}; lookAt: #${props.lookAt}`}
-            >
-            </a-box>
-            <a-box
-                id="checkpoint-2"
-                color="teal"
-                position="-5 0 4"
-                camera-to-here={`cameraTo: ${-6 + x} ${3.5 + y} ${6 + z}; lookAt: #${props.lookAt}`}
-            >
-            </a-box>
-            <a-box
-                camera-to-here={`cameraTo: ${6 + x} ${3.5 + y} ${6 + z}; lookAt: #${props.lookAt}`}
-                id="checkpoint-4"
-                color="orangered"
-                position="5 0 4"
-            >
-            </a-box> */}
         </a-entity>
     )
 }
