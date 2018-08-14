@@ -20,16 +20,57 @@ import {
 } from 'react-native-web'
 import { format } from 'url';
 
-registerClickDrag(aframe)
+// const props = {
+//     showInfoModal,
+//     containerNode: {
+//         id: "", // ID of top level a-entity
+//         name: "", // Use to determine container component. Needs more thoughts
+//         position: { // Position of top level a-entity
+//             x: 0,
+//             y: 0,
+//             z: 0
+//         } //ContainerNode is NOT a 3d model
+//     },
+//     semanticLayoutNodes: [ // Use this to 3d models
+//         {
+//             physicalModel: {
+//                 physicalAsset: { name: "AssetName" } // Used to refer to assets registered on app load
+//             },
+//             position: {
+//                 x: 0,
+//                 y: 0,
+//                 z: 0
+//             },
+//             rotation: {
+//                 x: 0,
+//                 y: 0,
+//                 z: 0
+//             },
+//             scale: {
+//                 x: 0,
+//                 y: 0,
+//                 z: 0
+//             }
+//         }
+//     ],
+//     connectedTo: [ // Use this to make checkpoints
+//         {
+//             id: "",
+//             position: {
+//                 x: 0,
+//                 y: 0,
+//                 z: 0
+//             }
+//         }
+//     ]
+// }
+
 
 class SceneViewer extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            pressedSky: false,
-            updatedBy: '',
-            rotateCamera: false,
-            ships: [
+            ships: [ //REMOVE ASAP
                 {
                     overlayText: [
                         "Propeller health: 75%",
@@ -43,20 +84,6 @@ class SceneViewer extends Component {
                     ]
                 }
             ],
-            propeller: [
-                {
-                    overlayText: [
-                        "Propeller Health: 1%"
-                    ]
-                }
-            ],
-            fuelTank: [
-                {
-                    overlayText: [
-                        "Fuel Levels: 23%"
-                    ]
-                }
-            ]
         }
         console.log("Scene state: ", this.state)
     }
@@ -114,117 +141,85 @@ class SceneViewer extends Component {
     }
 
 
-    makeEntities = data => {
-        const { obj, positions } = data
-        const { name } = obj[0]
+    _renderContainer = () => {
 
-        // console.log("Data from scene.js: ", data)
+    }
 
-        return positions.map((position, i) => {
-            if (i === 0) {
-                return (
+    _renderCheckpoints = () => {
+
+    }
+
+    _renderSemanticLayoutNodes = () => {
+        const { semanticLayoutNodes } = this.props
+
+        return semanticLayoutNodes.map((semanticLayoutNode, i) => {
+            const { physicalModel, position, rotation, scale } = semanticLayoutNode
+            const { physicalAsset } = physicalModel
+            const { name } = physicalAsset
+            return (
+                <a-entity // CONTAINER NODE, CURRENTLY BLANK IF NOT CONTAINER SHIP
+                >
                     <a-entity
-                        model-opacity="1"
-                        click-drag
-                        // model-opacity
                         key={i}
-                        // click-to-navigate
                         position={`${position.x} ${position.y} ${-6}`}
-                        scale={`${1} ${1} ${1} `}
+                        scale={`${scale.x} ${scale.y} ${scale.z}`}
+                        rotation={`${rotation.x} ${rotation.y} ${rotation.z}`}
                         obj-model={`obj: #${name}-obj; mtl: #${name}-mtl;`}
                     >
-                        {/* {this.props.assetOpacity === 0.5 && <a-animation
-                            attribute="model-opacity"
-                            dur="1000"
-                            from="1"
-                            to="0.5"
-                            repeat="0"></a-animation>}
-                        {this.props.assetOpacity === 1 && <a-animation
-                            attribute="model-opacity"
-                            dur="1000"
-                            from="0.5"
-                            to="1"
-                            repeat="0"></a-animation>} */}
+                        <a-animation attribute="rotation"
+                            dur="30000"
+                            fill="forwards"
+                            to="0 360 0"
+                            repeat="indefinite"></a-animation>
                     </a-entity>
-                )
-            }
+                </a-entity>
+            )
         })
     }
+    _renderShipContainer = () => { // Need to abstract this out asap
+        const { containerNode, semanticLayoutNodes, showInfoModal } = this.props
+        const { id } = containerNode
 
+        const formattedData = semanticLayoutNodes.map((semanticLayoutNode, i) => {
+            const { physicalModel, position, rotation, scale } = semanticLayoutNode
+            const { physicalAsset } = physicalModel
+            const { name } = physicalAsset
 
-    _tempGetCheckpints = () => {
-        switch (this.props.gqlQuery) {
-            case "CargoShip-Scene":
-                return [
-                    {
-                        lookAt: "cjkpj52yhnfx20b775yyoltxd",
-                        offset: { x: 25, y: 25, z: 25 }
-                    },
-                    {
-                        lookAt: "cjkpj5lo8nfy10b77jd05o3ag",
-                        offset: { x: -35, y: 45, z: 25 }
-                    }
-                ]
-            case "CargoShip-Part_Propeller":
-                return [
-                    {
-                        lookAt: "cjkn3ca5kgm8a0b77fr3a28q5",
-                        offset: {
-                            x: 0,
-                            y: 0,
-                            z: 0
-                        }
-                    },
+            return {
+                name,
+                scale,
+                position,
+                rotation
+            }
+        })
 
-                ]
-            case "CargoShip-Part_FuelTank":
-                return [
-                    {
-                        lookAt: "cjkn3ca5kgm8a0b77fr3a28q5",
-                        offset: {
-                            x: 0,
-                            y: 0,
-                            z: 0
-                        }
-                    },
-
-                ]
-            default: return [
-                {
-                    lookAt: "cjkpj52yhnfx20b775yyoltxd",
-                    offset: { x: 25, y: 25, z: 25 }
-                },
-                {
-                    lookAt: "cjkpj5lo8nfy10b77jd05o3ag",
-                    offset: { x: -35, y: 45, z: 25 }
-                }
-            ]
-
-        }
+        return makeCargoShips({ options: this.state.ships, showInfoModal, childData: formattedData })
     }
+
     render() {
-        const { gqlQuery } = this.props
-        const { x, y, z } = this.props.scenePosition
+
+        // Container node references
+        const { containerNode } = this.props
+        const { id, position, name } = containerNode
+        const { x, y, z } = position
+
         return (
-            <Query query={getSceneQuery(gqlQuery)}>
+            <Query query={getSceneQuery("")}>
                 {({ loading, error, data }) => {
 
                     if (loading) return <ActivityIndicator color={'#fff'} />
                     if (error) return <Text>{`Error: ${error}`}</Text>
 
-                    console.log("Scene data: ", data)
-                    const sceneId = data.scenes[0].id
-
                     return (
-                        <a-entity
+                        <a-entity // TOP LEVEL SCENE NODE
+                            id={id}
                             rotation="0 0 0"
                             position={`${x} ${y} ${z}`}
-                            id={sceneId}
                         >
                             {checkpoints(this._tempGetCheckpints())}
-                            {this.props.gqlQuery === "CargoShip-Scene" ?
+                            {name === "CargoShip-Scene" ?
                                 this._makeShips(this.state.ships, data) :
-                                this._makePartScene(this.state.propeller, data)
+                                this._renderSemanticLayoutNodes()
                             }
                         </a-entity>
                     )

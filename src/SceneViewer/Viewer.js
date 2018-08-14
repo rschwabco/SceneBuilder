@@ -7,6 +7,7 @@ import "aframe-outline"
 import "aframe-look-at-component"
 import "aframe-environment-component"
 import SceneViewer from "./Scene"
+import NewSceneViewer from "./NewScene"
 import { TankerShipScene } from "./Scenes"
 import Camera from "./Camera"
 import * as aframe from "aframe";
@@ -155,14 +156,6 @@ export default class Viewer extends Component {
                             <NavBar
                                 onSelect={this._selectNewScene}
                             />
-                            <Query query={getDeepSceneQuery("CargoShip-scene")} >
-                                {({ loading, error, data }) => {
-                                    if (loading) return <ActivityIndicator color={"#fff"} />;
-                                    if (error) return <Text>{`Error: ${error}`}</Text>;
-                                    console.log("Deep scene query data: ", data)
-                                    return null
-                                }}
-                            </Query>
                             <a-scene
 
                                 cursor="rayOrigin:mouse"
@@ -180,7 +173,19 @@ export default class Viewer extends Component {
                                     rotationTo={rotationTo}
                                     cameraAnimationDuration={cameraAnimationDuration}
                                 />
-                                {this._makeScenes(["CargoShip-Scene", "CargoShip-Part_Propeller", "CargoShip-Part_FuelTank", "CargoShip-Part_Propeller", "CargoShip-Part_FuelTank", "CargoShip-Part_Propeller", "CargoShip-Part_FuelTank", "CargoShip-Part_Propeller", "CargoShip-Part_FuelTank"])}
+                                <Query query={getDeepSceneQuery("CargoShip-scene")} >
+                                    {({ loading, error, data }) => {
+                                        if (loading) return <ActivityIndicator color={"#fff"} />;
+                                        if (error) return <Text>{`Error: ${error}`}</Text>;
+                                        console.log("Deep scene query data: ", data)
+                                        return (
+                                            <a-entity>
+                                                {this._makeScenes(["CargoShip-Scene", "CargoShip-Part_Propeller", "CargoShip-Part_FuelTank"])}
+                                            </a-entity>
+                                        )
+                                    }}
+                                </Query>
+                                {/* {this._makeScenes(["CargoShip-Scene", "CargoShip-Part_Propeller", "CargoShip-Part_FuelTank"])} */}
 
                             </a-scene>
                         </div>
