@@ -13,7 +13,7 @@ import * as aframe from "aframe";
 import { Query } from "react-apollo";
 import assets from "../assets/registerAssets"
 import registerAllAssets from "../assets/registerAllAssets"
-import { getAssetsQuery, getAllAssetsQuery } from "../GraphQL/index"
+import { getAssetsQuery, getAllAssetsQuery, getDeepSceneQuery } from "../GraphQL/index"
 import registerClickDrag from "aframe-click-drag-component";
 import {
     View,
@@ -114,16 +114,19 @@ export default class Viewer extends Component {
         this.setState({ inputValue: newScene, currentScene: newScene })
     }
 
-    _makeScenes = (scenes) => {
-        const initPosition = { x: 0, y: -1, z: 0 }
+    _makeScenePositions = (i) => { // i === index from scene map
         const isOdd = (num) => num % 2 === 1
         const isThreeOrFour = num => num % 3 === 0 || num % 4 === 0
         const offset = 45
+        return { x: isOdd(i) ? offset : -offset, y: i * offset, z: isThreeOrFour(i) ? offset : -offset }
+    }
+
+    _makeScenes = (scenes) => {
+        const initPosition = { x: 0, y: -1, z: 0 }
         return scenes.map((scene, i) => {
-            const position = { x: isOdd(i) ? offset : -offset, y: i * offset, z: isThreeOrFour(i) ? offset : -offset }
             return (
                 <SceneViewer
-                    scenePosition={i === 0 ? initPosition : position}
+                    scenePosition={i === 0 ? initPosition : this._makeScenePositions(i)}
                     gqlQuery={scene}
                     onAssetClick={this._nextScene}
                     assetOpacity={this.state.assetOpacity}
@@ -135,6 +138,7 @@ export default class Viewer extends Component {
         })
     }
 
+
     render() {
         const { currentScene, rotateCamera, moveCamera, cameraTo, rotationTo, cameraAnimationDuration } = this.state
         // console.log("State: ", this.state)
@@ -145,13 +149,20 @@ export default class Viewer extends Component {
 
                     if (loading) return <ActivityIndicator color={"#fff"} />;
                     if (error) return <Text>{`Error: ${error}`}</Text>;
-                    ["CargoShip-Scene", "CargoShip-Part_Propeller", "CargoShip-Part_FuelTank"]
 
                     return (
                         <div id="sceneRoot" style={{ height: "100vh", width: "100%" }}>
                             <NavBar
                                 onSelect={this._selectNewScene}
                             />
+                            <Query query={getDeepSceneQuery("CargoShip-scene")} >
+                                {({ loading, error, data }) => {
+                                    if (loading) return <ActivityIndicator color={"#fff"} />;
+                                    if (error) return <Text>{`Error: ${error}`}</Text>;
+                                    console.log("Deep scene query data: ", data)
+                                    return null
+                                }}
+                            </Query>
                             <a-scene
 
                                 cursor="rayOrigin:mouse"
@@ -170,35 +181,7 @@ export default class Viewer extends Component {
                                     cameraAnimationDuration={cameraAnimationDuration}
                                 />
                                 {this._makeScenes(["CargoShip-Scene", "CargoShip-Part_Propeller", "CargoShip-Part_FuelTank", "CargoShip-Part_Propeller", "CargoShip-Part_FuelTank", "CargoShip-Part_Propeller", "CargoShip-Part_FuelTank", "CargoShip-Part_Propeller", "CargoShip-Part_FuelTank"])}
-                                {/* <SceneViewer
-                                    scenePosition={{ x: 0, y: -1, z: 0 }}
-                                    gqlQuery={"CargoShip-Scene"}
-                                    onAssetClick={this._nextScene}
-                                    assetOpacity={this.state.assetOpacity}
-                                    showInfoModal={this.state.showInfoModal}
-                                >
-                                    {this.props.children}
-                                </SceneViewer>
-                                <SceneViewer
-                                    scenePosition={{ x: 25, y: 25, z: 25 }}
-                                    gqlQuery={"CargoShip-Part_Propeller"}
-                                    onAssetClick={this._nextScene}
-                                    assetOpacity={this.state.assetOpacity}
-                                    showInfoModal={this.state.showInfoModal}
-                                >
-                                    {this.props.children}
-                                </SceneViewer>
-                                <SceneViewer
-                                    scenePosition={{ x: -35, y: 45, z: 25 }}
-                                    gqlQuery={"CargoShip-Part_FuelTank"}
-                                    onAssetClick={this._nextScene}
-                                    assetOpacity={this.state.assetOpacity}
-                                    showInfoModal={this.state.showInfoModal}
-                                >
-                                    {this.props.children}
-                                </SceneViewer> */}
 
-                                {/* <a-sky src="#sky" rotation="0 -270 0" /> */}
                             </a-scene>
                         </div>
                     )
