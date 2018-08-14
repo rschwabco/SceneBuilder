@@ -1,2 +1,2 @@
 export { default as getAssetsQuery, getAllAssetsQuery } from "./getAssetsQuery"
-export { getSceneQuery, getContainerSceneQuery } from "./getSceneQuery"
+export { getSceneQuery, getRootSceneQuery } from "./getSceneQuery"

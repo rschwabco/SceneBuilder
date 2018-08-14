@@ -14,7 +14,7 @@ import * as aframe from "aframe";
 import { Query } from "react-apollo";
 import assets from "../assets/registerAssets"
 import registerAllAssets from "../assets/registerAllAssets"
-import { getAssetsQuery, getAllAssetsQuery, getContainerSceneQuery } from "../GraphQL/index"
+import { getAssetsQuery, getAllAssetsQuery, getRootSceneQuery } from "../GraphQL/index"
 import registerClickDrag from "aframe-click-drag-component";
 import {
     View,
@@ -169,7 +169,7 @@ export default class Viewer extends Component {
                                     rotationTo={rotationTo}
                                     cameraAnimationDuration={cameraAnimationDuration}
                                 />
-                                <Query query={getContainerSceneQuery("CargoShip-aggregation")} >
+                                <Query query={getRootSceneQuery("CargoShip-aggregation")} >
                                     {({ loading, error, data }) => {
                                         if (loading) return <ActivityIndicator color={"#fff"} />;
                                         if (error) return <Text>{`Error: ${error}`}</Text>;
