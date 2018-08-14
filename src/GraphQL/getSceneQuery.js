@@ -1,80 +1,40 @@
 import gql from "graphql-tag";
 
-export const getSceneQuery = (sceneName = "CargoShip-scene") => {
+export const getSceneQuery = (sceneId = "cjkn3ca5kgm8a0b77fr3a28q5") => {
     return gql`query {
-        scenes(where: {name_contains: "${sceneName}"}) {
+        scene (where:{id: "${sceneId}"} ) {
           id
-          assets: semanticLayoutNodes {
-            physicalModel{
-              physicalAsset{
-                name
-              }
-            }
-            position {
-              x
-              y
-              z
-            }
-            scale{
-              x
-              y
-              z
-            }
-            rotation{
-              x
-              y
-              z
-            }
-          }
-        }
-      }`
-}
-
-export const getDeepSceneQuery = (sceneName = "CargoShip-scene") => {
-    return gql`
-    query {
-        scenes(where: {name_contains: "${sceneName}"}) {
-          id
-          containerNode{
-            name
-            position {
-              x
-              y
-              z
-            }
-          }
           children {
             id
             containerNode {
-              name
-              position {
-                x
-                y
-                z
+                position{
+                  x
+                  y
+                  z
+                }
               }
-            }
-            semanticLayoutNodes {
-              ...semanticLayoutData
-            }
           }
           parent {
-              semanticLayoutNodes {
-              ...semanticLayoutData
+            id
+            containerNode {
+                position{
+                  x
+                  y
+                  z
+                }
+              }
+          }
+          containerNode {
+            position {
+              x
+              y
+              z
             }
           }
           semanticLayoutNodes {
-              ...semanticLayoutData  
-          }
-              
-        }
-      }
-      
-      fragment semanticLayoutData on SemanticLayoutNode {
-            physicalModel{
-              physicalAsset{
+            physicalModel {
+              physicalAsset {
                 name
-                objPath
-                mtlPath
               }
             }
             position {
@@ -92,5 +52,36 @@ export const getDeepSceneQuery = (sceneName = "CargoShip-scene") => {
               y
               z
             }
+          }
+        }
       }`
+}
+
+export const getContainerSceneQuery = (sceneName = "CargoShip-aggregation") => {
+    return gql`
+    query {
+        scenes(where: {name_contains: "${sceneName}"}) {
+          id
+          containerNode{
+            position {
+              x
+              y
+              z
+            }
+          }
+          children {
+            id
+            children {
+              id
+              children {
+                id
+                children {
+                  id
+                }
+              }
+            }
+          }		
+        }
+      }
+    `
 }

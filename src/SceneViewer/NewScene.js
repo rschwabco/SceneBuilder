@@ -10,7 +10,7 @@ import { getAssetsQuery, getSceneQuery } from '../GraphQL'
 import registerClickDrag from 'aframe-click-drag-component'
 import { TankerShipScene, GraphScene } from './Scenes'
 import { checkpoints, makeCargoShips } from "./Prefabs"
-import { Query } from 'react-apollo'
+import { Query, query } from 'react-apollo'
 import {
     View,
     ActivityIndicator,
@@ -88,57 +88,57 @@ class SceneViewer extends Component {
         console.log("Scene state: ", this.state)
     }
 
-    _makeShips = (options, data) => {
-        const { showInfoModal } = this.props
-        const { sceneId } = this.state
+    // _makeShips = (options, data) => {
+    //     const { showInfoModal } = this.props
+    //     const { sceneId } = this.state
 
-        const formattedData = data.scenes[0].assets.map(asset => {
-            const { scale, rotation, position } = asset
-            return {
-                name: asset.physicalModel.physicalAsset.name,
-                scale,
-                position,
-                rotation
-            }
-        })
+    //     const formattedData = data.scenes[0].assets.map(asset => {
+    //         const { scale, rotation, position } = asset
+    //         return {
+    //             name: asset.physicalModel.physicalAsset.name,
+    //             scale,
+    //             position,
+    //             rotation
+    //         }
+    //     })
 
-        return makeCargoShips({ options, showInfoModal, childData: formattedData })
-    }
+    //     return makeCargoShips({ options, showInfoModal, childData: formattedData })
+    // }
 
-    _makePartScene = (options, data) => {
+    // _makePartScene = (options, data) => {
 
-        const formattedData = data.scenes[0].assets.map(asset => {
-            const { scale, rotation, position } = asset
-            return {
-                name: asset.physicalModel.physicalAsset.name,
-                scale,
-                position,
-                rotation
-            }
-        })
-        console.log("Formatted Propeller Data: ", formattedData)
+    //     const formattedData = data.scenes[0].assets.map(asset => {
+    //         const { scale, rotation, position } = asset
+    //         return {
+    //             name: asset.physicalModel.physicalAsset.name,
+    //             scale,
+    //             position,
+    //             rotation
+    //         }
+    //     })
+    //     console.log("Formatted Propeller Data: ", formattedData)
 
-        return formattedData.map((asset, i) => {
-            const { name, position, rotation, scale } = asset
-            if (i === 0) {
-                return (
-                    <a-entity
-                        key={i}
-                        position={`${position.x} ${position.y} ${-6}`}
-                        scale={`${scale.x} ${scale.y} ${scale.z}`}
-                        rotation={`${rotation.x} ${rotation.y} ${rotation.z}`}
-                        obj-model={`obj: #${name}-obj; mtl: #${name}-mtl;`}
-                    >
-                        <a-animation attribute="rotation"
-                            dur="30000"
-                            fill="forwards"
-                            to="0 360 0"
-                            repeat="indefinite"></a-animation>
-                    </a-entity>
-                )
-            }
-        })
-    }
+    //     return formattedData.map((asset, i) => {
+    //         const { name, position, rotation, scale } = asset
+    //         if (i === 0) {
+    //             return (
+    //                 <a-entity
+    //                     key={i}
+    //                     position={`${position.x} ${position.y} ${-6}`}
+    //                     scale={`${scale.x} ${scale.y} ${scale.z}`}
+    //                     rotation={`${rotation.x} ${rotation.y} ${rotation.z}`}
+    //                     obj-model={`obj: #${name}-obj; mtl: #${name}-mtl;`}
+    //                 >
+    //                     <a-animation attribute="rotation"
+    //                         dur="30000"
+    //                         fill="forwards"
+    //                         to="0 360 0"
+    //                         repeat="indefinite"></a-animation>
+    //                 </a-entity>
+    //             )
+    //         }
+    //     })
+    // }
 
 
     _renderContainer = () => {
@@ -149,19 +149,57 @@ class SceneViewer extends Component {
 
     }
 
-    _renderSemanticLayoutNodes = () => {
-        const { semanticLayoutNodes } = this.props
+    _getQueryData = (queries) => {
+        console.log("Get data queries: ", queries)
+        return queries.map((query, i) => {
+            return (
+
+                <Query key={i} query={getSceneQuery(query)}>
+                    {({ loading, error, data }) => {
+                        if (loading) return <ActivityIndicator color={'#fff'} />
+                        if (error) return <Text>{`Error: ${error}`}</Text>
+                        // console.log("Query data: ", data)
+
+                        if (data.scene.id === "cjkn3ca5kgm8a0b77fr3a28q5") { // If ship composite node
+                            return (
+                                <a-entity>
+                                    {this._renderShipContainer(data.scene, data.scene.children)}
+                                </a-entity>
+                            )
+                        } else {
+                            console.log("Query data: ", data)
+                            return (
+                                <a-entity>
+                                    {this._renderScene(data.scene, [...data.scene.children, data.scene.parent])}
+                                </a-entity>
+                            )
+                        }
+
+                    }}
+                </Query>
+            )
+        })
+
+    }
+
+    _renderScene = (scene, points) => {
+        const { semanticLayoutNodes, children, parent, id } = scene
+
+        console.log("Render Scene data: ", scene)
 
         return semanticLayoutNodes.map((semanticLayoutNode, i) => {
-            const { physicalModel, position, rotation, scale } = semanticLayoutNode
+            const { position } = scene.containerNode
+            const { physicalModel, rotation, scale } = semanticLayoutNode
             const { physicalAsset } = physicalModel
             const { name } = physicalAsset
             return (
                 <a-entity // CONTAINER NODE, CURRENTLY BLANK IF NOT CONTAINER SHIP
+                    key={i}
+                    id={id}
+                    position={`${position.x} ${position.y} ${-6}`}
                 >
+                    {checkpoints(points, "child")}
                     <a-entity
-                        key={i}
-                        position={`${position.x} ${position.y} ${-6}`}
                         scale={`${scale.x} ${scale.y} ${scale.z}`}
                         rotation={`${rotation.x} ${rotation.y} ${rotation.z}`}
                         obj-model={`obj: #${name}-obj; mtl: #${name}-mtl;`}
@@ -176,9 +214,9 @@ class SceneViewer extends Component {
             )
         })
     }
-    _renderShipContainer = () => { // Need to abstract this out asap
-        const { containerNode, semanticLayoutNodes, showInfoModal } = this.props
-        const { id } = containerNode
+    _renderShipContainer = (scene, points) => { // Need to abstract this out asap
+        const { containerNode, semanticLayoutNodes, id } = scene
+        const { showInfoModal } = this.props
 
         const formattedData = semanticLayoutNodes.map((semanticLayoutNode, i) => {
             const { physicalModel, position, rotation, scale } = semanticLayoutNode
@@ -193,38 +231,23 @@ class SceneViewer extends Component {
             }
         })
 
-        return makeCargoShips({ options: this.state.ships, showInfoModal, childData: formattedData })
+        return (
+            <a-entity id={id}>
+                {checkpoints(points, "child")}
+                {makeCargoShips({ options: this.state.ships, showInfoModal, childData: formattedData })}
+            </a-entity>
+        )
     }
 
     render() {
 
         // Container node references
-        const { containerNode } = this.props
-        const { id, position, name } = containerNode
-        const { x, y, z } = position
+        console.log("New Scene props: ", this.props)
 
         return (
-            <Query query={getSceneQuery("")}>
-                {({ loading, error, data }) => {
-
-                    if (loading) return <ActivityIndicator color={'#fff'} />
-                    if (error) return <Text>{`Error: ${error}`}</Text>
-
-                    return (
-                        <a-entity // TOP LEVEL SCENE NODE
-                            id={id}
-                            rotation="0 0 0"
-                            position={`${x} ${y} ${z}`}
-                        >
-                            {checkpoints(this._tempGetCheckpints())}
-                            {name === "CargoShip-Scene" ?
-                                this._makeShips(this.state.ships, data) :
-                                this._renderSemanticLayoutNodes()
-                            }
-                        </a-entity>
-                    )
-                }}
-            </Query>
+            <a-entity>
+                {this._getQueryData(this.props.queries)}
+            </a-entity>
         )
     }
 }

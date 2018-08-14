@@ -14,7 +14,7 @@ import * as aframe from "aframe";
 import { Query } from "react-apollo";
 import assets from "../assets/registerAssets"
 import registerAllAssets from "../assets/registerAllAssets"
-import { getAssetsQuery, getAllAssetsQuery, getDeepSceneQuery } from "../GraphQL/index"
+import { getAssetsQuery, getAllAssetsQuery, getContainerSceneQuery } from "../GraphQL/index"
 import registerClickDrag from "aframe-click-drag-component";
 import {
     View,
@@ -109,37 +109,33 @@ export default class Viewer extends Component {
         setTimeout(() => this.setState({ moveCamera: false }), 20)
     }
 
-
-
     _selectNewScene = (newScene) => {
         this.setState({ inputValue: newScene, currentScene: newScene })
     }
 
-    _makeScenePositions = (i) => { // i === index from scene map
-        const isOdd = (num) => num % 2 === 1
-        const isThreeOrFour = num => num % 3 === 0 || num % 4 === 0
-        const offset = 45
-        return { x: isOdd(i) ? offset : -offset, y: i * offset, z: isThreeOrFour(i) ? offset : -offset }
-    }
+    _flattenChildrenIds = (arr) => {
+        let children = []
+        const addIdToArray = (id, targetArray) => {
+            targetArray.push(id)
+        }
 
-    _makeScenes = (scenes) => {
-        const initPosition = { x: 0, y: -1, z: 0 }
-        return scenes.map((scene, i) => {
-            return (
-                <SceneViewer
-                    scenePosition={i === 0 ? initPosition : this._makeScenePositions(i)}
-                    gqlQuery={scene}
-                    onAssetClick={this._nextScene}
-                    assetOpacity={this.state.assetOpacity}
-                    showInfoModal={this.state.showInfoModal}
-                >
-                    {this.props.children}
-                </SceneViewer>
-            )
-        })
+        const extractIds = (arr) => {
+            let finding = true
+            while (finding === true) {
+                for (let val of arr) {
+                    addIdToArray(val.id, children)
+                    if (val.children) { extractIds(val.children) }
+                }
+                return finding = false
+            }
+        }
+
+        extractIds(arr)
+        return children
     }
 
 
+    // TODO: REORG SCENES SO THAT TOP LEVEL SCENE HAS NO NODES, MOVE TOP LEVEL NODES TO A NEW FIRST CHILD
     render() {
         const { currentScene, rotateCamera, moveCamera, cameraTo, rotationTo, cameraAnimationDuration } = this.state
         // console.log("State: ", this.state)
@@ -173,19 +169,28 @@ export default class Viewer extends Component {
                                     rotationTo={rotationTo}
                                     cameraAnimationDuration={cameraAnimationDuration}
                                 />
-                                <Query query={getDeepSceneQuery("CargoShip-scene")} >
+                                <Query query={getContainerSceneQuery("CargoShip-aggregation")} >
                                     {({ loading, error, data }) => {
                                         if (loading) return <ActivityIndicator color={"#fff"} />;
                                         if (error) return <Text>{`Error: ${error}`}</Text>;
-                                        console.log("Deep scene query data: ", data)
+                                        console.log("Deep scene query data: ", data.scenes[0])
+
+                                        const { containerNode, id } = data.scenes[0]
+                                        const { position } = containerNode
                                         return (
-                                            <a-entity>
-                                                {this._makeScenes(["CargoShip-Scene", "CargoShip-Part_Propeller", "CargoShip-Part_FuelTank"])}
+                                            <a-entity
+                                                id={id}
+                                                position={`${position.x} ${position.y} ${position.z}`}
+                                            >
+                                                <NewSceneViewer
+                                                    showInfoModal={this.state.showInfoModal}
+                                                    queries={this._flattenChildrenIds(data.scenes[0].children)}
+                                                // queries={data.scenes[0].children}
+                                                />
                                             </a-entity>
                                         )
                                     }}
                                 </Query>
-                                {/* {this._makeScenes(["CargoShip-Scene", "CargoShip-Part_Propeller", "CargoShip-Part_FuelTank"])} */}
 
                             </a-scene>
                         </div>
