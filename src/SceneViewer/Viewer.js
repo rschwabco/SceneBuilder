@@ -1,6 +1,5 @@
 
 import React, { Component } from "react";
-import "aframe"
 // import 'aframe-physics-system'
 // import "aframe-extras"
 import "aframe-outline"
@@ -50,7 +49,7 @@ export default class Viewer extends Component {
         this.state = {
             inputValue: "",
             cameraAnimationDuration: 1500,
-            currentScene: "TankerShip",
+            currentScene: "TestScene",
             scenePosition: { ...defaultXYZ, y: -1 },
             rotateCamera: false,
             rotationTo: "0 0 0",
@@ -70,7 +69,7 @@ export default class Viewer extends Component {
 
         clickLogInfo(info => console.log("Info from viewer: ", info))
 
-        keypressShowInfo(["Space", "Tab"], this._toggleInfoModal)
+        keypressShowInfo(["KeyO"], this._toggleInfoModal)
 
         modelOpacity(this._updateObjectOpacity)
 
@@ -131,7 +130,11 @@ export default class Viewer extends Component {
         }
 
         extractIds(arr)
+        console.log("Children ids: ", children)
+
+        // TODO: Do this better
         return children
+        // return ["cjkn3ca5kgm8a0b77fr3a28q5", "cjkpj52yhnfx20b775yyoltxd", "cjkucjf0qak0f0b779utqrdeu"]
     }
 
 
@@ -160,7 +163,7 @@ export default class Viewer extends Component {
                             // keyboard-shortcuts
                             // leap="vr: false"
                             >
-                                <a-entity position="0 -5 0" environment="preset: checkerboard; skyType: atmosphere; ground: hills; dressingScale: .1;dressingAmount: 2; dressingColor: #7C4DFF; lightPosition: 1 2 2;"></a-entity>
+                                {/* <a-entity position="0 -5 0" environment="preset: checkerboard; skyType: atmosphere; ground: hills; dressingScale: .1;dressingAmount: 2; dressingColor: #7C4DFF; lightPosition: 1 2 2;"></a-entity> */}
                                 {registerAllAssets(data.physicalAssets)}
                                 <Camera
                                     moveCamera={moveCamera}
@@ -169,7 +172,7 @@ export default class Viewer extends Component {
                                     rotationTo={rotationTo}
                                     cameraAnimationDuration={cameraAnimationDuration}
                                 />
-                                <Query query={getRootSceneQuery("CargoShip-aggregation")} >
+                                <Query query={getRootSceneQuery(this.state.currentScene)} >
                                     {({ loading, error, data }) => {
                                         if (loading) return <ActivityIndicator color={"#fff"} />;
                                         if (error) return <Text>{`Error: ${error}`}</Text>;
@@ -191,7 +194,7 @@ export default class Viewer extends Component {
                                         )
                                     }}
                                 </Query>
-
+                                <a-sky src="#sky" />
                             </a-scene>
                         </div>
                     )
@@ -200,3 +203,4 @@ export default class Viewer extends Component {
         )
     }
 }
+
