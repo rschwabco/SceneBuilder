@@ -59,6 +59,7 @@ class Camera extends React.Component {
                 // rotation={`${x} ${y} ${z}`} // Problematic with cameraToHere
                 position="0 0 0"
                 look-controls-enabled="true"
+            // movement-controls="fly: true;"
             // keyboard-controls="fpsMode: true"
             >
                 <a-camera

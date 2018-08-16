@@ -88,57 +88,6 @@ class SceneViewer extends Component {
         console.log("Scene state: ", this.state)
     }
 
-    // _makeShips = (options, data) => {
-    //     const { showInfoModal } = this.props
-    //     const { sceneId } = this.state
-
-    //     const formattedData = data.scenes[0].assets.map(asset => {
-    //         const { scale, rotation, position } = asset
-    //         return {
-    //             name: asset.physicalModel.physicalAsset.name,
-    //             scale,
-    //             position,
-    //             rotation
-    //         }
-    //     })
-
-    //     return makeCargoShips({ options, showInfoModal, childData: formattedData })
-    // }
-
-    // _makePartScene = (options, data) => {
-
-    //     const formattedData = data.scenes[0].assets.map(asset => {
-    //         const { scale, rotation, position } = asset
-    //         return {
-    //             name: asset.physicalModel.physicalAsset.name,
-    //             scale,
-    //             position,
-    //             rotation
-    //         }
-    //     })
-    //     console.log("Formatted Propeller Data: ", formattedData)
-
-    //     return formattedData.map((asset, i) => {
-    //         const { name, position, rotation, scale } = asset
-    //         if (i === 0) {
-    //             return (
-    //                 <a-entity
-    //                     key={i}
-    //                     position={`${position.x} ${position.y} ${-6}`}
-    //                     scale={`${scale.x} ${scale.y} ${scale.z}`}
-    //                     rotation={`${rotation.x} ${rotation.y} ${rotation.z}`}
-    //                     obj-model={`obj: #${name}-obj; mtl: #${name}-mtl;`}
-    //                 >
-    //                     <a-animation attribute="rotation"
-    //                         dur="30000"
-    //                         fill="forwards"
-    //                         to="0 360 0"
-    //                         repeat="indefinite"></a-animation>
-    //                 </a-entity>
-    //             )
-    //         }
-    //     })
-    // }
 
 
     _renderContainer = () => {
@@ -182,6 +131,41 @@ class SceneViewer extends Component {
 
     }
 
+    _make3dEntity = (props) => {
+        const { scale, rotation, name } = props
+        return (
+            <a-entity
+                scale={`${scale.x} ${scale.y} ${scale.z}`}
+                rotation={`${rotation.x} ${rotation.y} ${rotation.z}`}
+                obj-model={`obj: #${name}-obj; mtl: #${name}-mtl;`}
+            >
+                <a-animation attribute="rotation"
+                    dur="30000"
+                    fill="forwards"
+                    to="0 360 0"
+                    repeat="indefinite"></a-animation>
+            </a-entity>
+        )
+    }
+
+    _makePrimitiveEntity = (props) => {
+        console.log("Make primitive entity props: ", props)
+        const { scale, name = "box" } = props
+
+        return (
+            <a-entity
+                geometry={`primitive: box;`}
+                material="color: orangered"
+            >
+                <a-animation attribute="rotation"
+                    dur="30000"
+                    fill="forwards"
+                    to="0 360 0"
+                    repeat="indefinite"></a-animation>
+            </a-entity>
+        )
+    }
+
     _renderScene = (scene, points) => {
         const { semanticLayoutNodes, children, parent, id } = scene
 
@@ -191,29 +175,20 @@ class SceneViewer extends Component {
             const { position } = scene.containerNode
             const { physicalModel, rotation, scale } = semanticLayoutNode
             const { physicalAsset } = physicalModel
-            const { name } = physicalAsset
+            const { modelType } = physicalAsset
             return (
                 <a-entity // CONTAINER NODE, CURRENTLY BLANK IF NOT CONTAINER SHIP
                     key={i}
                     id={id}
                     position={`${position.x} ${position.y} ${-6}`}
                 >
-                    {checkpoints(points, "child")}
-                    <a-entity
-                        scale={`${scale.x} ${scale.y} ${scale.z}`}
-                        rotation={`${rotation.x} ${rotation.y} ${rotation.z}`}
-                        obj-model={`obj: #${name}-obj; mtl: #${name}-mtl;`}
-                    >
-                        <a-animation attribute="rotation"
-                            dur="30000"
-                            fill="forwards"
-                            to="0 360 0"
-                            repeat="indefinite"></a-animation>
-                    </a-entity>
+                    {checkpoints(points)}
+                    {modelType === "GEOMETRY" ? this._makePrimitiveEntity({ scale, modelType, name: physicalModel.name }) : this._make3dEntity({ scale, rotation, name: physicalAsset.name })}
                 </a-entity>
             )
         })
     }
+
     _renderShipContainer = (scene, points) => { // Need to abstract this out asap
         const { containerNode, semanticLayoutNodes, id } = scene
         const { showInfoModal } = this.props

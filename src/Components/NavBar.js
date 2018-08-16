@@ -18,28 +18,12 @@ import {
 
 const scenes = [
     {
-        sceneName: "FuelTankCaged"
+        sceneName: "CargoShip-aggregation",
+        displayName: "Cargo Ship Scene"
     },
     {
-        sceneName: "OilDrum"
-    },
-    {
-        sceneName: "Pallet"
-    },
-    {
-        sceneName: "Container"
-    },
-    {
-        sceneName: "Enterprise"
-    },
-    {
-        sceneName: "TankerShip"
-    },
-    {
-        sceneName: "Propeller"
-    },
-    {
-        sceneName: "Graph"
+        sceneName: "",
+        displayName: "Empty"
     }
 ]
 
@@ -52,7 +36,7 @@ export const NavBar = (props) => {
     }
     const makeMenuItems = () => {
         return scenes.map((scene, i) => {
-            return <MenuItem onClick={() => onSelect(scene.sceneName)} text={scene.sceneName} key={i} />
+            return <MenuItem onClick={() => onSelect(scene.sceneName)} text={scene.displayName} key={i} />
         })
     }
     return (
