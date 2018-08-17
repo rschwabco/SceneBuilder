@@ -137,7 +137,7 @@ class SceneViewer extends Component {
         const { scale, rotation, name } = props
         return (
             <a-entity
-                scale={`${scale.x} ${scale.y} ${scale.z}`}
+                scale={`${1} ${1} ${1}`}
                 rotation={`${rotation.x} ${rotation.y} ${rotation.z}`}
                 obj-model={`obj: #${name}-obj; mtl: #${name}-mtl;`}
             >
