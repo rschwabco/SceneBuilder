@@ -186,13 +186,13 @@ export default class Viewer extends Component {
                                                 position={`${position.x} ${position.y} ${position.z}`}
                                             >
                                                 <a-box
-                                                    width="3"
+                                                    width="6"
                                                     height="2"
                                                     wireframe={true}
                                                     position={`0 1 -4`}
                                                 >
                                                     <a-text
-                                                        position="-.5 0 0 "
+                                                        position="-2 0 0 "
                                                         value={`${pq.text}`}
                                                     ></a-text>
                                                 </a-box>

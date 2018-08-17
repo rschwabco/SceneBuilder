@@ -112,7 +112,6 @@ class SceneViewer extends Component {
                         if (data.scene.id === "cjkn3ca5kgm8a0b77fr3a28q5") { // If ship composite node
                             return (
                                 <a-entity>
-                                    <a-text value={`${data.scene.pq.text}`}></a-text>
                                     {this._renderShipContainer(data.scene, data.scene.children)}
                                 </a-entity>
                             )
@@ -135,11 +134,12 @@ class SceneViewer extends Component {
 
     _make3dEntity = (props) => {
         const { scale, rotation, name } = props
+        console.log("Make 3d entity name: ", name)
         return (
             <a-entity
                 scale={`${1} ${1} ${1}`}
                 rotation={`${rotation.x} ${rotation.y} ${rotation.z}`}
-                obj-model={`obj: #${name}-obj; mtl: #${name}-mtl;`}
+                obj-model={`obj: #${name}-obj;`}
             >
                 <a-animation attribute="rotation"
                     dur="30000"
@@ -168,17 +168,20 @@ class SceneViewer extends Component {
         )
     }
 
+    // TODO: Broken maybe?:
+
     _renderScene = (scene, points) => {
         const { semanticLayoutNodes, children, parent, id } = scene
 
         console.log("Render Scene data: ", scene)
 
-        return semanticLayoutNodes.map((semanticLayoutNode, i) => {
+        const nodes = semanticLayoutNodes.map((semanticLayoutNode, i) => {
             console.log("semanticLayoutNode: ", semanticLayoutNode)
             const { position } = scene.containerNode
             const { physicalModel, rotation, scale } = semanticLayoutNode
             const { physicalAsset } = physicalModel
             const { modelType } = physicalAsset
+
             return (
                 <a-entity // CONTAINER NODE, CURRENTLY BLANK IF NOT CONTAINER SHIP
                     key={i}
@@ -191,6 +194,9 @@ class SceneViewer extends Component {
                 </a-entity>
             )
         })
+
+        console.log("Nodes: ", nodes)
+        return nodes
     }
 
     _renderShipContainer = (scene, points) => { // Need to abstract this out asap
