@@ -1,0 +1,196 @@
+{
+    "name": "MaintenanceVesselOverallHealth",
+    "containerNode": {
+        "id": "cjkssfz4bw32g0b77a1oz5n2x"
+    },
+    "children": [
+        {
+            "name": "MVOH-1",
+            "containerNode": {
+                "create": {
+                    "position": {
+                        "create": {
+                            "x": 0,
+                            "y": 0,
+                            "z": -6
+                        }
+                    }
+                }
+            },
+            "children": {
+                "create": [
+                    {
+                        "name": "MVOH-1-C1",
+                        "containerNode": {
+                            "create": {
+                                "position": {
+                                    "create": {
+                                        "x": 20,
+                                        "y": 10,
+                                        "z": -20
+                                    }
+                                }
+                            }
+                        },
+                        "semanticLayoutNodes": {
+                            "create": [
+                                {
+                                    "position": {
+                                        "create": {
+                                            "x": 0,
+                                            "y": 0,
+                                            "z": 0
+                                        }
+                                    },
+                                    "rotation": {
+                                        "create": {
+                                            "x": 0,
+                                            "y": 0,
+                                            "z": 0
+                                        }
+                                    },
+                                    "scale": {
+                                        "create": {
+                                            "x": 0,
+                                            "y": 0,
+                                            "z": 0
+                                        }
+                                    },
+                                    "physicalModel": {
+                                        "connect": {
+                                            "id": "cjkx4a4gi67na0b292pfom1z8"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "MVOH-1-C2",
+                        "containerNode": {
+                            "create": {
+                                "position": {
+                                    "create": {
+                                        "x": -20,
+                                        "y": 10,
+                                        "z": -20
+                                    }
+                                }
+                            }
+                        },
+                        "semanticLayoutNodes": {
+                            "create": [
+                                {
+                                    "position": {
+                                        "create": {
+                                            "x": 0,
+                                            "y": 0,
+                                            "z": -6
+                                        }
+                                    },
+                                    "rotation": {
+                                        "create": {
+                                            "x": 0,
+                                            "y": 0,
+                                            "z": 0
+                                        }
+                                    },
+                                    "scale": {
+                                        "create": {
+                                            "x": 0,
+                                            "y": 0,
+                                            "z": 0
+                                        }
+                                    },
+                                    "physicalModel": {
+                                        "connect": {
+                                            "id": "cjkx4a75267nl0b29xvc0vwlj"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "MVOH-1-C3",
+                        "containerNode": {
+                            "create": {
+                                "position": {
+                                    "create": {
+                                        "x": -20,
+                                        "y": 10,
+                                        "z": 20
+                                    }
+                                }
+                            }
+                        },
+                        "semanticLayoutNodes": {
+                            "create": [
+                                {
+                                    "position": {
+                                        "create": {
+                                            "x": 0,
+                                            "y": 0,
+                                            "z": -6
+                                        }
+                                    },
+                                    "rotation": {
+                                        "create": {
+                                            "x": 0,
+                                            "y": 0,
+                                            "z": 0
+                                        }
+                                    },
+                                    "scale": {
+                                        "create": {
+                                            "x": 0,
+                                            "y": 0,
+                                            "z": 0
+                                        }
+                                    },
+                                    "physicalModel": {
+                                        "connect": {
+                                            "id": "cjkx4abcc67nt0b29pv9919bt"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "semanticLayoutNodes": {
+                "create": [
+                    {
+                        "position": {
+                            "create": {
+                                "x": 0,
+                                "y": 0,
+                                "z": -6
+                            }
+                        },
+                        "rotation": {
+                            "create": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0
+                            }
+                        },
+                        "scale": {
+                            "create": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0
+                            }
+                        },
+                        "physicalModel": {
+                            "connect": {
+                                "id": "cjkx4fv6k68150b29tsftewoi"
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}
