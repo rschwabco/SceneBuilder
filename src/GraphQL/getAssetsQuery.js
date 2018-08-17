@@ -26,6 +26,7 @@ export const getAllAssetsQuery = () => {
         name
         objPath
         mtlPath
+        modelType
       }
     }
     `

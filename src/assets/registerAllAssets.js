@@ -11,7 +11,6 @@ import * as aframe from "aframe";
 // }
 
 const registerAllAssets = (assets) => {
-    console.log("Assets: ", assets)
     let newAssets = []
 
     const makeObjAsset = (asset) => {
@@ -34,12 +33,15 @@ const registerAllAssets = (assets) => {
 
     const makeAllAssets = () => {
 
-
         for (let gqlAsset of assets) {
-            newAssets.push(makeObjAsset(gqlAsset))
-            newAssets.push(makeMtlAsset(gqlAsset))
+            if (gqlAsset.objPath) {
+                newAssets.push(makeObjAsset(gqlAsset))
+            }
+            if (gqlAsset.mtlPath) {
+                newAssets.push(makeMtlAsset(gqlAsset))
+            }
         }
-        console.log("Built assets: ", newAssets)
+
         return newAssets
     }
     return (<a-assets>

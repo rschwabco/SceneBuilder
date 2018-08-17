@@ -1,0 +1,291 @@
+{
+    "name": "Origin",
+    "containerNode": {
+        "create": {
+            "position": {
+                "create": {
+                    "x": 10,
+                    "y": 10,
+                    "z": -6
+                }
+            },
+            "rotation": {
+                "create": {
+                    "x": 0,
+                    "y": 0,
+                    "z": 0
+                }
+            },
+            "scale": {
+                "create": {
+                    "x": 0,
+                    "y": 0,
+                    "z": 0
+                }
+            },
+            "physicalModel": {
+                "create": {
+                    "physicalAsset": {
+                        "create": {
+                            "modelType": "OBJ"
+                        }
+                    }
+                }
+            },
+            "semanticLayoutNodes": {
+                "create": [
+                    {
+                        "name": "Logistics-DeliveryCost_Origin",
+                        "position": {
+                            "create": {
+                                "x": 0,
+                                "y": 0,
+                                "z": -6
+                            }
+                        },
+                        "rotation": {
+                            "create": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0
+                            }
+                        },
+                        "scale": {
+                            "create": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0
+                            }
+                        },
+                        "physicalModel": {
+                            "connect": {
+                                "id": ""
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "children": {
+        "create": [
+            {
+                "name": "",
+                "containerNode": {
+                    "create": {
+                        "position": {
+                            "create": {
+                                "x": 20,
+                                "y": 0,
+                                "z": -6
+                            }
+                        },
+                        "rotation": {
+                            "create": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0
+                            }
+                        },
+                        "scale": {
+                            "create": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0
+                            }
+                        },
+                        "physicalModel": {
+                            "create": {
+                                "physicalAsset": {
+                                    "create": {
+                                        "modelType": "OBJ"
+                                    }
+                                }
+                            }
+                        },
+                        "semanticLayoutNodes": {
+                            "create": [
+                                {
+                                    "name": "",
+                                    "position": {
+                                        "create": {
+                                            "x": 0,
+                                            "y": 0,
+                                            "z": -6
+                                        }
+                                    },
+                                    "rotation": {
+                                        "create": {
+                                            "x": 0,
+                                            "y": 0,
+                                            "z": 0
+                                        }
+                                    },
+                                    "scale": {
+                                        "create": {
+                                            "x": 0,
+                                            "y": 0,
+                                            "z": 0
+                                        }
+                                    },
+                                    "physicalModel": {
+                                        "connect": {
+                                            "id": ""
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        ]
+    }
+}
+
+
+
+{
+    "name": "",
+    "containerNode": {
+        "create": {
+            "position": {
+                "create": {
+                    "x": 10,
+                    "y": 0,
+                    "z": -6
+                }
+            },
+            "rotation": {
+                "create": {
+                    "x": 0,
+                    "y": 0,
+                    "z": 0
+                }
+            },
+            "scale": {
+                "create": {
+                    "x": 0,
+                    "y": 0,
+                    "z": 0
+                }
+            },
+            "physicalModel": {
+                "create": {
+                    "physicalAsset": {
+                        "create": {
+                            "modelType": "OBJ"
+                        }
+                    }
+                }
+            },
+            "semanticLayoutNodes": {
+                "create": [
+                    {
+                        "name": "",
+                        "position": {
+                            "create": {
+                                "x": 0,
+                                "y": 0,
+                                "z": -6
+                            }
+                        },
+                        "rotation": {
+                            "create": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0
+                            }
+                        },
+                        "scale": {
+                            "create": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0
+                            }
+                        },
+                        "physicalModel": {
+                            "connect": {
+                                "id": ""
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "children": {
+        "create": [
+            {
+                "name": "",
+                "containerNode": {
+                    "create": {
+                        "position": {
+                            "create": {
+                                "x": 20,
+                                "y": 0,
+                                "z": -6
+                            }
+                        },
+                        "rotation": {
+                            "create": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0
+                            }
+                        },
+                        "scale": {
+                            "create": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0
+                            }
+                        },
+                        "physicalModel": {
+                            "create": {
+                                "physicalAsset": {
+                                    "create": {
+                                        "modelType": "OBJ"
+                                    }
+                                }
+                            }
+                        },
+                        "semanticLayoutNodes": {
+                            "create": [
+                                {
+                                    "name": "",
+                                    "position": {
+                                        "create": {
+                                            "x": 0,
+                                            "y": 0,
+                                            "z": -6
+                                        }
+                                    },
+                                    "rotation": {
+                                        "create": {
+                                            "x": 0,
+                                            "y": 0,
+                                            "z": 0
+                                        }
+                                    },
+                                    "scale": {
+                                        "create": {
+                                            "x": 0,
+                                            "y": 0,
+                                            "z": 0
+                                        }
+                                    },
+                                    "physicalModel": {
+                                        "connect": {
+                                            "id": ""
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        ]
+    }
+}

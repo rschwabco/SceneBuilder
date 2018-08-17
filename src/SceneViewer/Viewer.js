@@ -49,7 +49,7 @@ export default class Viewer extends Component {
         this.state = {
             inputValue: "",
             cameraAnimationDuration: 1500,
-            currentScene: "LogisticsOverhaul-act",
+            currentScene: "ProcurementOverall-act",
             scenePosition: { ...defaultXYZ, y: -1 },
             rotateCamera: false,
             rotationTo: "0 0 0",
@@ -163,7 +163,7 @@ export default class Viewer extends Component {
                             // keyboard-shortcuts
                             // leap="vr: false"
                             >
-                                {/* <a-entity position="0 -5 0" environment="preset: checkerboard; skyType: atmosphere; ground: hills; dressingScale: .1;dressingAmount: 2; dressingColor: #7C4DFF; lightPosition: 1 2 2;"></a-entity> */}
+                                <a-entity position="0 -5 0" environment="preset: checkerboard; skyType: atmosphere; ground: hills; dressingScale: .1;dressingAmount: 2; dressingColor: #7C4DFF; lightPosition: 1 2 2;"></a-entity>
                                 {registerAllAssets(data.physicalAssets)}
                                 <Camera
                                     moveCamera={moveCamera}
@@ -194,7 +194,7 @@ export default class Viewer extends Component {
                                         )
                                     }}
                                 </Query>
-                                <a-sky src="#sky" />
+                                {/* <a-sky src="#sky" /> */}
                             </a-scene>
                         </div>
                     )

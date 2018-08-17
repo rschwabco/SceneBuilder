@@ -172,6 +172,7 @@ class SceneViewer extends Component {
         console.log("Render Scene data: ", scene)
 
         return semanticLayoutNodes.map((semanticLayoutNode, i) => {
+            console.log("semanticLayoutNode: ", semanticLayoutNode)
             const { position } = scene.containerNode
             const { physicalModel, rotation, scale } = semanticLayoutNode
             const { physicalAsset } = physicalModel
