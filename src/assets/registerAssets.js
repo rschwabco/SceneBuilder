@@ -5,7 +5,8 @@ import * as aframe from "aframe";
 
 // TODO: At the moment simply takes an array of [name, path]. Will need to be more comprehensive
 const registerAssets = (objObjects, mtlObjects) => {
-
+    console.log("Objects: ", objObjects)
+    console.log("MtlObjects: ", mtlObjects)
     const createObjAssets = () => {
         return objObjects.map((asset, i) => {
             return (
@@ -16,7 +17,12 @@ const registerAssets = (objObjects, mtlObjects) => {
             )
         })
     }
+
+    // const filterArray = (array) => {
+    //     return array.filter(item => !item.)
+    // }
     const createMtlAssets = () => {
+
         return mtlObjects.map((asset, i) => {
             return (
                 <a-asset-item
@@ -27,8 +33,8 @@ const registerAssets = (objObjects, mtlObjects) => {
         })
     }
     return (<a-assets>
-        {objObjects ? createObjAssets() : null}
-        {mtlObjects ? createMtlAssets() : null}
+        {/* {objObjects ? createObjAssets() : null}
+        {mtlObjects ? createMtlAssets() : null} */}
         < a-image
             id="sky"
             src="https://uploads.codesandbox.io/uploads/user/cf641f2b-3840-4f83-bf5e-dee7737a7432/EB1V-holodeck.png"

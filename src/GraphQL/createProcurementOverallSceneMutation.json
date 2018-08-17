@@ -1,0 +1,289 @@
+{
+    "name": "ProcurementOverall-act",
+    "containerNode": {
+        "id": "cjkssfz4bw32g0b77a1oz5n2x"
+    },
+    "children": [
+        {
+            "name": "Fleet",
+            "containerNode": {
+                "create": {
+                    "position": {
+                        "create": {
+                            "x": 0,
+                            "y": 0,
+                            "z": -6
+                        }
+                    },
+                    "rotation": {
+                        "create": {
+                            "x": 0,
+                            "y": 0,
+                            "z": 0
+                        }
+                    },
+                    "scale": {
+                        "create": {
+                            "x": 0,
+                            "y": 0,
+                            "z": 0
+                        }
+                    },
+                    "physicalModel": {
+                        "create": {
+                            "physicalAsset": {
+                                "create": {
+                                    "name": "Fleet"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "children": {
+                "create": [
+                    {
+                        "name": "Part-1",
+                        "containerNode": {
+                            "create": {
+                                "position": {
+                                    "create": {
+                                        "x": 0,
+                                        "y": 5,
+                                        "z": -6
+                                    }
+                                },
+                                "rotation": {
+                                    "create": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": 0
+                                    }
+                                },
+                                "scale": {
+                                    "create": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": 0
+                                    }
+                                },
+                                "physicalModel": {
+                                    "create": {
+                                        "physicalAsset": {
+                                            "create": {
+                                                "name": "Part-1"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "semanticLayoutNodes": {
+                            "create": [
+                                {
+                                    "position": {
+                                        "create": {
+                                            "x": 0,
+                                            "y": 0,
+                                            "z": -6
+                                        }
+                                    },
+                                    "rotation": {
+                                        "create": {
+                                            "x": 0,
+                                            "y": 0,
+                                            "z": 0
+                                        }
+                                    },
+                                    "scale": {
+                                        "create": {
+                                            "x": 0,
+                                            "y": 0,
+                                            "z": 0
+                                        }
+                                    },
+                                    "physicalModel": {
+                                        "connect": {
+                                            "id": "cjkx48n4j67jf0b29a7ne8o55"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "Part-2",
+                        "containerNode": {
+                            "create": {
+                                "position": {
+                                    "create": {
+                                        "x": 5,
+                                        "y": 5,
+                                        "z": -6
+                                    }
+                                },
+                                "rotation": {
+                                    "create": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": 0
+                                    }
+                                },
+                                "scale": {
+                                    "create": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": 0
+                                    }
+                                },
+                                "physicalModel": {
+                                    "create": {
+                                        "physicalAsset": {
+                                            "create": {
+                                                "name": "Part-2"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "semanticLayoutNodes": {
+                            "create": [
+                                {
+                                    "position": {
+                                        "create": {
+                                            "x": 0,
+                                            "y": 0,
+                                            "z": -6
+                                        }
+                                    },
+                                    "rotation": {
+                                        "create": {
+                                            "x": 0,
+                                            "y": 0,
+                                            "z": 0
+                                        }
+                                    },
+                                    "scale": {
+                                        "create": {
+                                            "x": 0,
+                                            "y": 0,
+                                            "z": 0
+                                        }
+                                    },
+                                    "physicalModel": {
+                                        "connect": {
+                                            "id": "cjkx49pid67lo0b29069tu591"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "Part-3",
+                        "containerNode": {
+                            "create": {
+                                "position": {
+                                    "create": {
+                                        "x": -5,
+                                        "y": 5,
+                                        "z": -6
+                                    }
+                                },
+                                "rotation": {
+                                    "create": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": 0
+                                    }
+                                },
+                                "scale": {
+                                    "create": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": 0
+                                    }
+                                },
+                                "physicalModel": {
+                                    "create": {
+                                        "physicalAsset": {
+                                            "create": {
+                                                "name": "Part-3"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "semanticLayoutNodes": {
+                            "create": [
+                                {
+                                    "position": {
+                                        "create": {
+                                            "x": 0,
+                                            "y": 0,
+                                            "z": -6
+                                        }
+                                    },
+                                    "rotation": {
+                                        "create": {
+                                            "x": 0,
+                                            "y": 0,
+                                            "z": 0
+                                        }
+                                    },
+                                    "scale": {
+                                        "create": {
+                                            "x": 0,
+                                            "y": 0,
+                                            "z": 0
+                                        }
+                                    },
+                                    "physicalModel": {
+                                        "connect": {
+                                            "id": "cjkx49s9q67lw0b299p4k0yhw"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "semanticLayoutNodes": {
+                "create": [
+                    {
+                        "name": "Fleet",
+                        "position": {
+                            "create": {
+                                "x": 0,
+                                "y": 0,
+                                "z": -6
+                            }
+                        },
+                        "rotation": {
+                            "create": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0
+                            }
+                        },
+                        "scale": {
+                            "create": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0
+                            }
+                        },
+                        "physicalModel": {
+                            "connect": {
+                                "id": "cjkx8zt3j6q1a0b29mfzf2aqv"
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}
