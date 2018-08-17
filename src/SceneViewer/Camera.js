@@ -51,7 +51,7 @@ class Camera extends React.Component {
 
     render() {
 
-
+        console.log("camera move to: ", this.props.cameraTo)
         const { x, y, z } = this.state.rotation
         // console.log("Camera props: ", this.props)
         return (

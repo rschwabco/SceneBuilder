@@ -7,18 +7,18 @@ export const checkpoints = (props, node) => {
         const { id, containerNode } = point
         const { position } = containerNode
         const { x, y, z } = position
-        const dim = 0.2
+        const dim = 0.3
         return (
             <a-box
                 className="checkpoint-box"
-                camera-to-here={`cameraTo: ${0 + x} ${0 + y} ${0 + z}; lookAt: #${id}`}
-                color={`${i === 0 ? "teal" : "palevioletred"}`}
-                position={`${5} ${(i * 3) + 1.5} .3`}
+                camera-to-here={`cameraTo: ${0 + x} ${4 + y} ${5 + z}; lookAt: #${id}`}
+                color={`orangered`}
+                position={`${3} ${(i * 3) + 1.5} -5`}
                 height={`${dim}`}
                 width={`${dim}`}
                 depth={`${dim}`}
             >
-                <a-text position="0 1 0" value={`Click to show ${id}`}></a-text>
+                <a-text position="0 1 0" value={`Click to show part# ${id}`}></a-text>
             </a-box>
         )
     })
