@@ -41,7 +41,7 @@ const registerAllAssets = (assets) => {
                 newAssets.push(makeMtlAsset(gqlAsset))
             }
         }
-
+        console.log("new assets: ", newAssets)
         return newAssets
     }
     return (<a-assets>
@@ -49,20 +49,6 @@ const registerAllAssets = (assets) => {
         < a-image
             id="sky"
             src="https://uploads.codesandbox.io/uploads/user/cf641f2b-3840-4f83-bf5e-dee7737a7432/EB1V-holodeck.png"
-        />
-
-        <a-asset-item
-            id="OilDrum-Wireframe-obj"
-            src="https://raw.githubusercontent.com/llanginger/ScenebuilderModels/master/oilDrum/barrel_1_wireframe.obj"
-        />
-
-        <a-asset-item
-            id="vessel-obj"
-            src="https://raw.githubusercontent.com/roieki/SceneBuilder/5e3b9993e5a9af95316a2716f9da92fd9f54863f/public/enterprise/enterprise1701d.obj"
-        />
-        <a-asset-item
-            id="vessel-mtl"
-            src="https://raw.githubusercontent.com/roieki/SceneBuilder/master/public/enterprise/enterprise1701d.mtl"
         />
 
 

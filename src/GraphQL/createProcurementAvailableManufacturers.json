@@ -1,0 +1,167 @@
+{
+    "name": "ProcurementAvailableManufacturers_parts-scene",
+    "containerNode": {
+        "id": "cjkssfz4bw32g0b77a1oz5n2x"
+    },
+    "children": [
+        {
+            "name": "PAMC-1",
+            "containerNode": {
+                "create": {
+                    "position": {
+                        "create": {
+                            "x": 0,
+                            "y": 5,
+                            "z": -6
+                        }
+                    }
+                }
+            },
+            "children": {
+                "connect": [
+                    {
+                        "id": "cjkxb6b0r6uoh0b29emeedlq5"
+                    }
+                ]
+            },
+            "semanticLayoutNodes": {
+                "create": [
+                    {
+                        "position": {
+                            "create": {
+                                "x": 0,
+                                "y": 0,
+                                "z": -6
+                            }
+                        },
+                        "rotation": {
+                            "create": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0
+                            }
+                        },
+                        "scale": {
+                            "create": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0
+                            }
+                        },
+                        "physicalModel": {
+                            "connect": {
+                                "id": "cjkx48n4j67jf0b29a7ne8o55"
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "PAMC-2",
+            "containerNode": {
+                "create": {
+                    "position": {
+                        "create": {
+                            "x": 8,
+                            "y": 8,
+                            "z": -6
+                        }
+                    }
+                }
+            },
+            "children": {
+                "connect": [
+                    {
+                        "id": "cjkxb6b0r6uoh0b29emeedlq5"
+                    }
+                ]
+            },
+            "semanticLayoutNodes": {
+                "create": [
+                    {
+                        "position": {
+                            "create": {
+                                "x": 0,
+                                "y": 0,
+                                "z": -6
+                            }
+                        },
+                        "rotation": {
+                            "create": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0
+                            }
+                        },
+                        "scale": {
+                            "create": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0
+                            }
+                        },
+                        "physicalModel": {
+                            "connect": {
+                                "id": "cjkx49pid67lo0b29069tu591"
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "PAMC-3",
+            "containerNode": {
+                "create": {
+                    "position": {
+                        "create": {
+                            "x": -15,
+                            "y": 5,
+                            "z": -12
+                        }
+                    }
+                }
+            },
+            "children": {
+                "connect": [
+                    {
+                        "id": "cjkxb6b0r6uoh0b29emeedlq5"
+                    }
+                ]
+            },
+            "semanticLayoutNodes": {
+                "create": [
+                    {
+                        "position": {
+                            "create": {
+                                "x": 0,
+                                "y": 0,
+                                "z": -6
+                            }
+                        },
+                        "rotation": {
+                            "create": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0
+                            }
+                        },
+                        "scale": {
+                            "create": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0
+                            }
+                        },
+                        "physicalModel": {
+                            "connect": {
+                                "id": "cjkx49s9q67lw0b299p4k0yhw"
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

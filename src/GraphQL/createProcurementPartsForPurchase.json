@@ -1,0 +1,196 @@
+{
+    "name": "ProcurementAvailablePartsForPurchase",
+    "containerNode": {
+        "id": "cjkssfz4bw32g0b77a1oz5n2x"
+    },
+    "children": [
+        {
+            "name": "PAPFP-1",
+            "containerNode": {
+                "create": {
+                    "position": {
+                        "create": {
+                            "x": 0,
+                            "y": 0,
+                            "z": -6
+                        }
+                    }
+                }
+            },
+            "children": {
+                "create": [
+                    {
+                        "name": "PAPFP-1-C1",
+                        "containerNode": {
+                            "create": {
+                                "position": {
+                                    "create": {
+                                        "x": 20,
+                                        "y": 10,
+                                        "z": -20
+                                    }
+                                }
+                            }
+                        },
+                        "semanticLayoutNodes": {
+                            "create": [
+                                {
+                                    "position": {
+                                        "create": {
+                                            "x": 0,
+                                            "y": 0,
+                                            "z": -6
+                                        }
+                                    },
+                                    "rotation": {
+                                        "create": {
+                                            "x": 0,
+                                            "y": 0,
+                                            "z": 0
+                                        }
+                                    },
+                                    "scale": {
+                                        "create": {
+                                            "x": 0,
+                                            "y": 0,
+                                            "z": 0
+                                        }
+                                    },
+                                    "physicalModel": {
+                                        "connect": {
+                                            "id": "cjkx49ufm67m80b290e6qc796"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "PAPFP-1-C2",
+                        "containerNode": {
+                            "create": {
+                                "position": {
+                                    "create": {
+                                        "x": 25,
+                                        "y": 10,
+                                        "z": -20
+                                    }
+                                }
+                            }
+                        },
+                        "semanticLayoutNodes": {
+                            "create": [
+                                {
+                                    "position": {
+                                        "create": {
+                                            "x": 0,
+                                            "y": 0,
+                                            "z": -6
+                                        }
+                                    },
+                                    "rotation": {
+                                        "create": {
+                                            "x": 0,
+                                            "y": 0,
+                                            "z": 0
+                                        }
+                                    },
+                                    "scale": {
+                                        "create": {
+                                            "x": 0,
+                                            "y": 0,
+                                            "z": 0
+                                        }
+                                    },
+                                    "physicalModel": {
+                                        "connect": {
+                                            "id": "cjkx49wmm67mf0b29ut3wn1mh"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "PAPFP-1-C3",
+                        "containerNode": {
+                            "create": {
+                                "position": {
+                                    "create": {
+                                        "x": 35,
+                                        "y": 10,
+                                        "z": -20
+                                    }
+                                }
+                            }
+                        },
+                        "semanticLayoutNodes": {
+                            "create": [
+                                {
+                                    "position": {
+                                        "create": {
+                                            "x": 0,
+                                            "y": 0,
+                                            "z": -6
+                                        }
+                                    },
+                                    "rotation": {
+                                        "create": {
+                                            "x": 0,
+                                            "y": 0,
+                                            "z": 0
+                                        }
+                                    },
+                                    "scale": {
+                                        "create": {
+                                            "x": 0,
+                                            "y": 0,
+                                            "z": 0
+                                        }
+                                    },
+                                    "physicalModel": {
+                                        "connect": {
+                                            "id": "cjkx49z6667mr0b29ccv9oduz"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "semanticLayoutNodes": {
+                "create": [
+                    {
+                        "position": {
+                            "create": {
+                                "x": 0,
+                                "y": 0,
+                                "z": -6
+                            }
+                        },
+                        "rotation": {
+                            "create": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0
+                            }
+                        },
+                        "scale": {
+                            "create": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0
+                            }
+                        },
+                        "physicalModel": {
+                            "connect": {
+                                "id": "cjkx49ufm67m80b290e6qc796"
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}
