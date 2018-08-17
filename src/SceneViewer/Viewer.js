@@ -49,7 +49,7 @@ export default class Viewer extends Component {
         this.state = {
             inputValue: "",
             cameraAnimationDuration: 1500,
-            currentScene: "SparePartsByVessel",
+            currentScene: "VesselHealthSpareParts",
             scenePosition: { ...defaultXYZ, y: -1 },
             rotateCamera: false,
             rotationTo: "0 0 0",
@@ -163,7 +163,7 @@ export default class Viewer extends Component {
                             // keyboard-shortcuts
                             // leap="vr: false"
                             >
-                                <a-entity position="0 -5 0" environment="preset: checkerboard; skyType: atmosphere; ground: hills; dressingScale: .1;dressingAmount: 2; dressingColor: #7C4DFF; lightPosition: 1 2 2;"></a-entity>
+                                <a-entity position="0 -5 0" environment="preset: checkerboard; skyType: atmosphere; ground: hills; dressingScale: .1;dressingAmount: 0; dressingColor: #7C4DFF; lightPosition: 1 2 2;"></a-entity>
                                 {registerAllAssets(data.physicalAssets)}
                                 <Camera
                                     moveCamera={moveCamera}
@@ -178,13 +178,24 @@ export default class Viewer extends Component {
                                         if (error) return <Text>{`Error: ${error}`}</Text>;
                                         console.log("Deep scene query data: ", data.scenes[0])
 
-                                        const { containerNode, id } = data.scenes[0]
+                                        const { containerNode, id, pq } = data.scenes[0]
                                         const { position } = containerNode
                                         return (
                                             <a-entity
                                                 id={id}
                                                 position={`${position.x} ${position.y} ${position.z}`}
                                             >
+                                                <a-box
+                                                    width="6"
+                                                    height="2"
+                                                    wireframe={true}
+                                                    position={`0 1 -4`}
+                                                >
+                                                    <a-text
+                                                        position="-2 0 0 "
+                                                        value={`${pq.text}`}
+                                                    ></a-text>
+                                                </a-box>
                                                 <NewSceneViewer
                                                     showInfoModal={this.state.showInfoModal}
                                                     queries={this._flattenChildrenIds(data.scenes[0].children)}

@@ -36,7 +36,9 @@ export const NavBar = (props) => {
     }
     const makeMenuItems = () => {
         return scenes.map((scene, i) => {
+
             return <MenuItem onClick={() => onSelect(scene.sceneName)} text={scene.displayName} key={i} />
+
         })
     }
     return (

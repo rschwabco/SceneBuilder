@@ -1,0 +1,360 @@
+{
+    "name": "VesselHealthSpareParts",
+    "containerNode": {
+        "id": "cjkssfz4bw32g0b77a1oz5n2x"
+    },
+    "children": [
+        {
+            "name": "VHSP-Vessel-1",
+            "containerNode": {
+                "create": {
+                    "position": {
+                        "create": {
+                            "x": -6,
+                            "y": 0,
+                            "z": -6
+                        }
+                    }
+                }
+            },
+            "children": {
+                "create": {
+                    "name": "VHSP-Vessel-1-parts",
+                    "containerNode": {
+                        "create": {
+                            "position": {
+                                "create": {
+                                    "x": -45,
+                                    "y": 0,
+                                    "z": -60
+                                }
+                            }
+                        }
+                    },
+                    "semanticLayoutNodes": {
+                        "create": [
+                            {
+                                "position": {
+                                    "create": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": 0
+                                    }
+                                },
+                                "rotation": {
+                                    "create": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": 0
+                                    }
+                                },
+                                "scale": {
+                                    "create": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": 0
+                                    }
+                                },
+                                "physicalModel": {
+                                    "create": {
+                                        "name": "VHSP-Vessel-1-parts-part1",
+                                        "physicalAsset": {
+                                            "create": {
+                                                "name": "VHSP-Vessel-1-parts-part1-asset",
+                                                "modelType": "OBJ",
+                                                "objPath": "path/to/obj"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            {
+                                "position": {
+                                    "create": {
+                                        "x": 10,
+                                        "y": 0,
+                                        "z": 0
+                                    }
+                                },
+                                "rotation": {
+                                    "create": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": 0
+                                    }
+                                },
+                                "scale": {
+                                    "create": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": 0
+                                    }
+                                },
+                                "physicalModel": {
+                                    "create": {
+                                        "name": "VHSP-Vessel-1-parts-part2",
+                                        "physicalAsset": {
+                                            "create": {
+                                                "name": "VHSP-Vessel-1-parts-part2-asset",
+                                                "modelType": "OBJ",
+                                                "objPath": "path/to/obj"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            {
+                                "position": {
+                                    "create": {
+                                        "x": 20,
+                                        "y": 0,
+                                        "z": 0
+                                    }
+                                },
+                                "rotation": {
+                                    "create": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": 0
+                                    }
+                                },
+                                "scale": {
+                                    "create": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": 0
+                                    }
+                                },
+                                "physicalModel": {
+                                    "create": {
+                                        "name": "VHSP-Vessel-1-parts-part3",
+                                        "physicalAsset": {
+                                            "create": {
+                                                "name": "VHSP-Vessel-1-parts-part3-asset",
+                                                "modelType": "OBJ",
+                                                "objPath": "path/to/obj"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                }
+            },
+            "semanticLayoutNodes": {
+                "create": {
+                    "position": {
+                        "create": {
+                            "x": 0,
+                            "y": 0,
+                            "z": 0
+                        }
+                    },
+                    "rotation": {
+                        "create": {
+                            "x": 0,
+                            "y": 0,
+                            "z": 0
+                        }
+                    },
+                    "scale": {
+                        "create": {
+                            "x": 0,
+                            "y": 0,
+                            "z": 0
+                        }
+                    },
+                    "physicalModel": {
+                        "create": {
+                            "name": "VHSP-Vessel-1-SLN",
+                            "physicalAsset": {
+                                "create": {
+                                    "name": "VHSP-Vessel-1-asset",
+                                    "modelType": "OBJ",
+                                    "objPath": "path/to/obj"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "VHSP-Vessel-2",
+            "containerNode": {
+                "create": {
+                    "position": {
+                        "create": {
+                            "x": 9,
+                            "y": 0,
+                            "z": -6
+                        }
+                    }
+                }
+            },
+            "children": {
+                "create": {
+                    "name": "VHSP-Vessel-2-parts",
+                    "containerNode": {
+                        "create": {
+                            "position": {
+                                "create": {
+                                    "x": 45,
+                                    "y": 0,
+                                    "z": -60
+                                }
+                            }
+                        }
+                    },
+                    "semanticLayoutNodes": {
+                        "create": [
+                            {
+                                "position": {
+                                    "create": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": 0
+                                    }
+                                },
+                                "rotation": {
+                                    "create": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": 0
+                                    }
+                                },
+                                "scale": {
+                                    "create": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": 0
+                                    }
+                                },
+                                "physicalModel": {
+                                    "create": {
+                                        "name": "VHSP-Vessel-2-parts-part1",
+                                        "physicalAsset": {
+                                            "create": {
+                                                "name": "VHSP-Vessel-2-parts-part1-asset",
+                                                "modelType": "OBJ",
+                                                "objPath": "path/to/obj"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            {
+                                "position": {
+                                    "create": {
+                                        "x": 10,
+                                        "y": 0,
+                                        "z": 0
+                                    }
+                                },
+                                "rotation": {
+                                    "create": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": 0
+                                    }
+                                },
+                                "scale": {
+                                    "create": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": 0
+                                    }
+                                },
+                                "physicalModel": {
+                                    "create": {
+                                        "name": "VHSP-Vessel-2-parts-part2",
+                                        "physicalAsset": {
+                                            "create": {
+                                                "name": "VHSP-Vessel-2-parts-part2-asset",
+                                                "modelType": "OBJ",
+                                                "objPath": "path/to/obj"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            {
+                                "position": {
+                                    "create": {
+                                        "x": 20,
+                                        "y": 0,
+                                        "z": 0
+                                    }
+                                },
+                                "rotation": {
+                                    "create": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": 0
+                                    }
+                                },
+                                "scale": {
+                                    "create": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": 0
+                                    }
+                                },
+                                "physicalModel": {
+                                    "create": {
+                                        "name": "VHSP-Vessel-2-parts-part3",
+                                        "physicalAsset": {
+                                            "create": {
+                                                "name": "VHSP-Vessel-2-parts-part3-asset",
+                                                "modelType": "OBJ",
+                                                "objPath": "path/to/obj"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                }
+            },
+            "semanticLayoutNodes": {
+                "create": {
+                    "position": {
+                        "create": {
+                            "x": 0,
+                            "y": 0,
+                            "z": 0
+                        }
+                    },
+                    "rotation": {
+                        "create": {
+                            "x": 0,
+                            "y": 0,
+                            "z": 0
+                        }
+                    },
+                    "scale": {
+                        "create": {
+                            "x": 0,
+                            "y": 0,
+                            "z": 0
+                        }
+                    },
+                    "physicalModel": {
+                        "create": {
+                            "name": "VHSP-Vessel-2-SLN",
+                            "physicalAsset": {
+                                "create": {
+                                    "name": "VHSP-Vessel-2-asset",
+                                    "modelType": "OBJ",
+                                    "objPath": "path/to/obj"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}
