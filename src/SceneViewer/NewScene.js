@@ -153,6 +153,7 @@ class SceneViewer extends Component {
                     {checkpoints(points)}
 
                     {modelType === "GEOMETRY" ? this._makePrimitiveEntity({ scale, modelType, name: physicalModel.name }) : this._make3dEntity({ scale, rotation, name: physicalAsset.name })}
+
                 </a-entity>
             )
         })
@@ -194,16 +195,42 @@ class SceneViewer extends Component {
         const { scale, rotation, name } = props
         console.log("Make 3d entity name: ", name)
         return (
-            <a-entity
-                scale={`${1} ${1} ${1}`}
-                rotation={`${rotation.x} ${rotation.y} ${rotation.z}`}
-                obj-model={`obj: #${name}-obj;`}
-            >
-                <a-animation attribute="rotation"
-                    dur="30000"
-                    fill="forwards"
-                    to="0 360 0"
-                    repeat="indefinite"></a-animation>
+            <a-entity>
+                <a-entity
+                    scale={`${1} ${1} ${1}`}
+                    position="0 10 0"
+                    rotation={`${rotation.x} ${rotation.y} ${rotation.z}`}
+                    obj-model={`obj: #${name}-obj;`}
+                >
+                    <a-animation attribute="rotation"
+                        dur="30000"
+                        fill="forwards"
+                        to="0 360 0"
+                        repeat="indefinite"></a-animation>
+                </a-entity>
+                <a-entity
+                    scale={`${1} ${1} ${1}`}
+                    position="0 20 0"
+                    rotation={`${rotation.x} ${rotation.y} ${rotation.z}`}
+                    obj-model={`obj: #${name}-obj;`}
+                >
+                    <a-animation attribute="rotation"
+                        dur="30000"
+                        fill="forwards"
+                        to="0 360 0"
+                        repeat="indefinite"></a-animation>
+                </a-entity>
+                <a-entity
+                    scale={`${1} ${1} ${1}`}
+                    rotation={`${rotation.x} ${rotation.y} ${rotation.z}`}
+                    obj-model={`obj: #${name}-obj;`}
+                >
+                    <a-animation attribute="rotation"
+                        dur="30000"
+                        fill="forwards"
+                        to="0 360 0"
+                        repeat="indefinite"></a-animation>
+                </a-entity>
             </a-entity>
         )
     }
