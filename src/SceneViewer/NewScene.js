@@ -109,7 +109,7 @@ class SceneViewer extends Component {
                         if (error) return <Text>{`Error: ${error}`}</Text>
                         // console.log("Query data: ", data)
 
-                        if (data.scene.id === "cjkn3ca5kgm8a0b77fr3a28q5") { // If ship composite node
+                        if (data.scene.id === "cjky8ddtm9ojm0b29cdlh83rj" || data.scene.id === "cjky8ddyo9ola0b2966nao7bv") { // If ship composite node
                             return (
                                 <a-entity>
                                     {this._renderShipContainer(data.scene, data.scene.children)}
@@ -130,6 +130,64 @@ class SceneViewer extends Component {
             )
         })
 
+    }
+
+    _renderScene = (scene, points) => {
+        const { semanticLayoutNodes, children, parent, id } = scene
+
+        console.log("Render Scene data: ", scene)
+
+        const nodes = semanticLayoutNodes.map((semanticLayoutNode, i) => {
+            console.log("semanticLayoutNode: ", semanticLayoutNode)
+            const { position } = scene.containerNode
+            const { physicalModel, rotation, scale } = semanticLayoutNode
+            const { physicalAsset } = physicalModel
+            const { modelType } = physicalAsset
+
+            return (
+                <a-entity // CONTAINER NODE, CURRENTLY BLANK IF NOT CONTAINER SHIP
+                    key={i}
+                    id={id}
+                    position={`${position.x} ${position.y} ${-6}`}
+                >
+                    {checkpoints(points)}
+
+                    {modelType === "GEOMETRY" ? this._makePrimitiveEntity({ scale, modelType, name: physicalModel.name }) : this._make3dEntity({ scale, rotation, name: physicalAsset.name })}
+                </a-entity>
+            )
+        })
+
+        console.log("Nodes: ", nodes)
+        return nodes
+    }
+
+    _renderShipContainer = (scene, points) => { // Need to abstract this out asap
+        const { containerNode, semanticLayoutNodes, id } = scene
+        const { showInfoModal } = this.props
+        const { position } = containerNode
+
+        const formattedData = semanticLayoutNodes.map((semanticLayoutNode, i) => {
+            const { physicalModel, position, rotation, scale } = semanticLayoutNode
+            const { physicalAsset } = physicalModel
+            const { name } = physicalAsset
+
+            return {
+                name,
+                scale,
+                position,
+                rotation
+            }
+        })
+
+        return (
+            <a-entity // CONTAINER NODE, CURRENTLY BLANK IF NOT CONTAINER SHIP
+                id={id}
+                position={`${position.x} ${position.y + 2} ${-6}`}
+            >
+                {checkpoints(points, "child")}
+                {makeCargoShips({ options: this.state.ships, showInfoModal, childData: formattedData })}
+            </a-entity>
+        )
     }
 
     _make3dEntity = (props) => {
@@ -170,59 +228,6 @@ class SceneViewer extends Component {
 
     // TODO: Broken maybe?:
 
-    _renderScene = (scene, points) => {
-        const { semanticLayoutNodes, children, parent, id } = scene
-
-        console.log("Render Scene data: ", scene)
-
-        const nodes = semanticLayoutNodes.map((semanticLayoutNode, i) => {
-            console.log("semanticLayoutNode: ", semanticLayoutNode)
-            const { position } = scene.containerNode
-            const { physicalModel, rotation, scale } = semanticLayoutNode
-            const { physicalAsset } = physicalModel
-            const { modelType } = physicalAsset
-
-            return (
-                <a-entity // CONTAINER NODE, CURRENTLY BLANK IF NOT CONTAINER SHIP
-                    key={i}
-                    id={id}
-                    position={`${position.x} ${position.y} ${-6}`}
-                >
-                    {checkpoints(points)}
-
-                    {modelType === "GEOMETRY" ? this._makePrimitiveEntity({ scale, modelType, name: physicalModel.name }) : this._make3dEntity({ scale, rotation, name: physicalAsset.name })}
-                </a-entity>
-            )
-        })
-
-        console.log("Nodes: ", nodes)
-        return nodes
-    }
-
-    _renderShipContainer = (scene, points) => { // Need to abstract this out asap
-        const { containerNode, semanticLayoutNodes, id } = scene
-        const { showInfoModal } = this.props
-
-        const formattedData = semanticLayoutNodes.map((semanticLayoutNode, i) => {
-            const { physicalModel, position, rotation, scale } = semanticLayoutNode
-            const { physicalAsset } = physicalModel
-            const { name } = physicalAsset
-
-            return {
-                name,
-                scale,
-                position,
-                rotation
-            }
-        })
-
-        return (
-            <a-entity id={id}>
-                {checkpoints(points, "child")}
-                {makeCargoShips({ options: this.state.ships, showInfoModal, childData: formattedData })}
-            </a-entity>
-        )
-    }
 
     render() {
 
