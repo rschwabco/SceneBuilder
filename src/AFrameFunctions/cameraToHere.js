@@ -3,7 +3,7 @@ import * as aframe from "aframe";
 export const cameraToHere = (callback, timeout) => {
     aframe.registerComponent("camera-to-here", {
         schema: {
-            cameraTo: { default: "0 0 -15", type: "string" },
+            cameraTo: { default: "0 0 5", type: "string" },
             lookAt: { default: "#lookAtMe", type: "string" }
         },
         init: function () {
