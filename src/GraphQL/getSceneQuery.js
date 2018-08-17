@@ -40,6 +40,7 @@ export const getSceneQuery = (sceneId = "cjkn3ca5kgm8a0b77fr3a28q5") => {
               physicalAsset {
                 modelType
                 name
+                objPath
               }
             }
             position {
@@ -67,6 +68,9 @@ export const getRootSceneQuery = (sceneName = "CargoShip-aggregation") => {
     query {
         scenes(where: {name_contains: "${sceneName}"}) {
           id
+          pq {
+              text
+          }
           containerNode{
             position {
               x

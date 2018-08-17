@@ -119,9 +119,9 @@ class SceneViewer extends Component {
                         } else {
                             console.log("Query data: ", data)
                             return (
-                                <a-entity>
+                                <a-entity position="0 3 -4">
 
-                                    {this._renderScene(data.scene, [...data.scene.children, data.scene.parent], data.scene.pq.text)}
+                                    {this._renderScene(data.scene, [...data.scene.children, data.scene.parent])}
                                 </a-entity>
                             )
                         }
@@ -168,7 +168,7 @@ class SceneViewer extends Component {
         )
     }
 
-    _renderScene = (scene, points, text) => {
+    _renderScene = (scene, points) => {
         const { semanticLayoutNodes, children, parent, id } = scene
 
         console.log("Render Scene data: ", scene)
@@ -186,18 +186,7 @@ class SceneViewer extends Component {
                     position={`${position.x} ${position.y} ${-6}`}
                 >
                     {checkpoints(points)}
-                    {text.length > 2 &&
-                        <a-box
-                            width="3"
-                            height="2"
-                            wireframe={true}
-                            position={`-2 3 0`}
-                        >
-                            <a-text
-                                position="-.5 0 0 "
-                                value={`${text}`}
-                            ></a-text>
-                        </a-box>}
+
                     {modelType === "GEOMETRY" ? this._makePrimitiveEntity({ scale, modelType, name: physicalModel.name }) : this._make3dEntity({ scale, rotation, name: physicalAsset.name })}
                 </a-entity>
             )
