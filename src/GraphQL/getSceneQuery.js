@@ -4,6 +4,9 @@ export const getSceneQuery = (sceneId = "cjkn3ca5kgm8a0b77fr3a28q5") => {
     return gql`query {
         scene (where:{id: "${sceneId}"} ) {
           id
+          pq {
+              text
+          }
           children {
             id
             containerNode {

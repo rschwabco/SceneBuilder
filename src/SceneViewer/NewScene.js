@@ -112,6 +112,7 @@ class SceneViewer extends Component {
                         if (data.scene.id === "cjkn3ca5kgm8a0b77fr3a28q5") { // If ship composite node
                             return (
                                 <a-entity>
+                                    <a-text value={`${data.scene.pq.text}`}></a-text>
                                     {this._renderShipContainer(data.scene, data.scene.children)}
                                 </a-entity>
                             )
@@ -119,7 +120,8 @@ class SceneViewer extends Component {
                             console.log("Query data: ", data)
                             return (
                                 <a-entity>
-                                    {this._renderScene(data.scene, [...data.scene.children, data.scene.parent])}
+
+                                    {this._renderScene(data.scene, [...data.scene.children, data.scene.parent], data.scene.pq.text)}
                                 </a-entity>
                             )
                         }
@@ -166,7 +168,7 @@ class SceneViewer extends Component {
         )
     }
 
-    _renderScene = (scene, points) => {
+    _renderScene = (scene, points, text) => {
         const { semanticLayoutNodes, children, parent, id } = scene
 
         console.log("Render Scene data: ", scene)
@@ -184,6 +186,18 @@ class SceneViewer extends Component {
                     position={`${position.x} ${position.y} ${-6}`}
                 >
                     {checkpoints(points)}
+                    {text.length > 2 &&
+                        <a-box
+                            width="3"
+                            height="2"
+                            wireframe={true}
+                            position={`-2 3 0`}
+                        >
+                            <a-text
+                                position="-.5 0 0 "
+                                value={`${text}`}
+                            ></a-text>
+                        </a-box>}
                     {modelType === "GEOMETRY" ? this._makePrimitiveEntity({ scale, modelType, name: physicalModel.name }) : this._make3dEntity({ scale, rotation, name: physicalAsset.name })}
                 </a-entity>
             )
