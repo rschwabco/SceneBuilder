@@ -35,14 +35,14 @@ const registerAllAssets = (assets) => {
 
         for (let gqlAsset of assets) {
             if (gqlAsset.objPath) {
-                console.log("Obj with objPath: ", gqlAsset)
+                // console.log("Obj with objPath: ", gqlAsset)
                 newAssets.push(makeObjAsset(gqlAsset))
             }
             if (gqlAsset.mtlPath) {
                 newAssets.push(makeMtlAsset(gqlAsset))
             }
         }
-        console.log("new assets: ", newAssets)
+        // console.log("new assets: ", newAssets)
         return newAssets
     }
     return (<a-assets>
