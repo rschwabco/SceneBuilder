@@ -1,3 +1,3 @@
 export { makeCargoContainers } from "./cargoContainer"
 export { makeCargoShips } from "./cargoShip"
-export { checkpoints } from "./checkpoints"
+export { makeCheckpoints } from "./checkpoints"
