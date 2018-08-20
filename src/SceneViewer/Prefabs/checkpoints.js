@@ -1,9 +1,9 @@
 import React from "react"
 
-export const checkpoints = (props, node) => {
+export const makeCheckpoints = (props, node) => {
     console.log(`Checkpoint props`, props)
 
-    const makeCheckpoints = () => props.map((point, i) => {
+    const constructCheckpoints = () => props.map((point, i) => {
         const { id, containerNode } = point
         const { position } = containerNode
         const { x, y, z } = position
@@ -24,7 +24,7 @@ export const checkpoints = (props, node) => {
     })
     return (
         <a-entity>
-            {makeCheckpoints()}
+            {constructCheckpoints()}
         </a-entity>
     )
 }

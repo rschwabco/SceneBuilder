@@ -11,7 +11,6 @@ import {
     introspectSchema
 } from "graphql-tools";
 
-import SceneBuilder from "./SceneViewer/Builder";
 import Viewer from "./SceneViewer/Viewer";
 
 
@@ -21,8 +20,6 @@ import { colors } from "./styles/styles";
 
 const SceneBuilderEndpoint =
     "https://us1.prisma.sh/roie-schwaber-cohen-c0f7d8/scenebuilder/dev";
-const StarFleetEndpoint =
-    "https://api.graph.cool/simple/v1/cjjyyt1wg0hqt0118y59fp8rt/graphql";
 
 const sceneBuilderClient = new ApolloClient({
     link: new HttpLink({
@@ -33,14 +30,7 @@ const sceneBuilderClient = new ApolloClient({
     // cache: new Cache().restore(window.__APOLLO_STATE__ || {})
 });
 
-const starfleetClient = new ApolloClient({
-    link: new HttpLink({
-        uri: StarFleetEndpoint
-    }),
-    cache: new InMemoryCache()
-    // for SSR, use:
-    // cache: new Cache().restore(window.__APOLLO_STATE__ || {})
-});
+
 
 const App = () => (
     <ApolloProvider client={sceneBuilderClient}>

@@ -12,7 +12,7 @@ import gql from "graphql-tag";
 import { getAssetsQuery, getSceneQuery } from "../../GraphQL"
 import { Query } from "react-apollo";
 import { sample } from "underscore"
-import { makeCargoShips, checkpoints } from "../Prefabs"
+import { makeCargoShips, makeCheckpoints } from "../Prefabs"
 import {
     View,
     ActivityIndicator,

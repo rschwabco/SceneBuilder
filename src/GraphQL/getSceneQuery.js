@@ -38,6 +38,7 @@ export const getSceneQuery = (sceneId = "cjkn3ca5kgm8a0b77fr3a28q5") => {
             physicalModel {
                 name
               physicalAsset {
+                  geometry
                 modelType
                 name
                 objPath

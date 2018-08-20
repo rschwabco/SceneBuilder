@@ -5,13 +5,10 @@ import React, { Component } from "react";
 import "aframe-outline"
 import "aframe-look-at-component"
 import "aframe-environment-component"
-import SceneViewer from "./Scene"
-import NewSceneViewer from "./NewScene"
-import { TankerShipScene } from "./Scenes"
+import Scene from "./Scene"
 import Camera from "./Camera"
 import * as aframe from "aframe";
 import { Query } from "react-apollo";
-import assets from "../assets/registerAssets"
 import registerAllAssets from "../assets/registerAllAssets"
 import { getAssetsQuery, getAllAssetsQuery, getRootSceneQuery } from "../GraphQL/index"
 import registerClickDrag from "aframe-click-drag-component";
@@ -196,7 +193,7 @@ export default class Viewer extends Component {
                                                         value={`${pq.text}`}
                                                     ></a-text>
                                                 </a-box>
-                                                <NewSceneViewer
+                                                <Scene
                                                     showInfoModal={this.state.showInfoModal}
                                                     queries={this._flattenChildrenIds(data.scenes[0].children)}
                                                 // queries={data.scenes[0].children}
