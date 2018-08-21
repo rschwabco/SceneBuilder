@@ -7,6 +7,7 @@
     "main": "index.js",
     "dependencies": {
         "@blueprintjs/core": "^3.2.0",
+        "a-framedc": "^1.0.8",
         "aframe": "0.7.1",
         "aframe-click-drag-component": "latest",
         "aframe-environment-component": "^1.1.0",
@@ -29,6 +30,7 @@
         "graphql": "0.13.0",
         "graphql-tag": "2.8.0",
         "graphql-tools": "3.0.5",
+        "jquery": "^3.3.1",
         "numeral": "2.0.6",
         "react": "16.2.0",
         "react-apollo": "2.1.0-rc.1",

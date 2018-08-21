@@ -74,7 +74,6 @@ class Scene extends Component {
                 }
             ],
         }
-        console.log("Scene state: ", this.state)
     }
 
 
@@ -88,7 +87,7 @@ class Scene extends Component {
     }
 
     _getQueryData = (queries) => {
-        console.log("Get data queries: ", queries)
+        // console.log("Get data queries: ", queries)
         return queries.map((query, i) => {
             return (
 
@@ -145,7 +144,7 @@ class Scene extends Component {
         const { semanticLayoutNodes, containerNode, children, parent } = scene
         const { id } = containerNode
 
-        console.log("Render Scene data: ", scene)
+        // console.log("Render Scene data: ", scene)
 
         const nodes = semanticLayoutNodes.map((semanticLayoutNode, i) => {
             console.log("semanticLayoutNode: ", semanticLayoutNode)
@@ -162,7 +161,7 @@ class Scene extends Component {
             }
         })
 
-        console.log("Nodes: ", nodes)
+        // console.log("Nodes: ", nodes)
         return (
             <a-entity
                 id={id}
@@ -178,7 +177,7 @@ class Scene extends Component {
         const { semanticLayoutNode, scene } = props
         const { physicalModel, rotation, position, scale, name } = semanticLayoutNode
         const { physicalAsset } = physicalModel
-        console.log("Make 3d entity name: ", name)
+        // console.log("Make 3d entity name: ", name)
         return (
             <a-entity>
                 <a-entity
@@ -199,7 +198,7 @@ class Scene extends Component {
     }
 
     _makePrimitiveEntity = (props) => {
-        console.log("Make primitive entity props: ", props)
+        // console.log("Make primitive entity props: ", props)
         const { scale, name = "box" } = props
 
         return (
@@ -222,7 +221,7 @@ class Scene extends Component {
     render() {
 
         // Container node references
-        console.log("New Scene props: ", this.props)
+        // console.log("New Scene props: ", this.props)
 
         return (
             <a-entity>

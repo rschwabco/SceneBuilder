@@ -5,6 +5,7 @@ import React, { Component } from "react";
 import "aframe-outline"
 import "aframe-look-at-component"
 import "aframe-environment-component"
+
 import Scene from "./Scene"
 import Camera from "./Camera"
 import * as aframe from "aframe";
@@ -30,8 +31,10 @@ import {
 } from "../AFrameFunctions"
 
 import { NavBar } from "../Components"
+import AframeChart from "../Components/AframeChart"
 
 import { HtmlShader } from "../DataOverlay/HtmlShader"
+var aframedc = require('a-framedc');
 
 const defaultXYZ = {
     x: 0,
@@ -193,6 +196,7 @@ export default class Viewer extends Component {
                                                         value={`${pq.text}`}
                                                     ></a-text>
                                                 </a-box>
+                                                <AframeChart />
                                                 <Scene
                                                     showInfoModal={this.state.showInfoModal}
                                                     queries={this._flattenChildrenIds(data.scenes[0].children)}
