@@ -74,7 +74,6 @@ class Scene extends Component {
                 }
             ],
         }
-        console.log("Scene state: ", this.state)
     }
 
 
@@ -88,7 +87,7 @@ class Scene extends Component {
     }
 
     _getQueryData = (queries) => {
-        console.log("Get data queries: ", queries)
+        // console.log("Get data queries: ", queries)
         return queries.map((query, i) => {
             return (
 
@@ -136,7 +135,6 @@ class Scene extends Component {
                 id={id}
                 position={`${containerNode.position.x} ${containerNode.position.y} ${0}`}
             >
-                {makeCheckpoints(checkPoints, "child")}
                 {makeCargoShips({ options: this.state.ships, showInfoModal, childData: formattedData })}
             </a-entity>
         )
@@ -146,7 +144,7 @@ class Scene extends Component {
         const { semanticLayoutNodes, containerNode, children, parent } = scene
         const { id } = containerNode
 
-        console.log("Render Scene data: ", scene)
+        // console.log("Render Scene data: ", scene)
 
         const nodes = semanticLayoutNodes.map((semanticLayoutNode, i) => {
             console.log("semanticLayoutNode: ", semanticLayoutNode)
@@ -155,7 +153,7 @@ class Scene extends Component {
             const { modelType, geometry } = physicalAsset
 
             if (modelType === "OBJ") {
-                return this._make3dEntity({ semanticLayoutNode })
+                return this._make3dEntity({ semanticLayoutNode, scene })
             } else if (modelType === "GEOMETRY" && geometry === "ship") {
                 return this._renderShipContainer(scene, checkpoints)
             } else {
@@ -163,9 +161,10 @@ class Scene extends Component {
             }
         })
 
-        console.log("Nodes: ", nodes)
+        // console.log("Nodes: ", nodes)
         return (
             <a-entity
+                id={id}
                 position={`${containerNode.position.x} ${containerNode.position.y} ${-6}`}
             >
                 {makeCheckpoints(checkpoints)}
@@ -175,15 +174,15 @@ class Scene extends Component {
     }
 
     _make3dEntity = (props) => {
-        const { semanticLayoutNode } = props
-        const { physicalModel, rotation, position, scale, id, name } = semanticLayoutNode
+        const { semanticLayoutNode, scene } = props
+        const { physicalModel, rotation, position, scale, name } = semanticLayoutNode
         const { physicalAsset } = physicalModel
-        console.log("Make 3d entity name: ", name)
+        // console.log("Make 3d entity name: ", name)
         return (
             <a-entity>
                 <a-entity
                     scale={`${1} ${1} ${1}`}
-                    id={id}
+                    id={scene.id}
                     rotation={`${rotation.x} ${rotation.y} ${rotation.z}`}
                     position={`${position.x} ${position.y} ${position.z}`}
                     obj-model={`obj: #${physicalAsset.name}-obj;`}
@@ -199,7 +198,7 @@ class Scene extends Component {
     }
 
     _makePrimitiveEntity = (props) => {
-        console.log("Make primitive entity props: ", props)
+        // console.log("Make primitive entity props: ", props)
         const { scale, name = "box" } = props
 
         return (
@@ -222,7 +221,7 @@ class Scene extends Component {
     render() {
 
         // Container node references
-        console.log("New Scene props: ", this.props)
+        // console.log("New Scene props: ", this.props)
 
         return (
             <a-entity>
