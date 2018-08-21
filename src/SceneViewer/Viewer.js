@@ -49,7 +49,7 @@ export default class Viewer extends Component {
         this.state = {
             inputValue: "",
             cameraAnimationDuration: 1500,
-            currentScene: "VesselHealthSpareParts",
+            currentScene: "wednesday-damo-slide-1-container",
             scenePosition: { ...defaultXYZ, y: -1 },
             rotateCamera: false,
             rotationTo: "0 0 0",

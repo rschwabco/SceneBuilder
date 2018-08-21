@@ -1,3 +1,8 @@
+
+
+
+
+
 import React, { Component } from 'react'
 import * as aframe from 'aframe'
 import { getSceneQuery } from '../GraphQL'
@@ -10,6 +15,50 @@ import {
 import { check } from 'graphql-anywhere';
 import BoxContainer from "./BoxContainer"
 
+// const props = {
+//     showInfoModal,
+//     containerNode: {
+//         id: "", // ID of top level a-entity
+//         name: "", // Use to determine container component. Needs more thoughts
+//         position: { // Position of top level a-entity
+//             x: 0,
+//             y: 0,
+//             z: 0
+//         } //ContainerNode is NOT a 3d model
+//     },
+//     semanticLayoutNodes: [ // Use this to 3d models
+//         {
+//             physicalModel: {
+//                 physicalAsset: { name: "AssetName" } // Used to refer to assets registered on app load
+//             },
+//             position: {
+//                 x: 0,
+//                 y: 0,
+//                 z: 0
+//             },
+//             rotation: {
+//                 x: 0,
+//                 y: 0,
+//                 z: 0
+//             },
+//             scale: {
+//                 x: 0,
+//                 y: 0,
+//                 z: 0
+//             }
+//         }
+//     ],
+//     connectedTo: [ // Use this to make checkpoints
+//         {
+//             id: "",
+//             position: {
+//                 x: 0,
+//                 y: 0,
+//                 z: 0
+//             }
+//         }
+//     ]
+// }
 
 
 class Scene extends Component {
@@ -34,6 +83,15 @@ class Scene extends Component {
     }
 
 
+
+    _renderContainer = () => {
+
+    }
+
+    _renderCheckpoints = () => {
+
+    }
+
     _getQueryData = (queries) => {
         // console.log("Get data queries: ", queries)
         return queries.map((query, i) => {
@@ -52,6 +110,7 @@ class Scene extends Component {
                                 {this._renderScene(data.scene, [...data.scene.children, data.scene.parent])}
                             </a-entity>
                         )
+                        // }
 
                     }}
                 </Query>
@@ -103,28 +162,13 @@ class Scene extends Component {
             const { physicalAsset } = physicalModel
             const { modelType, geometry } = physicalAsset
 
-            const dims = 2
-
-            return (
-                <BoxContainer
-                    dims={dims}
-                    i={i}
-                    color="#03A9F4"
-                    position={`${semanticLayoutNode.position.x} ${semanticLayoutNode.position.x} ${semanticLayoutNode.position.x}`}
-                >
-                    {semanticLayoutNode.text && this._makeTextEntity({ semanticLayoutNode, scene, i, dims })}
-                    {semanticLayoutNode.chart && this._makeChartEntity({ semanticLayoutNode, scene, i, dims })}
-                    {semanticLayoutNode.physicalModel && semanticLayoutNode.physicalModel.physicalAsset && semanticLayoutNode.physicalModel.physicalAsset.modelType && semanticLayoutNode.physicalModel.physicalAsset.modelType === "OBJ" && this._make3dEntity({ semanticLayoutNode, scene, i, dims })}
-                </BoxContainer>
-            )
-
-            // if (modelType === "OBJ") {
-            //     return this._make3dEntity({ semanticLayoutNode, scene, i })
-            // } else if (modelType === "GEOMETRY" && geometry === "ship") {
-            //     return this._renderShipContainer(scene, checkpoints)
-            // } else {
-            //     return this._makePrimitiveEntity({ scale, modelType, name: physicalModel.name, i, scene, semanticLayoutNode })
-            // }
+            if (modelType === "OBJ") {
+                return this._make3dEntity({ semanticLayoutNode, scene, i })
+            } else if (modelType === "GEOMETRY" && geometry === "ship") {
+                return this._renderShipContainer(scene, checkpoints)
+            } else {
+                return this._makePrimitiveEntity({ scale, modelType, name: physicalModel.name, i, scene, semanticLayoutNode })
+            }
         })
 
         // console.log("Nodes: ", nodes)
@@ -140,53 +184,23 @@ class Scene extends Component {
         )
     }
 
-    _makeTextEntity = (props) => {
-        const { semanticLayoutNode, scene, i, dims } = props
-        const { physicalModel, rotation, position, scale, name, text = "TEXT TEXT TEXT" } = semanticLayoutNode
-        const { physicalAsset } = physicalModel
-
-        return (
-            <BoxContainer
-                color="red"
-                dims={dims}
-                position={`${dims + 1} ${0} ${0}`}
-            >
-                <a-text value={text} />
-            </BoxContainer>
-        )
-
-    }
-
-    _makeChartEntity = (props) => {
-        const { semanticLayoutNode, scene, i, dims } = props
-        const { physicalModel, rotation, position, scale, name, chart = "CHART" } = semanticLayoutNode
-        return (
-            <BoxContainer
-                color="yellow"
-                dims={dims}
-                position={`${(dims + 1) * 2} ${0} ${0}`}
-            >
-                <a-entity position={`${-dims / 2} ${-dims / 2} 0`} id="bars" barchart={`width: ${dims} ;height: ${dims} ;gridson:true;title: ${chart} ;src:#barsdata`}></a-entity>
-            </BoxContainer>
-        )
-    }
-
     _make3dEntity = (props) => {
-        const { semanticLayoutNode, scene, i, dims } = props
+        const { semanticLayoutNode, scene, i } = props
         const { physicalModel, rotation, position, scale, name } = semanticLayoutNode
         const { physicalAsset } = physicalModel
+        const dims = 6
         // console.log("Make 3d entity name: ", name)
-        console.log("Obj to render: ", props)
         return (
             <BoxContainer
-                color="orange"
                 dims={dims}
-                position={`${dims + 1} ${0} ${0}`}
+                i={i}
+                color="#03A9F4"
             >
                 <a-entity
-                    id="3DENTITY"
                     scale={`${1} ${1} ${1}`}
+                    id={scene.id}
                     position={`${0} ${-1.5} ${0}`}
+                    rotation={`${rotation.x} ${rotation.y} ${rotation.z}`}
 
                     obj-model={`obj: #${physicalAsset.name}-obj;`}
                 >
@@ -196,6 +210,20 @@ class Scene extends Component {
                         to="0 360 0"
                         repeat="indefinite"></a-animation>
                 </a-entity>
+                <BoxContainer
+                    color="red"
+                    dims={dims}
+                    position={`${dims + 1} ${0} ${0}`}
+                >
+                    <a-text value="TEXT HERE" />
+                </BoxContainer>
+                <BoxContainer
+                    color="yellow"
+                    dims={dims}
+                    position={`${(dims + 1) * 2} ${0} ${0}`}
+                >
+                    <a-entity position="-1.7 -2.5 0" id="bars" barchart="width:5;height:5;gridson:true;title:example barchart;src:#barsdata"></a-entity>
+                </BoxContainer>
             </BoxContainer>
         )
     }
@@ -209,18 +237,23 @@ class Scene extends Component {
         if (chart) { color = "yellow" }
         const dims = 6
         return (
-
-            <a-entity
-                id={scene.id}
-                geometry={`primitive: box;`}
-                material="color: orangered"
+            <BoxContainer
+                dims={dims}
+                i={i}
+                color={color}
             >
-                <a-animation attribute="rotation"
-                    dur="30000"
-                    fill="forwards"
-                    to="0 360 0"
-                    repeat="indefinite"></a-animation>
-            </a-entity>
+                <a-entity
+                    id={scene.id}
+                    geometry={`primitive: box;`}
+                    material="color: orangered"
+                >
+                    <a-animation attribute="rotation"
+                        dur="30000"
+                        fill="forwards"
+                        to="0 360 0"
+                        repeat="indefinite"></a-animation>
+                </a-entity>
+            </BoxContainer>
         )
     }
 
@@ -241,7 +274,4 @@ class Scene extends Component {
 }
 
 export default Scene
-
-
-
 

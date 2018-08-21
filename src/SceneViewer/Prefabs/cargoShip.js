@@ -18,7 +18,7 @@ export const makeCargoShips = (props) => {
                     // Fuel Tank
                     // click-to-navigate
                     key={i}
-                    position={`${position.x} ${position.y} ${position.z}`}
+                    position={`${0} ${0} ${0}`}
                     rotation={`${rotation.x} ${rotation.y} ${rotation.z}`}
                     scale={`${scale.x} ${scale.y} ${scale.z}`}
                     material="color: #4CAF50"
@@ -36,7 +36,7 @@ export const makeCargoShips = (props) => {
 
                     return (
                         <a-entity
-                            position={`${i * 3} 0 -6`}
+                            position={`${i * 3} 0 0`}
                             click-log-info
                         >
                             <a-sphere
