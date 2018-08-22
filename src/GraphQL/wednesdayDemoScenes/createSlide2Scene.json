@@ -1,5 +1,69 @@
 {
     "scene": {
-        "name": "wednesday-damo-slide-2"
+        "name": "wednesday-damo-slide-2",
+        "containerNode": {
+            "create": {
+                "name": "wednesday-damo-slide-2-containerNode",
+                "position": {
+                    "create": {
+                        "x": 20,
+                        "y": 0,
+                        "z": 0
+                    }
+                }
+            }
+        },
+        "parent": {
+            "connect": {
+                "id": "cjl48q3cpboq20b770qh21ccq"
+            }
+        },
+        "pq": {
+            "create": {
+                "text": "Thing and Chart"
+            }
+        },
+        "semanticLayoutNodes": {
+            "create": [
+                {
+                    "name": "Thing-WDS2",
+                    "position": {
+                        "create": {
+                            "x": 0,
+                            "y": 0,
+                            "z": 0
+                        }
+                    },
+                    "physicalModel": {
+                        "connect": {
+                            "id": "cjky8ddvj9ok80b29hca4qzbn"
+                        }
+                    }
+                },
+                {
+                    "name": "Chart-WDS2",
+                    "position": {
+                        "create": {
+                            "x": 6,
+                            "y": 6,
+                            "z": 0
+                        }
+                    },
+                    "scale": {
+                        "create": {
+                            "x": 2,
+                            "y": 2,
+                            "z": 2
+                        }
+                    },
+                    "physicalModel": {
+                        "connect": {
+                            "id": "cjl48tqyzbp060b77n9hb8w93"
+                        }
+                    },
+                    "chart": "A Chart!"
+                }
+            ]
+        }
     }
 }

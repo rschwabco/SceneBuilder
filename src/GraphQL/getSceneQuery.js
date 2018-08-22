@@ -89,6 +89,9 @@ export const getRootSceneQuery = (sceneName = "CargoShip-aggregation") => {
                 id
                 children {
                   id
+                  children {
+                    id
+                  }
                 }
               }
             }
