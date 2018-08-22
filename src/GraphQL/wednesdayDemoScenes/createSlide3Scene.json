@@ -1,0 +1,198 @@
+{
+    "scene": {
+        "name": "wednesday-damo-slide-3",
+        "containerNode": {
+            "create": {
+                "name": "wednesday-damo-slide-3-containerNode",
+                "position": {
+                    "create": {
+                        "x": 40,
+                        "y": 0,
+                        "z": 0
+                    }
+                }
+            }
+        },
+        "parent": {
+            "connect": {
+                "id": "cjl4f7lzwc5yz0b77ibeg6kuz"
+            }
+        },
+        "pq": {
+            "create": {
+                "text": "Many Things and Charts"
+            }
+        },
+        "semanticLayoutNodes": {
+            "create": [
+                {
+                    "name": "Thing-WDS3-1",
+                    "position": {
+                        "create": {
+                            "x": 0,
+                            "y": 0,
+                            "z": 0
+                        }
+                    },
+                    "physicalModel": {
+                        "connect": {
+                            "id": "cjky8ddvj9ok80b29hca4qzbn"
+                        }
+                    }
+                },
+                {
+                    "name": "Thing-WDS3-2",
+                    "position": {
+                        "create": {
+                            "x": 0,
+                            "y": 3,
+                            "z": 0
+                        }
+                    },
+                    "physicalModel": {
+                        "connect": {
+                            "id": "cjky8ddvj9ok80b29hca4qzbn"
+                        }
+                    }
+                },
+                {
+                    "name": "Thing-WDS3-3",
+                    "position": {
+                        "create": {
+                            "x": 0,
+                            "y": 6,
+                            "z": 0
+                        }
+                    },
+                    "physicalModel": {
+                        "connect": {
+                            "id": "cjky8ddvj9ok80b29hca4qzbn"
+                        }
+                    }
+                },
+                {
+                    "name": "Thing-WDS3-4",
+                    "position": {
+                        "create": {
+                            "x": 3,
+                            "y": 0,
+                            "z": 0
+                        }
+                    },
+                    "physicalModel": {
+                        "connect": {
+                            "id": "cjky8ddvj9ok80b29hca4qzbn"
+                        }
+                    }
+                },
+                {
+                    "name": "Thing-WDS3-5",
+                    "position": {
+                        "create": {
+                            "x": 3,
+                            "y": 3,
+                            "z": 0
+                        }
+                    },
+                    "physicalModel": {
+                        "connect": {
+                            "id": "cjky8ddvj9ok80b29hca4qzbn"
+                        }
+                    }
+                },
+                {
+                    "name": "Thing-WDS3-6",
+                    "position": {
+                        "create": {
+                            "x": 3,
+                            "y": 6,
+                            "z": 0
+                        }
+                    },
+                    "physicalModel": {
+                        "connect": {
+                            "id": "cjky8ddvj9ok80b29hca4qzbn"
+                        }
+                    }
+                },
+                {
+                    "name": "Thing-WDS3-7",
+                    "position": {
+                        "create": {
+                            "x": 6,
+                            "y": 0,
+                            "z": 0
+                        }
+                    },
+                    "physicalModel": {
+                        "connect": {
+                            "id": "cjky8ddvj9ok80b29hca4qzbn"
+                        }
+                    }
+                },
+                {
+                    "name": "Thing-WDS3-8",
+                    "position": {
+                        "create": {
+                            "x": 6,
+                            "y": 3,
+                            "z": 0
+                        }
+                    },
+                    "physicalModel": {
+                        "connect": {
+                            "id": "cjky8ddvj9ok80b29hca4qzbn"
+                        }
+                    }
+                },
+                {
+                    "name": "Thing-WDS3-9",
+                    "position": {
+                        "create": {
+                            "x": 6,
+                            "y": 6,
+                            "z": 0
+                        }
+                    },
+                    "physicalModel": {
+                        "connect": {
+                            "id": "cjky8ddvj9ok80b29hca4qzbn"
+                        }
+                    }
+                },
+                {
+                    "name": "Chart-WDS3-1",
+                    "position": {
+                        "create": {
+                            "x": 9,
+                            "y": 2,
+                            "z": 0
+                        }
+                    },
+                    "physicalModel": {
+                        "connect": {
+                            "id": "cjl48tqyzbp060b77n9hb8w93"
+                        }
+                    },
+                    "chart": "Chart 1"
+                },
+                {
+                    "name": "Chart-WDS3-2",
+                    "position": {
+                        "create": {
+                            "x": 9,
+                            "y": 5,
+                            "z": 0
+                        }
+                    },
+                    "physicalModel": {
+                        "connect": {
+                            "id": "cjl48tqyzbp060b77n9hb8w93"
+                        }
+                    },
+                    "chart": "Chart 2"
+                }
+            ]
+        }
+    }
+}

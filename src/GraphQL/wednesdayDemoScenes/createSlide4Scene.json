@@ -1,0 +1,186 @@
+{
+    "scene": {
+        "name": "wednesday-damo-slide-4",
+        "containerNode": {
+            "create": {
+                "name": "wednesday-damo-slide-4-containerNode",
+                "position": {
+                    "create": {
+                        "x": 60,
+                        "y": 0,
+                        "z": 0
+                    }
+                }
+            }
+        },
+        "parent": {
+            "connect": {
+                "id": "cjl4g5z64c87u0b77ml9yr02y"
+            }
+        },
+        "pq": {
+            "create": {
+                "text": "List with Text"
+            }
+        },
+        "semanticLayoutNodes": {
+            "create": [
+                {
+                    "name": "Thing-WDS4-1",
+                    "position": {
+                        "create": {
+                            "x": 0,
+                            "y": 0,
+                            "z": 0
+                        }
+                    },
+                    "physicalModel": {
+                        "connect": {
+                            "id": "cjky8ddvj9ok80b29hca4qzbn"
+                        }
+                    }
+                },
+                {
+                    "name": "Thing-WDS4-2",
+                    "position": {
+                        "create": {
+                            "x": 0,
+                            "y": 3,
+                            "z": 0
+                        }
+                    },
+                    "physicalModel": {
+                        "connect": {
+                            "id": "cjky8ddvj9ok80b29hca4qzbn"
+                        }
+                    }
+                },
+                {
+                    "name": "Thing-WDS4-3",
+                    "position": {
+                        "create": {
+                            "x": 0,
+                            "y": 6,
+                            "z": 0
+                        }
+                    },
+                    "physicalModel": {
+                        "connect": {
+                            "id": "cjky8ddvj9ok80b29hca4qzbn"
+                        }
+                    }
+                },
+                {
+                    "name": "Thing-WDS4-4",
+                    "position": {
+                        "create": {
+                            "x": 0,
+                            "y": 9,
+                            "z": 0
+                        }
+                    },
+                    "physicalModel": {
+                        "connect": {
+                            "id": "cjky8ddvj9ok80b29hca4qzbn"
+                        }
+                    }
+                },
+                {
+                    "name": "Thing-WDS4-5",
+                    "position": {
+                        "create": {
+                            "x": 0,
+                            "y": 12,
+                            "z": 0
+                        }
+                    },
+                    "physicalModel": {
+                        "connect": {
+                            "id": "cjky8ddvj9ok80b29hca4qzbn"
+                        }
+                    }
+                },
+                {
+                    "name": "Text-WDS4-1",
+                    "position": {
+                        "create": {
+                            "x": 3.5,
+                            "y": 0,
+                            "z": 0
+                        }
+                    },
+                    "physicalModel": {
+                        "connect": {
+                            "id": "cjl48tl4hbozv0b778od0ki4o"
+                        }
+                    },
+                    "text": "Text 1"
+                },
+                {
+                    "name": "Text-WDS4-2",
+                    "position": {
+                        "create": {
+                            "x": 3.5,
+                            "y": 3,
+                            "z": 0
+                        }
+                    },
+                    "physicalModel": {
+                        "connect": {
+                            "id": "cjl48tl4hbozv0b778od0ki4o"
+                        }
+                    },
+                    "text": "Text 2"
+                },
+                {
+                    "name": "Text-WDS4-3",
+                    "position": {
+                        "create": {
+                            "x": 3.5,
+                            "y": 6,
+                            "z": 0
+                        }
+                    },
+                    "physicalModel": {
+                        "connect": {
+                            "id": "cjl48tl4hbozv0b778od0ki4o"
+                        }
+                    },
+                    "text": "Text 3"
+                },
+                {
+                    "name": "Text-WDS4-4",
+                    "position": {
+                        "create": {
+                            "x": 3.5,
+                            "y": 9,
+                            "z": 0
+                        }
+                    },
+                    "physicalModel": {
+                        "connect": {
+                            "id": "cjl48tl4hbozv0b778od0ki4o"
+                        }
+                    },
+                    "text": "Text 4"
+                },
+                {
+                    "name": "Text-WDS4-5",
+                    "position": {
+                        "create": {
+                            "x": 3.5,
+                            "y": 12,
+                            "z": 0
+                        }
+                    },
+                    "physicalModel": {
+                        "connect": {
+                            "id": "cjl48tl4hbozv0b778od0ki4o"
+                        }
+                    },
+                    "text": "Text 5"
+                }
+            ]
+        }
+    }
+}

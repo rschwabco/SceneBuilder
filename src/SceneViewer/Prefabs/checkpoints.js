@@ -13,7 +13,7 @@ export const makeCheckpoints = (props, node) => {
                 className="checkpoint-box"
                 camera-to-here={`cameraTo: ${0 + x} ${4 + y} ${5 + z}; lookAt: #${id}`}
                 color={`orangered`}
-                position={`${3} ${(i * 3) + 1.5} -5`}
+                position={`${6} ${(i * 3) + 1.5} 3`}
                 height={`${dim}`}
                 width={`${dim}`}
                 depth={`${dim}`}
