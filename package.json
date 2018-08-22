@@ -22,7 +22,7 @@
         "aframe-react": "4.4.0",
         "aframe-template-component": "3.2.1",
         "aframe-text-component": "0.4.2",
-        "aframe-text-geometry-component": "0.5.1",
+        "aframe-text-geometry-component": "^0.5.1",
         "apollo-cache-inmemory": "1.1.11",
         "apollo-client": "2.2.7",
         "apollo-link-http": "1.5.3",

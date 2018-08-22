@@ -51,7 +51,7 @@ const registerAllAssets = (assets) => {
             id="sky"
             src="https://uploads.codesandbox.io/uploads/user/cf641f2b-3840-4f83-bf5e-dee7737a7432/EB1V-holodeck.png"
         />
-
+        <a-asset-item id="optimerBoldFont" src="https://rawgit.com/mrdoob/three.js/dev/examples/fonts/optimer_bold.typeface.json"></a-asset-item>
         <a-asset-item id="barsdata" src="https://raw.githubusercontent.com/fran-aguilar/a-framedc/master/examples/data/scm-commits-filtered.json"></a-asset-item>
         <a-asset-item
             id="dawningFont"

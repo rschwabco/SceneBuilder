@@ -5,6 +5,7 @@ import React, { Component } from "react";
 import "aframe-outline"
 import "aframe-look-at-component"
 import "aframe-environment-component"
+import 'aframe-text-geometry-component'
 
 import Scene from "./Scene"
 import Camera from "./Camera"

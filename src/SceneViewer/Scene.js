@@ -147,7 +147,7 @@ class Scene extends Component {
                 width={2 * dims}
                 position={`${semanticLayoutNode.position.x} ${semanticLayoutNode.position.y} ${semanticLayoutNode.position.z}`}
             >
-                <a-text value={text} />
+                <a-entity position={`${- 1.7} ${0} ${0}`} text-geometry={`value: ${text};  font: #optimerBoldFont; color: white;`}></a-entity>
             </BoxContainer>
         )
 
