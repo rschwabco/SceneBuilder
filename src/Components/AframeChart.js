@@ -87,7 +87,7 @@ class AframeChart extends Component {
                         // console.log("......... ............ .........")
                         return (
                             <a-entity>
-                                <a-entity position="0 0 -20" id="bars" barchart="width:14;gridson:true;title:example barchart;src:#barsdata"></a-entity>
+                                {/* <a-entity position="0 0 -20" id="bars" barchart="width:14;gridson:true;title:example barchart;src:#barsdata"></a-entity> */}
                             </a-entity>
                         )
                     }}

@@ -1,0 +1,51 @@
+{
+    "scene": {
+        "name": "wednesday-damo-slide-1",
+        "containerNode": {
+            "connect": {
+                "id": "cjkssfz4bw32g0b77a1oz5n2x"
+            }
+        },
+        "semanticLayoutNodes": {
+            "create": [
+                {
+                    "name": "Thing-WDS1",
+                    "position": {
+                        "create": {
+                            "x": 2,
+                            "y": 8,
+                            "z": 0
+                        }
+                    },
+                    "physicalModel": {
+                        "connect": {
+                            "id": "cjky8ddvj9ok80b29hca4qzbn"
+                        }
+                    }
+                },
+                {
+                    "name": "Chart-WDS1",
+                    "position": {
+                        "create": {
+                            "x": 6,
+                            "y": 4,
+                            "z": 0
+                        }
+                    },
+                    "chart": "A Chart!"
+                },
+                {
+                    "name": "Text-WDS1",
+                    "position": {
+                        "create": {
+                            "x": 2,
+                            "y": 2,
+                            "z": 0
+                        }
+                    },
+                    "text": "SOME TEXT"
+                }
+            ]
+        }
+    }
+}
