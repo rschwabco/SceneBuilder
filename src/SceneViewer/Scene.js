@@ -167,13 +167,20 @@ class Scene extends Component {
     _makeChartEntity = (props) => {
         const { semanticLayoutNode, scene, i, dims } = props
         const { physicalModel, rotation, position, scale, name, chart = "CHART" } = semanticLayoutNode
+
+        const chartDims = dims * 0.8
         return (
             <BoxContainer
                 color="yellow"
-                dims={dims}
+                dims={chartDims}
                 position={`${semanticLayoutNode.position.x} ${semanticLayoutNode.position.y} ${semanticLayoutNode.position.z}`}
             >
-                <a-entity scale=".8 .8 .8" position={`${-dims / 2} ${-dims / 2} 0`} id="bars" barchart={`width: ${dims} ;height: ${dims} ;gridson:true;title: ${chart} ;src:#barsdata`}></a-entity>
+                <a-entity
+
+                    position={`${-chartDims / 2} ${-chartDims / 2} 0`}
+                    id="bars"
+                    barchart={`width: ${chartDims} ;height: ${chartDims} ;gridson:true;title: ${chart} ;src:#barsdata`}
+                ></a-entity>
             </BoxContainer>
         )
     }
