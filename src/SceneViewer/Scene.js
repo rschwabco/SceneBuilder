@@ -106,16 +106,11 @@ class Scene extends Component {
             const dims = 2
 
             return (
-                <BoxContainer
-                    dims={dims}
-                    i={i}
-                    color="#03A9F4"
-                    position={`${semanticLayoutNode.position.x} ${semanticLayoutNode.position.x} ${semanticLayoutNode.position.x}`}
-                >
+                <a-entity>
                     {semanticLayoutNode.text && this._makeTextEntity({ semanticLayoutNode, scene, i, dims })}
                     {semanticLayoutNode.chart && this._makeChartEntity({ semanticLayoutNode, scene, i, dims })}
                     {semanticLayoutNode.physicalModel && semanticLayoutNode.physicalModel.physicalAsset && semanticLayoutNode.physicalModel.physicalAsset.modelType && semanticLayoutNode.physicalModel.physicalAsset.modelType === "OBJ" && this._make3dEntity({ semanticLayoutNode, scene, i, dims })}
-                </BoxContainer>
+                </a-entity>
             )
 
             // if (modelType === "OBJ") {
@@ -149,7 +144,8 @@ class Scene extends Component {
             <BoxContainer
                 color="red"
                 dims={dims}
-                position={`${dims + 1} ${0} ${0}`}
+                width={2 * dims}
+                position={`${semanticLayoutNode.position.x} ${semanticLayoutNode.position.y} ${semanticLayoutNode.position.z}`}
             >
                 <a-text value={text} />
             </BoxContainer>
@@ -164,7 +160,7 @@ class Scene extends Component {
             <BoxContainer
                 color="yellow"
                 dims={dims}
-                position={`${(dims + 1) * 2} ${0} ${0}`}
+                position={`${semanticLayoutNode.position.x} ${semanticLayoutNode.position.y} ${semanticLayoutNode.position.z}`}
             >
                 <a-entity position={`${-dims / 2} ${-dims / 2} 0`} id="bars" barchart={`width: ${dims} ;height: ${dims} ;gridson:true;title: ${chart} ;src:#barsdata`}></a-entity>
             </BoxContainer>
@@ -181,12 +177,12 @@ class Scene extends Component {
             <BoxContainer
                 color="orange"
                 dims={dims}
-                position={`${dims + 1} ${0} ${0}`}
+                position={`${semanticLayoutNode.position.x} ${semanticLayoutNode.position.y} ${semanticLayoutNode.position.z}`}
             >
                 <a-entity
                     id="3DENTITY"
-                    scale={`${1} ${1} ${1}`}
-                    position={`${0} ${-1.5} ${0}`}
+                    scale={`${0.4} ${0.4} ${0.4}`}
+                    position={`${0} ${-.5} ${0}`}
 
                     obj-model={`obj: #${physicalAsset.name}-obj;`}
                 >
