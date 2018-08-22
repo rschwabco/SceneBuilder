@@ -92,7 +92,7 @@ class Scene extends Component {
     }
 
     _renderScene = (scene, checkpoints) => {
-        const { semanticLayoutNodes, containerNode, children, parent } = scene
+        const { semanticLayoutNodes, containerNode, children, parent, pq } = scene
         const { id } = containerNode
 
         // console.log("Render Scene data: ", scene)
@@ -131,6 +131,17 @@ class Scene extends Component {
             >
                 {makeCheckpoints(checkpoints)}
                 {nodes}
+                <a-box
+                    width="6"
+                    height="2"
+                    wireframe={true}
+                    position={`0 -1.5 4`}
+                >
+                    <a-text
+                        position="-2 0 0 "
+                        value={`${pq.text}`}
+                    ></a-text>
+                </a-box>
             </a-entity>
         )
     }
@@ -147,7 +158,7 @@ class Scene extends Component {
                 width={2 * dims}
                 position={`${semanticLayoutNode.position.x} ${semanticLayoutNode.position.y} ${semanticLayoutNode.position.z}`}
             >
-                <a-entity position={`${- 1.7} ${0} ${0}`} text-geometry={`value: ${text};  font: #optimerBoldFont; color: white;`}></a-entity>
+                <a-entity align="center" position={`${-1.5} ${0} ${0}`} text-geometry={`value: ${text};  font: #optimerBoldFont; color: white; align: center;`}></a-entity>
             </BoxContainer>
         )
 
@@ -162,7 +173,7 @@ class Scene extends Component {
                 dims={dims}
                 position={`${semanticLayoutNode.position.x} ${semanticLayoutNode.position.y} ${semanticLayoutNode.position.z}`}
             >
-                <a-entity position={`${-dims / 2} ${-dims / 2} 0`} id="bars" barchart={`width: ${dims} ;height: ${dims} ;gridson:true;title: ${chart} ;src:#barsdata`}></a-entity>
+                <a-entity scale=".8 .8 .8" position={`${-dims / 2} ${-dims / 2} 0`} id="bars" barchart={`width: ${dims} ;height: ${dims} ;gridson:true;title: ${chart} ;src:#barsdata`}></a-entity>
             </BoxContainer>
         )
     }
