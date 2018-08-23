@@ -1,0 +1,62 @@
+{
+    "scene": {
+        "name": "friday-demo-slide-3",
+        "containerNode": {
+            "create": {
+                "name": "friday-demo-slide-3-containerNode",
+                "position": {
+                    "create": {
+                        "x": 40,
+                        "y": 0,
+                        "z": -40
+                    }
+                }
+            }
+        },
+        "parent": {
+            "connect": {
+                "id": "cjl72qjswj63z0b77ph55wwc2"
+            }
+        },
+        "pq": {
+            "create": {
+                "text": "Given a part, what is its health?"
+            }
+        },
+        "semanticLayoutNodes": {
+            "create": [
+                {
+                    "name": "Part-FDS3-1",
+                    "position": {
+                        "create": {
+                            "x": -3,
+                            "y": 4,
+                            "z": 0
+                        }
+                    },
+                    "physicalModel": {
+                        "connect": {
+                            "id": "cjky8ddvj9ok80b29hca4qzbn"
+                        }
+                    }
+                },
+                {
+                    "name": "Text-FDS3-1",
+                    "position": {
+                        "create": {
+                            "x": 3,
+                            "y": 2,
+                            "z": 0
+                        }
+                    },
+                    "physicalModel": {
+                        "connect": {
+                            "id": "cjl48tl4hbozv0b778od0ki4o"
+                        }
+                    },
+                    "text": "Part 1"
+                }
+            ]
+        }
+    }
+}

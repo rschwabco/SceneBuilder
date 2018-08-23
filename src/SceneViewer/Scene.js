@@ -139,7 +139,7 @@ class Scene extends Component {
             <a-entity
                 id={id}
                 className="container"
-                position={`${containerNode.position.x} ${containerNode.position.y} ${-6}`}
+                position={`${containerNode.position.x} ${containerNode.position.y} ${containerNode.position.z - 4}`}
             >
                 {makeCheckpoints(checkpoints)}
                 {nodes}
@@ -158,20 +158,17 @@ class Scene extends Component {
         )
     }
 
-    _renderShipContainer = (props ) => { // Need to abstract this out asap
+    _renderShipContainer = (props) => { // Need to abstract this out asap
 
         const { semanticLayoutNode, scene, i, dims } = props
         const { showInfoModal } = this.props
 
         return (
-            <BoxContainer
-                position={`${semanticLayoutNode.position.x} ${semanticLayoutNode.position.y} ${semanticLayoutNode.position.z}`}
-                dims={dims}
+            <a-entity
+                position={`${semanticLayoutNode.position.x} ${semanticLayoutNode.position.y - .5} ${semanticLayoutNode.position.z}`}
             >
-                <a-entity>
-                    {makeCargoShips({ options: this.state.ships, showInfoModal})}
-                </a-entity>
-            </BoxContainer>
+                    {makeCargoShips({ options: this.state.ships, showInfoModal })}
+            </a-entity>
         )
     }
 
@@ -187,7 +184,7 @@ class Scene extends Component {
                 width={2 * dims}
                 position={`${semanticLayoutNode.position.x} ${semanticLayoutNode.position.y} ${semanticLayoutNode.position.z}`}
             >
-                <a-entity align="center" position={`${-1.5} ${0} ${0}`} text-geometry={`value: ${text};  font: #optimerBoldFont; color: white; align: center;`}></a-entity>
+                <a-text align="center" position={`${-1.5} ${0} ${0}`} value={text}></a-text>
             </BoxContainer>
         )
 
@@ -197,7 +194,7 @@ class Scene extends Component {
         const { semanticLayoutNode, scene, i, dims } = props
         const { physicalModel, rotation, position, scale, name, chart = "CHART" } = semanticLayoutNode
 
-        const chartDims = dims * 0.8
+        const chartDims = dims * 1.5
         // return null
         return (
             <BoxContainer

@@ -164,7 +164,7 @@ export default class Viewer extends Component {
                             // keyboard-shortcuts
                             // leap="vr: false"
                             >
-                                <a-entity position="20 -5 0" environment="preset: checkerboard; skyType: atmosphere; ground: hills; dressingScale: .1;dressingAmount: 0; dressingColor: #7C4DFF; lightPosition: 1 2 2;"></a-entity>
+                                <a-entity position="45 -5 -45" environment="preset: checkerboard; skyType: atmosphere; ground: hills; dressingScale: .1;dressingAmount: 0; dressingColor: #7C4DFF; lightPosition: 1 8 -1.5;"></a-entity>
                                 {registerAllAssets(data.physicalAssets)}
                                 <Camera
                                     moveCamera={moveCamera}

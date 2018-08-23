@@ -1,32 +1,32 @@
 {
     "scene": {
-        "name": "friday-demo-slide-1",
+        "name": "friday-demo-slide-7",
         "containerNode": {
             "create": {
-                "name": "friday-demo-slide-1-containerNode",
+                "name": "friday-demo-slide-7-containerNode",
                 "position": {
                     "create": {
-                        "x": 0,
+                        "x": 120,
                         "y": 0,
-                        "z": 0
+                        "z": -120
                     }
                 }
             }
         },
         "parent": {
             "connect": {
-                "id": "cjl6wet3bipas0b77k6s3cmcx"
+                "id": "cjl74hcpqjbq20b77dzfifu12"
             }
         },
         "pq": {
             "create": {
-                "text": "Given a list of vessels - which of them require repair?"
+                "text": "Given a vessel's health, who are the most qualified to execute the repairs?"
             }
         },
         "semanticLayoutNodes": {
             "create": [
                 {
-                    "name": "Vessel-FDS1-1",
+                    "name": "Vessel-FDS7-1",
                     "position": {
                         "create": {
                             "x": -3,
@@ -41,40 +41,55 @@
                     }
                 },
                 {
-                    "name": "Vessel-FDS1-2",
+                    "name": "Human-FDS7-1",
                     "position": {
                         "create": {
-                            "x": -3,
-                            "y": 4,
+                            "x": 2,
+                            "y": 0,
                             "z": 0
                         }
                     },
                     "physicalModel": {
                         "connect": {
-                            "id": "cjky8de2n9omo0b29sm3x2i00"
+                            "id": "cjky8ddvj9ok80b29hca4qzbn"
                         }
                     }
                 },
                 {
-                    "name": "Vessel-FDS1-3",
+                    "name": "Human-FDS7-2",
                     "position": {
                         "create": {
-                            "x": -3,
-                            "y": 8,
+                            "x": 2,
+                            "y": 6,
                             "z": 0
                         }
                     },
                     "physicalModel": {
                         "connect": {
-                            "id": "cjky8de2n9omo0b29sm3x2i00"
+                            "id": "cjky8ddvj9ok80b29hca4qzbn"
                         }
                     }
                 },
                 {
-                    "name": "Text-FDS1-1",
+                    "name": "Human-FDS7-3",
                     "position": {
                         "create": {
-                            "x": 3,
+                            "x": 2,
+                            "y": 12,
+                            "z": 0
+                        }
+                    },
+                    "physicalModel": {
+                        "connect": {
+                            "id": "cjky8ddvj9ok80b29hca4qzbn"
+                        }
+                    }
+                },
+                {
+                    "name": "Text-FDS7-1",
+                    "position": {
+                        "create": {
+                            "x": 7,
                             "y": 0,
                             "z": 0
                         }
@@ -84,14 +99,14 @@
                             "id": "cjl48tl4hbozv0b778od0ki4o"
                         }
                     },
-                    "text": "Vessel 1"
+                    "text": "Engineer #24672"
                 },
                 {
-                    "name": "Text-FDS1-2",
+                    "name": "Text-FDS7-2",
                     "position": {
                         "create": {
-                            "x": 3,
-                            "y": 4,
+                            "x": 7,
+                            "y": 6,
                             "z": 0
                         }
                     },
@@ -100,14 +115,14 @@
                             "id": "cjl48tl4hbozv0b778od0ki4o"
                         }
                     },
-                    "text": "Vessel 2"
+                    "text": "Engineer #48172"
                 },
                 {
-                    "name": "Text-FDS1-3",
+                    "name": "Text-FDS7-3",
                     "position": {
                         "create": {
-                            "x": 3,
-                            "y": 8,
+                            "x": 7,
+                            "y": 12,
                             "z": 0
                         }
                     },
@@ -116,7 +131,7 @@
                             "id": "cjl48tl4hbozv0b778od0ki4o"
                         }
                     },
-                    "text": "Vessel 3"
+                    "text": "Engineer #94817"
                 }
             ]
         }

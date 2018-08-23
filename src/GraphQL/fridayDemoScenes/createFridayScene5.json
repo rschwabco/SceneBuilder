@@ -1,47 +1,32 @@
 {
     "scene": {
-        "name": "friday-demo-slide-1",
+        "name": "friday-demo-slide-5",
         "containerNode": {
             "create": {
-                "name": "friday-demo-slide-1-containerNode",
+                "name": "friday-demo-slide-5-containerNode",
                 "position": {
                     "create": {
-                        "x": 0,
+                        "x": 80,
                         "y": 0,
-                        "z": 0
+                        "z": -80
                     }
                 }
             }
         },
         "parent": {
             "connect": {
-                "id": "cjl6wet3bipas0b77k6s3cmcx"
+                "id": "cjl73w1d8ja0l0b77xj4vsom3"
             }
         },
         "pq": {
             "create": {
-                "text": "Given a list of vessels - which of them require repair?"
+                "text": "Given a part, what are its sensors?"
             }
         },
         "semanticLayoutNodes": {
             "create": [
                 {
-                    "name": "Vessel-FDS1-1",
-                    "position": {
-                        "create": {
-                            "x": -3,
-                            "y": 0,
-                            "z": 0
-                        }
-                    },
-                    "physicalModel": {
-                        "connect": {
-                            "id": "cjky8de2n9omo0b29sm3x2i00"
-                        }
-                    }
-                },
-                {
-                    "name": "Vessel-FDS1-2",
+                    "name": "Part-FDS5-1",
                     "position": {
                         "create": {
                             "x": -3,
@@ -51,30 +36,60 @@
                     },
                     "physicalModel": {
                         "connect": {
-                            "id": "cjky8de2n9omo0b29sm3x2i00"
+                            "id": "cjky8ddvj9ok80b29hca4qzbn"
                         }
                     }
                 },
                 {
-                    "name": "Vessel-FDS1-3",
+                    "name": "Sensor-FDS5-1",
                     "position": {
                         "create": {
-                            "x": -3,
+                            "x": 0,
+                            "y": 0,
+                            "z": 0
+                        }
+                    },
+                    "physicalModel": {
+                        "connect": {
+                            "id": "cjky8ddvj9ok80b29hca4qzbn"
+                        }
+                    }
+                },
+                {
+                    "name": "Sensor-FDS5-2",
+                    "position": {
+                        "create": {
+                            "x": 0,
+                            "y": 4,
+                            "z": 0
+                        }
+                    },
+                    "physicalModel": {
+                        "connect": {
+                            "id": "cjky8ddvj9ok80b29hca4qzbn"
+                        }
+                    }
+                },
+                {
+                    "name": "Sensor-FDS5-3",
+                    "position": {
+                        "create": {
+                            "x": 0,
                             "y": 8,
                             "z": 0
                         }
                     },
                     "physicalModel": {
                         "connect": {
-                            "id": "cjky8de2n9omo0b29sm3x2i00"
+                            "id": "cjky8ddvj9ok80b29hca4qzbn"
                         }
                     }
                 },
                 {
-                    "name": "Text-FDS1-1",
+                    "name": "Text-FDS5-1",
                     "position": {
                         "create": {
-                            "x": 3,
+                            "x": 4,
                             "y": 0,
                             "z": 0
                         }
@@ -84,13 +99,13 @@
                             "id": "cjl48tl4hbozv0b778od0ki4o"
                         }
                     },
-                    "text": "Vessel 1"
+                    "text": "Sensor 1"
                 },
                 {
-                    "name": "Text-FDS1-2",
+                    "name": "Text-FDS5-2",
                     "position": {
                         "create": {
-                            "x": 3,
+                            "x": 4,
                             "y": 4,
                             "z": 0
                         }
@@ -100,13 +115,13 @@
                             "id": "cjl48tl4hbozv0b778od0ki4o"
                         }
                     },
-                    "text": "Vessel 2"
+                    "text": "Sensor 2"
                 },
                 {
-                    "name": "Text-FDS1-3",
+                    "name": "Text-FDS5-3",
                     "position": {
                         "create": {
-                            "x": 3,
+                            "x": 4,
                             "y": 8,
                             "z": 0
                         }
@@ -116,7 +131,7 @@
                             "id": "cjl48tl4hbozv0b778od0ki4o"
                         }
                     },
-                    "text": "Vessel 3"
+                    "text": "Sensor 3"
                 }
             ]
         }

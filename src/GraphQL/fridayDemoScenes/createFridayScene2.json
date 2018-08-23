@@ -1,32 +1,32 @@
 {
     "scene": {
-        "name": "friday-demo-slide-1",
+        "name": "friday-demo-slide-2",
         "containerNode": {
             "create": {
-                "name": "friday-demo-slide-1-containerNode",
+                "name": "friday-demo-slide-2-containerNode",
                 "position": {
                     "create": {
-                        "x": 0,
+                        "x": 20,
                         "y": 0,
-                        "z": 0
+                        "z": -20
                     }
                 }
             }
         },
         "parent": {
             "connect": {
-                "id": "cjl6wet3bipas0b77k6s3cmcx"
+                "id": "cjl6xclfdirxu0b77lieg5mbx"
             }
         },
         "pq": {
             "create": {
-                "text": "Given a list of vessels - which of them require repair?"
+                "text": "Given a vessel's parts, what is the vessel's health?"
             }
         },
         "semanticLayoutNodes": {
             "create": [
                 {
-                    "name": "Vessel-FDS1-1",
+                    "name": "Vessel-FDS2-1",
                     "position": {
                         "create": {
                             "x": -3,
@@ -41,37 +41,7 @@
                     }
                 },
                 {
-                    "name": "Vessel-FDS1-2",
-                    "position": {
-                        "create": {
-                            "x": -3,
-                            "y": 4,
-                            "z": 0
-                        }
-                    },
-                    "physicalModel": {
-                        "connect": {
-                            "id": "cjky8de2n9omo0b29sm3x2i00"
-                        }
-                    }
-                },
-                {
-                    "name": "Vessel-FDS1-3",
-                    "position": {
-                        "create": {
-                            "x": -3,
-                            "y": 8,
-                            "z": 0
-                        }
-                    },
-                    "physicalModel": {
-                        "connect": {
-                            "id": "cjky8de2n9omo0b29sm3x2i00"
-                        }
-                    }
-                },
-                {
-                    "name": "Text-FDS1-1",
+                    "name": "Part-FDS2-1",
                     "position": {
                         "create": {
                             "x": 3,
@@ -81,13 +51,12 @@
                     },
                     "physicalModel": {
                         "connect": {
-                            "id": "cjl48tl4hbozv0b778od0ki4o"
+                            "id": "cjky8ddvj9ok80b29hca4qzbn"
                         }
-                    },
-                    "text": "Vessel 1"
+                    }
                 },
                 {
-                    "name": "Text-FDS1-2",
+                    "name": "Part-FDS2-2",
                     "position": {
                         "create": {
                             "x": 3,
@@ -97,13 +66,12 @@
                     },
                     "physicalModel": {
                         "connect": {
-                            "id": "cjl48tl4hbozv0b778od0ki4o"
+                            "id": "cjky8ddvj9ok80b29hca4qzbn"
                         }
-                    },
-                    "text": "Vessel 2"
+                    }
                 },
                 {
-                    "name": "Text-FDS1-3",
+                    "name": "Part-FDS2-3",
                     "position": {
                         "create": {
                             "x": 3,
@@ -113,10 +81,57 @@
                     },
                     "physicalModel": {
                         "connect": {
+                            "id": "cjky8ddvj9ok80b29hca4qzbn"
+                        }
+                    }
+                },
+                {
+                    "name": "Text-FDS2-1",
+                    "position": {
+                        "create": {
+                            "x": 7,
+                            "y": 0,
+                            "z": 0
+                        }
+                    },
+                    "physicalModel": {
+                        "connect": {
                             "id": "cjl48tl4hbozv0b778od0ki4o"
                         }
                     },
-                    "text": "Vessel 3"
+                    "text": "Part 1"
+                },
+                {
+                    "name": "Text-FDS2-2",
+                    "position": {
+                        "create": {
+                            "x": 7,
+                            "y": 4,
+                            "z": 0
+                        }
+                    },
+                    "physicalModel": {
+                        "connect": {
+                            "id": "cjl48tl4hbozv0b778od0ki4o"
+                        }
+                    },
+                    "text": "Part 2"
+                },
+                {
+                    "name": "Text-FDS2-3",
+                    "position": {
+                        "create": {
+                            "x": 7,
+                            "y": 8,
+                            "z": 0
+                        }
+                    },
+                    "physicalModel": {
+                        "connect": {
+                            "id": "cjl48tl4hbozv0b778od0ki4o"
+                        }
+                    },
+                    "text": "Part 3"
                 }
             ]
         }

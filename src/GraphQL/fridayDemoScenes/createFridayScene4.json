@@ -1,0 +1,186 @@
+{
+    "scene": {
+        "name": "friday-demo-slide-4",
+        "containerNode": {
+            "create": {
+                "name": "friday-demo-slide-4-containerNode",
+                "position": {
+                    "create": {
+                        "x": 60,
+                        "y": 0,
+                        "z": -60
+                    }
+                }
+            }
+        },
+        "parent": {
+            "connect": {
+                "id": "cjl73d9e7j7r00b77ahkdhhbk"
+            }
+        },
+        "pq": {
+            "create": {
+                "text": "Given a part, what is its health?"
+            }
+        },
+        "semanticLayoutNodes": {
+            "create": [
+                {
+                    "name": "Part-FDS4-1",
+                    "position": {
+                        "create": {
+                            "x": -3,
+                            "y": 6,
+                            "z": 0
+                        }
+                    },
+                    "physicalModel": {
+                        "connect": {
+                            "id": "cjky8ddvj9ok80b29hca4qzbn"
+                        }
+                    }
+                },
+                {
+                    "name": "Sensor-FDS4-1",
+                    "position": {
+                        "create": {
+                            "x": 0,
+                            "y": 0,
+                            "z": 0
+                        }
+                    },
+                    "physicalModel": {
+                        "connect": {
+                            "id": "cjky8ddvj9ok80b29hca4qzbn"
+                        }
+                    }
+                },
+                {
+                    "name": "Sensor-FDS4-2",
+                    "position": {
+                        "create": {
+                            "x": 0,
+                            "y": 4,
+                            "z": 0
+                        }
+                    },
+                    "physicalModel": {
+                        "connect": {
+                            "id": "cjky8ddvj9ok80b29hca4qzbn"
+                        }
+                    }
+                },
+                {
+                    "name": "Sensor-FDS4-3",
+                    "position": {
+                        "create": {
+                            "x": 0,
+                            "y": 8,
+                            "z": 0
+                        }
+                    },
+                    "physicalModel": {
+                        "connect": {
+                            "id": "cjky8ddvj9ok80b29hca4qzbn"
+                        }
+                    }
+                },
+                {
+                    "name": "Sensor-FDS4-4",
+                    "position": {
+                        "create": {
+                            "x": 0,
+                            "y": 12,
+                            "z": 0
+                        }
+                    },
+                    "physicalModel": {
+                        "connect": {
+                            "id": "cjky8ddvj9ok80b29hca4qzbn"
+                        }
+                    }
+                },
+                {
+                    "name": "Text-FDS4-1",
+                    "position": {
+                        "create": {
+                            "x": 4,
+                            "y": 0,
+                            "z": 0
+                        }
+                    },
+                    "physicalModel": {
+                        "connect": {
+                            "id": "cjl48tl4hbozv0b778od0ki4o"
+                        }
+                    },
+                    "text": "Sensor 1 Reading"
+                },
+                {
+                    "name": "Text-FDS4-2",
+                    "position": {
+                        "create": {
+                            "x": 4,
+                            "y": 4,
+                            "z": 0
+                        }
+                    },
+                    "physicalModel": {
+                        "connect": {
+                            "id": "cjl48tl4hbozv0b778od0ki4o"
+                        }
+                    },
+                    "text": "Sensor 2 Reading"
+                },
+                {
+                    "name": "Text-FDS4-3",
+                    "position": {
+                        "create": {
+                            "x": 4,
+                            "y": 8,
+                            "z": 0
+                        }
+                    },
+                    "physicalModel": {
+                        "connect": {
+                            "id": "cjl48tl4hbozv0b778od0ki4o"
+                        }
+                    },
+                    "text": "Sensor 3 Reading"
+                },
+                {
+                    "name": "Text-FDS4-4",
+                    "position": {
+                        "create": {
+                            "x": 4,
+                            "y": 12,
+                            "z": 0
+                        }
+                    },
+                    "physicalModel": {
+                        "connect": {
+                            "id": "cjl48tl4hbozv0b778od0ki4o"
+                        }
+                    },
+                    "text": "Sensor 4 Reading"
+                },
+                {
+                    "name": "Chart-FDS4-1",
+                    "position": {
+                        "create": {
+                            "x": 9.5,
+                            "y": 5.5,
+                            "z": 0
+                        }
+                    },
+                    "physicalModel": {
+                        "connect": {
+                            "id": "cjl48tqyzbp060b77n9hb8w93"
+                        }
+                    },
+                    "chart": "Sensor Reading"
+                }
+            ]
+        }
+    }
+}
