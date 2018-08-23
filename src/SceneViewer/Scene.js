@@ -45,7 +45,7 @@ class Scene extends Component {
                         if (error) return <Text>{`Error: ${error}`}</Text>
 
                         // TODO: Distinguish between "child" and "parent" checkpoints. Additionally filter out top-level scene's id?
-                        console.log("Query data: ", data)
+                        // console.log("Query data: ", data)
                         return (
                             <a-entity position="0 3 -4">
 
@@ -98,7 +98,7 @@ class Scene extends Component {
         // console.log("Render Scene data: ", scene)
 
         const nodes = semanticLayoutNodes.map((semanticLayoutNode, i) => {
-            console.log("semanticLayoutNode: ", semanticLayoutNode)
+            // console.log("semanticLayoutNode: ", semanticLayoutNode)
             const { physicalModel, rotation, scale } = semanticLayoutNode
             const { physicalAsset } = physicalModel
             const { modelType, geometry } = physicalAsset
@@ -190,7 +190,7 @@ class Scene extends Component {
         const { physicalModel, rotation, position, scale, name } = semanticLayoutNode
         const { physicalAsset } = physicalModel
         // console.log("Make 3d entity name: ", name)
-        console.log("Obj to render: ", props)
+        // console.log("Obj to render: ", props)
         return (
             <BoxContainer
                 color="orange"
