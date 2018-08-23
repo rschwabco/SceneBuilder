@@ -3,32 +3,32 @@ import { makeCargoContainers } from "./cargoContainer"
 import { HtmlShader } from "../../DataOverlay/HtmlShader"
 
 export const makeCargoShips = (props) => {
-    const { options, showInfoModal, childData } = props
-    console.log("Child data: ", childData)
+    const { options, showInfoModal } = props
+    // console.log("Child data: ", childData)
 
     const wireframe = showInfoModal // Play with these!
     const containerWireframe = false  // Play with these!
 
-    const makeChildEntities = () => {
-        return childData.map((asset, i) => {
-            const { name, scale, position, rotation } = asset
-            console.log("Make child entities asset: ", asset)
-            return (
-                <a-entity
-                    // Fuel Tank
-                    // click-to-navigate
-                    key={i}
-                    position={`${0} ${0} ${0}`}
-                    rotation={`${rotation.x} ${rotation.y} ${rotation.z}`}
-                    scale={`${scale.x} ${scale.y} ${scale.z}`}
-                    material="color: #4CAF50"
-                    outline="thickness: .0005; color: #FFF"
-                    obj-model={`obj: #${name}-obj;`}
-                >
-                </a-entity>
-            )
-        })
-    }
+    // const makeChildEntities = () => {
+    //     return childData.map((asset, i) => {
+    //         const { name, scale, position, rotation } = asset
+    //         console.log("Make child entities asset: ", asset)
+    //         return (
+    //             <a-entity
+    //                 // Fuel Tank
+    //                 // click-to-navigate
+    //                 key={i}
+    //                 position={`${0} ${0} ${0}`}
+    //                 rotation={`${rotation.x} ${rotation.y} ${rotation.z}`}
+    //                 scale={`${scale.x} ${scale.y} ${scale.z}`}
+    //                 material="color: #4CAF50"
+    //                 outline="thickness: .0005; color: #FFF"
+    //                 obj-model={`obj: #${name}-obj;`}
+    //             >
+    //             </a-entity>
+    //         )
+    //     })
+    // }
     return (
         <a-entity>
             {options.map((ship, i) => {
@@ -126,13 +126,13 @@ export const makeCargoShips = (props) => {
                                 width="0.2"
                                 position=".6 1.7 -3.258"
                             ></a-box>
-                            {showInfoModal && // Add dynamic assets here
+                            {/* {showInfoModal && // Add dynamic assets here
                                 <a-entity>
                                     {makeChildEntities()}
                                     <HtmlShader id={i} overlayText={ship.overlayText} position={{ x: 2, y: 2, z: -2 }}
                                     />
                                 </a-entity>
-                            }
+                            } */}
                         </a-entity>
                     )
                 }

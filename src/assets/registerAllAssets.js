@@ -34,15 +34,16 @@ const registerAllAssets = (assets) => {
     const makeAllAssets = () => {
 
         for (let gqlAsset of assets) {
-            if (gqlAsset.objPath) {
-                // console.log("Obj with objPath: ", gqlAsset)
+
+            if (gqlAsset.objPath && gqlAsset.objPath.includes("http")) {
+
                 newAssets.push(makeObjAsset(gqlAsset))
             }
-            if (gqlAsset.mtlPath) {
+            if (gqlAsset.mtlPath && gqlAsset.mtlPath.includes("http")) {
                 newAssets.push(makeMtlAsset(gqlAsset))
             }
         }
-        // console.log("new assets: ", newAssets)
+        console.log("new assets: ", newAssets)
         return newAssets
     }
     return (<a-assets>

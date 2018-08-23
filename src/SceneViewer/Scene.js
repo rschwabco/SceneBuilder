@@ -35,7 +35,7 @@ class Scene extends Component {
 
 
     _getQueryData = (queries) => {
-        // console.log("Get data queries: ", queries)
+        console.log("Get data queries: ", queries)
         return queries.map((query, i) => {
             return (
 
@@ -45,11 +45,11 @@ class Scene extends Component {
                         if (error) return <Text>{`Error: ${error}`}</Text>
 
                         // TODO: Distinguish between "child" and "parent" checkpoints. Additionally filter out top-level scene's id?
-                        console.log("Query data: ", data)
+                        // console.log("Query data: ", data)
                         return (
                             <a-entity position="0 3 -4">
-
-                                {this._renderScene(data.scene, [...data.scene.children, data.scene.parent])}
+                                {data.scene.id !== "cjl4hc0z3camy0b77y1ameusu" && this._renderScene(data.scene, [...data.scene.children, data.scene.parent])}
+                                {/* {this._renderScene(data.scene, [...data.scene.children, data.scene.parent])} */}
                             </a-entity>
                         )
 
@@ -98,7 +98,7 @@ class Scene extends Component {
         // console.log("Render Scene data: ", scene)
 
         const nodes = semanticLayoutNodes.map((semanticLayoutNode, i) => {
-            console.log("semanticLayoutNode: ", semanticLayoutNode)
+            // console.log("semanticLayoutNode: ", semanticLayoutNode)
             const { physicalModel, rotation, scale } = semanticLayoutNode
             const { physicalAsset } = physicalModel
             const { modelType, geometry } = physicalAsset
@@ -109,7 +109,19 @@ class Scene extends Component {
                 <a-entity>
                     {semanticLayoutNode.text && this._makeTextEntity({ semanticLayoutNode, scene, i, dims })}
                     {semanticLayoutNode.chart && this._makeChartEntity({ semanticLayoutNode, scene, i, dims })}
-                    {semanticLayoutNode.physicalModel && semanticLayoutNode.physicalModel.physicalAsset && semanticLayoutNode.physicalModel.physicalAsset.modelType && semanticLayoutNode.physicalModel.physicalAsset.modelType === "OBJ" && this._make3dEntity({ semanticLayoutNode, scene, i, dims })}
+                    {semanticLayoutNode.physicalModel
+                        && semanticLayoutNode.physicalModel.physicalAsset
+                        && semanticLayoutNode.physicalModel.physicalAsset.modelType
+                        && semanticLayoutNode.physicalModel.physicalAsset.modelType === "OBJ"
+                        && this._make3dEntity({ semanticLayoutNode, scene, i, dims })
+                    }
+                    {semanticLayoutNode.physicalModel
+                        && semanticLayoutNode.physicalModel.physicalAsset
+                        && semanticLayoutNode.physicalModel.physicalAsset.modelType
+                        && semanticLayoutNode.physicalModel.physicalAsset.modelType === "GEOMETRY"
+                        && semanticLayoutNode.physicalModel.physicalAsset.geometry === "ship"
+                        && this._renderShipContainer({ semanticLayoutNode, scene, i, dims })
+                    }
                 </a-entity>
             )
 
@@ -127,7 +139,7 @@ class Scene extends Component {
             <a-entity
                 id={id}
                 className="container"
-                position={`${containerNode.position.x} ${containerNode.position.y} ${-6}`}
+                position={`${containerNode.position.x} ${containerNode.position.y} ${containerNode.position.z - 4}`}
             >
                 {makeCheckpoints(checkpoints)}
                 {nodes}
@@ -146,6 +158,20 @@ class Scene extends Component {
         )
     }
 
+    _renderShipContainer = (props) => { // Need to abstract this out asap
+
+        const { semanticLayoutNode, scene, i, dims } = props
+        const { showInfoModal } = this.props
+
+        return (
+            <a-entity
+                position={`${semanticLayoutNode.position.x} ${semanticLayoutNode.position.y - .5} ${semanticLayoutNode.position.z}`}
+            >
+                    {makeCargoShips({ options: this.state.ships, showInfoModal })}
+            </a-entity>
+        )
+    }
+
     _makeTextEntity = (props) => {
         const { semanticLayoutNode, scene, i, dims } = props
         const { physicalModel, rotation, position, scale, name, text = "TEXT TEXT TEXT" } = semanticLayoutNode
@@ -158,7 +184,7 @@ class Scene extends Component {
                 width={2 * dims}
                 position={`${semanticLayoutNode.position.x} ${semanticLayoutNode.position.y} ${semanticLayoutNode.position.z}`}
             >
-                <a-entity align="center" position={`${-1.5} ${0} ${0}`} text-geometry={`value: ${text};  font: #optimerBoldFont; color: white; align: center;`}></a-entity>
+                <a-text align="center" position={`${-1.5} ${0} ${0}`} value={text}></a-text>
             </BoxContainer>
         )
 
@@ -168,7 +194,8 @@ class Scene extends Component {
         const { semanticLayoutNode, scene, i, dims } = props
         const { physicalModel, rotation, position, scale, name, chart = "CHART" } = semanticLayoutNode
 
-        const chartDims = dims * 0.8
+        const chartDims = dims * 1.5
+        // return null
         return (
             <BoxContainer
                 color="yellow"
@@ -190,7 +217,7 @@ class Scene extends Component {
         const { physicalModel, rotation, position, scale, name } = semanticLayoutNode
         const { physicalAsset } = physicalModel
         // console.log("Make 3d entity name: ", name)
-        console.log("Obj to render: ", props)
+        // console.log("Obj to render: ", props)
         return (
             <BoxContainer
                 color="orange"

@@ -1,0 +1,17 @@
+{
+    "scene": {
+        "name": "friday-demo-scene-container",
+        "containerNode": {
+            "connect": {
+                "id": "cjkssfz4bw32g0b77a1oz5n2x"
+            }
+        },
+        "pq": {
+            "create": {
+                "text": "Friday Demo Container"
+            }
+        }
+    },
+}
+
+id: "cjl6wet3bipas0b77k6s3cmcx"

@@ -1,0 +1,139 @@
+{
+    "scene": {
+        "name": "friday-demo-slide-7",
+        "containerNode": {
+            "create": {
+                "name": "friday-demo-slide-7-containerNode",
+                "position": {
+                    "create": {
+                        "x": 120,
+                        "y": 0,
+                        "z": -120
+                    }
+                }
+            }
+        },
+        "parent": {
+            "connect": {
+                "id": "cjl74hcpqjbq20b77dzfifu12"
+            }
+        },
+        "pq": {
+            "create": {
+                "text": "Given a vessel's health, who are the most qualified to execute the repairs?"
+            }
+        },
+        "semanticLayoutNodes": {
+            "create": [
+                {
+                    "name": "Vessel-FDS7-1",
+                    "position": {
+                        "create": {
+                            "x": -3,
+                            "y": 0,
+                            "z": 0
+                        }
+                    },
+                    "physicalModel": {
+                        "connect": {
+                            "id": "cjky8de2n9omo0b29sm3x2i00"
+                        }
+                    }
+                },
+                {
+                    "name": "Human-FDS7-1",
+                    "position": {
+                        "create": {
+                            "x": 2,
+                            "y": 0,
+                            "z": 0
+                        }
+                    },
+                    "physicalModel": {
+                        "connect": {
+                            "id": "cjky8ddvj9ok80b29hca4qzbn"
+                        }
+                    }
+                },
+                {
+                    "name": "Human-FDS7-2",
+                    "position": {
+                        "create": {
+                            "x": 2,
+                            "y": 6,
+                            "z": 0
+                        }
+                    },
+                    "physicalModel": {
+                        "connect": {
+                            "id": "cjky8ddvj9ok80b29hca4qzbn"
+                        }
+                    }
+                },
+                {
+                    "name": "Human-FDS7-3",
+                    "position": {
+                        "create": {
+                            "x": 2,
+                            "y": 12,
+                            "z": 0
+                        }
+                    },
+                    "physicalModel": {
+                        "connect": {
+                            "id": "cjky8ddvj9ok80b29hca4qzbn"
+                        }
+                    }
+                },
+                {
+                    "name": "Text-FDS7-1",
+                    "position": {
+                        "create": {
+                            "x": 7,
+                            "y": 0,
+                            "z": 0
+                        }
+                    },
+                    "physicalModel": {
+                        "connect": {
+                            "id": "cjl48tl4hbozv0b778od0ki4o"
+                        }
+                    },
+                    "text": "Engineer #24672"
+                },
+                {
+                    "name": "Text-FDS7-2",
+                    "position": {
+                        "create": {
+                            "x": 7,
+                            "y": 6,
+                            "z": 0
+                        }
+                    },
+                    "physicalModel": {
+                        "connect": {
+                            "id": "cjl48tl4hbozv0b778od0ki4o"
+                        }
+                    },
+                    "text": "Engineer #48172"
+                },
+                {
+                    "name": "Text-FDS7-3",
+                    "position": {
+                        "create": {
+                            "x": 7,
+                            "y": 12,
+                            "z": 0
+                        }
+                    },
+                    "physicalModel": {
+                        "connect": {
+                            "id": "cjl48tl4hbozv0b778od0ki4o"
+                        }
+                    },
+                    "text": "Engineer #94817"
+                }
+            ]
+        }
+    }
+}

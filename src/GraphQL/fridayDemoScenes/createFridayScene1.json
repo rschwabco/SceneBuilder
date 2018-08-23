@@ -1,0 +1,124 @@
+{
+    "scene": {
+        "name": "friday-demo-slide-1",
+        "containerNode": {
+            "create": {
+                "name": "friday-demo-slide-1-containerNode",
+                "position": {
+                    "create": {
+                        "x": 0,
+                        "y": 0,
+                        "z": 0
+                    }
+                }
+            }
+        },
+        "parent": {
+            "connect": {
+                "id": "cjl6wet3bipas0b77k6s3cmcx"
+            }
+        },
+        "pq": {
+            "create": {
+                "text": "Given a list of vessels - which of them require repair?"
+            }
+        },
+        "semanticLayoutNodes": {
+            "create": [
+                {
+                    "name": "Vessel-FDS1-1",
+                    "position": {
+                        "create": {
+                            "x": -3,
+                            "y": 0,
+                            "z": 0
+                        }
+                    },
+                    "physicalModel": {
+                        "connect": {
+                            "id": "cjky8de2n9omo0b29sm3x2i00"
+                        }
+                    }
+                },
+                {
+                    "name": "Vessel-FDS1-2",
+                    "position": {
+                        "create": {
+                            "x": -3,
+                            "y": 4,
+                            "z": 0
+                        }
+                    },
+                    "physicalModel": {
+                        "connect": {
+                            "id": "cjky8de2n9omo0b29sm3x2i00"
+                        }
+                    }
+                },
+                {
+                    "name": "Vessel-FDS1-3",
+                    "position": {
+                        "create": {
+                            "x": -3,
+                            "y": 8,
+                            "z": 0
+                        }
+                    },
+                    "physicalModel": {
+                        "connect": {
+                            "id": "cjky8de2n9omo0b29sm3x2i00"
+                        }
+                    }
+                },
+                {
+                    "name": "Text-FDS1-1",
+                    "position": {
+                        "create": {
+                            "x": 3,
+                            "y": 0,
+                            "z": 0
+                        }
+                    },
+                    "physicalModel": {
+                        "connect": {
+                            "id": "cjl48tl4hbozv0b778od0ki4o"
+                        }
+                    },
+                    "text": "Vessel 1"
+                },
+                {
+                    "name": "Text-FDS1-2",
+                    "position": {
+                        "create": {
+                            "x": 3,
+                            "y": 4,
+                            "z": 0
+                        }
+                    },
+                    "physicalModel": {
+                        "connect": {
+                            "id": "cjl48tl4hbozv0b778od0ki4o"
+                        }
+                    },
+                    "text": "Vessel 2"
+                },
+                {
+                    "name": "Text-FDS1-3",
+                    "position": {
+                        "create": {
+                            "x": 3,
+                            "y": 8,
+                            "z": 0
+                        }
+                    },
+                    "physicalModel": {
+                        "connect": {
+                            "id": "cjl48tl4hbozv0b778od0ki4o"
+                        }
+                    },
+                    "text": "Vessel 3"
+                }
+            ]
+        }
+    }
+}
