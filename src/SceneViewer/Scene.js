@@ -35,7 +35,7 @@ class Scene extends Component {
 
 
     _getQueryData = (queries) => {
-        // console.log("Get data queries: ", queries)
+        console.log("Get data queries: ", queries)
         return queries.map((query, i) => {
             return (
 
@@ -48,8 +48,8 @@ class Scene extends Component {
                         // console.log("Query data: ", data)
                         return (
                             <a-entity position="0 3 -4">
-
-                                {this._renderScene(data.scene, [...data.scene.children, data.scene.parent])}
+                                {data.scene.id !== "cjl4hc0z3camy0b77y1ameusu" && this._renderScene(data.scene, [...data.scene.children, data.scene.parent])}
+                                {/* {this._renderScene(data.scene, [...data.scene.children, data.scene.parent])} */}
                             </a-entity>
                         )
 
@@ -109,7 +109,19 @@ class Scene extends Component {
                 <a-entity>
                     {semanticLayoutNode.text && this._makeTextEntity({ semanticLayoutNode, scene, i, dims })}
                     {semanticLayoutNode.chart && this._makeChartEntity({ semanticLayoutNode, scene, i, dims })}
-                    {semanticLayoutNode.physicalModel && semanticLayoutNode.physicalModel.physicalAsset && semanticLayoutNode.physicalModel.physicalAsset.modelType && semanticLayoutNode.physicalModel.physicalAsset.modelType === "OBJ" && this._make3dEntity({ semanticLayoutNode, scene, i, dims })}
+                    {semanticLayoutNode.physicalModel
+                        && semanticLayoutNode.physicalModel.physicalAsset
+                        && semanticLayoutNode.physicalModel.physicalAsset.modelType
+                        && semanticLayoutNode.physicalModel.physicalAsset.modelType === "OBJ"
+                        && this._make3dEntity({ semanticLayoutNode, scene, i, dims })
+                    }
+                    {semanticLayoutNode.physicalModel
+                        && semanticLayoutNode.physicalModel.physicalAsset
+                        && semanticLayoutNode.physicalModel.physicalAsset.modelType
+                        && semanticLayoutNode.physicalModel.physicalAsset.modelType === "GEOMETRY"
+                        && semanticLayoutNode.physicalModel.physicalAsset.geometry === "ship"
+                        && this._renderShipContainer({ semanticLayoutNode, scene, i, dims })
+                    }
                 </a-entity>
             )
 
@@ -146,6 +158,23 @@ class Scene extends Component {
         )
     }
 
+    _renderShipContainer = (props ) => { // Need to abstract this out asap
+
+        const { semanticLayoutNode, scene, i, dims } = props
+        const { showInfoModal } = this.props
+
+        return (
+            <BoxContainer
+                position={`${semanticLayoutNode.position.x} ${semanticLayoutNode.position.y} ${semanticLayoutNode.position.z}`}
+                dims={dims}
+            >
+                <a-entity>
+                    {makeCargoShips({ options: this.state.ships, showInfoModal})}
+                </a-entity>
+            </BoxContainer>
+        )
+    }
+
     _makeTextEntity = (props) => {
         const { semanticLayoutNode, scene, i, dims } = props
         const { physicalModel, rotation, position, scale, name, text = "TEXT TEXT TEXT" } = semanticLayoutNode
@@ -169,6 +198,7 @@ class Scene extends Component {
         const { physicalModel, rotation, position, scale, name, chart = "CHART" } = semanticLayoutNode
 
         const chartDims = dims * 0.8
+        // return null
         return (
             <BoxContainer
                 color="yellow"

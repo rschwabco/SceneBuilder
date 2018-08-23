@@ -50,7 +50,7 @@ export default class Viewer extends Component {
         this.state = {
             inputValue: "",
             cameraAnimationDuration: 1500,
-            currentScene: "wednesday-damo-slide-1-container",
+            currentScene: "friday-demo-scene-container",
             scenePosition: { ...defaultXYZ, y: -1 },
             rotateCamera: false,
             rotationTo: "0 0 0",
@@ -164,7 +164,7 @@ export default class Viewer extends Component {
                             // keyboard-shortcuts
                             // leap="vr: false"
                             >
-                                <a-entity position="0 -5 0" environment="preset: checkerboard; skyType: atmosphere; ground: hills; dressingScale: .1;dressingAmount: 0; dressingColor: #7C4DFF; lightPosition: 1 2 2;"></a-entity>
+                                <a-entity position="20 -5 0" environment="preset: checkerboard; skyType: atmosphere; ground: hills; dressingScale: .1;dressingAmount: 0; dressingColor: #7C4DFF; lightPosition: 1 2 2;"></a-entity>
                                 {registerAllAssets(data.physicalAssets)}
                                 <Camera
                                     moveCamera={moveCamera}
