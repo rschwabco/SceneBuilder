@@ -39,9 +39,9 @@ const registerAllAssets = (assets) => {
 
                 newAssets.push(makeObjAsset(gqlAsset))
             }
-            if (gqlAsset.mtlPath && gqlAsset.mtlPath.includes("http")) {
-                newAssets.push(makeMtlAsset(gqlAsset))
-            }
+            // if (gqlAsset.mtlPath && gqlAsset.mtlPath.includes("http")) {
+            //     newAssets.push(makeMtlAsset(gqlAsset))
+            // }
         }
         console.log("new assets: ", newAssets)
         return newAssets

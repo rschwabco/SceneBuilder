@@ -2,10 +2,10 @@
 import React, { Component } from "react";
 // import 'aframe-physics-system'
 // import "aframe-extras"
-import "aframe-outline"
+// import "aframe-outline"
 import "aframe-look-at-component"
 import "aframe-environment-component"
-import 'aframe-text-geometry-component'
+// import 'aframe-text-geometry-component'
 
 import Scene from "./Scene"
 import Camera from "./Camera"
@@ -153,9 +153,9 @@ export default class Viewer extends Component {
 
                     return (
                         <div id="sceneRoot" style={{ height: "100vh", width: "100%" }}>
-                            <NavBar
+                            {/* <NavBar
                                 onSelect={this._selectNewScene}
-                            />
+                            /> */}
                             <a-scene
 
                                 cursor="rayOrigin:mouse"
