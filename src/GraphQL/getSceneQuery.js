@@ -38,6 +38,7 @@ export const getSceneQuery = (sceneId = "cjkn3ca5kgm8a0b77fr3a28q5") => {
               text
               chart
             physicalModel {
+                id
                 name
               physicalAsset {
                   geometry
@@ -92,11 +93,11 @@ export const getRootSceneQuery = (sceneName = "CargoShip-aggregation") => {
                   children {
                     id
                     children {
+                      id
+                      children {
                         id
-                        children {
-                            id
-                          }
                       }
+                    }
                   }
                 }
               }

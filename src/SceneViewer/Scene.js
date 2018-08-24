@@ -167,7 +167,7 @@ class Scene extends Component {
             <a-entity
                 position={`${semanticLayoutNode.position.x} ${semanticLayoutNode.position.y - .5} ${semanticLayoutNode.position.z}`}
             >
-                    {makeCargoShips({ options: this.state.ships, showInfoModal })}
+                {makeCargoShips({ options: this.state.ships, showInfoModal })}
             </a-entity>
         )
     }
@@ -215,9 +215,25 @@ class Scene extends Component {
     _make3dEntity = (props) => {
         const { semanticLayoutNode, scene, i, dims } = props
         const { physicalModel, rotation, position, scale, name } = semanticLayoutNode
-        const { physicalAsset } = physicalModel
+        const { physicalAsset, id } = physicalModel
         // console.log("Make 3d entity name: ", name)
         // console.log("Obj to render: ", props)
+
+        const getScale = () => {
+            switch (id) {
+                case "cjl7hvt1gkdiz0b77prl5j0bm":
+                    return 0.25
+                case "cjl7ip5zrkfu50b77wz62vdlt":
+                    return 0.008
+                case "cjl7j1g7kkgqn0b77milioq62":
+                    return 0.015
+                case "cjl7j53afkh1c0b77dax7zkik":
+                    return 0.018
+                case "cjl7jbtsxkhll0b776uo1vott":
+                    return 0.12
+                default: return 0.4
+            }
+        }
         return (
             <BoxContainer
                 color="orange"
@@ -226,7 +242,7 @@ class Scene extends Component {
             >
                 <a-entity
                     id="3DENTITY"
-                    scale={`${0.4} ${0.4} ${0.4}`}
+                    scale={`${getScale()} ${getScale()} ${getScale()}`}
                     position={`${0} ${-.5} ${0}`}
 
                     obj-model={`obj: #${physicalAsset.name}-obj;`}
