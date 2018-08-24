@@ -149,11 +149,19 @@ class Scene extends Component {
                     wireframe={true}
                     position={`0 -1.5 4`}
                 >
-                    <a-text
-                        align="center"
-                        position="0 0 0 "
-                        value={`${pq.text}`}
-                    ></a-text>
+                    <a-box
+                        width="6"
+                        height="2"
+                        position="0 0 0"
+                        color="#1bf222"
+                        opacity="0.2"
+                    >
+                        <a-text
+                            align="center"
+                            position="0 0 0 "
+                            value={`${pq.text}`}
+                        ></a-text>
+                    </a-box>
                 </a-box>
             </a-entity>
         )
@@ -236,14 +244,21 @@ class Scene extends Component {
                 default: return 0.4
             }
         }
+
+        const getColor = () => {
+            switch (id) {
+                case "cjl7hvt1gkdiz0b77prl5j0bm":
+                    return "orange"
+                default: return "#00c5f5"
+            }
+        }
         return (
             <BoxContainer
-                color="orange"
+                color={getColor()}
                 dims={dims}
                 position={`${semanticLayoutNode.position.x} ${semanticLayoutNode.position.y} ${semanticLayoutNode.position.z}`}
             >
                 <a-entity
-                    id="3DENTITY"
                     scale={`${getScale()} ${getScale()} ${getScale()}`}
                     position={`${0} ${-.5} ${0}`}
 
