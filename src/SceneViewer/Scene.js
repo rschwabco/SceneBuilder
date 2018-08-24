@@ -150,7 +150,8 @@ class Scene extends Component {
                     position={`0 -1.5 4`}
                 >
                     <a-text
-                        position="-2 0 0 "
+                        align="center"
+                        position="0 0 0 "
                         value={`${pq.text}`}
                     ></a-text>
                 </a-box>
@@ -184,7 +185,7 @@ class Scene extends Component {
                 width={2 * dims}
                 position={`${semanticLayoutNode.position.x} ${semanticLayoutNode.position.y} ${semanticLayoutNode.position.z}`}
             >
-                <a-text align="center" position={`${-1.5} ${0} ${0}`} value={text}></a-text>
+                <a-text scale="2 2 2" align="center" position={`${0} ${0} ${0}`} value={text}></a-text>
             </BoxContainer>
         )
 
@@ -219,6 +220,7 @@ class Scene extends Component {
         // console.log("Make 3d entity name: ", name)
         // console.log("Obj to render: ", props)
 
+        // TODO: Use scale from SLN
         const getScale = () => {
             switch (id) {
                 case "cjl7hvt1gkdiz0b77prl5j0bm":
