@@ -43,7 +43,7 @@ const registerAllAssets = (assets) => {
                 newAssets.push(makeMtlAsset(gqlAsset))
             }
         }
-        console.log("new assets: ", newAssets)
+        // console.log("new assets: ", newAssets)
         return newAssets
     }
     return (<a-assets>

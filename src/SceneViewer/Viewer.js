@@ -80,7 +80,7 @@ export default class Viewer extends Component {
 
     // TODO: Needs work
     _nextScene = (nextScene) => {
-        console.log("Next scene")
+        // console.log("Next scene")
         this.setState({
             currentScene: this.state.currentScene === "OilDrum" ? "TankerShip" : "OilDrum",
             rotateCamera: !this.state.rotateCamera,
@@ -103,10 +103,9 @@ export default class Viewer extends Component {
     }
 
     _moveCamera = (options) => {
-        const { cameraTo, rotationTo } = options
-        // console.log("Move camera options: ", options)
-        this.setState({ moveCamera: true, cameraTo, rotationTo })
-        setTimeout(() => this.setState({ moveCamera: false }), 20)
+        console.log("Move camera options: ", options)
+        this.setState({ moveCamera: true, ...options })
+        setTimeout(() => this.setState({ moveCamera: false }), 0)
     }
 
     _selectNewScene = (newScene) => {
@@ -131,7 +130,7 @@ export default class Viewer extends Component {
         }
 
         extractIds(arr)
-        console.log("Children ids: ", children)
+        // console.log("Children ids: ", children)
 
         // TODO: Do this better
         return children
@@ -177,7 +176,7 @@ export default class Viewer extends Component {
                                     {({ loading, error, data }) => {
                                         if (loading) return <ActivityIndicator color={"#fff"} />;
                                         if (error) return <Text>{`Error: ${error}`}</Text>;
-                                        console.log("Deep scene query data: ", data.scenes[0])
+                                        // console.log("Deep scene query data: ", data.scenes[0])
 
                                         const { containerNode, id, pq } = data.scenes[0]
                                         const { position } = containerNode

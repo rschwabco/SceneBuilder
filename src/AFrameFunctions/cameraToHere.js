@@ -34,7 +34,7 @@ export const cameraToHere = (callback, timeout) => {
 
                     this.cameraEl.removeAttribute("look-at")
 
-                    callback({ ...this.callbackOptions, rotationTo: this.rotation })
+                    callback({ rotationTo: this.rotation })
 
                     console.log("Camera rotation after removing look-at: ", this.cameraEl.getAttribute("rotation"))
                 }, timeout)
