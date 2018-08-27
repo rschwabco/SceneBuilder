@@ -1,7 +1,6 @@
 import React from "react"
 
 export const makeCheckpoints = (props, node) => {
-    console.log(`Checkpoint props`, props)
 
     const constructCheckpoints = () => props.map((point, i) => {
         const { id, containerNode } = point
