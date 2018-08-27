@@ -64,7 +64,7 @@ class AframeChart extends Component {
         // * UNCOMMENT THIS TO SEE A CHART!
         // const sceneEl = document.querySelector("a-scene")
         // const barDataEl = sceneEl.querySelector("#barsdata")
-        // barDataEl.setAttribute("src", "./data/dummyData.json")
+        // barDataEl.setAttribute("src", "https://raw.githubusercontent.com/fran-aguilar/a-framedc/master/examples/data/scm-commits-filtered.json")
 
 
     }
