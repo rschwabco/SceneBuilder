@@ -35,11 +35,11 @@ class Scene extends Component {
 
 
     _getQueryData = (queries) => {
-        console.log("Get data queries: ", queries)
-        return queries.map((query, i) => {
+        // console.log("Get data queries: ", queries)
+        return queries.map((query, sceneIndex) => {
             return (
 
-                <Query key={i} query={getSceneQuery(query)}>
+                <Query key={sceneIndex} query={getSceneQuery(query)}>
                     {({ loading, error, data }) => {
                         if (loading) return <ActivityIndicator color={'#fff'} />
                         if (error) return <Text>{`Error: ${error}`}</Text>
@@ -48,7 +48,7 @@ class Scene extends Component {
                         // console.log("Query data: ", data)
                         return (
                             <a-entity position="0 3 -4">
-                                {data.scene.id !== "cjl4hc0z3camy0b77y1ameusu" && this._renderScene(data.scene, [...data.scene.children, data.scene.parent])}
+                                {data.scene.id !== "cjl4hc0z3camy0b77y1ameusu" && this._renderScene(data.scene, [...data.scene.children, data.scene.parent], sceneIndex)}
                                 {/* {this._renderScene(data.scene, [...data.scene.children, data.scene.parent])} */}
                             </a-entity>
                         )
@@ -91,9 +91,9 @@ class Scene extends Component {
         )
     }
 
-    _renderScene = (scene, checkpoints) => {
-        const { semanticLayoutNodes, containerNode, children, parent, pq } = scene
-        const { id } = containerNode
+    _renderScene = (scene, checkpoints, sceneIndex) => {
+        const { semanticLayoutNodes, containerNode, children, parent, pq, id } = scene
+        console.log("Scene id: ", id)
 
         // console.log("Render Scene data: ", scene)
 
@@ -104,9 +104,10 @@ class Scene extends Component {
             const { modelType, geometry } = physicalAsset
 
             const dims = 2
-
             return (
-                <a-entity>
+                <a-entity
+                // scale={`${1 / divideBy} ${1 / divideBy} ${1 / divideBy}`}
+                >
                     {semanticLayoutNode.text && this._makeTextEntity({ semanticLayoutNode, scene, i, dims })}
                     {semanticLayoutNode.chart && this._makeChartEntity({ semanticLayoutNode, scene, i, dims })}
                     {semanticLayoutNode.physicalModel
@@ -134,11 +135,20 @@ class Scene extends Component {
             // }
         })
 
+        const getScale = () => {
+            console.log("Prop id: ", this.props.currentScene.replace(/^#+/i, ''))
+            console.log("Own id: ", id.replace(/^#+/i, ''))
+            return this.props.currentScene.replace(/^#+/i, '') === id.replace(/^#+/i, '') ? 1.3 : 0.05
+        }
+
         // console.log("Nodes: ", nodes)
         return (
-            <a-entity
+            <a-sphere
                 id={id}
+                wireframe={true}
+                radius="13"
                 className="container"
+                scale={`${getScale(sceneIndex)} ${getScale(sceneIndex)} ${getScale(sceneIndex)}`}
                 position={`${containerNode.position.x} ${containerNode.position.y} ${containerNode.position.z - 4}`}
             >
                 {makeCheckpoints(checkpoints)}
@@ -163,7 +173,7 @@ class Scene extends Component {
                         ></a-text>
                     </a-box>
                 </a-box>
-            </a-entity>
+            </a-sphere>
         )
     }
 

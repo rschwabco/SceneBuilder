@@ -2,10 +2,10 @@
 import React, { Component } from "react";
 // import 'aframe-physics-system'
 // import "aframe-extras"
-import "aframe-outline"
+// import "aframe-outline"
 import "aframe-look-at-component"
 import "aframe-environment-component"
-import 'aframe-text-geometry-component'
+// import 'aframe-text-geometry-component'
 
 import Scene from "./Scene"
 import Camera from "./Camera"
@@ -50,14 +50,15 @@ export default class Viewer extends Component {
         this.state = {
             inputValue: "",
             cameraAnimationDuration: 1500,
-            currentScene: "friday-demo-scene-container",
+            currentAct: "friday-demo-scene-container",
+            currentScene: "cjl6xclfdirxu0b77lieg5mbx",
             scenePosition: { ...defaultXYZ, y: -1 },
             rotateCamera: false,
             rotationTo: "0 0 0",
             assetOpacity: 1,
             showInfoModal: false,
             cameraTo: "0 0 3.8",
-            moveCamera: false
+            moveCamera: false,
         };
     }
 
@@ -80,9 +81,9 @@ export default class Viewer extends Component {
 
     // TODO: Needs work
     _nextScene = (nextScene) => {
-        console.log("Next scene")
+        // console.log("Next scene")
         this.setState({
-            currentScene: this.state.currentScene === "OilDrum" ? "TankerShip" : "OilDrum",
+            currentAct: this.state.currentAct === "OilDrum" ? "TankerShip" : "OilDrum",
             rotateCamera: !this.state.rotateCamera,
             scenePosition: this.state.scenePosition == defaultXYZ ? { ...defaultXYZ, z: 6 } : defaultXYZ
         })
@@ -103,14 +104,13 @@ export default class Viewer extends Component {
     }
 
     _moveCamera = (options) => {
-        const { cameraTo, rotationTo } = options
-        // console.log("Move camera options: ", options)
-        this.setState({ moveCamera: true, cameraTo, rotationTo })
-        setTimeout(() => this.setState({ moveCamera: false }), 20)
+        console.log("Move camera options: ", options)
+        this.setState({ moveCamera: true, ...options })
+        setTimeout(() => this.setState({ moveCamera: false }), 0)
     }
 
     _selectNewScene = (newScene) => {
-        this.setState({ inputValue: newScene, currentScene: newScene })
+        this.setState({ inputValue: newScene, currentAct: newScene })
     }
 
     _flattenChildrenIds = (arr) => {
@@ -131,7 +131,7 @@ export default class Viewer extends Component {
         }
 
         extractIds(arr)
-        console.log("Children ids: ", children)
+        // console.log("Children ids: ", children)
 
         // TODO: Do this better
         return children
@@ -141,7 +141,7 @@ export default class Viewer extends Component {
 
     // TODO: REORG SCENES SO THAT TOP LEVEL SCENE HAS NO NODES, MOVE TOP LEVEL NODES TO A NEW FIRST CHILD
     render() {
-        const { currentScene, rotateCamera, moveCamera, cameraTo, rotationTo, cameraAnimationDuration } = this.state
+        const { currentAct, rotateCamera, moveCamera, cameraTo, rotationTo, cameraAnimationDuration } = this.state
         // console.log("State: ", this.state)
         return (
             <Query query={getAllAssetsQuery()}>
@@ -153,9 +153,9 @@ export default class Viewer extends Component {
 
                     return (
                         <div id="sceneRoot" style={{ height: "100vh", width: "100%" }}>
-                            <NavBar
+                            {/* <NavBar
                                 onSelect={this._selectNewScene}
-                            />
+                            /> */}
                             <a-scene
 
                                 cursor="rayOrigin:mouse"
@@ -173,11 +173,11 @@ export default class Viewer extends Component {
                                     rotationTo={rotationTo}
                                     cameraAnimationDuration={cameraAnimationDuration}
                                 />
-                                <Query query={getRootSceneQuery(this.state.currentScene)} >
+                                <Query query={getRootSceneQuery(this.state.currentAct)} >
                                     {({ loading, error, data }) => {
                                         if (loading) return <ActivityIndicator color={"#fff"} />;
                                         if (error) return <Text>{`Error: ${error}`}</Text>;
-                                        console.log("Deep scene query data: ", data.scenes[0])
+                                        // console.log("Deep scene query data: ", data.scenes[0])
 
                                         const { containerNode, id, pq } = data.scenes[0]
                                         const { position } = containerNode
@@ -191,6 +191,7 @@ export default class Viewer extends Component {
                                                 <Scene
                                                     showInfoModal={this.state.showInfoModal}
                                                     queries={this._flattenChildrenIds(data.scenes[0].children)}
+                                                    currentScene={`${this.state.currentScene}`}
                                                 // queries={data.scenes[0].children}
                                                 />
                                             </a-entity>
