@@ -50,14 +50,15 @@ export default class Viewer extends Component {
         this.state = {
             inputValue: "",
             cameraAnimationDuration: 1500,
-            currentScene: "friday-demo-scene-container",
+            currentAct: "friday-demo-scene-container",
+            currentScene: "cjl6xclfdirxu0b77lieg5mbx",
             scenePosition: { ...defaultXYZ, y: -1 },
             rotateCamera: false,
             rotationTo: "0 0 0",
             assetOpacity: 1,
             showInfoModal: false,
             cameraTo: "0 0 3.8",
-            moveCamera: false
+            moveCamera: false,
         };
     }
 
@@ -82,7 +83,7 @@ export default class Viewer extends Component {
     _nextScene = (nextScene) => {
         // console.log("Next scene")
         this.setState({
-            currentScene: this.state.currentScene === "OilDrum" ? "TankerShip" : "OilDrum",
+            currentAct: this.state.currentAct === "OilDrum" ? "TankerShip" : "OilDrum",
             rotateCamera: !this.state.rotateCamera,
             scenePosition: this.state.scenePosition == defaultXYZ ? { ...defaultXYZ, z: 6 } : defaultXYZ
         })
@@ -109,7 +110,7 @@ export default class Viewer extends Component {
     }
 
     _selectNewScene = (newScene) => {
-        this.setState({ inputValue: newScene, currentScene: newScene })
+        this.setState({ inputValue: newScene, currentAct: newScene })
     }
 
     _flattenChildrenIds = (arr) => {
@@ -140,7 +141,7 @@ export default class Viewer extends Component {
 
     // TODO: REORG SCENES SO THAT TOP LEVEL SCENE HAS NO NODES, MOVE TOP LEVEL NODES TO A NEW FIRST CHILD
     render() {
-        const { currentScene, rotateCamera, moveCamera, cameraTo, rotationTo, cameraAnimationDuration } = this.state
+        const { currentAct, rotateCamera, moveCamera, cameraTo, rotationTo, cameraAnimationDuration } = this.state
         // console.log("State: ", this.state)
         return (
             <Query query={getAllAssetsQuery()}>
@@ -172,7 +173,7 @@ export default class Viewer extends Component {
                                     rotationTo={rotationTo}
                                     cameraAnimationDuration={cameraAnimationDuration}
                                 />
-                                <Query query={getRootSceneQuery(this.state.currentScene)} >
+                                <Query query={getRootSceneQuery(this.state.currentAct)} >
                                     {({ loading, error, data }) => {
                                         if (loading) return <ActivityIndicator color={"#fff"} />;
                                         if (error) return <Text>{`Error: ${error}`}</Text>;
@@ -190,6 +191,7 @@ export default class Viewer extends Component {
                                                 <Scene
                                                     showInfoModal={this.state.showInfoModal}
                                                     queries={this._flattenChildrenIds(data.scenes[0].children)}
+                                                    currentScene={`${this.state.currentScene}`}
                                                 // queries={data.scenes[0].children}
                                                 />
                                             </a-entity>
