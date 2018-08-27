@@ -35,7 +35,7 @@ class Scene extends Component {
 
 
     _getQueryData = (queries) => {
-        console.log("Get data queries: ", queries)
+        // console.log("Get data queries: ", queries)
         return queries.map((query, i) => {
             return (
 
