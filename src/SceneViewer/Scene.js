@@ -10,6 +10,7 @@ import {
 import { check } from 'graphql-anywhere';
 import BoxContainer from "./BoxContainer"
 
+import SceneContainer from "./SceneContainer"
 
 
 class Scene extends Component {
@@ -138,42 +139,40 @@ class Scene extends Component {
         const getScale = () => {
             console.log("Prop id: ", this.props.currentScene.replace(/^#+/i, ''))
             console.log("Own id: ", id.replace(/^#+/i, ''))
-            return this.props.currentScene.replace(/^#+/i, '') === id.replace(/^#+/i, '') ? 1.3 : 0.05
+            return this.props.currentScene.replace(/^#+/i, '') === id.replace(/^#+/i, '') ? 1.3 : 0.01
         }
 
         // console.log("Nodes: ", nodes)
         return (
-            <a-sphere
+            <SceneContainer
                 id={id}
-                wireframe={true}
-                radius="13"
-                className="container"
-                scale={`${getScale(sceneIndex)} ${getScale(sceneIndex)} ${getScale(sceneIndex)}`}
-                position={`${containerNode.position.x} ${containerNode.position.y} ${containerNode.position.z - 4}`}
+                nextScale={getScale()}
             >
-                {makeCheckpoints(checkpoints)}
-                {nodes}
-                <a-box
-                    width="6"
-                    height="2"
-                    wireframe={true}
-                    position={`0 -1.5 4`}
-                >
+                <a-entity>
+                    {makeCheckpoints(checkpoints)}
+                    {nodes}
                     <a-box
                         width="6"
                         height="2"
-                        position="0 0 0"
-                        color="#1bf222"
-                        opacity="0.2"
+                        wireframe={true}
+                        position={`0 -1.5 4`}
                     >
-                        <a-text
-                            align="center"
-                            position="0 0 0 "
-                            value={`${pq.text}`}
-                        ></a-text>
+                        <a-box
+                            width="6"
+                            height="2"
+                            position="0 0 0"
+                            color="#1bf222"
+                            opacity="0.2"
+                        >
+                            <a-text
+                                align="center"
+                                position="0 0 0 "
+                                value={`${pq.text}`}
+                            ></a-text>
+                        </a-box>
                     </a-box>
-                </a-box>
-            </a-sphere>
+                </a-entity>
+            </SceneContainer>
         )
     }
 
@@ -222,7 +221,6 @@ class Scene extends Component {
                 position={`${semanticLayoutNode.position.x} ${semanticLayoutNode.position.y} ${semanticLayoutNode.position.z}`}
             >
                 <a-entity
-
                     position={`${-chartDims / 2} ${-chartDims / 2} 0`}
                     id="bars"
                     barchart={`width: ${chartDims} ;height: ${chartDims} ;gridson:true;title: ${chart} ;src:#barsdata`}
