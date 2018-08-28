@@ -63,6 +63,10 @@ class Camera extends React.Component {
                     position="0 0 0"
                     id="camera"
                 >
+                    <a-entity
+                        position="0 -4 -1"
+                        id="cameraLookAt"
+                    ></a-entity>
                     <a-cursor fuse="false" color="yellow" />
                 </a-camera>
                 {this.state.rotate && <a-animation

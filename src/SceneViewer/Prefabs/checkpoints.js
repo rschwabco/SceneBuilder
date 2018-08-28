@@ -13,6 +13,7 @@ export const makeCheckpoints = (props, node) => {
                 // camera-to-here={`cameraTo: ${0 + x} ${4 + y} ${5 + z}; lookAt: #${id}`}
                 camera-to-here={`cameraTo: ${0} ${4} ${5}; lookAt: #${id}`}
                 color="transparent"
+                look-at="#cameraLookAt"
                 opacity="0.3"
                 position={`${i === 0 ? 6 : -6} ${-1} 3`}
                 height={`${dim}`}
