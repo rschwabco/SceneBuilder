@@ -10,7 +10,8 @@ export const makeCheckpoints = (props, node) => {
         return (
             <a-box
                 className="checkpoint-box"
-                camera-to-here={`cameraTo: ${0 + x} ${4 + y} ${5 + z}; lookAt: #${id}`}
+                // camera-to-here={`cameraTo: ${0 + x} ${4 + y} ${5 + z}; lookAt: #${id}`}
+                camera-to-here={`cameraTo: ${0} ${4} ${5}; lookAt: #${id}`}
                 color="transparent"
                 opacity="0.3"
                 position={`${i === 0 ? 6 : -6} ${-1} 3`}
