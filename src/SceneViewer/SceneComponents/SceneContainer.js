@@ -37,7 +37,7 @@ class SceneContainer extends Component {
                 opacity="0.8"
                 side="double"
                 metalness="0.76"
-                radius="13"
+                radius="15"
                 className="container"
                 scale={`${nextScale} ${nextScale} ${nextScale}`}
                 position={`${0} ${0} ${-4}`}
@@ -48,6 +48,7 @@ class SceneContainer extends Component {
                     fill="forwards"
                     to={`${nextScale} ${nextScale} ${nextScale}`}
                 />}
+
                 {children}
             </a-sphere>
         )

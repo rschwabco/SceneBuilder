@@ -9,6 +9,7 @@ import "aframe-environment-component"
 
 import Scene from "./Scene"
 import Camera from "./Camera"
+import AmbientSceneLight from "./AmbientSceneLight"
 import * as aframe from "aframe";
 import { Query } from "react-apollo";
 import registerAllAssets from "../assets/registerAllAssets"
@@ -164,7 +165,7 @@ export default class Viewer extends Component {
                             // keyboard-shortcuts
                             // leap="vr: false"
                             >
-                                <a-entity position="0 -5 0" environment="preset: contact; skyType: atmosphere; skyColor: #b9b9b9; ground: hills; dressingScale: .1;dressingAmount: 4; dressingColor: #7C4DFF; lightPosition:0 180 180;"></a-entity>
+                                <a-entity position="0 -5 0" environment="preset: contact; seed: 3; dressingAmount: 4;"></a-entity>
                                 {registerAllAssets(data.physicalAssets)}
                                 <Camera
                                     moveCamera={moveCamera}
@@ -186,7 +187,7 @@ export default class Viewer extends Component {
                                                 id={id}
                                                 position={`${position.x} ${position.y} ${position.z}`}
                                             >
-
+                                                <AmbientSceneLight />
                                                 <AframeChart />
                                                 <Scene
                                                     showInfoModal={this.state.showInfoModal}
