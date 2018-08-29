@@ -3,16 +3,22 @@ import * as aframe from 'aframe'
 import BoxContainer from "../BoxContainer"
 
 export const render3dEntity = (props) => {
-    const { semanticLayoutNode, scene, i, dims } = props
+    const { semanticLayoutNode, dims } = props
     const { physicalModel, rotation, position, scale } = semanticLayoutNode
     const { physicalAsset, id, name } = physicalModel
     // console.log("Make 3d entity name: ", name)
     // console.log("Obj to render: ", props)
 
+    console.log("semanticLayoutNode: ", semanticLayoutNode)
+    console.log("semanticLayoutNode dimensions: ", semanticLayoutNode.dimensions)
+
     // TODO: Use scale from SLN
     const getScale = () => {
         console.log("render 3d entity id: ", id)
         console.log("render 3d entity name: ", name)
+        console.log("render 3d entity SLN name: ", semanticLayoutNode.name)
+        console.log("render 3d entity SLN id: ", semanticLayoutNode.id)
+        console.log("render 3d entity SLN: ", semanticLayoutNode)
         switch (id) {
             case "cjl7hvt1gkdiz0b77prl5j0bm":
                 return 0.25
@@ -23,9 +29,9 @@ export const render3dEntity = (props) => {
             case "cjl7j53afkh1c0b77dax7zkik":
                 return 0.018
             case "cjl7jbtsxkhll0b776uo1vott":
-                return scale.x
+                return scale && scale.x ? scale.x : 1
             case "cjky8ddvj9ok80b29hca4qzbn":
-                return scale.x
+                return scale && scale.x ? scale.x : 1
             default: return 0.4
         }
     }
@@ -77,9 +83,12 @@ export const render3dEntity = (props) => {
     return (
         <BoxContainer
             color={getColor()}
-            dims={dims}
-            width={getContainerWidth()}
-            position={`${semanticLayoutNode.position.x} ${semanticLayoutNode.position.y} ${semanticLayoutNode.position.z}`}
+            dimensions={{
+                x: getContainerWidth(),
+                y: getContainerWidth(),
+                z: getContainerWidth()
+            }}
+            position={{ ...semanticLayoutNode.position }}
         >
             <a-entity
                 scale={`${getScale()} ${getScale()} ${getScale()}`}

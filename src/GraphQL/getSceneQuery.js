@@ -10,57 +10,52 @@ export const getSceneQuery = (sceneId = "cjkn3ca5kgm8a0b77fr3a28q5") => {
           children {
             id
             containerNode {
-                position{
-                  x
-                  y
-                  z
-                }
-              }
+              position{ x y z }
+            }
           }
           parent {
             id
             containerNode {
-                position{
-                  x
-                  y
-                  z
-                }
+                position{ x y z }
               }
           }
           containerNode {
-            position {
-              x
-              y
-              z
-            }
+            position { x y z }
           }
           semanticLayoutNodes {
-              text
-              chart
+            text
+            chart
+            dimensions { x y z }
             physicalModel {
-                id
-                name
+              id
+              name
               physicalAsset {
-                  geometry
+                geometry
                 modelType
                 name
                 objPath
               }
             }
-            position {
-              x
-              y
-              z
-            }
-            rotation {
-              x
-              y
-              z
-            }
-            scale {
-              x
-              y
-              z
+            position { x y z }
+            rotation { x y z }
+            scale { x y z }
+            childNodes {
+              text
+              chart
+              dimensions { x y z }
+              physicalModel {
+                id
+                name
+                physicalAsset {
+                  geometry
+                  modelType
+                  name
+                  objPath
+                }
+              }
+              position { x y z }
+              rotation { x y z }
+              scale { x y z }
             }
           }
         }

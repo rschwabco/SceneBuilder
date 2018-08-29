@@ -7,12 +7,17 @@ export const renderChartEntity = (props) => {
     const { physicalModel, rotation, position, scale, name, chart = "CHART" } = semanticLayoutNode
 
     const chartDims = dims * 1.5
+    console.log("Chart dims:")
     // return null
     return (
         <BoxContainer
             color="yellow"
-            dims={chartDims}
-            position={`${semanticLayoutNode.position.x} ${semanticLayoutNode.position.y} ${semanticLayoutNode.position.z}`}
+            dimensions={{
+                x: chartDims,
+                y: chartDims,
+                z: chartDims
+            }}
+            position={{ ...semanticLayoutNode.position }}
         >
             <a-entity
                 position={`${-chartDims / 2} ${-chartDims / 2} 0`}
