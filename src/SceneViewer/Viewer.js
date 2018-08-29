@@ -51,7 +51,7 @@ export default class Viewer extends Component {
         this.state = {
             inputValue: "",
             cameraAnimationDuration: 1500,
-            currentAct: "friday-demo-scene-container",
+            currentAct: "rebuilding-ship-scene",
             currentScene: "cjl6xclfdirxu0b77lieg5mbx",
             scenePosition: { ...defaultXYZ, y: -1 },
             rotateCamera: false,

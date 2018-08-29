@@ -27,7 +27,7 @@ export const renderShipContainer = (props) => { // Need to abstract this out asa
         <a-entity
             position={`${semanticLayoutNode.position.x} ${semanticLayoutNode.position.y - .5} ${semanticLayoutNode.position.z}`}
         >
-            {makeCargoShips({ options: ships, showInfoModal })}
+            {makeCargoShips({ ships, showInfoModal })}
         </a-entity>
     )
 }
