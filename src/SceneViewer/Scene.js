@@ -63,7 +63,7 @@ class Scene extends Component {
         const { semanticLayoutNodes, containerNode, children, parent, pq, id } = scene
         console.log("Scene id: ", id)
 
-        // console.log("Render Scene data: ", scene)
+        console.log("Render Scene data: ", scene)
 
         const nodes = semanticLayoutNodes.map((semanticLayoutNode, i) => {
             // console.log("semanticLayoutNode: ", semanticLayoutNode)
@@ -74,6 +74,7 @@ class Scene extends Component {
             const dims = 2
             return (
                 <a-entity
+                    id={`renderScene-${id}`}
                 // scale={`${1 / divideBy} ${1 / divideBy} ${1 / divideBy}`}
                 >
                     {semanticLayoutNode.text && renderTextEntity({ semanticLayoutNode, scene, i, dims })}
@@ -101,8 +102,9 @@ class Scene extends Component {
 
         return (
             <SceneContainer
+                key={id}
                 id={id}
-                nextScale={getScale()}
+                nextScale={1.3}
             >
                 <a-entity>
                     {makeCheckpoints(checkpoints)}

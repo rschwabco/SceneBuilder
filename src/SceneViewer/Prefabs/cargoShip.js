@@ -3,10 +3,10 @@ import { makeCargoContainers } from "./cargoContainer"
 import { HtmlShader } from "../../DataOverlay/HtmlShader"
 
 export const makeCargoShips = (props) => {
-    const { options, showInfoModal } = props
+    const { ships, showInfoModal } = props
     // console.log("Child data: ", childData)
 
-    const wireframe = showInfoModal // Play with these!
+    const wireframe = true // Play with these!
     const containerWireframe = false  // Play with these!
 
     // const makeChildEntities = () => {
@@ -29,9 +29,10 @@ export const makeCargoShips = (props) => {
     //         )
     //     })
     // }
+    console.log("make Cargo ship with: ", props)
     return (
         <a-entity>
-            {options.map((ship, i) => {
+            {ships.map((ship, i) => {
                 if (i === 0) { // Uncomment to test just 1 ship
 
                     return (
