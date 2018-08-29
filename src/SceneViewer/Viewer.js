@@ -44,6 +44,8 @@ const defaultXYZ = {
     z: 0
 }
 
+const prismaScenes = ["friday-demo-scene-container", "rebuilding-ship-scene"]
+
 export default class Viewer extends Component {
     constructor() {
         super();
@@ -51,8 +53,8 @@ export default class Viewer extends Component {
         this.state = {
             inputValue: "",
             cameraAnimationDuration: 1500,
-            currentAct: "rebuilding-ship-scene",
-            currentScene: "cjl6xclfdirxu0b77lieg5mbx",
+            currentAct: prismaScenes[0],
+            currentScene: "cjl6xclfdirxu0b77lieg5mbx", // This needs to be updated on load
             scenePosition: { ...defaultXYZ, y: -1 },
             rotateCamera: false,
             rotationTo: "0 0 0",

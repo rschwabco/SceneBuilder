@@ -67,9 +67,7 @@ class Scene extends Component {
 
         const nodes = semanticLayoutNodes.map((semanticLayoutNode, i) => {
             // console.log("semanticLayoutNode: ", semanticLayoutNode)
-            const { physicalModel, rotation, scale } = semanticLayoutNode
-            const { physicalAsset } = physicalModel
-            const { modelType, geometry } = physicalAsset
+
 
             const dims = 2
             return (
@@ -104,7 +102,8 @@ class Scene extends Component {
             <SceneContainer
                 key={id}
                 id={id}
-                nextScale={1.3}
+                nextScale={getScale()} // Fix so this works with single scene
+            // nextScale={1.3}
             >
                 <a-entity>
                     {makeCheckpoints(checkpoints)}

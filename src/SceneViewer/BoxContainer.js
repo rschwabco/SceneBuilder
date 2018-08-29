@@ -3,27 +3,33 @@ import * as aframe from 'aframe'
 
 const BoxContainer = (props) => {
     const {
-        dims,
         i = 0,
         color = "#03A9F4",
-        position = null,
-        width
+        position = {
+            x: 0,
+            y: 0,
+            z: 0
+        },
+        dimensions
     } = props
+
+
+
     return (
         <a-box
             key={i}
-            position={position ? position : `${0} ${i * (dims + 1)} ${0}`}
-            height={`${width ? width : dims}`}
-            width={`${width ? width : dims}`}
-            depth={`${width ? width : dims}`}
+            position={`${position.x} ${position.y} ${position.z}`}
+            height={`${dimensions.y}`}
+            width={`${dimensions.x}`}
+            depth={`${dimensions.y}`}
             opacity="0.3"
             color={color}
         >
             <a-box
                 position={`${0} ${0} ${0}`}
-                height={`${width ? width : dims}`}
-                width={`${width ? width : dims}`}
-                depth={`${width ? width : dims}`}
+                height={`${dimensions.y}`}
+                width={`${dimensions.x}`}
+                depth={`${dimensions.y}`}
                 wireframe
             >
             </a-box>

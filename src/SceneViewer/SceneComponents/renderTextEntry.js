@@ -10,12 +10,17 @@ export const renderTextEntity = (props) => {
     return (
         <BoxContainer
             color="red"
-            dims={dims}
-            width={2 * dims}
-            position={`${semanticLayoutNode.position.x} ${semanticLayoutNode.position.y} ${semanticLayoutNode.position.z}`}
+            dimensions={{
+                x: 2 * dims,
+                y: dims,
+                z: dims
+            }}
+            position={{ ...semanticLayoutNode.position }}
         >
             <a-text scale="2 2 2" align="center" position={`${0} ${0} ${0}`} value={text}></a-text>
         </BoxContainer>
     )
 
 }
+
+
