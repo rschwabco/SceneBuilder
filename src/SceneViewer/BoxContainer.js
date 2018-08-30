@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import * as aframe from 'aframe'
+import { } from "./animationCoordinates"
 
 const BoxContainer = (props) => {
     const {

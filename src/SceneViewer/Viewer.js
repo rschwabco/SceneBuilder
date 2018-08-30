@@ -33,7 +33,7 @@ import {
 } from "../AFrameFunctions"
 
 import { NavBar } from "../Components"
-import AframeChart from "../Components/AframeChart"
+// import AframeChart from "../Components/AframeChart"
 
 import { HtmlShader } from "../DataOverlay/HtmlShader"
 var aframedc = require('a-framedc');
@@ -52,6 +52,7 @@ export default class Viewer extends Component {
 
         this.state = {
             inputValue: "",
+            animateSceneTransition: false,
             cameraAnimationDuration: 1500,
             currentAct: prismaScenes[0],
             currentScene: "cjl6xclfdirxu0b77lieg5mbx", // This needs to be updated on load
@@ -68,7 +69,7 @@ export default class Viewer extends Component {
     componentWillMount() {
         // * Register all requisite custom aframe functions, imported from src/AFrameFunctions
 
-        clickToNavigate(this._rotateCamera)
+        clickToNavigate(this._rotateCamera) // rename
 
         hoverInfo(info => console.log(info))
 
@@ -78,7 +79,7 @@ export default class Viewer extends Component {
 
         modelOpacity(this._updateObjectOpacity)
 
-        cameraToHere(this._moveCamera, this.state.cameraAnimationDuration)
+        cameraToHere(this._moveCamera, this.state.cameraAnimationDuration) // rename
 
     }
 
@@ -107,9 +108,12 @@ export default class Viewer extends Component {
     }
 
     _moveCamera = (options) => {
-        console.log("Move camera options: ", options)
-        this.setState({ moveCamera: true, ...options })
-        setTimeout(() => this.setState({ moveCamera: false }), 0)
+        // console.log("Move camera options: ", options)
+        // this.setState({ moveCamera: true, ...options })
+        // setTimeout(() => this.setState({ moveCamera: false }), 0)
+
+        this.setState({ animateSceneTransition: true })
+        setTimeout(() => this.setState({ animateSceneTransition: false }), 1000)
     }
 
     _selectNewScene = (newScene) => {
@@ -190,8 +194,9 @@ export default class Viewer extends Component {
                                                 position={`${position.x} ${position.y} ${position.z}`}
                                             >
                                                 <AmbientSceneLight />
-                                                <AframeChart />
+                                                {/* <AframeChart /> */}
                                                 <Scene
+                                                    animateSceneTransition={this.state.animateSceneTransition}
                                                     showInfoModal={this.state.showInfoModal}
                                                     queries={this._flattenChildrenIds(data.scenes[0].children)}
                                                     currentScene={`${this.state.currentScene}`}

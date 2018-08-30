@@ -51,6 +51,8 @@ class SceneContainer extends Component {
             animationDuration
         } = this.state
         const { children, id, nextScale } = this.props
+
+        console.log("Children from scene container: ", children)
         return (
             <a-sphere
                 fog={false} // Setting ignored for some reason
