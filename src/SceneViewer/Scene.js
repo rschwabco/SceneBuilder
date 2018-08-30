@@ -71,6 +71,18 @@ class Scene extends Component {
         // TODO: Fill this out
     }
 
+    // _chooseAnimation = () => {
+    //     if (this.props.animateSceneTransition) {
+    //         return (<a-animation
+    //             attribute="position"
+    //             delay={`${i * 50}`}
+    //             to={animationCoordinates({ x: semanticLayoutNode.position.x, y: semanticLayoutNode.position.y, z: semanticLayoutNode.position.z })}
+    //             dur="950"
+    //             fill="forwards"
+    //         />)
+    //     }
+    // }
+
 
     _renderScene = (scene, checkpoints, sceneIndex) => {
         const { semanticLayoutNodes, containerNode, children, parent, pq, id } = scene
@@ -112,7 +124,7 @@ class Scene extends Component {
                     />}
                     {!this.props.animateSceneTransition && <a-animation
                         attribute="position"
-                        to={`${semanticLayoutNode.position.x} ${semanticLayoutNode.position.y} ${semanticLayoutNode.position.z}`}
+                        to={`${0} ${0} ${0}`}
                         dur="950"
                         fill="forwards"
                     />}

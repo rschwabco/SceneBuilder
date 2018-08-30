@@ -113,7 +113,8 @@ export default class Viewer extends Component {
         // setTimeout(() => this.setState({ moveCamera: false }), 0)
 
         this.setState({ animateSceneTransition: true })
-        setTimeout(() => this.setState({ animateSceneTransition: false }), 1000)
+        setTimeout(() => this.setState({ ...options }), 1000)
+        setTimeout(() => this.setState({ animateSceneTransition: false }), 2000)
     }
 
     _selectNewScene = (newScene) => {

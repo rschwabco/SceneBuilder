@@ -19,7 +19,7 @@ export const cameraToHere = (callback, timeout) => {
             this.callbackOptions = {
                 cameraTo: this.data.cameraTo,
                 rotationTo: { x: 0, y: 0, z: 0 },
-                // currentScene: this.data.lookAt
+                currentScene: this.data.lookAt
             }
 
             this.el.addEventListener("click", debounce((event) => {

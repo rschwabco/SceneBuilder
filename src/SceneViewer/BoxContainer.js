@@ -19,6 +19,7 @@ const BoxContainer = (props) => {
     return (
         <a-box
             key={i}
+            // position={`${position.x} ${position.y} ${position.z}`}
             position={`${position.x} ${position.y} ${position.z}`}
             height={`${dimensions.y}`}
             width={`${dimensions.x}`}
