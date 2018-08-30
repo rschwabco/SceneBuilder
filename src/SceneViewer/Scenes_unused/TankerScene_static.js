@@ -211,7 +211,6 @@ class ContainerScene extends Component {
                             <a-entity>
                                 <a-entity
                                     // Fuel Tank
-                                    // click-to-navigate
                                     position={`${-.4} ${.4} ${-2.44}`}
                                     rotation={`${0} ${0} ${0}`}
                                     scale={`${.1} ${.1} ${.1} `}
@@ -222,7 +221,6 @@ class ContainerScene extends Component {
                                 </a-entity>
                                 <a-entity
                                     // Fuel Tank
-                                    // click-to-navigate
                                     position={`${-.4} ${.4} ${-3.09}`}
                                     rotation={`${0} ${0} ${0}`}
                                     scale={`${.1} ${.1} ${.1} `}
@@ -233,7 +231,6 @@ class ContainerScene extends Component {
                                 </a-entity>
                                 <a-entity
                                     // Fuel Tank
-                                    // click-to-navigate
                                     position={`${.4} ${.4} ${-2.44}`}
                                     rotation={`${0} ${0} ${0}`}
                                     scale={`${.1} ${.1} ${.1} `}
@@ -244,7 +241,6 @@ class ContainerScene extends Component {
                                 </a-entity>
                                 <a-entity
                                     // Fuel Tank
-                                    // click-to-navigate
                                     position={`${.4} ${.4} ${-3.09}`}
                                     rotation={`${0} ${0} ${0}`}
                                     scale={`${.1} ${.1} ${.1} `}
@@ -255,7 +251,6 @@ class ContainerScene extends Component {
                                 </a-entity>
                                 <a-entity
                                     // Propeller
-                                    // click-to-navigate
                                     material="color: #FFEB3B"
                                     position={`${.42} ${.06} ${-4.105}`}
                                     rotation={`${0} ${90} ${0}`}
@@ -266,7 +261,6 @@ class ContainerScene extends Component {
                                 </a-entity>
                                 <a-entity
                                     // Propeller
-                                    // click-to-navigate
                                     material="color: #FFEB3B"
                                     position={`${-.42} ${.06} ${-4.105}`}
                                     rotation={`${0} ${90} ${0}`}

@@ -1,0 +1,57 @@
+{
+    "scene": {
+        "name": "tree-rings-Sensor-1",
+        "containerNode": {
+            "create": {
+                "name": "tree-rings-Sensor-1-containerNode",
+                "position": {
+                    "create": {
+                        "x": 0,
+                        "y": 0,
+                        "z": 0
+                    }
+                }
+            }
+        },
+        "pq": {
+            "create": {
+                "text": "Sensor 1"
+            }
+        },
+        "semanticLayoutNodes": {
+            "create": [
+                {
+                    "name": "tree-rings-Sensor-1",
+                    "position": {
+                        "create": {
+                            "x": -3,
+                            "y": 4,
+                            "z": 0
+                        }
+                    },
+                    "physicalModel": {
+                        "connect": {
+                            "id": "cjky8ddvj9ok80b29hca4qzbn"
+                        }
+                    }
+                },
+                {
+                    "name": "tree-rings-Sensor-1-Chart",
+                    "position": {
+                        "create": {
+                            "x": 2.5,
+                            "y": 3,
+                            "z": 0
+                        }
+                    },
+                    "physicalModel": {
+                        "connect": {
+                            "id": "cjl48tqyzbp060b77n9hb8w93"
+                        }
+                    },
+                    "chart": "Sensor 1 Reading"
+                }
+            ]
+        }
+    }
+}

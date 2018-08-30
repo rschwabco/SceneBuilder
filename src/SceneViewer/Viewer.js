@@ -69,7 +69,7 @@ export default class Viewer extends Component {
     componentWillMount() {
         // * Register all requisite custom aframe functions, imported from src/AFrameFunctions
 
-        clickToNavigate(this._rotateCamera) // rename
+        clickToNavigate(this._moveCamera, this.state.cameraAnimationDuration) // rename
 
         hoverInfo(info => console.log(info))
 
@@ -94,18 +94,18 @@ export default class Viewer extends Component {
     }
 
     // TODO: Needs work
-    _rotateCamera = (updatedBy) => {
-        this.setState({ rotateCamera: !this.state.rotateCamera })
-        setTimeout(() => this._nextScene(), 600)
-    }
+    // _rotateCamera = (updatedBy) => {
+    //     this.setState({ rotateCamera: !this.state.rotateCamera })
+    //     setTimeout(() => this._nextScene(), 600)
+    // }
 
-    _toggleInfoModal = () => {
-        this.setState({ showInfoModal: !this.state.showInfoModal })
-    }
+    // _toggleInfoModal = () => {
+    //     this.setState({ showInfoModal: !this.state.showInfoModal })
+    // }
 
-    _updateObjectOpacity = (assetOpacity) => {
-        this.setState({ assetOpacity }, () => console.log("New state: ", this.state))
-    }
+    // _updateObjectOpacity = (assetOpacity) => {
+    //     this.setState({ assetOpacity }, () => console.log("New state: ", this.state))
+    // }
 
     _moveCamera = (options) => {
         // console.log("Move camera options: ", options)

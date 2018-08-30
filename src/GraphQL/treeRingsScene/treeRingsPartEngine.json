@@ -1,0 +1,318 @@
+{
+    "scene": {
+        "name": "tree-rings-part-Engine",
+        "containerNode": {
+            "create": {
+                "name": "tree-rings-part-Engine-containerNode",
+                "position": {
+                    "create": {
+                        "x": 0,
+                        "y": 0,
+                        "z": 0
+                    }
+                }
+            }
+        },
+        "pq": {
+            "create": {
+                "text": "Engine Part & its Sensors"
+            }
+        },
+        "semanticLayoutNodes": {
+            "create": [
+                {
+                    "name": "tree-rings-part-Engine",
+                    "position": {
+                        "create": {
+                            "x": -3,
+                            "y": 4,
+                            "z": 0
+                        }
+                    },
+                    "dimensions": {
+                        "create": {
+                            "x": 2,
+                            "y": 2,
+                            "z": 2
+                        }
+                    },
+                    "physicalModel": {
+                        "connect": {
+                            "id": "cjky8ddvj9ok80b29hca4qzbn"
+                        }
+                    }
+                },
+                {
+                    "name": "tree-rings-part-Engine-Sensor-1",
+                    "position": {
+                        "create": {
+                            "x": 0,
+                            "y": 0,
+                            "z": 0
+                        }
+                    },
+                    "dimensions": {
+                        "create": {
+                            "x": 2,
+                            "y": 2,
+                            "z": 2
+                        }
+                    },
+                    "physicalModel": {
+                        "connect": {
+                            "id": "cjky8ddvj9ok80b29hca4qzbn"
+                        }
+                    }
+                },
+                {
+                    "name": "tree-rings-part-Engine-Sensor-2",
+                    "position": {
+                        "create": {
+                            "x": 0,
+                            "y": 3,
+                            "z": 0
+                        }
+                    },
+                    "dimensions": {
+                        "create": {
+                            "x": 2,
+                            "y": 2,
+                            "z": 2
+                        }
+                    },
+                    "physicalModel": {
+                        "connect": {
+                            "id": "cjky8ddvj9ok80b29hca4qzbn"
+                        }
+                    }
+                },
+                {
+                    "name": "tree-rings-part-Engine-Sensor-3",
+                    "position": {
+                        "create": {
+                            "x": 0,
+                            "y": 6,
+                            "z": 0
+                        }
+                    },
+                    "dimensions": {
+                        "create": {
+                            "x": 2,
+                            "y": 2,
+                            "z": 2
+                        }
+                    },
+                    "physicalModel": {
+                        "connect": {
+                            "id": "cjky8ddvj9ok80b29hca4qzbn"
+                        }
+                    }
+                },
+                {
+                    "name": "tree-rings-part-Engine-Sensor-4",
+                    "position": {
+                        "create": {
+                            "x": 0,
+                            "y": 9,
+                            "z": 0
+                        }
+                    },
+                    "dimensions": {
+                        "create": {
+                            "x": 2,
+                            "y": 2,
+                            "z": 2
+                        }
+                    },
+                    "physicalModel": {
+                        "connect": {
+                            "id": "cjky8ddvj9ok80b29hca4qzbn"
+                        }
+                    }
+                },
+                {
+                    "name": "tree-rings-part-Engine-Sensor-5",
+                    "position": {
+                        "create": {
+                            "x": 0,
+                            "y": 12,
+                            "z": 0
+                        }
+                    },
+                    "dimensions": {
+                        "create": {
+                            "x": 2,
+                            "y": 2,
+                            "z": 2
+                        }
+                    },
+                    "physicalModel": {
+                        "connect": {
+                            "id": "cjky8ddvj9ok80b29hca4qzbn"
+                        }
+                    }
+                },
+                {
+                    "name": "tree-rings-part-Engine-Sensor-6",
+                    "position": {
+                        "create": {
+                            "x": 0,
+                            "y": 15,
+                            "z": 0
+                        }
+                    },
+                    "dimensions": {
+                        "create": {
+                            "x": 2,
+                            "y": 2,
+                            "z": 2
+                        }
+                    },
+                    "physicalModel": {
+                        "connect": {
+                            "id": "cjky8ddvj9ok80b29hca4qzbn"
+                        }
+                    }
+                },
+                {
+                    "name": "tree-rings-part-Engine-Text-1",
+                    "position": {
+                        "create": {
+                            "x": 4,
+                            "y": 0,
+                            "z": 0
+                        }
+                    },
+                    "dimensions": {
+                        "create": {
+                            "x": 4,
+                            "y": 2,
+                            "z": 2
+                        }
+                    },
+                    "physicalModel": {
+                        "connect": {
+                            "id": "cjl48tl4hbozv0b778od0ki4o"
+                        }
+                    },
+                    "text": "Sensor 1"
+                },
+                {
+                    "name": "tree-rings-part-Engine-Text-2",
+                    "position": {
+                        "create": {
+                            "x": 4,
+                            "y": 3,
+                            "z": 0
+                        }
+                    },
+                    "dimensions": {
+                        "create": {
+                            "x": 4,
+                            "y": 2,
+                            "z": 2
+                        }
+                    },
+                    "physicalModel": {
+                        "connect": {
+                            "id": "cjl48tl4hbozv0b778od0ki4o"
+                        }
+                    },
+                    "text": "Sensor 2"
+                },
+                {
+                    "name": "tree-rings-part-Engine-Text-3",
+                    "position": {
+                        "create": {
+                            "x": 4,
+                            "y": 6,
+                            "z": 0
+                        }
+                    },
+                    "dimensions": {
+                        "create": {
+                            "x": 4,
+                            "y": 2,
+                            "z": 2
+                        }
+                    },
+                    "physicalModel": {
+                        "connect": {
+                            "id": "cjl48tl4hbozv0b778od0ki4o"
+                        }
+                    },
+                    "text": "Sensor 3"
+                },
+                {
+                    "name": "tree-rings-part-Engine-Text-4",
+                    "position": {
+                        "create": {
+                            "x": 4,
+                            "y": 9,
+                            "z": 0
+                        }
+                    },
+                    "dimensions": {
+                        "create": {
+                            "x": 4,
+                            "y": 2,
+                            "z": 2
+                        }
+                    },
+                    "physicalModel": {
+                        "connect": {
+                            "id": "cjl48tl4hbozv0b778od0ki4o"
+                        }
+                    },
+                    "text": "Sensor 4"
+                },
+                {
+                    "name": "tree-rings-part-Engine-Text-5",
+                    "position": {
+                        "create": {
+                            "x": 4,
+                            "y": 12,
+                            "z": 0
+                        }
+                    },
+                    "dimensions": {
+                        "create": {
+                            "x": 4,
+                            "y": 2,
+                            "z": 2
+                        }
+                    },
+                    "physicalModel": {
+                        "connect": {
+                            "id": "cjl48tl4hbozv0b778od0ki4o"
+                        }
+                    },
+                    "text": "Sensor 5"
+                },
+                {
+                    "name": "tree-rings-part-Engine-Text-6",
+                    "position": {
+                        "create": {
+                            "x": 4,
+                            "y": 15,
+                            "z": 0
+                        }
+                    },
+                    "dimensions": {
+                        "create": {
+                            "x": 4,
+                            "y": 2,
+                            "z": 2
+                        }
+                    },
+                    "physicalModel": {
+                        "connect": {
+                            "id": "cjl48tl4hbozv0b778od0ki4o"
+                        }
+                    },
+                    "text": "Sensor 6"
+                }
+            ]
+        }
+    }
+}

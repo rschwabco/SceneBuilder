@@ -15,8 +15,6 @@ export const makeCargoShips = (props) => {
     //         console.log("Make child entities asset: ", asset)
     //         return (
     //             <a-entity
-    //                 // Fuel Tank
-    //                 // click-to-navigate
     //                 key={i}
     //                 position={`${0} ${0} ${0}`}
     //                 rotation={`${rotation.x} ${rotation.y} ${rotation.z}`}
