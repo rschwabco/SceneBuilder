@@ -29,7 +29,8 @@ import {
     hoverInfo,
     keypressShowInfo,
     modelOpacity,
-    cameraToHere
+    cameraToHere,
+    keypressNavigateBack
 } from "../AFrameFunctions"
 
 import { NavBar } from "../Components"
@@ -44,7 +45,7 @@ const defaultXYZ = {
     z: 0
 }
 
-const prismaScenes = ["friday-demo-scene-container", "rebuilding-ship-scene"]
+const prismaScenes = ["friday-demo-scene-container", "rebuilding-ship-scene", "tree-rings-container"]
 
 export default class Viewer extends Component {
     constructor() {
@@ -54,8 +55,8 @@ export default class Viewer extends Component {
             inputValue: "",
             animateSceneTransition: false,
             cameraAnimationDuration: 1500,
-            currentAct: prismaScenes[0],
-            currentScene: "cjl6xclfdirxu0b77lieg5mbx", // This needs to be updated on load
+            currentAct: prismaScenes[2],
+            currentScene: ["cjlh9wdeqamjp0b17ygkhc7ij"], // This needs to be updated on load
             scenePosition: { ...defaultXYZ, y: -1 },
             rotateCamera: false,
             rotationTo: "0 0 0",
@@ -69,7 +70,7 @@ export default class Viewer extends Component {
     componentWillMount() {
         // * Register all requisite custom aframe functions, imported from src/AFrameFunctions
 
-        clickToNavigate(this._moveCamera, this.state.cameraAnimationDuration) // rename
+        clickToNavigate(this._clickToNavigate, this.state.cameraAnimationDuration) // rename
 
         hoverInfo(info => console.log(info))
 
@@ -80,6 +81,8 @@ export default class Viewer extends Component {
         modelOpacity(this._updateObjectOpacity)
 
         cameraToHere(this._moveCamera, this.state.cameraAnimationDuration) // rename
+
+        keypressNavigateBack(["Space", "Tab"], this._navigateBack)
 
     }
 
@@ -107,6 +110,24 @@ export default class Viewer extends Component {
     //     this.setState({ assetOpacity }, () => console.log("New state: ", this.state))
     // }
 
+    _navigateBack = () => {
+        const { currentScene } = this.state
+        if (currentScene[currentScene.length - 1] === "cjlh9wdeqamjp0b17ygkhc7ij") {
+            return
+        }
+
+        this.setState({ animateSceneTransition: true })
+        console.log("state before nav back: ", this.state.currentScene)
+        setTimeout(() => this.setState({ currentScene: currentScene.slice(0, currentScene.length - 1) }), 1000)
+        setTimeout(() => this.setState({ animateSceneTransition: false }), 2000)
+    }
+
+
+    _clickToNavigate = (nextSceneId) => {
+        this.setState({ animateSceneTransition: true })
+        setTimeout(() => this.setState({ currentScene: [...this.state.currentScene, nextSceneId] }), 1000)
+        setTimeout(() => this.setState({ animateSceneTransition: false }), 2000)
+    }
     _moveCamera = (options) => {
         // console.log("Move camera options: ", options)
         // this.setState({ moveCamera: true, ...options })
@@ -149,7 +170,7 @@ export default class Viewer extends Component {
 
     // TODO: REORG SCENES SO THAT TOP LEVEL SCENE HAS NO NODES, MOVE TOP LEVEL NODES TO A NEW FIRST CHILD
     render() {
-        const { currentAct, rotateCamera, moveCamera, cameraTo, rotationTo, cameraAnimationDuration } = this.state
+        const { currentAct, rotateCamera, moveCamera, cameraTo, rotationTo, cameraAnimationDuration, currentScene } = this.state
         // console.log("State: ", this.state)
         return (
             <Query query={getAllAssetsQuery()}>
@@ -185,13 +206,14 @@ export default class Viewer extends Component {
                                     {({ loading, error, data }) => {
                                         if (loading) return <ActivityIndicator color={"#fff"} />;
                                         if (error) return <Text>{`Error: ${error}`}</Text>;
-                                        // console.log("Deep scene query data: ", data.scenes[0])
+                                        console.log("Deep scene query data: ", data.scenes[0])
 
                                         const { containerNode, id, pq } = data.scenes[0]
                                         const { position } = containerNode
                                         return (
                                             <a-entity
                                                 id={id}
+                                                keypress-navigate-back
                                                 position={`${position.x} ${position.y} ${position.z}`}
                                             >
                                                 <AmbientSceneLight />
@@ -200,7 +222,7 @@ export default class Viewer extends Component {
                                                     animateSceneTransition={this.state.animateSceneTransition}
                                                     showInfoModal={this.state.showInfoModal}
                                                     queries={this._flattenChildrenIds(data.scenes[0].children)}
-                                                    currentScene={`${this.state.currentScene}`}
+                                                    currentScene={`${currentScene[currentScene.length - 1]}`}
                                                 // queries={data.scenes[0].children}
                                                 />
                                             </a-entity>

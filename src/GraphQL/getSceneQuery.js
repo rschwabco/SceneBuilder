@@ -25,6 +25,9 @@ export const getSceneQuery = (sceneId = "cjkn3ca5kgm8a0b77fr3a28q5") => {
           semanticLayoutNodes {
             text
             chart
+            navigatesTo {
+                id
+              }
             dimensions { x y z }
             physicalModel {
               id
@@ -42,6 +45,9 @@ export const getSceneQuery = (sceneId = "cjkn3ca5kgm8a0b77fr3a28q5") => {
             childNodes {
               text
               chart
+              navigatesTo {
+                id
+              }
               dimensions { x y z }
               physicalModel {
                 id

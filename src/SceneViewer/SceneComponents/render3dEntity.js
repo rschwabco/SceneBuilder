@@ -4,7 +4,7 @@ import BoxContainer from "../BoxContainer"
 
 export const render3dEntity = (props) => {
     const { semanticLayoutNode, dims } = props
-    const { physicalModel, rotation, position, scale } = semanticLayoutNode
+    const { physicalModel, rotation, position, scale, navigatesTo, dimensions } = semanticLayoutNode
     const { physicalAsset, id, name } = physicalModel
     // console.log("Make 3d entity name: ", name)
     // console.log("Obj to render: ", props)
@@ -59,7 +59,7 @@ export const render3dEntity = (props) => {
             case "cjl7jbtsxkhll0b776uo1vott":
                 return -.3
             case "cjky8ddvj9ok80b29hca4qzbn":
-                return -0.070
+                return -0.5
             default: return -.5
         }
     }
@@ -83,11 +83,7 @@ export const render3dEntity = (props) => {
     return (
         <BoxContainer
             color={getColor()}
-            dimensions={{
-                x: getContainerWidth(),
-                y: getContainerWidth(),
-                z: getContainerWidth()
-            }}
+            dimensions={{ ...dimensions }}
             position={{ ...semanticLayoutNode.position }}
         >
             <a-entity

@@ -8,7 +8,7 @@ import { render3dEntity } from "./render3dEntity"
 export const renderShipContainer = (props) => { // Need to abstract this out asap
 
     const { semanticLayoutNode, scene, i, dims, showInfoModal } = props
-    console.log("Ship semantic layout node: ", semanticLayoutNode)
+    // console.log("Ship semantic layout node: ", semanticLayoutNode)
 
     const ships = [ //REMOVE ASAP
         {

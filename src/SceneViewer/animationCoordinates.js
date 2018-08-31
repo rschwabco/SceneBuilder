@@ -1,6 +1,9 @@
 export const animationCoordinates = (startPosition) => {
     const { x, y, z } = startPosition
 
-    // return { x: x * 5, y: y * 5, z: z * 5 }
+    if (x === 0 && y === 0 && z === 0) {
+
+        return `${2} ${y * -10} ${20}`
+    }
     return `${x * 10} ${y * 10} ${z * 10}`
 }

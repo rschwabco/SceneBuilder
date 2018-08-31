@@ -1,9 +1,9 @@
 {
     "scene": {
-        "name": "tree-rings-Sensor-1",
+        "name": "tree-rings-Sensor-5",
         "containerNode": {
             "create": {
-                "name": "tree-rings-Sensor-1-containerNode",
+                "name": "tree-rings-Sensor-5-containerNode",
                 "position": {
                     "create": {
                         "x": 0,
@@ -15,13 +15,13 @@
         },
         "pq": {
             "create": {
-                "text": "Sensor 1"
+                "text": "Sensor 5"
             }
         },
         "semanticLayoutNodes": {
             "create": [
                 {
-                    "name": "tree-rings-Sensor-1",
+                    "name": "tree-rings-Sensor-5",
                     "position": {
                         "create": {
                             "x": -3,
@@ -43,7 +43,7 @@
                     }
                 },
                 {
-                    "name": "tree-rings-Sensor-1-Chart",
+                    "name": "tree-rings-Sensor-5-Chart",
                     "position": {
                         "create": {
                             "x": 2.5,
@@ -63,7 +63,7 @@
                             "id": "cjl48tqyzbp060b77n9hb8w93"
                         }
                     },
-                    "chart": "Sensor 1 Reading"
+                    "chart": "Sensor 5 Reading"
                 }
             ]
         }

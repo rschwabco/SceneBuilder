@@ -22,7 +22,7 @@ class SceneContainer extends Component {
         const { currentScale, animationDuration } = this.state
         if (nextScale && !this.state.animateIn && !this.state.animateOut) {
             if (nextScale > currentScale) {
-                console.log("Animate in: ", this.props.id)
+                // console.log("Animate in: ", this.props.id)
                 this.setState({
                     animateIn: true,
                     currentScale: nextScale
@@ -31,7 +31,7 @@ class SceneContainer extends Component {
                     animateIn: false,
                 }), animationDuration + 1)
             } else if (nextScale < currentScale) {
-                console.log("Animate Out: ", this.props.id)
+                // console.log("Animate Out: ", this.props.id)
                 this.setState({
                     animateOut: true,
                     currentScale: nextScale
@@ -52,13 +52,12 @@ class SceneContainer extends Component {
         } = this.state
         const { children, id, nextScale } = this.props
 
-        console.log("Children from scene container: ", children)
+        // console.log("Children from scene container: ", children)
         return (
             <a-sphere
                 fog={false} // Setting ignored for some reason
                 id={`sceneContainer-${id}`}
                 // wireframe={true}
-                color="transparent"
                 opacity="0"
                 // side="double"
                 // metalness="0.76"
