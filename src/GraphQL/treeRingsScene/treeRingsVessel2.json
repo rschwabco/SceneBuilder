@@ -13,14 +13,9 @@
                 }
             }
         },
-        "parent": {
-            "connect": {
-                "id": ""
-            }
-        },
         "pq": {
             "create": {
-                "text": "Vessel 1 & its Parts"
+                "text": "Vessel 2 & its Parts"
             }
         },
         "semanticLayoutNodes": {
@@ -41,7 +36,7 @@
                     }
                 },
                 {
-                    "name": "tree-rings-Vessel-2-Part_Engine",
+                    "name": "tree-rings-Vessel-2-Part_Capstan",
                     "position": {
                         "create": {
                             "x": 3,
@@ -56,14 +51,19 @@
                             "z": 2
                         }
                     },
+                    "navigatesTo": {
+                        "connect": {
+                            "id": "cjlh9d3nhalbu0b17lbzb611q"
+                        }
+                    },
                     "physicalModel": {
                         "connect": {
-                            "id": "cjky8ddvj9ok80b29hca4qzbn"
+                            "id": "cjl7j1g7kkgqn0b77milioq62"
                         }
                     }
                 },
                 {
-                    "name": "tree-rings-Vessel-2-Part_[2]",
+                    "name": "tree-rings-Vessel-2-Part_Reel",
                     "position": {
                         "create": {
                             "x": 3,
@@ -78,14 +78,19 @@
                             "z": 2
                         }
                     },
+                    "navigatesTo": {
+                        "connect": {
+                            "id": "cjlh96ir5akre0b17h4lb5xg4"
+                        }
+                    },
                     "physicalModel": {
                         "connect": {
-                            "id": "cjky8ddvj9ok80b29hca4qzbn"
+                            "id": "cjl7j53afkh1c0b77dax7zkik"
                         }
                     }
                 },
                 {
-                    "name": "tree-rings-Vessel-2-Part_[3]",
+                    "name": "tree-rings-Vessel-2-Part_Engine",
                     "position": {
                         "create": {
                             "x": 3,
@@ -98,6 +103,11 @@
                             "x": 2,
                             "y": 2,
                             "z": 2
+                        }
+                    },
+                    "navigatesTo": {
+                        "connect": {
+                            "id": "cjlh9ckmsal840b17osv9q89x"
                         }
                     },
                     "physicalModel": {
@@ -127,7 +137,7 @@
                             "id": "cjl48tl4hbozv0b778od0ki4o"
                         }
                     },
-                    "text": "Part 1"
+                    "text": "Capstan"
                 },
                 {
                     "name": "tree-rings-Vessel-Text_2",
@@ -150,7 +160,7 @@
                             "id": "cjl48tl4hbozv0b778od0ki4o"
                         }
                     },
-                    "text": "Part 2"
+                    "text": "Reel"
                 },
                 {
                     "name": "tree-rings-Vessel-2-Text_3",
@@ -173,7 +183,7 @@
                             "id": "cjl48tl4hbozv0b778od0ki4o"
                         }
                     },
-                    "text": "Part 3"
+                    "text": "Engine"
                 }
             ]
         }

@@ -1,0 +1,25 @@
+Model ids:
+Propeller:              cjl7jbtsxkhll0b776uo1vott
+Engine:                 cjky8ddvj9ok80b29hca4qzbn
+Capstan:                cjl7j1g7kkgqn0b77milioq62
+Reel:                   cjl7j53afkh1c0b77dax7zkik
+
+Sensor 1 scene:         cjlh8p0hyajum0b17816c5vqq
+Sensor 2 scene:         cjlh8qk0bajxx0b17pnqifl5m
+Sensor 3 scene:         cjlh8qqfdajyq0b17wxcjmn6m
+Sensor 4 scene:         cjlh8s8bxak290b17vomjm9jy
+Sensor 5 scene:         cjlh8sni6ak3j0b17r2rafl3l
+Sensor 6 scene:         cjlh8t3rhak4z0b17rcax081s
+
+Part Reel scene:        cjlh96ir5akre0b17h4lb5xg4
+Part Propeller scene:   cjlh9bz9eal440b17mueuhllh
+Part Engine scene:      cjlh9ckmsal840b17osv9q89x
+Part Capstan scene:     cjlh9d3nhalbu0b17lbzb611q
+
+Vessel 1 scene:         cjlh9rzfsam690b17ixnfdsaw
+Vessel 2 scene:         cjlh9swifam9i0b17m6o6rvk1
+Vessel 3 scene:         cjlh9ty6fame80b17bcfp4wyo
+
+Fleet scene:            cjlh9wdeqamjp0b17ygkhc7ij
+
+Container scene:        cjlh9z7w8ampi0b17wdt22rpz

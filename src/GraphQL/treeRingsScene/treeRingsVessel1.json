@@ -13,15 +13,26 @@
                 }
             }
         },
-        "parent": {
-            "connect": {
-                "id": ""
-            }
-        },
         "pq": {
             "create": {
                 "text": "Vessel 1 & its Parts"
             }
+        },
+        "children": {
+            "connect": [
+                {
+                    "id": "cjlh96ir5akre0b17h4lb5xg4"
+                },
+                {
+                    "id": "cjlh9bz9eal440b17mueuhllh"
+                },
+                {
+                    "id": "cjlh9ckmsal840b17osv9q89x"
+                },
+                {
+                    "id": "cjlh9d3nhalbu0b17lbzb611q"
+                }
+            ]
         },
         "semanticLayoutNodes": {
             "create": [
@@ -56,6 +67,11 @@
                             "z": 2
                         }
                     },
+                    "navigatesTo": {
+                        "connect": {
+                            "id": "cjlh9ckmsal840b17osv9q89x"
+                        }
+                    },
                     "physicalModel": {
                         "connect": {
                             "id": "cjky8ddvj9ok80b29hca4qzbn"
@@ -63,7 +79,7 @@
                     }
                 },
                 {
-                    "name": "tree-rings-Vessel-1-Part_[2]",
+                    "name": "tree-rings-Vessel-1-Part_Capstan",
                     "position": {
                         "create": {
                             "x": 3,
@@ -78,14 +94,19 @@
                             "z": 2
                         }
                     },
+                    "navigatesTo": {
+                        "connect": {
+                            "id": "cjlh9d3nhalbu0b17lbzb611q"
+                        }
+                    },
                     "physicalModel": {
                         "connect": {
-                            "id": "cjky8ddvj9ok80b29hca4qzbn"
+                            "id": "cjl7j1g7kkgqn0b77milioq62"
                         }
                     }
                 },
                 {
-                    "name": "tree-rings-Vessel-1-Part_[3]",
+                    "name": "tree-rings-Vessel-1-Part_Propeller",
                     "position": {
                         "create": {
                             "x": 3,
@@ -100,9 +121,14 @@
                             "z": 2
                         }
                     },
+                    "navigatesTo": {
+                        "connect": {
+                            "id": "cjlh9bz9eal440b17mueuhllh"
+                        }
+                    },
                     "physicalModel": {
                         "connect": {
-                            "id": "cjky8ddvj9ok80b29hca4qzbn"
+                            "id": "cjl7jbtsxkhll0b776uo1vott"
                         }
                     }
                 },
@@ -127,7 +153,7 @@
                             "id": "cjl48tl4hbozv0b778od0ki4o"
                         }
                     },
-                    "text": "Part 1"
+                    "text": "Engine"
                 },
                 {
                     "name": "tree-rings-Vessel-1-Text_2",
@@ -150,7 +176,7 @@
                             "id": "cjl48tl4hbozv0b778od0ki4o"
                         }
                     },
-                    "text": "Part 2"
+                    "text": "Capstan"
                 },
                 {
                     "name": "tree-rings-Vessel-1-Text_3",
@@ -173,7 +199,7 @@
                             "id": "cjl48tl4hbozv0b778od0ki4o"
                         }
                     },
-                    "text": "Part 3"
+                    "text": "Propeller"
                 }
             ]
         }

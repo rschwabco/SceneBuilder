@@ -86,9 +86,9 @@ class Scene extends Component {
 
     _renderScene = (scene, checkpoints, sceneIndex) => {
         const { semanticLayoutNodes, containerNode, children, parent, pq, id } = scene
-        console.log("Scene id: ", id)
+        // console.log("Scene id: ", id)
 
-        console.log("Render Scene data: ", scene)
+        // console.log("Render Scene data: ", scene)
 
         const nodes = semanticLayoutNodes.map((semanticLayoutNode, i) => {
             // console.log("semanticLayoutNode: ", semanticLayoutNode)
@@ -98,6 +98,7 @@ class Scene extends Component {
             return (
                 <a-entity
                     id={`renderScene-${id}`}
+                    click-to-navigate={`toScene: ${semanticLayoutNode.navigatesTo ? semanticLayoutNode.navigatesTo.id : "cjlh9wdeqamjp0b17ygkhc7ij"};`}
                 // scale={`${1 / divideBy} ${1 / divideBy} ${1 / divideBy}`}
                 >
                     {semanticLayoutNode.text && renderTextEntity({ semanticLayoutNode, scene, i, dims, })}
@@ -144,7 +145,7 @@ class Scene extends Component {
             // nextScale={1.3}
             >
                 <a-entity>
-                    {makeCheckpoints(checkpoints)}
+                    {/* {makeCheckpoints(checkpoints)} */}
                     {nodes}
                     {renderProblemQuestion(pq.text)}
                 </a-entity>

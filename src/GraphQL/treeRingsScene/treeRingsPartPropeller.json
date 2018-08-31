@@ -38,7 +38,7 @@
                     },
                     "physicalModel": {
                         "connect": {
-                            "id": "cjky8ddvj9ok80b29hca4qzbn"
+                            "id": "cjl7jbtsxkhll0b776uo1vott"
                         }
                     }
                 },
@@ -49,6 +49,11 @@
                             "x": 0,
                             "y": 0,
                             "z": 0
+                        }
+                    },
+                    "navigatesTo": {
+                        "connect": {
+                            "id": "cjlh8p0hyajum0b17816c5vqq"
                         }
                     },
                     "dimensions": {
@@ -73,6 +78,11 @@
                             "z": 0
                         }
                     },
+                    "navigatesTo": {
+                        "connect": {
+                            "id": "cjlh8qk0bajxx0b17pnqifl5m"
+                        }
+                    },
                     "dimensions": {
                         "create": {
                             "x": 2,
@@ -93,6 +103,11 @@
                             "x": 0,
                             "y": 6,
                             "z": 0
+                        }
+                    },
+                    "navigatesTo": {
+                        "connect": {
+                            "id": "cjlh8qqfdajyq0b17wxcjmn6m"
                         }
                     },
                     "dimensions": {
@@ -117,6 +132,11 @@
                             "z": 0
                         }
                     },
+                    "navigatesTo": {
+                        "connect": {
+                            "id": "cjlh8s8bxak290b17vomjm9jy"
+                        }
+                    },
                     "dimensions": {
                         "create": {
                             "x": 2,
@@ -139,6 +159,11 @@
                             "z": 0
                         }
                     },
+                    "navigatesTo": {
+                        "connect": {
+                            "id": "cjlh8sni6ak3j0b17r2rafl3l"
+                        }
+                    },
                     "dimensions": {
                         "create": {
                             "x": 2,
@@ -159,6 +184,11 @@
                             "x": 0,
                             "y": 15,
                             "z": 0
+                        }
+                    },
+                    "navigatesTo": {
+                        "connect": {
+                            "id": "cjlh8t3rhak4z0b17rcax081s"
                         }
                     },
                     "dimensions": {

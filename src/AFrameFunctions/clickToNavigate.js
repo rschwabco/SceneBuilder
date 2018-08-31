@@ -10,9 +10,6 @@ export const clickToNavigate = (callback, timeout = 500) => {
         init: function () {
             console.log("click-to-navigate registered")
 
-            var sceneEl = document.querySelector('a-scene')
-            this.cameraEl = sceneEl.querySelector("#camera")
-
             // this.rotation = { ...this.cameraEl.getAttribute("rotation") }
 
             this.callbackOptions = {
@@ -21,7 +18,7 @@ export const clickToNavigate = (callback, timeout = 500) => {
 
             this.el.addEventListener("click", debounce(() => {
 
-                callback({ ...this.callbackOptions })
+                callback(this.data.toScene)
 
             }, timeout + 5, true))
         },
