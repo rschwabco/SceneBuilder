@@ -21,6 +21,8 @@ import {
     renderPrimitiveEntity
 } from "./SceneComponents"
 
+import { animationCoordinates } from "./animationCoordinates"
+
 
 class Scene extends Component {
     constructor(props) {
@@ -58,6 +60,29 @@ class Scene extends Component {
 
     }
 
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.currentScene !== this.props.currentScene) {
+            this.setState({ animate: true })
+            setTimeout(() => this.setState({ animate: false }), 1000)
+        }
+    }
+
+    _chooseRenderer = (semanticLayoutNode) => {
+        // TODO: Fill this out
+    }
+
+    // _chooseAnimation = () => {
+    //     if (this.props.animateSceneTransition) {
+    //         return (<a-animation
+    //             attribute="position"
+    //             delay={`${i * 50}`}
+    //             to={animationCoordinates({ x: semanticLayoutNode.position.x, y: semanticLayoutNode.position.y, z: semanticLayoutNode.position.z })}
+    //             dur="950"
+    //             fill="forwards"
+    //         />)
+    //     }
+    // }
+
 
     _renderScene = (scene, checkpoints, sceneIndex) => {
         const { semanticLayoutNodes, containerNode, children, parent, pq, id } = scene
@@ -75,21 +100,34 @@ class Scene extends Component {
                     id={`renderScene-${id}`}
                 // scale={`${1 / divideBy} ${1 / divideBy} ${1 / divideBy}`}
                 >
-                    {semanticLayoutNode.text && renderTextEntity({ semanticLayoutNode, scene, i, dims })}
-                    {semanticLayoutNode.chart && renderChartEntity({ semanticLayoutNode, scene, i, dims })}
+                    {semanticLayoutNode.text && renderTextEntity({ semanticLayoutNode, scene, i, dims, })}
+                    {semanticLayoutNode.chart && renderChartEntity({ semanticLayoutNode, scene, i, dims, })}
                     {semanticLayoutNode.physicalModel
                         && semanticLayoutNode.physicalModel.physicalAsset
                         && semanticLayoutNode.physicalModel.physicalAsset.modelType
                         && semanticLayoutNode.physicalModel.physicalAsset.modelType === "OBJ"
-                        && render3dEntity({ semanticLayoutNode, scene, i, dims })
+                        && render3dEntity({ semanticLayoutNode, scene, i, dims, })
                     }
                     {semanticLayoutNode.physicalModel
                         && semanticLayoutNode.physicalModel.physicalAsset
                         && semanticLayoutNode.physicalModel.physicalAsset.modelType
                         && semanticLayoutNode.physicalModel.physicalAsset.modelType === "GEOMETRY"
                         && semanticLayoutNode.physicalModel.physicalAsset.geometry === "ship"
-                        && renderShipContainer({ semanticLayoutNode, scene, i, dims, showInfoModal: this.props.showInfoModal }) // TODO: remove showInfoModal?
+                        && renderShipContainer({ semanticLayoutNode, scene, i, dims, showInfoModal: this.props.showInfoModal, }) // TODO: remove showInfoModal?
                     }
+                    {this.props.animateSceneTransition && <a-animation
+                        attribute="position"
+                        delay={`${i * 50}`}
+                        to={animationCoordinates({ x: semanticLayoutNode.position.x, y: semanticLayoutNode.position.y, z: semanticLayoutNode.position.z })}
+                        dur="950"
+                        fill="forwards"
+                    />}
+                    {!this.props.animateSceneTransition && <a-animation
+                        attribute="position"
+                        to={`${0} ${0} ${0}`}
+                        dur="950"
+                        fill="forwards"
+                    />}
                 </a-entity>
             )
         })

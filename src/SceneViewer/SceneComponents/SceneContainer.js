@@ -51,15 +51,17 @@ class SceneContainer extends Component {
             animationDuration
         } = this.state
         const { children, id, nextScale } = this.props
+
+        console.log("Children from scene container: ", children)
         return (
             <a-sphere
                 fog={false} // Setting ignored for some reason
                 id={`sceneContainer-${id}`}
                 // wireframe={true}
-                color="orange"
-                opacity="0.8"
-                side="double"
-                metalness="0.76"
+                color="transparent"
+                opacity="0"
+                // side="double"
+                // metalness="0.76"
                 radius="15"
                 className="container"
                 scale={`${currentScale} ${currentScale} ${nextScale}`}

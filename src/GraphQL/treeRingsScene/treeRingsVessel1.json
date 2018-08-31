@@ -1,0 +1,181 @@
+{
+    "scene": {
+        "name": "tree-rings-Vessel-1",
+        "containerNode": {
+            "create": {
+                "name": "tree-rings-Vessel-1-containerNode",
+                "position": {
+                    "create": {
+                        "x": 0,
+                        "y": 0,
+                        "z": 0
+                    }
+                }
+            }
+        },
+        "parent": {
+            "connect": {
+                "id": ""
+            }
+        },
+        "pq": {
+            "create": {
+                "text": "Vessel 1 & its Parts"
+            }
+        },
+        "semanticLayoutNodes": {
+            "create": [
+                {
+                    "name": "tree-rings-Vessel-1",
+                    "position": {
+                        "create": {
+                            "x": -3,
+                            "y": 0,
+                            "z": 0
+                        }
+                    },
+                    "physicalModel": {
+                        "connect": {
+                            "id": "cjky8de2n9omo0b29sm3x2i00"
+                        }
+                    }
+                },
+                {
+                    "name": "tree-rings-Vessel-1-Part_Engine",
+                    "position": {
+                        "create": {
+                            "x": 3,
+                            "y": 0,
+                            "z": 0
+                        }
+                    },
+                    "dimensions": {
+                        "create": {
+                            "x": 2,
+                            "y": 2,
+                            "z": 2
+                        }
+                    },
+                    "physicalModel": {
+                        "connect": {
+                            "id": "cjky8ddvj9ok80b29hca4qzbn"
+                        }
+                    }
+                },
+                {
+                    "name": "tree-rings-Vessel-1-Part_[2]",
+                    "position": {
+                        "create": {
+                            "x": 3,
+                            "y": 4,
+                            "z": 0
+                        }
+                    },
+                    "dimensions": {
+                        "create": {
+                            "x": 2,
+                            "y": 2,
+                            "z": 2
+                        }
+                    },
+                    "physicalModel": {
+                        "connect": {
+                            "id": "cjky8ddvj9ok80b29hca4qzbn"
+                        }
+                    }
+                },
+                {
+                    "name": "tree-rings-Vessel-1-Part_[3]",
+                    "position": {
+                        "create": {
+                            "x": 3,
+                            "y": 8,
+                            "z": 0
+                        }
+                    },
+                    "dimensions": {
+                        "create": {
+                            "x": 2,
+                            "y": 2,
+                            "z": 2
+                        }
+                    },
+                    "physicalModel": {
+                        "connect": {
+                            "id": "cjky8ddvj9ok80b29hca4qzbn"
+                        }
+                    }
+                },
+                {
+                    "name": "tree-rings-Vessel-1-Text_1",
+                    "position": {
+                        "create": {
+                            "x": 7,
+                            "y": 0,
+                            "z": 0
+                        }
+                    },
+                    "dimensions": {
+                        "create": {
+                            "x": 4,
+                            "y": 2,
+                            "z": 2
+                        }
+                    },
+                    "physicalModel": {
+                        "connect": {
+                            "id": "cjl48tl4hbozv0b778od0ki4o"
+                        }
+                    },
+                    "text": "Part 1"
+                },
+                {
+                    "name": "tree-rings-Vessel-1-Text_2",
+                    "position": {
+                        "create": {
+                            "x": 7,
+                            "y": 4,
+                            "z": 0
+                        }
+                    },
+                    "dimensions": {
+                        "create": {
+                            "x": 4,
+                            "y": 2,
+                            "z": 2
+                        }
+                    },
+                    "physicalModel": {
+                        "connect": {
+                            "id": "cjl48tl4hbozv0b778od0ki4o"
+                        }
+                    },
+                    "text": "Part 2"
+                },
+                {
+                    "name": "tree-rings-Vessel-1-Text_3",
+                    "position": {
+                        "create": {
+                            "x": 7,
+                            "y": 8,
+                            "z": 0
+                        }
+                    },
+                    "dimensions": {
+                        "create": {
+                            "x": 4,
+                            "y": 2,
+                            "z": 2
+                        }
+                    },
+                    "physicalModel": {
+                        "connect": {
+                            "id": "cjl48tl4hbozv0b778od0ki4o"
+                        }
+                    },
+                    "text": "Part 3"
+                }
+            ]
+        }
+    }
+}

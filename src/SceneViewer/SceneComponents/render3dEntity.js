@@ -9,16 +9,16 @@ export const render3dEntity = (props) => {
     // console.log("Make 3d entity name: ", name)
     // console.log("Obj to render: ", props)
 
-    console.log("semanticLayoutNode: ", semanticLayoutNode)
-    console.log("semanticLayoutNode dimensions: ", semanticLayoutNode.dimensions)
+    // console.log("semanticLayoutNode: ", semanticLayoutNode)
+    // console.log("semanticLayoutNode dimensions: ", semanticLayoutNode.dimensions)
 
     // TODO: Use scale from SLN
     const getScale = () => {
-        console.log("render 3d entity id: ", id)
-        console.log("render 3d entity name: ", name)
-        console.log("render 3d entity SLN name: ", semanticLayoutNode.name)
-        console.log("render 3d entity SLN id: ", semanticLayoutNode.id)
-        console.log("render 3d entity SLN: ", semanticLayoutNode)
+        // console.log("render 3d entity id: ", id)
+        // console.log("render 3d entity name: ", name)
+        // console.log("render 3d entity SLN name: ", semanticLayoutNode.name)
+        // console.log("render 3d entity SLN id: ", semanticLayoutNode.id)
+        // console.log("render 3d entity SLN: ", semanticLayoutNode)
         switch (id) {
             case "cjl7hvt1gkdiz0b77prl5j0bm":
                 return 0.25

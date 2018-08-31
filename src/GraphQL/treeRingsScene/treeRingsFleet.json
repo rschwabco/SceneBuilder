@@ -1,0 +1,71 @@
+{
+    "scene": {
+        "name": "tree-rings-fleet",
+        "containerNode": {
+            "create": {
+                "name": "tree-rings-fleet-containerNode",
+                "position": {
+                    "create": {
+                        "x": 0,
+                        "y": 0,
+                        "z": 0
+                    }
+                }
+            }
+        },
+        "pq": {
+            "create": {
+                "text": "Our Fleet of Pretty Boats"
+            }
+        },
+        "semanticLayoutNodes": {
+            "create": [
+                {
+                    "name": "tree-rings-fleet-Vessel-1",
+                    "position": {
+                        "create": {
+                            "x": -3,
+                            "y": 0,
+                            "z": 0
+                        }
+                    },
+                    "physicalModel": {
+                        "connect": {
+                            "id": "cjky8de2n9omo0b29sm3x2i00"
+                        }
+                    }
+                },
+                {
+                    "name": "tree-rings-fleet-Vessel-2",
+                    "position": {
+                        "create": {
+                            "x": 1,
+                            "y": 0,
+                            "z": 0
+                        }
+                    },
+                    "physicalModel": {
+                        "connect": {
+                            "id": "cjky8de2n9omo0b29sm3x2i00"
+                        }
+                    }
+                },
+                {
+                    "name": "tree-rings-fleet-Vessel-3",
+                    "position": {
+                        "create": {
+                            "x": 5,
+                            "y": 0,
+                            "z": 0
+                        }
+                    },
+                    "physicalModel": {
+                        "connect": {
+                            "id": "cjky8de2n9omo0b29sm3x2i00"
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}
