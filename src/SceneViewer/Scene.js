@@ -22,33 +22,61 @@ import { animationCoordinates } from "./animationCoordinates"
 
 class Scene extends Component {
 
+    // _getQueryData = (queries) => {
+    //     console.log("Get data queries: ", queries)
+    //     return queries.map((query, sceneIndex) => {
+    //         return (
+
+    //             <Query key={sceneIndex} query={getSceneQuery(query)}>
+    //                 {({ loading, error, data }) => {
+    //                     if (loading) return <ActivityIndicator color={'#fff'} />
+    //                     if (error) return <Text>{`Error: ${error}`}</Text>
+
+    //                     return (
+    //                         <a-entity position="0 3 -4">
+    //                             {data.scene.id !== "cjl4hc0z3camy0b77y1ameusu" &&
+    //                                 this._renderScene(
+    //                                     data.scene,
+    //                                     [...data.scene.children, data.scene.parent],
+    //                                     sceneIndex)
+    //                             }
+    //                         </a-entity>
+    //                     )
+
+    //                 }}
+    //             </Query>
+    //         )
+    //     })
+
+    // }
+
+
     _getQueryData = (queries) => {
-        console.log("Get data queries: ", queries)
-        return queries.map((query, sceneIndex) => {
-            return (
+        console.log("getQueryData queries: ", queries)
+        return (
+            <Query query={getSceneQuery(queries)} variables={{ ["sceneIds"]: queries }} >
+                {({ loading, error, data }) => {
+                    if (loading) return <ActivityIndicator color={'#fff'} />
+                    if (error) return console.log("Error: ")
+                    console.log("new scene data: ", data)
+                    return (
+                        <a-entity position="0 3 -4">
+                            {data.scenes.map((scene, sceneIndex) => {
+                                return this._renderScene(
+                                    scene,
+                                    [...scene.children, scene.parent],
+                                    sceneIndex)
+                            })
+                            }
+                        </a-entity>
+                    )
 
-                <Query key={sceneIndex} query={getSceneQuery(query)}>
-                    {({ loading, error, data }) => {
-                        if (loading) return <ActivityIndicator color={'#fff'} />
-                        if (error) return <Text>{`Error: ${error}`}</Text>
-
-                        return (
-                            <a-entity position="0 3 -4">
-                                {data.scene.id !== "cjl4hc0z3camy0b77y1ameusu" &&
-                                    this._renderScene(
-                                        data.scene,
-                                        [...data.scene.children, data.scene.parent],
-                                        sceneIndex)
-                                }
-                            </a-entity>
-                        )
-
-                    }}
-                </Query>
-            )
-        })
-
+                }
+                }
+            </Query>
+        )
     }
+
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.currentScene !== this.props.currentScene) {

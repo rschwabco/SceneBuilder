@@ -1,8 +1,8 @@
 import gql from "graphql-tag";
 
-export const getSceneQuery = (sceneId = "cjkn3ca5kgm8a0b77fr3a28q5") => {
-    return gql`query {
-        scene (where:{id: "${sceneId}"} ) {
+export const getSceneQuery = ($sceneIds = ["cjkn3ca5kgm8a0b77fr3a28q5"]) => {
+    return gql`query ($sceneIds: [ID!]) {
+        scenes (where:{id_in: $sceneIds} ) {
           id
           pq {
               text
