@@ -11,7 +11,7 @@ const containerColors = () => sample([
 
 
 export const makeCargoContainers = (options) => {
-    const { rowNumber, showInfoModal, wireframe = false } = options
+    const { rowNumber, showInfoModal, color } = options
     const containerWidth = 0.3
     const platformWidth = 2
     const rowZ = 0.75 * rowNumber
@@ -22,13 +22,13 @@ export const makeCargoContainers = (options) => {
         containers.push(
             <a-box
                 key={i}
-                color={showInfoModal ? "#FFF" : containerColors()}
+                color={color}
                 width={containerWidth}
                 outline="thickness: 0; color: red"
                 position={`${i} 1.155 ${-0.355 - rowZ}`}
                 height=".3"
                 depth=".7"
-                wireframe={wireframe}
+            // wireframe={wireframe}
             >
             </a-box>
         )

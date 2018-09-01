@@ -1,11 +1,10 @@
-import React, { Component } from 'react'
+import React from 'react'
 import * as aframe from 'aframe'
 import BoxContainer from "../BoxContainer"
 
 export const renderTextEntity = (props) => {
-    const { semanticLayoutNode, scene, i, dims } = props
-    const { physicalModel, rotation, position, scale, name, text = "TEXT TEXT TEXT" } = semanticLayoutNode
-    const { physicalAsset } = physicalModel
+    const { semanticLayoutNode, dims } = props
+    const { text = "TEXT TEXT TEXT" } = semanticLayoutNode
 
     return (
         <BoxContainer

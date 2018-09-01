@@ -23,6 +23,7 @@ export const getSceneQuery = (sceneId = "cjkn3ca5kgm8a0b77fr3a28q5") => {
             position { x y z }
           }
           semanticLayoutNodes {
+            name
             text
             chart
             navigatesTo {
@@ -45,6 +46,7 @@ export const getSceneQuery = (sceneId = "cjkn3ca5kgm8a0b77fr3a28q5") => {
             childNodes {
               text
               chart
+              name
               navigatesTo {
                 id
               }

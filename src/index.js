@@ -1,21 +1,12 @@
 import React from "react";
-import { AppRegistry, View, StyleSheet } from "react-native-web";
+import { AppRegistry } from "react-native-web";
 import "aframe"
 import { ApolloClient } from "apollo-client";
 import { HttpLink } from "apollo-link-http";
 import { InMemoryCache } from "apollo-cache-inmemory";
 import { ApolloProvider } from "react-apollo";
-import {
-    makeRemoteExecutableSchema,
-    mergeSchemas,
-    introspectSchema
-} from "graphql-tools";
 
 import Viewer from "./SceneViewer/Viewer";
-
-
-import { colors } from "./styles/styles";
-
 
 
 const SceneBuilderEndpoint =
@@ -38,12 +29,6 @@ const App = () => (
     </ApolloProvider>
 );
 
-const styles = StyleSheet.create({
-    container: {
-        height: "100vh",
-        backgroundColor: colors.darkBlue
-    }
-});
 
 AppRegistry.registerComponent("App", () => App);
 AppRegistry.runApplication("App", { rootTag: document.getElementById("root") });

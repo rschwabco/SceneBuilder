@@ -1,14 +1,11 @@
 import React, { Component } from 'react'
 import * as aframe from 'aframe'
 import { getSceneQuery } from '../GraphQL'
-import { makeCheckpoints, makeCargoShips } from "./Prefabs"
 import { Query } from 'react-apollo'
 import {
     ActivityIndicator,
     Text,
 } from 'react-native-web'
-import { check } from 'graphql-anywhere';
-import BoxContainer from "./BoxContainer"
 
 import SceneContainer from "./SceneComponents/SceneContainer"
 
@@ -18,20 +15,15 @@ import {
     renderChartEntity,
     render3dEntity,
     renderProblemQuestion,
-    renderPrimitiveEntity
 } from "./SceneComponents"
 
 import { animationCoordinates } from "./animationCoordinates"
 
 
 class Scene extends Component {
-    constructor(props) {
-        super(props)
-    }
-
 
     _getQueryData = (queries) => {
-        // console.log("Get data queries: ", queries)
+        console.log("Get data queries: ", queries)
         return queries.map((query, sceneIndex) => {
             return (
 
@@ -40,8 +32,6 @@ class Scene extends Component {
                         if (loading) return <ActivityIndicator color={'#fff'} />
                         if (error) return <Text>{`Error: ${error}`}</Text>
 
-                        // TODO: Distinguish between "child" and "parent" checkpoints. Additionally filter out top-level scene's id?
-                        // console.log("Query data: ", data)
                         return (
                             <a-entity position="0 3 -4">
                                 {data.scene.id !== "cjl4hc0z3camy0b77y1ameusu" &&
@@ -97,6 +87,7 @@ class Scene extends Component {
             const dims = 2
             return (
                 <a-entity
+                    key={`scene-${i}`}
                     id={`renderScene-${id}`}
                     click-to-navigate={`toScene: ${semanticLayoutNode.navigatesTo ? semanticLayoutNode.navigatesTo.id : "cjlh9wdeqamjp0b17ygkhc7ij"};`}
                 // scale={`${1 / divideBy} ${1 / divideBy} ${1 / divideBy}`}
@@ -145,7 +136,6 @@ class Scene extends Component {
             // nextScale={1.3}
             >
                 <a-entity>
-                    {/* {makeCheckpoints(checkpoints)} */}
                     {nodes}
                     {renderProblemQuestion(pq.text)}
                 </a-entity>

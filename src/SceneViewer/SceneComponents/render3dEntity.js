@@ -4,8 +4,8 @@ import BoxContainer from "../BoxContainer"
 
 export const render3dEntity = (props) => {
     const { semanticLayoutNode, dims } = props
-    const { physicalModel, rotation, position, scale, navigatesTo, dimensions } = semanticLayoutNode
-    const { physicalAsset, id, name } = physicalModel
+    const { physicalModel, scale, navigatesTo, dimensions } = semanticLayoutNode
+    const { physicalAsset, id } = physicalModel
     // console.log("Make 3d entity name: ", name)
     // console.log("Obj to render: ", props)
 
