@@ -50,7 +50,10 @@ const registerAllAssets = (assets) => {
     return (<a-assets>
         {makeAllAssets()}
 
-        <a-asset-item id="barsdata" src="https://raw.githubusercontent.com/fran-aguilar/a-framedc/master/examples/data/scm-commits-filtered.json"></a-asset-item>
+        <a-asset-item id="barsdata1" src="https://raw.githubusercontent.com/fran-aguilar/a-framedc/master/examples/data/scm-commits-filtered.json"></a-asset-item>
+        <a-asset-item id="barsdata2" src="https://raw.githubusercontent.com/llanginger/SceneBuilder/optimising-asset-loading/mockJson/mock_Json1.json"></a-asset-item>
+        <a-asset-item id="barsdata3" src="https://raw.githubusercontent.com/llanginger/SceneBuilder/optimising-asset-loading/mockJson/mock_Json2.json"></a-asset-item>
+        <a-asset-item id="barsdata4" src="https://raw.githubusercontent.com/llanginger/SceneBuilder/optimising-asset-loading/mockJson/mock_Json3.json"></a-asset-item>
 
         <a-mixin id="cube" geometry="primitive: box" />
         <a-mixin id="cube-hovered" material="color: magenta" />
