@@ -54,14 +54,12 @@ class SceneContainer extends Component {
 
         // console.log("Children from scene container: ", children)
         return (
-            <a-sphere
-                fog={false} // Setting ignored for some reason
+            <a-entity
                 id={`sceneContainer-${id}`}
                 // wireframe={true}
-                opacity="0"
                 // side="double"
                 // metalness="0.76"
-                radius="15"
+                // radius="15"
                 className="container"
                 scale={`${currentScale} ${currentScale} ${nextScale}`}
                 position={`${0} ${0} ${-4}`}
@@ -94,48 +92,10 @@ class SceneContainer extends Component {
                     to={`${nextScale} ${nextScale} ${nextScale}`}
                 />}
                 {children}
-            </a-sphere>
+            </a-entity>
         )
     }
 }
 
 export default SceneContainer
 
-
-
-
-// return (
-//     <a-sphere
-//         fog={false} // Setting ignored for some reason
-//         id={id}
-//         // wireframe={true}
-//         color="orange"
-//         opacity="0.8"
-//         side="double"
-//         metalness="0.76"
-//         radius="15"
-//         className="container"
-//         scale={`${currentScale} ${currentScale} ${nextScale}`}
-//         position={`${0} ${0} ${-4}`}
-//     >
-
-//         <a-entity
-//             opacity="1">
-//             {animateIn && <a-animation
-//                 attribute="scale"
-//                 dur={`${animationDuration}`}
-//                 fill="forwards"
-//                 from="0 0 0"
-//                 to={`${1} ${1} ${1}`}
-//             />}
-//             {animateOut && <a-animation
-//                 attribute="scale"
-//                 dur={`${animationDuration}`}
-//                 fill="forwards"
-//                 from="1 1 1"
-//                 to="0 0 0"
-//             />}
-//             {children}
-//         </a-entity>
-//     </a-sphere>
-// )

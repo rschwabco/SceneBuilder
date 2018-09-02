@@ -13,31 +13,20 @@ import AmbientSceneLight from "./AmbientSceneLight"
 import * as aframe from "aframe";
 import { Query } from "react-apollo";
 import registerAllAssets from "../assets/registerAllAssets"
-import { getAssetsQuery, getAllAssetsQuery, getRootSceneQuery } from "../GraphQL/index"
-import registerClickDrag from "aframe-click-drag-component";
+import { getAllAssetsQuery, getRootSceneQuery } from "../GraphQL/index"
 import {
-    View,
     ActivityIndicator,
-    StyleSheet,
     Text,
-    TouchableOpacity
 } from "react-native-web";
 
 import {
-    clickLogInfo,
     clickToNavigate,
-    hoverInfo,
-    keypressShowInfo,
-    modelOpacity,
     cameraToHere,
     keypressNavigateBack
 } from "../AFrameFunctions"
 
 import { NavBar } from "../Components"
-// import AframeChart from "../Components/AframeChart"
 
-import { HtmlShader } from "../DataOverlay/HtmlShader"
-var aframedc = require('a-framedc');
 
 const defaultXYZ = {
     x: 0,
@@ -72,17 +61,18 @@ export default class Viewer extends Component {
 
         clickToNavigate(this._clickToNavigate, this.state.cameraAnimationDuration) // rename
 
-        hoverInfo(info => console.log(info))
+        // hoverInfo(info => console.log(info))
 
-        clickLogInfo(info => console.log("Info from viewer: ", info))
+        // clickLogInfo(info => console.log("Info from viewer: ", info))
 
-        keypressShowInfo(["KeyO"], this._toggleInfoModal)
+        // keypressShowInfo(["KeyO"], this._toggleInfoModal)
 
-        modelOpacity(this._updateObjectOpacity)
+        // modelOpacity(this._updateObjectOpacity)
 
         cameraToHere(this._moveCamera, this.state.cameraAnimationDuration) // rename
 
         keypressNavigateBack(["Space", "Tab"], this._navigateBack)
+
 
     }
 
@@ -170,7 +160,7 @@ export default class Viewer extends Component {
 
     // TODO: REORG SCENES SO THAT TOP LEVEL SCENE HAS NO NODES, MOVE TOP LEVEL NODES TO A NEW FIRST CHILD
     render() {
-        const { currentAct, rotateCamera, moveCamera, cameraTo, rotationTo, cameraAnimationDuration, currentScene } = this.state
+        const { rotateCamera, moveCamera, cameraTo, rotationTo, cameraAnimationDuration, currentScene } = this.state
         // console.log("State: ", this.state)
         return (
             <Query query={getAllAssetsQuery()}>
@@ -193,8 +183,13 @@ export default class Viewer extends Component {
                             // keyboard-shortcuts
                             // leap="vr: false"
                             >
-                                <a-entity position="0 -5 0" environment="preset: contact; seed: 3; dressingAmount: 4;"></a-entity>
+                                <a-entity
+                                    position="0 -5 0"
+                                    environment="preset: default; seed: 3; dressingAmount: 4;">
+                                </a-entity>
+
                                 {registerAllAssets(data.physicalAssets)}
+
                                 <Camera
                                     moveCamera={moveCamera}
                                     cameraTo={cameraTo}
@@ -202,14 +197,16 @@ export default class Viewer extends Component {
                                     rotationTo={rotationTo}
                                     cameraAnimationDuration={cameraAnimationDuration}
                                 />
+
                                 <Query query={getRootSceneQuery(this.state.currentAct)} >
                                     {({ loading, error, data }) => {
+
                                         if (loading) return <ActivityIndicator color={"#fff"} />;
                                         if (error) return <Text>{`Error: ${error}`}</Text>;
-                                        console.log("Deep scene query data: ", data.scenes[0])
 
                                         const { containerNode, id, pq } = data.scenes[0]
                                         const { position } = containerNode
+
                                         return (
                                             <a-entity
                                                 id={id}
@@ -217,7 +214,7 @@ export default class Viewer extends Component {
                                                 position={`${position.x} ${position.y} ${position.z}`}
                                             >
                                                 <AmbientSceneLight />
-                                                {/* <AframeChart /> */}
+
                                                 <Scene
                                                     animateSceneTransition={this.state.animateSceneTransition}
                                                     showInfoModal={this.state.showInfoModal}

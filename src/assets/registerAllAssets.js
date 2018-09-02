@@ -16,6 +16,7 @@ const registerAllAssets = (assets) => {
     const makeObjAsset = (asset) => {
         return (
             <a-asset-item
+                key={asset.name}
                 id={`${asset.name}-obj`}
                 src={asset.objPath}
             />
@@ -36,43 +37,25 @@ const registerAllAssets = (assets) => {
         for (let gqlAsset of assets) {
 
             if (gqlAsset.objPath && gqlAsset.objPath.includes("http")) {
-
-                newAssets.push(makeObjAsset(gqlAsset))
+                if (gqlAsset.name !== "VHSP-Vessel-1-parts-part1-asset" && gqlAsset.name !== "VHSP-Vessel-1-parts-part3-asset" && gqlAsset.name !== "VHSP-Vessel-2-parts-part1-asset" && gqlAsset.name !== "VHSP-Vessel-2-parts-part2-asset" && gqlAsset.name !== "VHSP-Vessel-2-parts-part3-asset")
+                    newAssets.push(makeObjAsset(gqlAsset))
             }
             // if (gqlAsset.mtlPath && gqlAsset.mtlPath.includes("http")) {
             //     newAssets.push(makeMtlAsset(gqlAsset))
             // }
         }
-        // console.log("new assets: ", newAssets)
+        console.log("registered assets: ", newAssets)
         return newAssets
     }
     return (<a-assets>
         {makeAllAssets()}
-        < a-image
-            id="sky"
-            src="https://uploads.codesandbox.io/uploads/user/cf641f2b-3840-4f83-bf5e-dee7737a7432/EB1V-holodeck.png"
-        />
-        <a-asset-item id="optimerBoldFont" src="https://rawgit.com/mrdoob/three.js/dev/examples/fonts/optimer_bold.typeface.json"></a-asset-item>
-        <a-asset-item id="barsdata" src="https://raw.githubusercontent.com/fran-aguilar/a-framedc/master/examples/data/scm-commits-filtered.json"></a-asset-item>
-        <a-asset-item
-            id="dawningFont"
-            src="https://cdn.glitch.com/c719c986-c0c5-48b8-967c-3cd8b8aa17f3%2FdawningOfANewDayRegular.typeface.json?1490305922844"
-        />
-        <a-asset-item
-            id="exoFont"
-            src="https://cdn.glitch.com/c719c986-c0c5-48b8-967c-3cd8b8aa17f3%2Fexo2Black.typeface.json?1490305922150"
-        />
-        <a-asset-item
-            id="exoItalicFont"
-            src="https://cdn.glitch.com/c719c986-c0c5-48b8-967c-3cd8b8aa17f3%2Fexo2BlackItalic.typeface.json?1490305922725"
-        />
 
-        <a-asset-item
-            id="optimerBoldFont"
-            src="https://rawgit.com/mrdoob/three.js/dev/examples/fonts/optimer_bold.typeface.json"
-        />
-
-        <a-image id="groundTexture" src="https://cdn.aframe.io/a-painter/images/floor.jpg" />
+        <a-asset-item id="barsdata1" src="https://raw.githubusercontent.com/fran-aguilar/a-framedc/master/examples/data/scm-commits-filtered.json"></a-asset-item>
+        <a-asset-item id="barsdata2" src="https://raw.githubusercontent.com/llanginger/SceneBuilder/optimising-asset-loading/mockJson/mock_Json1.json"></a-asset-item>
+        <a-asset-item id="barsdata3" src="https://raw.githubusercontent.com/llanginger/SceneBuilder/optimising-asset-loading/mockJson/mock_Json2.json"></a-asset-item>
+        <a-asset-item id="barsdata4" src="https://raw.githubusercontent.com/llanginger/SceneBuilder/optimising-asset-loading/mockJson/mock_Json3.json"></a-asset-item>
+        <a-asset-item id="barsdata5" src="https://raw.githubusercontent.com/llanginger/SceneBuilder/optimising-asset-loading/mockJson/mock_Json4.json"></a-asset-item>
+        <a-asset-item id="barsdata6" src="https://raw.githubusercontent.com/llanginger/SceneBuilder/optimising-asset-loading/mockJson/mock_Json5.json"></a-asset-item>
 
         <a-mixin id="cube" geometry="primitive: box" />
         <a-mixin id="cube-hovered" material="color: magenta" />
