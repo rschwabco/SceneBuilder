@@ -54,6 +54,8 @@ const registerAllAssets = (assets) => {
         <a-asset-item id="barsdata2" src="https://raw.githubusercontent.com/llanginger/SceneBuilder/optimising-asset-loading/mockJson/mock_Json1.json"></a-asset-item>
         <a-asset-item id="barsdata3" src="https://raw.githubusercontent.com/llanginger/SceneBuilder/optimising-asset-loading/mockJson/mock_Json2.json"></a-asset-item>
         <a-asset-item id="barsdata4" src="https://raw.githubusercontent.com/llanginger/SceneBuilder/optimising-asset-loading/mockJson/mock_Json3.json"></a-asset-item>
+        <a-asset-item id="barsdata5" src="https://raw.githubusercontent.com/llanginger/SceneBuilder/optimising-asset-loading/mockJson/mock_Json4.json"></a-asset-item>
+        <a-asset-item id="barsdata6" src="https://raw.githubusercontent.com/llanginger/SceneBuilder/optimising-asset-loading/mockJson/mock_Json5.json"></a-asset-item>
 
         <a-mixin id="cube" geometry="primitive: box" />
         <a-mixin id="cube-hovered" material="color: magenta" />

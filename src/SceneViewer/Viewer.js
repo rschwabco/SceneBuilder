@@ -185,7 +185,7 @@ export default class Viewer extends Component {
                             >
                                 <a-entity
                                     position="0 -5 0"
-                                    environment="preset: contact; seed: 3; dressingAmount: 4;">
+                                    environment="preset: default; seed: 3; dressingAmount: 4;">
                                 </a-entity>
 
                                 {registerAllAssets(data.physicalAssets)}

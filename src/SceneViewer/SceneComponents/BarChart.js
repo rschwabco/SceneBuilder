@@ -8,7 +8,8 @@ class BarChart extends Component {
 
 
     componentWillMount() {
-        this.setState({ src: sample(sources) })
+        console.log("Barchart props: ", this.props)
+        this.setState({ src: this.props.src })
     }
 
     render() {
