@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import * as aframe from 'aframe'
 import BoxContainer from "../BoxContainer"
-var aframedc = require('a-framedc');
+import BarChart from "./BarChart"
 
 export const renderChartEntity = (props) => {
     const { semanticLayoutNode, dims } = props
@@ -20,11 +20,7 @@ export const renderChartEntity = (props) => {
             }}
             position={{ ...semanticLayoutNode.position }}
         >
-            <a-entity
-                position={`${-chartDims / 2} ${-chartDims / 2} 0`}
-                id="bars"
-                barchartstack={`width: ${chartDims} ;height: ${chartDims} ;gridson:true;title: ${chart} ;src:#barsdata`}
-            ></a-entity>
+            <BarChart chartDims={chartDims} chart={chart} />
         </BoxContainer>
     )
 }
