@@ -27,14 +27,14 @@ const BoxContainer = (props) => {
             opacity="0.3"
             color={color}
         >
-            <a-box
+            {/* <a-box
                 position={`${0} ${0} ${0}`}
                 height={`${dimensions.y}`}
                 width={`${dimensions.x}`}
                 depth={`${dimensions.y}`}
                 wireframe
             >
-            </a-box>
+            </a-box> */}
             {props.children}
         </a-box>
     )
