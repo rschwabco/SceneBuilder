@@ -8,7 +8,7 @@ export const renderTextEntity = (props) => {
 
     return (
         <BoxContainer
-            color="red"
+            color="purple"
             dimensions={{
                 x: 2 * dims,
                 y: dims,

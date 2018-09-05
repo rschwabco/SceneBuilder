@@ -4,7 +4,7 @@ import BoxContainer from "../BoxContainer"
 
 export const render3dEntity = (props) => {
     const { semanticLayoutNode, dims } = props
-    const { physicalModel, scale, navigatesTo, dimensions } = semanticLayoutNode
+    const { physicalModel, scale, navigatesTo, dimensions, needsRepair } = semanticLayoutNode
     const { physicalAsset, id } = physicalModel
     // console.log("Make 3d entity name: ", name)
     // console.log("Obj to render: ", props)
@@ -63,7 +63,9 @@ export const render3dEntity = (props) => {
             default: return -.5
         }
     }
+
     const getColor = () => {
+        if (needsRepair) { return "red" }
         switch (id) {
             case "cjl7hvt1gkdiz0b77prl5j0bm":
                 return "orange"

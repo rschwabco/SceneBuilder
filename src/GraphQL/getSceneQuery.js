@@ -26,6 +26,7 @@ export const getSceneQuery = ($sceneIds = ["cjkn3ca5kgm8a0b77fr3a28q5"]) => {
             name
             text
             chart
+            needsRepair
             navigatesTo {
                 id
               }
@@ -47,6 +48,7 @@ export const getSceneQuery = ($sceneIds = ["cjkn3ca5kgm8a0b77fr3a28q5"]) => {
               text
               chart
               name
+              needsRepair
               navigatesTo {
                 id
               }

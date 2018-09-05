@@ -1,6 +1,6 @@
 import * as aframe from "aframe"
 
-export const keypressNavigateBack = (keys = ["Space", "Tab"], callback) => {
+export const keypressNavigateBack = (keys = ["Space"], callback) => {
     aframe.registerComponent("keypress-navigate-back", {
         init: function () {
             console.log("keypress-navigate-back registered")

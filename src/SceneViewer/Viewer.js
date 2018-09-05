@@ -22,7 +22,8 @@ import {
 import {
     clickToNavigate,
     cameraToHere,
-    keypressNavigateBack
+    keypressNavigateBack,
+    keypressShowInfo
 } from "../AFrameFunctions"
 
 import { NavBar } from "../Components"
@@ -41,6 +42,7 @@ export default class Viewer extends Component {
         super();
 
         this.state = {
+            showNeedsRepair: false,
             inputValue: "",
             animateSceneTransition: false,
             cameraAnimationDuration: 1500,
@@ -65,13 +67,13 @@ export default class Viewer extends Component {
 
         // clickLogInfo(info => console.log("Info from viewer: ", info))
 
-        // keypressShowInfo(["KeyO"], this._toggleInfoModal)
+        // keypressShowInfo(["KeyR"], this._toggleShowNeedsRepair)
 
         // modelOpacity(this._updateObjectOpacity)
 
         cameraToHere(this._moveCamera, this.state.cameraAnimationDuration) // rename
 
-        keypressNavigateBack(["Space", "Tab"], this._navigateBack)
+        keypressNavigateBack(["Space"], this._navigateBack)
 
 
     }
@@ -96,6 +98,10 @@ export default class Viewer extends Component {
     //     this.setState({ showInfoModal: !this.state.showInfoModal })
     // }
 
+    _toggleShowNeedsRepair = () => {
+        this.setState({ showNeedsRepair: !this.state.showNeedsRepair })
+    }
+
     // _updateObjectOpacity = (assetOpacity) => {
     //     this.setState({ assetOpacity }, () => console.log("New state: ", this.state))
     // }
@@ -114,10 +120,12 @@ export default class Viewer extends Component {
 
 
     _clickToNavigate = (nextSceneId) => {
+        console.log("Scene animating")
         this.setState({ animateSceneTransition: true })
         setTimeout(() => this.setState({ currentScene: [...this.state.currentScene, nextSceneId] }), 1000)
         setTimeout(() => this.setState({ animateSceneTransition: false }), 2000)
     }
+
     _moveCamera = (options) => {
         // console.log("Move camera options: ", options)
         // this.setState({ moveCamera: true, ...options })
@@ -216,6 +224,7 @@ export default class Viewer extends Component {
                                                 <AmbientSceneLight />
 
                                                 <Scene
+                                                    showNeedsRepair={this.state.showNeedsRepair}
                                                     animateSceneTransition={this.state.animateSceneTransition}
                                                     showInfoModal={this.state.showInfoModal}
                                                     queries={this._flattenChildrenIds(data.scenes[0].children)}
