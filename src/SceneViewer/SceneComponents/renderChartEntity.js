@@ -8,9 +8,8 @@ export const renderChartEntity = (props) => {
     const { chart = "CHART" } = semanticLayoutNode
 
     const chartDims = dims * 1.5
-    console.log("Chart dims:")
     const getChartSourceId = () => {
-        console.log("Chart: ", chart)
+
         switch (chart) {
             case "Sensor 1 Reading":
                 return "barsdata1"

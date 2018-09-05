@@ -7,22 +7,16 @@ export const renderProblemQuestion = text => {
         <a-box
             width="6"
             height="2"
-            wireframe={true}
+            color="#1bf222"
+            opacity="0.2"
             position={`0 -1.5 4`}
         >
-            <a-box
-                width="6"
-                height="2"
-                position="0 0 0"
-                color="#1bf222"
-                opacity="0.2"
-            >
-                <a-text
-                    align="center"
-                    position="0 0 0 "
-                    value={`${text}`}
-                ></a-text>
-            </a-box>
+
+            <a-text
+                align="center"
+                position="0 0 0 "
+                value={`${text}`}
+            ></a-text>
         </a-box>
     )
 }

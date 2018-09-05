@@ -8,7 +8,7 @@ import { render3dEntity } from "./render3dEntity"
 export const renderShipContainer = (props) => { // Need to abstract this out asap
 
     const { semanticLayoutNode } = props
-    console.log("Ship semantic layout node: ", semanticLayoutNode)
+    const { needsRepair } = semanticLayoutNode
 
     const ships = [ //REMOVE ASAP
         {
@@ -43,7 +43,18 @@ export const renderShipContainer = (props) => { // Need to abstract this out asa
     return (
         <a-entity
             position={`${semanticLayoutNode.position.x} ${semanticLayoutNode.position.y - .5} ${semanticLayoutNode.position.z}`}
+
         >
+            {needsRepair && <a-box
+                position="0 1 -1"
+                color="red"
+                opacity="0.3"
+                width="3"
+                height="2"
+                depth="6"
+            >
+
+            </a-box>}
             {makeCargoShips({ ships, color: getColor(semanticLayoutNode.name) })}
             {semanticLayoutNode.childNodes.map((childNode, i) => {
                 return render3dEntity({ semanticLayoutNode: childNode, dims: 3 })

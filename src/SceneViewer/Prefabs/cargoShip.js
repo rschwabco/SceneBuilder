@@ -10,7 +10,7 @@ export const makeCargoShips = (props) => {
     const containerWireframe = false  // Play with these!
 
 
-    console.log("make Cargo ship with: ", props)
+    // console.log("make Cargo ship with: ", props)
     return (
         <a-entity
             position={`0 0 0`}

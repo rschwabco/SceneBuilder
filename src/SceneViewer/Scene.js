@@ -52,7 +52,6 @@ class Scene extends Component {
 
 
     _getQueryData = (queries) => {
-        console.log("getQueryData queries: ", queries)
         return (
             <Query query={getSceneQuery(queries)} variables={{ ["sceneIds"]: queries }} >
                 {({ loading, error, data }) => {
@@ -83,6 +82,7 @@ class Scene extends Component {
             this.setState({ animate: true })
             setTimeout(() => this.setState({ animate: false }), 1000)
         }
+
     }
 
     _chooseRenderer = (semanticLayoutNode) => {
@@ -103,6 +103,7 @@ class Scene extends Component {
 
 
     _renderScene = (scene, checkpoints, sceneIndex) => {
+        const { showNeedsRepair } = this.props
         const { semanticLayoutNodes, containerNode, children, parent, pq, id } = scene
         // console.log("Scene id: ", id)
 
@@ -126,14 +127,14 @@ class Scene extends Component {
                         && semanticLayoutNode.physicalModel.physicalAsset
                         && semanticLayoutNode.physicalModel.physicalAsset.modelType
                         && semanticLayoutNode.physicalModel.physicalAsset.modelType === "OBJ"
-                        && render3dEntity({ semanticLayoutNode, scene, i, dims, })
+                        && render3dEntity({ semanticLayoutNode, scene, i, dims, showNeedsRepair })
                     }
                     {semanticLayoutNode.physicalModel
                         && semanticLayoutNode.physicalModel.physicalAsset
                         && semanticLayoutNode.physicalModel.physicalAsset.modelType
                         && semanticLayoutNode.physicalModel.physicalAsset.modelType === "GEOMETRY"
                         && semanticLayoutNode.physicalModel.physicalAsset.geometry === "ship"
-                        && renderShipContainer({ semanticLayoutNode, scene, i, dims, showInfoModal: this.props.showInfoModal, }) // TODO: remove showInfoModal?
+                        && renderShipContainer({ semanticLayoutNode, scene, i, dims, showInfoModal: this.props.showInfoModal, showNeedsRepair }) // TODO: remove showInfoModal?
                     }
                     {this.props.animateSceneTransition && <a-animation
                         attribute="position"
@@ -156,6 +157,7 @@ class Scene extends Component {
             return this.props.currentScene.replace(/^#+/i, '') === id.replace(/^#+/i, '') ? 1.3 : 0.01
         }
 
+        console.log("Scene props: ", this.props)
         return (
             <SceneContainer
                 key={id}
